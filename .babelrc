@@ -1,0 +1,4 @@
+{	
+	"plugins": ["transform-runtime","@babel/plugin-syntax-dynamic-import"],
+	"presets":["env","stage-0"]
+}

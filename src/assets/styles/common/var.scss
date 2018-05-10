@@ -1,0 +1,114 @@
+
+// 公共样式变量
+$--font-family: "Microsoft Yahei" !default;
+$--text-hover-color: red !default;
+
+// IndexPage页面样式变量
+$--index-tab-home-background: url("../../assets/images/index/tabbar_home_nor.png") center center no-repeat !default;
+$--index-tab-select-home-background: url("../../assets/images/index/tabbar_home_pre.png") center center no-repeat !default;
+$--index-tab-course-background: url("../../assets/images/index/tabbar_course_nor.png") center center no-repeat !default;
+$--index-tab-select-course-background: url("../../assets/images/index/tabbar_course_pre.png") center center no-repeat !default;
+$--index-tab-me-background: url("../../assets/images/index/tabbar_me_nor.png") center center no-repeat !default;
+$--index-tab-select-me-background: url("../../assets/images/index/tabbar_me_pre.png") center center no-repeat !default;
+$--index-tab-message-background: url("../../assets/images/index/tabbar_message_nor.png") center center no-repeat !default;
+$--index-tab-select-message-background: url("../../assets/images/index/tabbar_message_pre.png") center center no-repeat !default;
+$--index-background-color: #fff !default;
+$--index-header-z-index: 1 !default;
+$--index-banner-background-color: #eee !default;
+$--index-title-background-border-bottom-color: #ddd !default;
+$--index-link-font-size: 1.2rem !default;
+$--index-link-color: #666 !default;
+$--index-link-hover-color: red !default;
+$--index-link-loginout-color: #eee !default;
+$--index-main-z-index: 0 !default;
+$--index-shopping-cart-background-color: #fff !default;
+$--index-shopping-cart-font-size: 2rem !default;
+$--index-shopping-cart-border-top-color: #fff !default;
+$--index-shopping-cart-z-index: 1 !default;
+$--index-shopping-cart-inner-color: #333 !default;
+// homePage页面样式变量
+$--index-home-background: url("../../assets/images/index/home/home_icon_search.png") center center no-repeat !default;
+$--index-home-teacher-male-background: url("../../assets/images/index/home/home_icon_male.png") center center no-repeat !default;
+$--index-home-teacher-role-background: url("../../assets/images/index/home/home_icon_teacher.png") center center no-repeat !default;
+$--index-home-nor: url("../../assets/images/index/home/home_btn_price_nor.png") center center no-repeat !default;
+// productsPage页面样式变量
+$--product-nav-font-size: 1.6rem !default;
+$--product-nav-item-border-bottom-color: #e9e9e9 !default;
+$--product-nav-item-hover-color: red !default;
+$--product-nav-item-active-color: red !default;
+$--product-list-link-color: #999 !default;
+$--product-list-link-hover-color: red !default;
+$--product-list-item-border-color: #fff !default;
+$--product-list-item-hover-border-color: #e9e9e9 !default;
+$--product-price-color: #e4393c !default;
+$--product-title-color: #666 !default;
+$--product-desc-color: #999 !default;
+$--product-btn-border-color: #fff !default;
+
+// registerPage页面
+$--register-form-top: 0.68rem !default;
+$--register-btn-select-background: url("../assets/images/reg_btn_identity_sel.png") center center no-repeat !default;
+$--register-btn-no-select-background: url("../assets/images/reg_btn_identity_nor.png") center center no-repeat !default;
+$--register-btn-background: url("../assets/images/funstuye_btn_long_nor.png") center center no-repeat !default;
+$--register-btn-click-background: url("../assets/images/funstuye_btn_long_disabled.png") center center no-repeat !default;
+$--register-form-font-size: 0.32rem !default;
+$--register-form-item-title-font-size: 0.6rem !default;
+$--register-form-foget-password-link-color: #7E7E7E !default;
+
+// loginPage页面
+$--login-form-top: 3.01rem !default;
+$--login-background: url("../assets/images/login_bg.png") center center no-repeat !default;
+$--login-btn-background: url("../assets/images/funstuye_btn_long_nor.png") center center no-repeat !default;
+$--login-btn-click-background: url("../assets/images/funstuye_btn_long_disabled.png") center center no-repeat !default;
+$--login-form-font-size: 0.36rem !default;
+$--login-form-item-title-font-size: 0.54rem !default;
+$--login-form-foget-password-link-color: #7E7E7E !default;
+
+// accountPage页面
+$--account-nav-font-size: 1.3rem !default;
+$--account-nav-background-color: #fff !default;
+$--account-nav-list-link-color: #999 !default;
+$--account-nav-list-link-hover-color: red !default;
+$--account-nav-list-router-link-active: red !default;
+$--account-nav-list-title-color: #000 !default;
+$--account-main-content-background-color: #fff !default;
+
+// accountOrderPage页面
+$--account-order-color: #797676 !default;
+$--account-order-font-size: 1.2rem !default;
+
+// accountCartPage页面
+$--account-cart-font-size: 1.4rem !default;
+$--account-cart-table-head-class: #eee !default;
+$--account-cart-color: #999 !default;
+$--account-cart-border-color: #eee !default;
+$--account-cart-title-color: #797676 !default;
+$--account-cart-add-addr-hover-color: red !default;
+$--account-cart-empty-font-size: 1.6rem !default;
+$--account-cart-checkout-color: #999 !default;
+$--account-cart-totla-price-font-size: 1.2rem !default;
+$--account-cart-address-list-font-size: 1.2rem !default;
+$--account-cart-address-list-border-color: #ccc !default;
+$--account-cart-address-list-title-color: #797676 !default;
+$--account-cart-address-list-item-color: #666 !default;
+$--account-cart-address-list-item-hover-background-color: #fff3f3 !default;
+$--account-cart-address-list-item-span-border-color: #ccc !default;
+$--account-cart-address-list-item-span-background-color: #fff !default;
+$--account-cart-address-list-item-span-hover-border-color: red !default;
+$--account-cart-address-list-item-span-default-border-color: red !default;
+$--account-cart-table-color: #999 !default;
+$--account-cart-table-font-size: 1.3rem !default;
+$--account-cart-table-background-color: #fff !default;
+$--account-cart-table-prod-quantity-btn-border-color: #999 !default;
+$--account-cart-table-input-color: #999 !default;
+$--account-cart-table-input-font-size: 1.3rem !default;
+$--account-cart-table-input-background-color: #eee !default;
+
+// accountAddressPage页面
+$--account-address-list-wrap-font-size: 1.2rem !default;
+$--account-address-list-item-border-color: #eee !default;
+$--account-address-list-text-color: #aaa !default;
+
+// accountAddressFormPage页面
+$--account-address-form-wrap-font-size: 1.2rem !default;
+$--account-address-form-require-tag-color: red !default;

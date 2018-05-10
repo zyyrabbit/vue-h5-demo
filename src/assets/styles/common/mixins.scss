@@ -1,0 +1,105 @@
+/* BEM */
+@mixin b($block) {
+	/* $B: $namespace + '-' + $block !global; */
+	$B: $block !global;
+	.#{$B} {
+		@content;
+	}
+}
+
+@mixin e($element) {
+	$E: $element !global;
+	$currentSelector: '';
+	@each $unit in $element {
+		$currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + "," };
+	}
+
+	@at-root {
+		#{$currentSelector} {
+			@content;
+		}
+	}
+}
+
+@mixin m($modifier) {
+	$currentSelector: "";
+	$selector: &;
+	@each $unit in $modifier {
+		$currentSelector: #{$currentSelector + $selector + $modifier-separator + $unit + ","};
+	}
+
+	@at-root {
+		#{$currentSelector} {
+			@content;
+		}
+	}
+}
+
+@mixin when($state) {
+	@at-root {
+		&.#{$state-prefix + $state} {
+			@content;
+		}
+	}
+}
+/* Placeholder
+ -------------------------- */
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+
+  &::-moz-placeholder {
+    @content
+  }
+
+  &:-ms-input-placeholder {
+    @content
+  }
+}
+
+/* 设置块级元素大小 */
+@mixin block-size($width, $height) {
+	display: block;
+	width: $width;
+	height: $height;
+}
+/* 设置块级元素左右居中 */
+@mixin block-center($width: 100%, $height: auto) {
+	width: $width;
+	height: $height;
+	margin: 0 auto;
+}
+/* 浏览器兼容性 */
+@mixin compatibility($attrMap) {
+	@each $key, $val in $attrMap {
+		-moz-#{$key}: $val;
+		-webkit-#{$key}: $val;
+		-ms-#{$key}: $val;
+		#{$key}: $val;
+	}
+}
+/* 浏览器兼容性 */
+@mixin center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/* 垂直居中 */
+@mixin utils-vertical-center {
+  $selector: &;
+  @at-root {
+    #{$selector}::after {
+      display: inline-block;
+      content: "";
+      height: 100%;
+      vertical-align: middle
+    }
+  }
+}
+/* 省略号 */
+@mixin utils-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

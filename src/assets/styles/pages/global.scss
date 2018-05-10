@@ -1,0 +1,48 @@
+/*以下为公告样式*/
+html, body, p, ul, li, h1, h2, h3, h4, form, input, textarea {
+  padding: 0;
+  margin: 0;
+  /*去除点击时，文字出现的蓝色底边*/
+  @include compatibility((user-select: none));
+}
+input, textarea {
+    outline: none;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clearfix {
+    *zoom: 1;
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+      visibility: hidden; 
+      height: 0;
+    }
+}
+
+.block--float-right {
+  float: right;
+   *display: inline; 
+  _display:inline;
+}
+.block--float-left {
+  float: left;
+ *display: inline; 
+ _display:inline;
+}

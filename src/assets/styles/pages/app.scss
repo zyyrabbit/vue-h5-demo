@@ -1,0 +1,11 @@
+#app {
+  width: 100%;
+  height: 100%;
+  font-family: $--font-family;
+}
+.span__text--hover-color {
+  cursor: pointer;
+  &:hover{
+      color: $--text-hover-color;
+  }
+}
