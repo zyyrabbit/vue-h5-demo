@@ -85,6 +85,12 @@
 	justify-content: center;
 	align-items: center;
 }
+/* 浏览器兼容性 */
+@mixin space-between {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 /* 垂直居中 */
 @mixin utils-vertical-center {
   $selector: &;

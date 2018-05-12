@@ -33,10 +33,6 @@
 	import CoursePage from './CoursePage.vue'
 	import MessagePage from './MessagePage.vue'
 	import MePage from './MePage.vue'
-	/* import AuthApi from 'api/authApi.js'
-    import { mapMutations, mapGetters } from 'vuex'
-    import * as Types from 'store/mutation-types.js'
-    import Bus from 'utils/bus.js' */
 	export default {
 		data() {
 			return {
@@ -44,7 +40,7 @@
 				selectTab: 0,
 				tabComponents: [
 					{title: '首页', iconClass: 'index-footer__tab--home', component: HomePage},
-					{title: '课程', iconClass: 'index-footer__tab--course', component: CoursePage},
+					{title: '上课', iconClass: 'index-footer__tab--course', component: CoursePage},
 					{title: '消息', iconClass: 'index-footer__tab--message', component: MessagePage},
 					{title: '我的', iconClass: 'index-footer__tab--me', component: MePage}
 				]

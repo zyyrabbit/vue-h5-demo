@@ -3,6 +3,7 @@
 	    :class="[
 		        type ? 'dx-button-' + type : '',
 		        size ? 'dx-button-' + size : '',
+                customClass,
 		        {
 		        	'is-disabled':disabled
 		        }
@@ -39,7 +40,8 @@ export default {
         disabled: {
             type: Boolean,
             default: false
-        }
+        },
+        customClass: String
     },
     methods: {
         handleClick: function(evt) {
@@ -83,8 +85,8 @@ export default {
 
 .dx-button-primary {
     color: #fff;
-    background-color: #20a0ff;
-    border-color: #20a0ff;
+    background-color: #8DD0EC;
+    border-color: #8DD0EC;
 }
 
 .dx-button-primary:focus,
@@ -108,7 +110,20 @@ export default {
     color: #ddd;
     border-color: #ff4949;
 }
+/*灰色样式*/
 
+.dx-button-gray {
+    background: #C3C3C3;
+    border-color: #C3C3C3;
+    color: #fff;
+}
+/*粉色样式*/
+
+.dx-button-pinking {
+    background: #FF9CC8;
+    border-color: #FF9CC8;
+    color: #fff;
+}
 
 /*完成无样式*/
 
