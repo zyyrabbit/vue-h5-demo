@@ -55,7 +55,7 @@
 				let	parentName = parent.$options.componentName
 				while (parentName !== 'DxForm') {
 					parent = parent.$parent
-					parentName = parent.$option.componentName
+					parentName = parent.$options.componentName
 				}
 				return parent
 			},

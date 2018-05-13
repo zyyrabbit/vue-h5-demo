@@ -54,6 +54,7 @@ export default {
 /*按钮基本样式*/
 
 .dx-button {
+    width: 100%;
     display: inline-block;
     line-height: 1;
     white-space: nowrap;
