@@ -1,86 +1,86 @@
 <template>
    <div class="index-course">
-   	    <div class="index-course--title">
-   	    	我的课程
-   	    </div>
-   	    <ul class="index-course__status clearfix">
-            <li 
-               v-for="(tab, index) in tabs"
-               :class="{'is-active': selectTabIndex === index}"
-               :key="index"
-               @click="selectTab(index)"
+	    <div class="index-course--title">
+	    	我的课程
+	    </div>
+	    <ul class="index-course__status clearfix">
+         <li 
+            v-for="(tab, index) in tabs"
+            :class="{'is-active': selectTabIndex === index}"
+            :key="index"
+            @click="selectTab(index)"
+         >
+            {{tab}}<div></div>
+         </li>
+	    </ul>
+	    <ul class="index-course-list">
+	    	<li class="index-course-list__item">
+	    		<div class="index-course-list__item-detail">
+	    			<div class="index-course-list__item-detail--head">
+	    				<span
+                     :class="{'is-valid': isValid}" 
+                     class="index-course-list__item-detail--date"
+                  >
+                     <span></span>
+                     <span>4月26号 周四</span>
+                  </span>
+	    				<span class="index-course-list__item-detail--sign-up-number">2人报名</span>
+	    			</div>
+	    			<div class="index-course-list__item-detail--content">
+	    				<p class="index-course-list__item-detail--title">带孩子走进故事王国</p>
+	    				<p class="index-course-list__item-detail--classroom">西溪湿地商务园区1号教室</p>
+	    				<p class="index-course-list__item-detail--open-time">开放时间: 2018年4月26日 07:00~20:00</p>
+	    				<p class="index-course-list__item-detail--place">详细地址: 西湖区文二西路551号好西城广场4楼</p>
+	    			</div>
+	    			<div class="index-course-list__item-detail--time">
+	    				<div class="index-course-list__item-detail--time-begin">
+	    					<div>07:00</div>开始
+	    				</div>
+	    				<div class="index-course-list__item-detail--time-during">--2小时--</div>
+	    				<div class="index-course-list__item-detail--time-end">
+	    					<div>09:00</div>结束
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div 
+               v-show="selectTabIndex === 2" 
+               class="index-course-list__item-operate"
             >
-               {{tab}}<div></div>
-            </li>
-   	    </ul>
-   	    <ul class="index-course-list">
-   	    	<li class="index-course-list__item">
-   	    		<div class="index-course-list__item-detail">
-   	    			<div class="index-course-list__item-detail--head">
-   	    				<span
-                        :class="{'is-valid': isValid}" 
-                        class="index-course-list__item-detail--date"
-                     >
-                        <span></span>
-                        <span>4月26号 周四</span>
-                     </span>
-   	    				<span class="index-course-list__item-detail--sign-up-number">2人报名</span>
-   	    			</div>
-   	    			<div class="index-course-list__item-detail--content">
-   	    				<p class="index-course-list__item-detail--title">带孩子走进故事王国</p>
-   	    				<p class="index-course-list__item-detail--classroom">西溪湿地商务园区1号教室</p>
-   	    				<p class="index-course-list__item-detail--open-time">开放时间: 2018年4月26日 07:00~20:00</p>
-   	    				<p class="index-course-list__item-detail--place">详细地址: 西湖区文二西路551号好西城广场4楼</p>
-   	    			</div>
-   	    			<div class="index-course-list__item-detail--time">
-   	    				<div class="index-course-list__item-detail--time-begin">
-   	    					<div>07:00</div>开始
-   	    				</div>
-   	    				<div class="index-course-list__item-detail--time-during">--2小时--</div>
-   	    				<div class="index-course-list__item-detail--time-end">
-   	    					<div>09:00</div>结束
-   	    				</div>
-   	    			</div>
-   	    		</div>
-   	    		<div 
-                  v-show="selectTabIndex === 2" 
-                  class="index-course-list__item-operate"
+	    			<dx-button  type="primary">再次学习</dx-button>
+	    			<dx-button  
+                  type="primary"
+                  @dx-button-click="goNext('/course/judge')"
                >
-   	    			<dx-button  type="primary">再次学习</dx-button>
-   	    			<dx-button  
-                     type="primary"
-                     @dx-button-click="goNext('/course/judge')"
-                  >
-                     评价课程
-                  </dx-button>
-   	    			<dx-button  type="primary">已确认上课</dx-button>
-   	    		</div>
-               <div 
-                  v-show="selectTabIndex === 1" 
-                  class="index-course-list__item-operate index-course-list__item-operate-doing"
+                  评价课程
+               </dx-button>
+	    			<dx-button  type="primary">已确认上课</dx-button>
+	    		</div>
+            <div 
+               v-show="selectTabIndex === 1" 
+               class="index-course-list__item-operate index-course-list__item-operate-doing"
+            >
+               <dx-button  type="pinking">视频直播</dx-button>
+            </div>
+            <div 
+               v-show="selectTabIndex === 0 && isValid" 
+               class="index-course-list__item-operate index-course-list__item-operate-wating"
+            >
+               <dx-button  type="gray">取消课程</dx-button>
+               <dx-button  type="primary">联系老师</dx-button>
+            </div>
+            <div  
+               v-show="selectTabIndex === 0 && !isValid"
+               class="index-course-list__item-operate index-course-list__item-operate-wating">
+               <span>退款成功</span>
+               <dx-button  
+                  type="primary" 
+                  @dx-button-click="goNext('course/bill')"
                >
-                  <dx-button  type="pinking">视频直播</dx-button>
-               </div>
-               <div 
-                  v-show="selectTabIndex === 0 && isValid" 
-                  class="index-course-list__item-operate index-course-list__item-operate-wating"
-               >
-                  <dx-button  type="gray">取消课程</dx-button>
-                  <dx-button  type="primary">联系老师</dx-button>
-               </div>
-               <div  
-                  v-show="selectTabIndex === 0 && !isValid"
-                  class="index-course-list__item-operate index-course-list__item-operate-wating">
-                  <span>退款成功</span>
-                  <dx-button  
-                     type="primary" 
-                     @dx-button-click="goNext('course/bill')"
-                  >
-                     查看退款
-                  </dx-button>
-               </div>
-   	    	</li>
-   	    </ul>
+                  查看退款
+               </dx-button>
+            </div>
+	    	</li>
+	    </ul>
    </div>
 </template>
 <script>
@@ -109,6 +109,7 @@
 </script>
 <style  lang="scss">
 	@include b(index-course) {
+      padding-top: 0.56rem;
 		@include m(title) {
 			font-size: 0.48rem;
 			color: #484848;

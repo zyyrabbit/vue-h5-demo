@@ -40,7 +40,7 @@
 </script>
 <style  lang="scss">
 	@include b(index-me) {
-		margin-top: 0.33rem;
+		padding-top: 0.33rem;
 		color: #484848;
 		@include e(introduction) {
 			border-bottom: 2px solid #EBEBEB;

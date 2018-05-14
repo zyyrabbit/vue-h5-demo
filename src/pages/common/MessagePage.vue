@@ -1,40 +1,84 @@
 <template>
    <div class="index-message">
-	  <dx-ul>
-	  	<li class="index-message-teacher">
-			<div class="index-message-teacher--icon"></div>
-			<div class="index-message-teacher__detail">
-				<div>
-					<span class="index-message-teacher__detail--name">系统消息</span>
-					<span class="index-message-teacher__detail--male"></span>
-					<span class="index-message-teacher__detail--role"></span>
+   		<div class="index-message__title clearfix">
+   			<div class="block--float-left">消息</div>
+   			<div 
+   				class="block--float-right"
+   				@click="goPath('/message/query')"
+   			></div>
+   		</div>
+	    <dx-ul>
+		  	<li 
+		  		v-for="(message, index) in messages"
+		  		:key="index"
+		  		class="index-message-teacher"
+		  	>
+				<div class="index-message-teacher--icon"></div>
+				<div class="index-message-teacher__detail">
+					<div>
+						<span class="index-message-teacher__detail--name">
+							{{message.title}}
+						</span>
+						<span v-if="!message.system">
+							<span class="index-message-teacher__detail--male"></span>
+							<span class="index-message-teacher__detail--role"></span>
+						</span>
+						<span class="block--float-right">{{message.time}}</span>
+					</div>
+					<div class="index-message-teacher__detail--desc">
+						<router-link :to="message.path">{{message.content}}</router-link>
+					</div>
 				</div>
-				<div class="index-message-teacher__detail--desc">
-					英语协会副会长，多次获得国际英语口语竞赛金奖
-				</div>
-			</div>
-		</li>
-		<li class="index-message-teacher">
-			<div class="index-message-teacher--icon"></div>
-			<div class="index-message-teacher__detail">
-				<div>
-					<span class="index-message-teacher__detail--name">杨帆</span>
-					<span class="index-message-teacher__detail--male"></span>
-					<span class="index-message-teacher__detail--role"></span>
-					<span class="block--float-right">5分钟</span>
-				</div>
-				<div class="index-message-teacher__detail--desc">
-					英语协会副会长，多次获得国际英语口语竞赛金奖
-				</div>
-			</div>
-		</li>
-	</dx-ul>
+			</li>
+		</dx-ul>
     </div>
 </template>
 <script>
+	export default {
+		data() {
+			return {
+				messages: [
+					{
+						title: '系统消息', 
+						time: '3天前', 
+						content: '请对课程进行评价',
+						path: '/message/system',
+						system: true
+					},
+					{
+						title: '杨帆', 
+						time: '5分钟', 
+						content: '英语协会副会长，多次获得国际英语口语竞赛金奖',
+						path: '/message/chat'
+					},
+					{
+						title: '张逸勇', 
+						time: '5分钟', 
+						content: '英语协会副会长，多次获得国际英语口语竞赛金奖',
+						path: '/message/chat'
+					}
+				]
+			}
+		},
+		methods: {
+			goPath(path) {
+				this.$router.push(path)
+			}
+		}
+	}
 </script>
 <style  lang="scss">
 	@include b(index-message) {
+		@include e(title) {
+			font-size: 0.48rem;
+			line-height: 0.88rem;
+			padding-top: 0.32rem;
+			>div:nth-child(2) {
+				width: 0.88rem;
+				height: 0.88rem;
+				background: $--message-search-background;
+			}
+		}
 		/* 明星老师介绍 */
 		@include b(index-message-teacher) {
 			display: flex;
