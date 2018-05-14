@@ -81,10 +81,15 @@
             </div>
 	    	</li>
 	    </ul>
+       <dx-footer :selectTab="1"></dx-footer>
    </div>
 </template>
 <script>
+   import DxFooter from '../common/FooterPage.vue'
    export default {
+      components: {
+         DxFooter
+      },
       data() {
          return {
             tabs: ['待上课', '正在上课', '已上课'],

@@ -138,10 +138,15 @@
    				</dx-ul>
    			</div>
    		</div>
+		<dx-footer :selectTab="0"></dx-footer>
    </div>
 </template>
 <script>
+	import DxFooter from '../common/FooterPage.vue'
 	export default {
+		components: {
+			DxFooter
+		},
 		data() {
 			return {
 				searchContent: '',

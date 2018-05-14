@@ -1,5 +1,5 @@
 <template>
-   <div class="index-message">
+    <div class="index-message">
    		<div class="index-message__title clearfix">
    			<div class="block--float-left">消息</div>
    			<div 
@@ -11,9 +11,9 @@
 		  	<li 
 		  		v-for="(message, index) in messages"
 		  		:key="index"
-		  		class="index-message-teacher"
+		  		class="index-message-teacher clearfix"
 		  	>
-				<div class="index-message-teacher--icon"></div>
+				<div class="index-message-teacher--icon block--float-left"></div>
 				<div class="index-message-teacher__detail">
 					<div>
 						<span class="index-message-teacher__detail--name">
@@ -30,31 +30,37 @@
 					</div>
 				</div>
 			</li>
-		</dx-ul>
+		</dx-ul> 
+		<dx-footer :selectTab="2"></dx-footer>
     </div>
+   
 </template>
 <script>
+	import DxFooter from '../common/FooterPage.vue'
 	export default {
+		components: {
+			DxFooter
+		},
 		data() {
 			return {
 				messages: [
 					{
-						title: '系统消息', 
-						time: '3天前', 
+						title: '系统消息',
+						time: '3天前',
 						content: '请对课程进行评价',
 						path: '/message/system',
 						system: true
 					},
 					{
-						title: '杨帆', 
-						time: '5分钟', 
-						content: '英语协会副会长，多次获得国际英语口语竞赛金奖',
+						title: '杨帆',
+						time: '5分钟',
+						content: '英语协会副会长，多次获得国际英语口语竞赛金奖英语协会副会长，多次获得国际英语口语竞赛金奖',
 						path: '/message/chat'
 					},
 					{
-						title: '张逸勇', 
-						time: '5分钟', 
-						content: '英语协会副会长，多次获得国际英语口语竞赛金奖',
+						title: '张逸勇',
+						time: '5分钟',
+						content: '英语协会副会长，多次获得国际英语口语竞赛金奖英语协会副会长，多次获得国际英语口语竞赛金奖',
 						path: '/message/chat'
 					}
 				]
@@ -81,22 +87,22 @@
 		}
 		/* 明星老师介绍 */
 		@include b(index-message-teacher) {
-			display: flex;
-			align-items: center;
+			width: 100%;
 			margin-top: 0.48rem;
 			margin-bottom: 0.42rem;
 			@include m(icon) {
 				width: 1.09rem;
 				height: 1.09rem;
+				margin-right: 0.28rem;
 				border-radius: 50%;
 				background-color: #444;
 			}
 			@include e(detail) {
-				display: inline-block;
+				overflow: hidden;
 				vertical-align: middle;
-				margin-left: 0.28rem;
 				font-size: 0.34rem;
 				color: #7E7E7E;
+				word-wrap: break-word;
 				@include m(name) {
 					color: #333;
 				}
@@ -115,6 +121,7 @@
 					background: $--index-home-teacher-role-background;
 				}
 				@include m(desc) {
+				width: 100%;
 					margin-top: 0.2rem; 
 				}
 			}

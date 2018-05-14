@@ -1,30 +1,49 @@
 import Store from 'store'
 import VueRouter from 'vue-router'
 // 方案2---路由懒加载
- const Index = () => import('pages/common/IndexPage.vue')
  const Login = () => import('pages/LoginPage.vue')
  const Register = () => import('pages/RegisterPage.vue')
  const GetPassword = () => import('pages/GetPasswordPage.vue')
+ /* 家长 */
+ // 主页面
+ const HomePage = () => import('pages/parent/HomePage.vue')
+ const CoursePage = () => import('pages/parent/CoursePage.vue')
+ const MessagePage = () => import('pages/parent/MessagePage.vue')
+ const MePage = () => import('pages/parent/MePage.vue')
  // 上课页面组
- const BillingDetailPage = () => import('pages/common/course/BillingDetailPage.vue')
- const JudgePage = () => import('pages/common/course/JudgePage.vue')
+ const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
+ const JudgePage = () => import('pages/parent/course/JudgePage.vue')
  // 消息页面组
- const SystemMessagePage = () => import('pages/common/message/SystemMessagePage.vue')
- const ChatPage = () => import('pages/common/message/ChatPage.vue')
- const SearchTeacherPage = () => import('pages/common/message/SearchTeacherPage.vue')
+ const SystemMessagePage = () => import('pages/parent/message/SystemMessagePage.vue')
+ const ChatPage = () => import('pages/parent/message/ChatPage.vue')
+ const SearchTeacherPage = () => import('pages/parent/message/SearchTeacherPage.vue')
 
  const pubRoutes = [
-		{ path: '/', component: Index, hidden: true },
-		{ path: 'login', component: Login, hidden: true },
-		{ path: 'reg', component: Register, hidden: true },
-		{ path: 'getpwd', component: GetPassword, hidden: true },
-		// path加'/'为相对根路径--课程页面
-		{ path: '/course/bill', component: BillingDetailPage },
-		{ path: '/course/judge', component: JudgePage },
-	    // path加'/'为相对根路径--消息页面
-		{ path: '/message/system', component: SystemMessagePage },
-		{ path: '/message/chat', component: ChatPage },
-		{ path: '/message/query', component: SearchTeacherPage }
+		{ path: '/', component: HomePage, hidden: true },
+		{ path: '/login', component: Login, hidden: true },
+		{ path: '/reg', component: Register, hidden: true },
+		{ path: '/getpwd', component: GetPassword, hidden: true },
+		{ path: '/home', component: HomePage, hidden: true },
+		{
+			path: '/course',
+			component: CoursePage,
+			children: [
+				// path加'/'为相对根路径--课程页面
+				{ path: 'bill', component: BillingDetailPage, hidden: true },
+				{ path: 'judge', component: JudgePage }
+			]
+		},
+		{ path: '/profile', component: MessagePage, hidden: true },
+		{
+			path: '/message',
+			component: MePage,
+			children: [
+				// path加'/'为相对根路径--消息页面
+				{ path: 'system', component: SystemMessagePage, hidden: true },
+				{ path: 'chat', component: ChatPage, hidden: true },
+				{ path: 'query', component: SearchTeacherPage, hidden: true }
+			]
+		}
 	]
 export default new VueRouter({
 	scrollBehavior: () => ({ y: 0 }),

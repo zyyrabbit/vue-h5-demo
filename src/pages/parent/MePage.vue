@@ -34,9 +34,16 @@
    	    <div class="index-me--feedback">
    	    	意见反馈
    	    </div>
+   	    <dx-footer :selectTab="3"></dx-footer>
     </div>
 </template>
 <script>
+	import DxFooter from '../common/FooterPage.vue'
+	export default {
+		components: {
+			DxFooter
+		}
+	}
 </script>
 <style  lang="scss">
 	@include b(index-me) {
