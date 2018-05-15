@@ -4,7 +4,7 @@
    			<div class="block--float-left">消息</div>
    			<div 
    				class="block--float-right"
-   				@click="goPath('/message/query')"
+   				@click="goNext('/message/query')"
    			></div>
    		</div>
 	    <dx-ul>
@@ -32,12 +32,20 @@
 			</li>
 		</dx-ul> 
 		<dx-footer :selectTab="2"></dx-footer>
+		<transition 
+			name="router"  
+			mode='out-in'
+		>
+			<router-view class="full-screen"/>
+		</transition>
     </div>
    
 </template>
 <script>
 	import DxFooter from '../common/FooterPage.vue'
+	import mixin from 'utils/mixin.js'
 	export default {
+		mixins: [mixin],
 		components: {
 			DxFooter
 		},
@@ -65,20 +73,15 @@
 					}
 				]
 			}
-		},
-		methods: {
-			goPath(path) {
-				this.$router.push(path)
-			}
 		}
 	}
 </script>
 <style  lang="scss">
 	@include b(index-message) {
+		padding-top: 0.32rem;
 		@include e(title) {
 			font-size: 0.48rem;
 			line-height: 0.88rem;
-			padding-top: 0.32rem;
 			>div:nth-child(2) {
 				width: 0.88rem;
 				height: 0.88rem;

@@ -139,6 +139,12 @@
    			</div>
    		</div>
 		<dx-footer :selectTab="0"></dx-footer>
+		<transition
+			name="router"  
+			mode='out-in'
+		>
+			<router-view class="full-screen"/>
+		</transition>
    </div>
 </template>
 <script>

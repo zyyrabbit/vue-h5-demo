@@ -17,8 +17,10 @@ import VueRouter from 'vue-router'
  const SystemMessagePage = () => import('pages/parent/message/SystemMessagePage.vue')
  const ChatPage = () => import('pages/parent/message/ChatPage.vue')
  const SearchTeacherPage = () => import('pages/parent/message/SearchTeacherPage.vue')
+// 个人账户
+const AccountSettingPage = () => import('pages/parent/profile/AccountSettingPage.vue')
 
- const pubRoutes = [
+const pubRoutes = [
 		{ path: '/', component: HomePage, hidden: true },
 		{ path: '/login', component: Login, hidden: true },
 		{ path: '/reg', component: Register, hidden: true },
@@ -33,10 +35,16 @@ import VueRouter from 'vue-router'
 				{ path: 'judge', component: JudgePage }
 			]
 		},
-		{ path: '/profile', component: MessagePage, hidden: true },
+		{
+			path: '/profile',
+			component: MePage,
+			children: [
+				{ path: 'account', component: AccountSettingPage, hidden: true }
+			]
+		},
 		{
 			path: '/message',
-			component: MePage,
+			component: MessagePage,
 			children: [
 				// path加'/'为相对根路径--消息页面
 				{ path: 'system', component: SystemMessagePage, hidden: true },

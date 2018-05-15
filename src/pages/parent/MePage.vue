@@ -5,7 +5,10 @@
    	    		<span class="index-me__introduction--title-text">
    	    			么么茶
    	    		</span>
-   	    		<span class="index-me__introduction--setting"></span>
+   	    		<span 
+   	    			class="index-me__introduction--setting"
+  					@click="goNext('profile/account')"
+   	    		></span>
    	    	</div>
    	    	<div class="index-me__introduction--name">
    	    		<div class="index-me__introduction--name-text">
@@ -35,11 +38,19 @@
    	    	意见反馈
    	    </div>
    	    <dx-footer :selectTab="3"></dx-footer>
+   	    <transition 
+			name="router"  
+			mode='out-in'
+		>
+			<router-view class="full-screen"/>
+		</transition>
     </div>
 </template>
 <script>
 	import DxFooter from '../common/FooterPage.vue'
+	import mixin from 'utils/mixin.js'
 	export default {
+		mixins: [mixin],
 		components: {
 			DxFooter
 		}

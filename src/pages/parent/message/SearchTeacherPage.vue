@@ -1,6 +1,9 @@
 <template>
    <div class="search-teacher-list">
-   		<div class="search-teacher-list--go-back">X</div>
+   		<div 
+   			class="search-teacher-list--go-back"
+   			@click="$router.go(-1)"
+   		>X</div>
    		<div>
    			<dx-input 
 			    v-model="teacherName"

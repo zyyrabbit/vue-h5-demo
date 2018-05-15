@@ -82,11 +82,19 @@
 	    	</li>
 	    </ul>
        <dx-footer :selectTab="1"></dx-footer>
+       <transition 
+         name="router"  
+         mode='out-in'
+      >
+         <router-view class="full-screen"/>
+      </transition>
    </div>
 </template>
 <script>
    import DxFooter from '../common/FooterPage.vue'
+   import mixin from 'utils/mixin.js'
    export default {
+      mixins: [mixin],
       components: {
          DxFooter
       },

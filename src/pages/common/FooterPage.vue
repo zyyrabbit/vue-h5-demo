@@ -3,13 +3,13 @@
     <footer class="index-footer" >
     	<dx-ul class="index-footer__tab">
     		<li  
-    			v-for = "(tabComponent, index) in tabComponents"
+    			v-for="(tabComponent, index) in tabComponents"
     			:class="[
     					{'is-select': selectTab === index},
     					tabComponent.iconClass
     				]"
     			:key="index" 
-    			@click="goPath(index, tabComponent)"
+    			@click="goPath(tabComponent)"
     		>
     			<p 
     				:class="{'is-select': selectTab === index}"

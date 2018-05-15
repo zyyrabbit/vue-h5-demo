@@ -14,7 +14,8 @@
 		background-color: #fff;
 		/* 网站主题内容 */
 		@include b(app-main) {
-		    padding: 0 0.4rem;
+		    padding-right:  0.4rem;
+		    padding-left:  0.4rem;
 		}
 	}
 </style>

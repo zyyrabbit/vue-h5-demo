@@ -5,19 +5,3 @@
 .router-enter, .router-leave-to {
 	opacity: 0;
 }
-
-.shopping-cart-icon-enter-active {
-	transition: bottom 1s cubic-bezier(0.5, -0.5, 1, 1), left 1s linear;
-	opacity: 0.6;
-	z-index: 1;
-}
-/* 固定底部的购物车动画 */
-.shopping-cart-enter-active {
-	transition: opacity .5s;
-}
-.shopping-cart-leave-active {
-	transition: opacity .5s 4s ease;
-}
-.shopping-cart-enter, .shopping-cart-leave-to {
-	opacity: 0;
-}
