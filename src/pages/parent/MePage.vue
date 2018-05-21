@@ -32,10 +32,10 @@
    	    	<span  class="block--float-right">2998积分</span>
    	    </div>
    	    <div class="index-me--friend">
-   	    	邀请好友
+   	    	<span @click="goPath('profile/invitefriends')">邀请好友</span>
    	    </div>
    	    <div class="index-me--feedback">
-   	    	意见反馈
+   	    	<span @click="goPath('profile/advise')">意见反馈</span>
    	    </div>
    	    <dx-footer :selectTab="3"></dx-footer>
    	    <transition 
@@ -53,10 +53,15 @@
 		mixins: [mixin],
 		components: {
 			DxFooter
+		},
+		methods: {
+			goPath(path) {
+				this.$router.push(path)
+			}
 		}
 	}
 </script>
-<style  lang="scss">
+<style scoped lang="scss">
 	@include b(index-me) {
 		padding-top: 0.33rem;
 		color: #484848;

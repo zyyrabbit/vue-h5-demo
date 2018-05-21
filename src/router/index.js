@@ -19,6 +19,10 @@ import VueRouter from 'vue-router'
  const SearchTeacherPage = () => import('pages/parent/message/SearchTeacherPage.vue')
 // 个人账户
 const AccountSettingPage = () => import('pages/parent/profile/AccountSettingPage.vue')
+const PwdModPage = () => import('pages/parent/profile/PwdModPage.vue')
+const TelephoneModPage = () => import('pages/parent/profile/TelephoneModPage.vue')
+const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
+const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
 
 const pubRoutes = [
 		{ path: '/', component: HomePage, hidden: true },
@@ -39,7 +43,11 @@ const pubRoutes = [
 			path: '/profile',
 			component: MePage,
 			children: [
-				{ path: 'account', component: AccountSettingPage, hidden: true }
+				{ path: 'account', component: AccountSettingPage, hidden: true },
+				{ path: 'pwdMod', component: PwdModPage, hidden: true },
+				{ path: 'phoneMod', component: TelephoneModPage, hidden: true },
+				{ path: 'invitefriends', component: InvitingFriendsPage, hidden: true },
+				{ path: 'advise', component: AdvisePage, hidden: true }
 			]
 		},
 		{

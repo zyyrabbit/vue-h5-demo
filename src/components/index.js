@@ -6,6 +6,7 @@ import DxUl from './dx-ul.vue'
 import DxCheckbox from './dx-checkbox.vue'
 import DxCheckboxGroup from './dx-checkbox-group.vue'
 import DxRate from './dx-rate.vue'
+import DxItem from './dx-item.vue'
 
 const components = [
 	DxFormItem,
@@ -15,7 +16,8 @@ const components = [
 	DxUl,
 	DxCheckbox,
 	DxCheckboxGroup,
-	DxRate
+	DxRate,
+	DxItem
 ]
 
 const install = function(Vue) {

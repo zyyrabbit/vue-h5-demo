@@ -76,7 +76,7 @@
 		}
 	}
 </script>
-<style  lang="scss">
+<style scoped lang="scss">
 	@include b(index-message) {
 		padding-top: 0.32rem;
 		@include e(title) {

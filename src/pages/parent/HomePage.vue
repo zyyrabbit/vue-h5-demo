@@ -161,7 +161,7 @@
 		}
 	}
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 	@include b(index-home) {
 		& .index-home__input {
 			border-bottom: none ;

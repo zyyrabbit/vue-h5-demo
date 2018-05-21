@@ -8,6 +8,7 @@
 		        	'is-disabled':disabled
 		        }
 	    ]"
+        :style=""
 	    class="dx-button" 
 	    :disabled="disabled"  
 	    :type="nativeType"
@@ -92,8 +93,7 @@ export default {
 
 .dx-button-primary:focus,
 .dx-button-primary:hover {
-    background: #4db3ff;
-    border-color: #4db3ff;
+    border-color: #8DD0EC;
     color: #fff;
 }
 
@@ -151,16 +151,6 @@ export default {
     font-size: 0.12rem;
 }
 
-
-/* 与父元素同宽 */
-
-.dx-button-max {
-    padding: 0.1rem 0.09rem;
-    font-size: 0.15rem;
-    width: 100%;
-}
-
-
 /*按钮禁用时的样式*/
 
 .dx-button.is-disabled,
@@ -171,5 +161,17 @@ export default {
     background-image: none;
     background-color: #eef1f6;
     border-color: #d1dbe5;
+}
+
+/* 与父元素同宽并且设置圆角 */
+.dx-button-max {
+    height: 1rem;
+    width: 6.54rem;
+    border-radius: 0.5rem;
+    font-size: 0.3rem;
+}
+.dx-button-max:focus,
+.dx-button-max:hover {
+    border-radius: 0.5rem;
 }
 </style>

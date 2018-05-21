@@ -120,7 +120,7 @@
       }
    }
 </script>
-<style  lang="scss">
+<style scoped lang="scss">
 	@include b(index-course) {
       padding-top: 0.56rem;
 		@include m(title) {

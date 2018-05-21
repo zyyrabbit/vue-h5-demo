@@ -1,17 +1,24 @@
 <template>
-   <div class="index-billing">
+   <div class="profile-account">
       <dx-header></dx-header>
-      <div class="index-billing--money">
+      <div class="profile-account--title">
            账号设置
       </div>
-      <div class="index-billing--type">
-         手机号
-         <span  class="block--float-right">13978784676</span>
-      </div>
-      <div class="index-billing--time">
-         修改密码
-         <span  class="block--float-right">修改</span>
-      </div>
+      <dx-item>
+         <span slot="left">手机号</span>
+         <span 
+            slot="right" 
+            class="profile-account--telephone-number"
+         >13978784676</span>
+      </dx-item>
+      <dx-item>
+         <span slot="left">修改密码</span>
+         <span 
+            slot="right"
+            class="profile-account--mod-pwd"
+            @click="goPath()"
+         >修改</span>
+      </dx-item>
    </div>
 </template>
 <script>
@@ -21,32 +28,24 @@
          DxHeader
       },
       methods: {
-         goBack() {
-            this.$router.go(-1);
+         goPath(path) {
+            this.$router.push('/profile/pwdMod')
          }
       }
    }
 </script>
-<style  lang="scss">
-   @include b(index-billing) {
+<style scoped lang="scss">
+   @include b(profile-account) {
       padding: 0.33rem 0.37rem 0;
       color: #484848;
       font-size: 0.36rem;
       @include m(title) {
-         text-align: center;
+         text-align: left;
+         font-size: 0.6rem;
+         margin-top: 0.62rem;
       }
-      @include m(money) {
-         margin: 0.66rem 0;
-         font-size: 1rem;
+      @include m(mod-pwd telephone-number) {
          color: #57B8D7;
-         text-align: center;
-      }
-      @include m(type time) {
-         line-height: 1.39rem;
-         border-bottom: 2px solid #EBEBEB;
-      }
-      @include m(time) {
-         border: none;
       }
    }  
 </style>

@@ -58,7 +58,7 @@
          </div>
       </div>
       <div class="index-judging__submit-btn">
-         <dx-button  type="primary">提交评价</dx-button>
+         <dx-button size="max" type="primary">提交评价</dx-button>
       </div>
    </div>
 </template>
@@ -150,12 +150,6 @@
          height: 1.62rem;
          @include center;
          box-shadow: 0 -0.1rem 0.09rem RGBA(0, 0, 0, 0.06);
-         >button {
-            height: 1rem;
-            width: 6.54rem;
-            border-radius: 0.5rem;
-            font-size: 0.3rem;
-         }
       }
    }  
 </style>
