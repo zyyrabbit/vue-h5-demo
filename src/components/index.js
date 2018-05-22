@@ -7,7 +7,7 @@ import DxCheckbox from './dx-checkbox.vue'
 import DxCheckboxGroup from './dx-checkbox-group.vue'
 import DxRate from './dx-rate.vue'
 import DxItem from './dx-item.vue'
-
+import DxCalender from './calendar/dx-calendar.vue'
 const components = [
 	DxFormItem,
 	DxForm,
@@ -17,7 +17,8 @@ const components = [
 	DxCheckbox,
 	DxCheckboxGroup,
 	DxRate,
-	DxItem
+	DxItem,
+	DxCalender
 ]
 
 const install = function(Vue) {

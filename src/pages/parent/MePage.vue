@@ -25,10 +25,10 @@
    	    	</div>
    	    </div>
    	    <div class="index-me--record">
-   	    	上课记录
+   	    	<span @click="goPath('profile/sign')">上课记录</span>
    	    </div>
    	    <div class="index-me--sign">
-   	    	会员签到
+   	    	<span @click="goPath('profile/sign')">会员签到</span>
    	    	<span  class="block--float-right">2998积分</span>
    	    </div>
    	    <div class="index-me--friend">

@@ -23,6 +23,7 @@ const PwdModPage = () => import('pages/parent/profile/PwdModPage.vue')
 const TelephoneModPage = () => import('pages/parent/profile/TelephoneModPage.vue')
 const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
 const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
+const SignInPage = () => import('pages/parent/profile/SignInPage.vue')
 
 const pubRoutes = [
 		{ path: '/', component: HomePage, hidden: true },
@@ -47,7 +48,8 @@ const pubRoutes = [
 				{ path: 'pwdMod', component: PwdModPage, hidden: true },
 				{ path: 'phoneMod', component: TelephoneModPage, hidden: true },
 				{ path: 'invitefriends', component: InvitingFriendsPage, hidden: true },
-				{ path: 'advise', component: AdvisePage, hidden: true }
+				{ path: 'advise', component: AdvisePage, hidden: true },
+				{ path: 'sign', component: SignInPage, hidden: true }
 			]
 		},
 		{
