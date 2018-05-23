@@ -49,6 +49,10 @@
 <style lang="scss">
 	/* 底部导航栏 */
 	@include b(index-footer) {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		background: $--index-tab-background;
 		height: 1.14rem;
 		font-size:	0.18rem;
 		margin-top: 0.73rem;
