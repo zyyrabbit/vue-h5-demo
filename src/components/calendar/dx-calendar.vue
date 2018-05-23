@@ -2,9 +2,18 @@
 	<!-- 两列排列 -->
     <div class="dx-calendar">
     	<div class="dx-calendar-select clearfix">
-    		<span class="block--float-left"> < </span>
-            <input v-model="month"/>
-            <span class="block--float-right"> > </span>
+    		<span 
+                class="block--float-left"
+                @click="preMonth()"
+            > < </span>
+            <input 
+                v-model="month"
+                readonly="readonly" 
+            />
+            <span 
+                class="block--float-right"
+                 @click="nextMonth()"
+            > > </span>
     	</div>
     	<div class="dx-calendar-content">
     		<table class="dx-calendar-content__table" width="100%">
@@ -33,8 +42,14 @@
 	export default {
 		name: 'DxCalendar',
 		componentName: 'DxCalendar',
+        props: {
+            size: {
+                type: Number,
+                default: 42
+            }
+        },
         data() {
-            const dateStore = new DateStore()
+            const dateStore = new DateStore(this.size)
             return {
                 weekDays: ['日', '一', '二', '三', '四', '五', '六'],
                 dateStore
@@ -45,7 +60,20 @@
                 return this.dateStore.store
             },
             month() {
-                return `${this.dateStore.month}月`
+                return `${this.dateStore.month + 1}月`
+            }
+        },
+        methods: {
+            // 这里month 范围 0-11
+            preMonth() {
+                let month = this.dateStore.month 
+                month = month < 1 ? 11 : month - 1
+                this.dateStore.setMonth(month)
+            },
+            nextMonth() {
+                let month = this.dateStore.month 
+                month = month > 10 ? 0 : month + 1
+                this.dateStore.setMonth(month)
             }
         }
 	}
