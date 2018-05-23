@@ -11,16 +11,16 @@
                 <thead>
                     <th v-for="weekDay in weekDays">{{weekDay}}</th>
                 </thead>
-                
                 <tbody>
                     <tr class="dx-calendar-content__blanking"></tr>
-                    <tr v-for="row in 6">
+                    <tr v-for="row in 5">
                         <td 
                             v-for="column in 7"
                             class="dx-calendar-content__table--td"
-                            :class="{'is-slect': (row-1) * 7 + column - 1 === store.day}"
                         >
-                            {{store[(row-1) * 7 + column - 1]}}
+                            <slot :date="store[(row - 1) * 7 + column - 1]" :today="dateStore.day"> 
+                                {{ store[(row - 1) * 7 + column - 1] }} 
+                            </slot>
                         </td>
                     </tr>
                 </tbody>      
@@ -85,8 +85,6 @@
         }
         // 表格样式
         .dx-calendar-content__table--td {
-            width: 0.57rem;
-            height: 0.57rem;
             text-align: center;
             color: #7E7E7E;
             font-size: 0.3rem;

@@ -35,11 +35,12 @@ export default class DateStore {
             this.store.push(i)
         }
         // 下个月的日期
-        let len = this.store.length
-        let i = 1
-        while (len++ < this._numbers) {
-			this.store.push(i++)
-        }
+        /* let len = this.store.length
+        	let i = 1
+        	while (len++ < this._numbers) {
+				this.store.push(i++)
+        	} 
+        */
 	}
 	_checkYear(year) {
 		if (typeof year !== 'number' || (year < 1970 || year > 2300)) {

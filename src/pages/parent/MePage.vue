@@ -67,7 +67,7 @@
 		color: #484848;
 		@include e(introduction) {
 			border-bottom: 2px solid #EBEBEB;
-			/* 介绍个公共样式 */
+			/* 介绍公共样式 */
 			@include m(title name detail) {
 				display: flex;
 				align-items: center;
