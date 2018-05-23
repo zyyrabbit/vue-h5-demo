@@ -123,3 +123,15 @@ $--account-address-list-text-color: #aaa !default;
 // accountAddressFormPage页面
 $--account-address-form-wrap-font-size: 1.2rem !default;
 $--account-address-form-require-tag-color: red !default;
+
+// 课室页面样式
+$--place-headline-icon-background: url("../../../assets/images/index/place/location.png") center center no-repeat !default;
+// 公共样式变量库
+$--common-headline-upper-font-size: 0.6rem !default; // 60px大标题
+$--common-headline-font-size: 0.48rem !default; // 48px大标题
+$--common-subtitle-font-size: 0.36rem !default; // 36px小标题
+$--common-headline-desc-font-size: 0.32rem !default; // 32px大标题下的介绍文字
+$--common-article-text-font-size: 0.34rem !default; // 34px正文内容
+$--common-button-text-font-size: 0.3rem !default; // 30px按钮文字
+$--common-illustration-text-font-size: 0.24rem !default; //24px说明内容
+$--common-illustration-lower-text-font-size: 0.22rem !default; //22px次级说明内容
