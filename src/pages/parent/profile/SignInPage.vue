@@ -25,7 +25,7 @@
 	   		</dx-item>
 	    </div>
 	    <div class="profile-account-sign__calendar">
-	   		<dx-calendar>
+	   		<dx-calendar :size="35">
 	   			<div 
 	   				slot-scope="slotProps"
 	   				class="profile-account-sign__calendar--item"

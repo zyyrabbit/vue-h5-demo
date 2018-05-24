@@ -1,18 +1,17 @@
 const warn = console.warn
 // 日期组件
 export default class DateStore {
-	constructor() {
+	constructor(size = 42) {
 		let _date = new Date()
-		this._numbers = 42
+		this._numbers = size
 		this.nowDate = {
 			year: _date.getFullYear(), // 年份
 			month: _date.getMonth(), // 0-11
-			day: _date.getDate(), // 1~31
-			weekDay: _date.getDay() // 0~6
+			day: _date.getDate() // 1~31
 		}
-		this.year = this.nowDate.year
-		this.month = this.nowDate.month
-		this.day = this.nowDate.day
+		this.year = this.nowDate.year // 年
+		this.month = this.nowDate.month // 月
+		this.day = this.nowDate.day // 日
 		this.store = []
 		this.setToday()
 	}
@@ -22,6 +21,8 @@ export default class DateStore {
 		if (this._checkYear(year) || this._checkMonth(month)) {
 			return
 		}
+		this.year = year
+		this.month = month
 		this.store = [] // 重新赋值
         let start = new Date(year, month, 1).getDay() // 当月第一天是星期几
         let currentMaxDays = new Date(year, month + 1, 0).getDate() // 当月的最后一天
@@ -35,12 +36,12 @@ export default class DateStore {
             this.store.push(i)
         }
         // 下个月的日期
-        /* let len = this.store.length
-        	let i = 1
-        	while (len++ < this._numbers) {
-				this.store.push(i++)
-        	} 
-        */
+        let len = this.store.length
+    	let i = 1
+    	while (len++ < this._numbers) {
+			this.store.push(i++)
+    	} 
+        
 	}
 	_checkYear(year) {
 		if (typeof year !== 'number' || (year < 1970 || year > 2300)) {
@@ -58,11 +59,17 @@ export default class DateStore {
 	}
 	// 设置年份
 	setYear(year) {
+		if (this._checkYear(year)) {
+			return
+		}
 		this.year = year
 		this.setDate(year, this.month)
 	}
 	// 设置月份
 	setMonth(month) {
+		if (this._checkMonth(month)) {
+			return
+		}
 		this.month = month
 		this.setDate(this.year, month)
 	}
