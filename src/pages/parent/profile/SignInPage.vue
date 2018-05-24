@@ -5,6 +5,7 @@
 	   		<span 
 	   			slot="next"
 	   			class="profile-account-sign--integral-mall"
+	   			@click="goPath('/profile/integralMall')"
 	   		>积分商城</span>
 	    </dx-header>
 	    <div class="profile-account-sign__introduce">
@@ -25,7 +26,7 @@
 	   		</dx-item>
 	    </div>
 	    <div class="profile-account-sign__calendar">
-	   		<dx-calendar :size="35">
+	   		<dx-calendar :currentMonth="true">
 	   			<div 
 	   				slot-scope="slotProps"
 	   				class="profile-account-sign__calendar--item"
@@ -44,8 +45,12 @@
 	   			</div>
 	   		</dx-calendar>
 	    </div>
-	    <div class="profile-account-sign--submit-btn">
-	   		<dx-button size="max" type="primary">签到 今日+25</dx-button>
+	    <div class="profile-account-sign--submit">
+	   		<dx-button 
+	   			size="max" 
+	   			type="primary"
+	   			class="profile-account-sign--submit-btn"
+	   		>签到 今日+25</dx-button>
 	   	</div>
    </div>
 </template>
@@ -65,6 +70,9 @@
 			}
 		},
 		methods: {
+			goPath(path) {
+				this.$router.push(path)
+			}
 		}
    }
 </script>
@@ -136,6 +144,24 @@
 			color: #8DD0EC;
 			font-size: 0.26rem;
 			margin-top: 0.14rem;
+  		}
+		// 提交底部
+  		@include m(submit) {
+  			position: fixed;
+  			bottom: 0;
+  			text-align: center;
+			width: 100%;
+			height: 1.62rem;
+			margin-left: -0.4rem;
+			margin-right: -0.4rem;
+			background-color: #fff;
+			box-shadow: 0 -0.1rem 0.09rem rgba(0, 0, 0, 0.06);
+			@include utils-vertical-center;
+  		}
+  		// 提交按钮
+  		@include m(submit-btn) {
+			display: inline-block;
+			vertical-align: middle;
   		}
    }  
 </style>

@@ -22,9 +22,13 @@
                 </thead>
                 <tbody>
                     <tr class="dx-calendar-content__blanking"></tr>
-                    <tr v-for="row in 5">
+                    <tr 
+                        v-for="row in rows"
+                        :key="row"
+                    >
                         <td 
                             v-for="column in 7"
+                            :key="column"
                             class="dx-calendar-content__table--td"
                         >
                             <slot :date="store[(row - 1) * 7 + column - 1]" :today="dateStore.day"> 
@@ -45,11 +49,18 @@
         props: {
             size: {
                 type: Number,
-                default: 42
-            }
+                default: 42,
+                validator: function(value) {
+                    return value >= 35
+                }
+            },
+            currentMonth: Boolean
         },
         data() {
-            const dateStore = new DateStore(this.size)
+            const dateStore = new DateStore({
+                    size: this.size,
+                    currentMonth: this.currentMonth
+                })
             return {
                 weekDays: ['日', '一', '二', '三', '四', '五', '六'],
                 dateStore
@@ -61,17 +72,20 @@
             },
             month() {
                 return `${this.dateStore.month + 1}月`
+            },
+            rows() {
+                return Math.floor(this.size / 7)
             }
         },
         methods: {
             // 这里month 范围 0-11
             preMonth() {
-                let month = this.dateStore.month 
+                let month = this.dateStore.month
                 month = month < 1 ? 11 : month - 1
                 this.dateStore.setMonth(month)
             },
             nextMonth() {
-                let month = this.dateStore.month 
+                let month = this.dateStore.month
                 month = month > 10 ? 0 : month + 1
                 this.dateStore.setMonth(month)
             }

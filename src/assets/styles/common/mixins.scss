@@ -79,13 +79,11 @@
 		#{$key}: $val;
 	}
 }
-/* 浏览器兼容性 */
 @mixin center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-/* 浏览器兼容性 */
 @mixin space-between {
 	display: flex;
     align-items: center;

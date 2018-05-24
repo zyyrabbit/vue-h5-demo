@@ -1,4 +1,3 @@
-import Store from 'store'
 import VueRouter from 'vue-router'
 // 方案2---路由懒加载
  const Login = () => import('pages/LoginPage.vue')
@@ -24,6 +23,7 @@ const TelephoneModPage = () => import('pages/parent/profile/TelephoneModPage.vue
 const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
 const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
 const SignInPage = () => import('pages/parent/profile/SignInPage.vue')
+const integralMallPage = () => import('pages/parent/profile/integralMallPage.vue')
 // 场地页面
 const PlacePage = () => import('pages/teacher/place/PlacePage.vue')
 
@@ -51,7 +51,8 @@ const pubRoutes = [
 				{ path: 'phoneMod', component: TelephoneModPage, hidden: true },
 				{ path: 'invitefriends', component: InvitingFriendsPage, hidden: true },
 				{ path: 'advise', component: AdvisePage, hidden: true },
-				{ path: 'sign', component: SignInPage, hidden: true }
+				{ path: 'sign', component: SignInPage, hidden: true },
+				{ path: 'integralMall', component: integralMallPage, hidden: true }
 			]
 		},
 		{

@@ -1,9 +1,10 @@
 const warn = console.warn
 // 日期组件
 export default class DateStore {
-	constructor(size = 42) {
+	constructor(options) {
+		this._numbers = options.size || 42
+		this._currentMonth = options.currentMonth || false
 		let _date = new Date()
-		this._numbers = size
 		this.nowDate = {
 			year: _date.getFullYear(), // 年份
 			month: _date.getMonth(), // 0-11
@@ -27,21 +28,28 @@ export default class DateStore {
         let start = new Date(year, month, 1).getDay() // 当月第一天是星期几
         let currentMaxDays = new Date(year, month + 1, 0).getDate() // 当月的最后一天
         let preMaxDays = new Date(year, month, 0).getDate() // 上个月最后一天
-        // 前一个月的日期
-        while (start-- > 0) {
-			this.store.unshift(preMaxDays--)
-        }
+         // 判断是否只当月
+         if (!this._isOnlyCurrentMonth()) {
+			while (start-- > 0) {
+				this.store.unshift(preMaxDays--)
+			}
+         }
         // 当月的日期
         for (let i = 1; i <= currentMaxDays; i++) {
             this.store.push(i)
         }
-        // 下个月的日期
-        let len = this.store.length
-    	let i = 1
-    	while (len++ < this._numbers) {
-			this.store.push(i++)
-    	} 
-        
+        // 判断是否只当月
+        if (!this._isOnlyCurrentMonth()) {
+			// 下个月的日期
+			let len = this.store.length
+			let i = 1
+			while (len++ < this._numbers) {
+				this.store.push(i++)
+			}
+        }
+	}
+	_isOnlyCurrentMonth() {
+		return this._currentMonth
 	}
 	_checkYear(year) {
 		if (typeof year !== 'number' || (year < 1970 || year > 2300)) {
