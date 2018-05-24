@@ -6,34 +6,34 @@ html, body, p, ul, li, h1, h2, h3, h4, form, input, textarea {
   @include compatibility((user-select: none));
 }
 input, textarea {
-    outline: none;
+  outline: none;
 }
 html, body {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .clearfix {
-    *zoom: 1;
-    &:after {
-      content: "";
-      display: block;
-      clear: both;
-      visibility: hidden; 
-      height: 0;
-    }
+  *zoom: 1;
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden; 
+    height: 0;
+  }
 }
 
 .block--float-right {
@@ -45,4 +45,16 @@ a {
   float: left;
   *display: inline; 
   _display:inline;
+}
+.headline-upper-text{
+  font-size: $--common-headline-upper-font-size;
+  color: $--common-text-font-color; 
+}
+.headline-text{
+  font-size: $--common-headline-font-size;
+  color: $--common-text-font-color; 
+}
+.subtitle-text{
+  font-size: $--common-subtitle-font-size;
+  color: $--common-text-font-color;   
 }

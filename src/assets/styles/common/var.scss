@@ -126,6 +126,11 @@ $--account-address-form-require-tag-color: red !default;
 
 // 课室页面样式
 $--place-headline-icon-background: url("../../../assets/images/index/place/location.png") center center no-repeat !default;
+$--place-icon-wifi: url("../../../assets/images/index/place/icon_wifi.png") center center no-repeat !default;
+$--place-icon-park: url("../../../assets/images/index/place/icon_park.png") center center no-repeat !default;
+$--place-icon-tv: url("../../../assets/images/index/place/icon_tv.png") center center no-repeat !default;
+$--place-icon-pen: url("../../../assets/images/index/place/icon_pen.png") center center no-repeat !default;
+$--place-icon-air: url("../../../assets/images/index/place/icon_air.png") center center no-repeat !default;
 // 公共样式变量库
 $--common-headline-upper-font-size: 0.6rem !default; // 60px大标题
 $--common-headline-font-size: 0.48rem !default; // 48px大标题
@@ -135,3 +140,6 @@ $--common-article-text-font-size: 0.34rem !default; // 34px正文内容
 $--common-button-text-font-size: 0.3rem !default; // 30px按钮文字
 $--common-illustration-text-font-size: 0.24rem !default; //24px说明内容
 $--common-illustration-lower-text-font-size: 0.22rem !default; //22px次级说明内容
+$--common-text-font-color: #484848 !default; // 正常文字颜色
+$--common-subtitle-font-color: #7E7E7E !default; // 副标题颜色
+$--common-price-text-font-color: #F098BE !default; //重要文字颜色
