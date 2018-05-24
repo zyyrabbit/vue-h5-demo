@@ -24,6 +24,8 @@ const TelephoneModPage = () => import('pages/parent/profile/TelephoneModPage.vue
 const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
 const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
 const SignInPage = () => import('pages/parent/profile/SignInPage.vue')
+// 场地页面
+const PlacePage = () => import('pages/teacher/place/PlacePage.vue')
 
 const pubRoutes = [
 		{ path: '/', component: HomePage, hidden: true },
@@ -61,6 +63,11 @@ const pubRoutes = [
 				{ path: 'chat', component: ChatPage, hidden: true },
 				{ path: 'query', component: SearchTeacherPage, hidden: true }
 			]
+		},
+		{
+			path: '/place',
+			component: PlacePage,
+			children: []
 		}
 	]
 export default new VueRouter({
