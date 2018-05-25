@@ -20,28 +20,101 @@
         </ul>
         <ul class="index-place--row">
           <li class="index-place--row-item">
-            <div class="index-place--row-pic"></div>
-            <div class="index-place--row-detl">
-              <p class="index-place--row-title subtitle-text">南师大文渊楼305室</p>
-              <p class="index-place--row-text">江苏省南京市近郊栖霞区文苑路</p>
-              <p class="index-place--row-text">开放时间: 每天9:00 ~ 20:00</p>
-              <div class="index-place--row-info">
-                <div class="index-place--row-icon-group">
-                  <div class="index-place--row-icon-wifi"></div>
-                  <div class="index-place--row-icon-park"></div>
-                  <div class="index-place--row-icon-tv"></div>
-                  <div class="index-place--row-icon-pen"></div>
-                  <div class="index-place--row-icon-air"></div>
-                </div>
-                <div>
-                  <div class="index-place--row-price">
-                    <span>￥60</span>
-                    <span class="index-place--row-unit">/小时</span>
+            <div class="flex-center">
+              <div class="index-place--row-pic"></div>
+              <div class="index-place--row-detl">
+                <p class="index-place--row-title subtitle-text">南师大文渊楼305室</p>
+                <p class="index-place--row-text">江苏省南京市近郊栖霞区文苑路</p>
+                <p class="index-place--row-text">开放时间: 每天9:00 ~ 20:00</p>
+                <div class="index-place--row-info">
+                  <div class="index-place--row-icon-group">
+                    <div class="index-place--row-icon-wifi"></div>
+                    <div class="index-place--row-icon-park"></div>
+                    <div class="index-place--row-icon-tv"></div>
+                    <div class="index-place--row-icon-pen"></div>
+                    <div class="index-place--row-icon-air"></div>
+                  </div>
+                  <div>
+                    <div class="index-place--row-price">
+                      <span>￥60</span>
+                      <span class="index-place--row-unit">/小时</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="index-place--row-time flex-center">
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">11:00 ~ 10:00</p>
+            </div>
           </li>
+          <li class="index-place--row-item">
+            <div class="flex-center">
+              <div class="index-place--row-pic"></div>
+              <div class="index-place--row-detl">
+                <p class="index-place--row-title subtitle-text">南师大文渊楼305室</p>
+                <p class="index-place--row-text">江苏省南京市近郊栖霞区文苑路</p>
+                <p class="index-place--row-text">开放时间: 每天9:00 ~ 20:00</p>
+                <div class="index-place--row-info">
+                  <div class="index-place--row-icon-group">
+                    <div class="index-place--row-icon-wifi"></div>
+                    <div class="index-place--row-icon-park"></div>
+                    <div class="index-place--row-icon-tv"></div>
+                    <div class="index-place--row-icon-pen"></div>
+                    <div class="index-place--row-icon-air"></div>
+                  </div>
+                  <div>
+                    <div class="index-place--row-price">
+                      <span>￥60</span>
+                      <span class="index-place--row-unit">/小时</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="index-place--row-time flex-center">
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">11:00 ~ 10:00</p>
+            </div>
+          </li>
+          <li class="index-place--row-item">
+            <div class="flex-center">
+              <div class="index-place--row-pic"></div>
+              <div class="index-place--row-detl">
+                <p class="index-place--row-title subtitle-text">南师大文渊楼305室</p>
+                <p class="index-place--row-text">江苏省南京市近郊栖霞区文苑路</p>
+                <p class="index-place--row-text">开放时间: 每天9:00 ~ 20:00</p>
+                <div class="index-place--row-info">
+                  <div class="index-place--row-icon-group">
+                    <div class="index-place--row-icon-wifi"></div>
+                    <div class="index-place--row-icon-park"></div>
+                    <div class="index-place--row-icon-tv"></div>
+                    <div class="index-place--row-icon-pen"></div>
+                    <div class="index-place--row-icon-air"></div>
+                  </div>
+                  <div>
+                    <div class="index-place--row-price">
+                      <span>￥60</span>
+                      <span class="index-place--row-unit">/小时</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="index-place--row-time flex-center">
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
+              <p class="index-place--row-time-label">11:00 ~ 10:00</p>
+            </div>
+          </li>                    
         </ul>
       </div>
     </div>
@@ -84,9 +157,13 @@
       color: $--common-text-font-color;
       font-size: 0.28rem;
     }
+    @include m(row) {
+      li:last-child {
+        border-bottom: none;
+      }
+    }    
     @include m(row-item) {
       padding: 0.56rem 0;
-      display: flex;
       border-bottom: 0.02rem #EBEBEB solid;
     }
     @include m(row-pic) {
@@ -140,6 +217,25 @@
     }
     @include m(row-icon-air) {
       background: $--place-icon-air; 
-    }        
+    }
+    @include m(row-time) {
+      padding-top: 0.26rem;
+      flex-wrap: wrap;
+      >p{
+        margin-top: 0.08rem;
+        margin-right: 0.07rem;
+        padding: 0.25rem 0;
+        text-align: center;
+      }
+      >p:nth-child(4n){
+        margin-right: 0;
+      }
+    }
+    @include m(row-time-label) {
+      width: 1.62rem;
+      font-size: 0.2rem;
+      background: #F5F5F5;
+      color: $--common-subtitle-font-color;
+    }           
   }
 </style>

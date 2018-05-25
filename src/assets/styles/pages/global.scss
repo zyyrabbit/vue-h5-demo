@@ -46,6 +46,10 @@ a {
   *display: inline; 
   _display: inline;
 }
+.flex-center {
+  display: flex;
+  align-items: center;
+}
 .headline-upper-text{
   font-size: $--common-headline-upper-font-size;
   color: $--common-text-font-color; 
