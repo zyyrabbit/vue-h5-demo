@@ -23,7 +23,10 @@ const TelephoneModPage = () => import('pages/parent/profile/TelephoneModPage.vue
 const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
 const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
 const SignInPage = () => import('pages/parent/profile/SignInPage.vue')
-const integralMallPage = () => import('pages/parent/profile/integralMallPage.vue')
+const IntegralMallPage = () => import('pages/parent/profile/IntegralMallPage.vue')
+const ExchangeRecordPage = () => import('pages/parent/profile/ExchangeRecordPage.vue')
+const DiscountDetailPage = () => import('pages/parent/profile/DiscountDetailPage.vue')
+const EditPage = () => import('pages/parent/profile/EditPage.vue')
 // 场地页面
 const PlacePage = () => import('pages/teacher/place/PlacePage.vue')
 
@@ -52,7 +55,10 @@ const pubRoutes = [
 				{ path: 'invitefriends', component: InvitingFriendsPage, hidden: true },
 				{ path: 'advise', component: AdvisePage, hidden: true },
 				{ path: 'sign', component: SignInPage, hidden: true },
-				{ path: 'integralMall', component: integralMallPage, hidden: true }
+				{ path: 'integralMall', component: IntegralMallPage, hidden: true },
+				{ path: 'exhRecord', component: ExchangeRecordPage, hidden: true },
+				{ path: 'discount', component: DiscountDetailPage, hidden: true },
+				{ path: 'edit', component: EditPage, hidden: true }
 			]
 		},
 		{

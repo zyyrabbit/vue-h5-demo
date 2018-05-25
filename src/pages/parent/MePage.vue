@@ -21,7 +21,10 @@
    	    		<span class="index-me__introduction--detail-text">
    	    			29关注<span>143粉丝</span>
    	    		</span>
-   	    		<span class="index-me__introduction--edit block--float-right">编辑个人资料</span>
+   	    		<span 
+   	    			class="index-me__introduction--edit block--float-right"
+   	    			@click="goPath('/profile/edit')"
+   	    		>编辑个人资料</span>
    	    	</div>
    	    </div>
    	    <div class="index-me--record">

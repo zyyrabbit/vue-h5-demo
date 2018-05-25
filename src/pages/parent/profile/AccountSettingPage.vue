@@ -4,14 +4,14 @@
       <div class="profile-account--title">
            账号设置
       </div>
-      <dx-item>
+      <dx-item class="profile-account--item">
          <span slot="left">手机号</span>
          <span 
             slot="right" 
             class="profile-account--telephone-number"
          >13978784676</span>
       </dx-item>
-      <dx-item>
+      <dx-item class="profile-account--item">
          <span slot="left">修改密码</span>
          <span 
             slot="right"
@@ -43,6 +43,13 @@
          text-align: left;
          font-size: 0.6rem;
          margin-top: 0.62rem;
+      }
+      @include m(item) {
+         line-height: 1.39rem;
+         border-bottom: 0.02rem solid #EBEBEB;
+         &:last-child {
+            border-bottom: none;
+         } 
       }
       @include m(mod-pwd telephone-number) {
          color: #57B8D7;

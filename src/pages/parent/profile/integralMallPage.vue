@@ -10,6 +10,7 @@
 		   		<span 
 		   			slot="next"
 		   			class="profile-account-mall__head--record"
+		   			@click="goPath('/profile/exhRecord')"
 		   		>兑换记录</span>
 		   </dx-header>
 		   <div class="profile-account-mall__head--integral-number">
@@ -18,7 +19,10 @@
 	   </div>
 	   <dx-ul class="profile-account-mall__group-prize">
 	   		<li class="profile-account-mall__item-prize">
-	   			<div class="profile-account-mall__item-prize--title">
+	   			<div 
+	   				class="profile-account-mall__item-prize--title"
+	   				@click="goPath('/profile/discount')"
+	   			>
 	   				<div class="profile-account-mall__item-discount">
 		   				<p class="profile-account-mall__item-discount--number">
 		   					<span>8</span>折
@@ -33,7 +37,10 @@
 	   			</div>
 	   		</li>
 	   		<li class="profile-account-mall__item-prize">
-	   			<div class="profile-account-mall__item-prize--title">
+	   			<div 
+	   				class="profile-account-mall__item-prize--title"
+	   				@click="goPath('/profile/discount')"
+	   			>
 	   				<div class="profile-account-mall__item-prize--pic">
 		   				
 	   				</div>
@@ -44,7 +51,10 @@
 	   			</div>
 	   		</li>
 	   		<li class="profile-account-mall__item-prize">
-	   			<div class="profile-account-mall__item-prize--title">
+	   			<div 
+	   				class="profile-account-mall__item-prize--title"
+	   				@click="goPath('/profile/discount')"
+	   			>
 	   				<div class="profile-account-mall__item-discount">
 		   				<p class="profile-account-mall__item-discount--number">
 		   					<span>8</span>折
@@ -59,7 +69,10 @@
 	   			</div>
 	   		</li>
 	   		<li class="profile-account-mall__item-prize">
-	   			<div class="profile-account-mall__item-prize--title">
+	   			<div 
+	   				class="profile-account-mall__item-prize--title"
+	   				@click="goPath('/profile/discount')"
+	   			>
 	   				<div class="profile-account-mall__item-prize--pic">
 		   				
 	   				</div>
@@ -79,6 +92,9 @@
            DxHeader
         },
 		methods: {
+			goPath(path) {
+				this.$router.push(path)
+			}
 		}
    }
 </script>
