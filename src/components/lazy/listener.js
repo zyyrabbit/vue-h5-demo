@@ -24,6 +24,9 @@ export default class {
 			this.render('loading')
 			cb()
 		}, error => {
+			if (error) {
+				console.log(error)
+			}
 			this.state.error = true
 		})
     }
@@ -45,6 +48,9 @@ export default class {
 					this.render('loaded')
 				},
 				error => {
+					if (error) {
+						console.log(error)
+					}
 					this.state.error = true
 					this.state.loaded = false
 					this.state.loading = false

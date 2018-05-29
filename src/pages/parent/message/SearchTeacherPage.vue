@@ -58,21 +58,21 @@
 			return {
 				messages: [
 					{
-						title: '系统消息', 
-						time: '3天前', 
+						title: '系统消息',
+						time: '3天前',
 						content: '请对课程进行评价',
 						path: '/message/system',
 						system: true
 					},
 					{
-						title: '杨帆', 
-						time: '5分钟', 
+						title: '杨帆',
+						time: '5分钟',
 						content: '英语协会副会长，多次获得国际英语口语竞赛金奖',
 						path: '/message/chat'
 					},
 					{
-						title: '张逸勇', 
-						time: '5分钟', 
+						title: '张逸勇',
+						time: '5分钟',
 						content: '英语协会副会长，多次获得国际英语口语竞赛金奖',
 						path: '/message/chat'
 					}

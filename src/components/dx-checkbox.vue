@@ -46,16 +46,16 @@ export default {
 		}
     },
     methods: {
-    	select() {
-    		let model = this.parent.model
-    		this.checked = !this.checked
-    		if (this.checked) {
-    			model.push(this.label)
-    		} else {
-    			let index = model.indexOf(this.label)
-    			model.splice(index, 1)
-    		}
-    	}
+			select() {
+				let model = this.parent.model
+				this.checked = !this.checked
+				if (this.checked) {
+					model.push(this.label)
+				} else {
+					let index = model.indexOf(this.label)
+					model.splice(index, 1)
+				}
+			}
     },
     mounted() {
 		Bus.$emit('dx-checkbox-add', this)

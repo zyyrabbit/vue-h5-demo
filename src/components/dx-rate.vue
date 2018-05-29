@@ -20,26 +20,26 @@ export default {
        selectRateClass: String
     },
     data() {
-    	return {
-    		level: 0
-    	}
+			return {
+				level: 0
+			}
     },
-   	computed: {
-   		model: {
-   			get() {
-   				return this.value
-   			},
-   			set(val) {
-   				this.$emit('input', val)
-   			}
-   		}
-   	},
-   	methods: {
-   		select(index) {
-   			this.level = index + 1
-   			this.model = this.level
-   		}
-   	}
+		computed: {
+			model: {
+				get() {
+					return this.value
+				},
+				set(val) {
+					this.$emit('input', val)
+				}
+			}
+		},
+		methods: {
+			select(index) {
+				this.level = index + 1
+				this.model = this.level
+			}
+		}
 }
 </script>
 <style>

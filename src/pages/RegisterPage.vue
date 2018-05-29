@@ -90,7 +90,7 @@
 	</div>
 </template>
 <script>
-    import AuthApi from 'api/authApi.js'
+    // import AuthApi from 'api/authApi.js'
     import { mapMutations } from 'vuex'
     import * as Types from 'store/mutation-types.js'
 export default{

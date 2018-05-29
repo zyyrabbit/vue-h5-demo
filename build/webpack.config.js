@@ -12,6 +12,10 @@ const pathConvert = (_path,_name) => {
 };
  // 注意在package.json中NODE_ENV=production&&没有空格,否则为false
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 const isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
     // 配置入口及loader相对路径的根路径
@@ -53,6 +57,15 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.(js|vue)$/,
+                loader: 'eslint-loader',
+                enforce: 'pre',
+                include: [resolve('src')],
+                options: {
+                formatter: require('eslint-friendly-formatter')
+                }
+            },            
             {
                 test: /\.html$/,
                 use: ['html-loader']

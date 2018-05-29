@@ -45,7 +45,7 @@ export default {
         })
     },
     mounted() {
-        if(this.checkboxs.length == 0 || this.model.length === 0) {
+        if (this.checkboxs.length === 0 || this.model.length === 0) {
             return
         }
         this.checkboxs.forEach(checkbox => {

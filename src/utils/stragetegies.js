@@ -1,6 +1,6 @@
 // 采用策略模式
 // 正确返回字符串的长度---1.可以采用Array.from方法 或 使用正则表达式
-const caluStrLen = (str) => { return str.replace(/[^\x00-\xff]/g, 'aa').length }
+const caluStrLen = (str) => { return str.replace(/[\u0391-\uFFE5]/g, 'aa').length }
 const execCallback = (callback, value) => {
     callback && typeof callback === 'function' && callback(value)
 }

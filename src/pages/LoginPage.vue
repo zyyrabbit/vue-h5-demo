@@ -50,7 +50,7 @@
 	</div>
 </template>
 <script>
-    import AuthApi from 'api/authApi.js'
+    // import AuthApi from 'api/authApi.js'
     import { mapMutations } from 'vuex'
     import * as Types from 'store/mutation-types.js'
 export default{
@@ -89,7 +89,7 @@ export default{
 					params.custName = this.model.userName
 					params.custPassword = this.model.password
 					params.isRememberMe = this.model.isRememberMe
-					try {				
+					try {
 					} catch (e) {
 						this.errorMsg = e.message
 					}

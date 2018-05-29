@@ -11,7 +11,7 @@
 <script>
   export default {
 		componentName: 'DxTabs',
-		name: 'DxTabs',    
+		name: 'DxTabs',
     props: {
       value: {},
       tabs: Array
@@ -50,12 +50,12 @@
             }
           })
           // 移动位置可以使用像素值 因为已经是根据元素的实际值计算的
-          const transform = `translateX(${offset}px)`;
+          const transform = `translateX(${offset}px)`
           // FIMXE 这里是写了像素值
-          style.width = tabSize + 'px';
-          style.transform = transform;
-          style.msTransform = transform;
-          style.webkitTransform = transform;      
+          style.width = tabSize + 'px'
+          style.transform = transform
+          style.msTransform = transform
+          style.webkitTransform = transform
           return style
         }
       }
