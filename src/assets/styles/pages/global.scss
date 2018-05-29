@@ -1,5 +1,5 @@
 /*以下为公告样式*/
-html, body, p, ul, li, h1, h2, h3, h4, form, input, textarea {
+* {
   padding: 0;
   margin: 0;
   /*去除点击时，文字出现的蓝色底边*/
@@ -12,10 +12,19 @@ html, body {
   width: 100%;
   height: 100%;
 }
-
-* {
+// 设置border-box
+html {
   box-sizing: border-box;
 }
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+// 设置line-height
+/* body {
+  line-height: 1.5;
+} */
+
 
 ul {
   list-style: none;

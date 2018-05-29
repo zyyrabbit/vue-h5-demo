@@ -2,9 +2,9 @@
   <ul class="dx--tab">
     <div class="tabs__active-bar" :style="barStyle"></div>
     <li 
-      :class="{'tab__active': item.active}" class="dx--tab-item" 
-      v-for="item in tabs" :value="item.value" 
-      @click="onTabClick(item.value, item)"
+      :class="{'tab__active': select === index}" class="dx--tab-item" 
+      v-for="(item, index) in tabs" :key="index" :value="item.value" 
+      @click="onTabClick(item, index)"
       ref="tab">{{item.label}}</li>
   </ul>
 </template>
@@ -14,14 +14,20 @@
 		name: 'DxTabs',
     props: {
       value: {},
-      tabs: Array
+      tabs: Array,
+      active: {
+        type: Number,
+        default: 0
+      }
+    },
+    data() {
+        return {
+          select: this.active
+        }
     },
     methods: {
-      onTabClick(tabValue, tab) {
-        this.tabs.forEach(t => {
-          t.active = false
-        })
-        tab.active = true
+      onTabClick(tab, index) {
+        this.select = index
         this.$emit('input', tab.value)
       }
     },
@@ -30,12 +36,13 @@
         cache: false,
         get() {
           if (!this.$refs.tab) return
+            console.log('ddd')
           let style = {}
           let offset = 0
           let tabSize = 0
           this.tabs.every((tab, index) => {
             let $el = this.$refs.tab[index]
-            if (!tab.active) {
+            if (index !== this.select) {
               offset += $el[`clientWidth`]
               return true
             } else {
@@ -59,6 +66,9 @@
           return style
         }
       }
+    },
+    mounted() {
+      this.$forceUpdate()
     }
   }
 </script>

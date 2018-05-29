@@ -95,6 +95,7 @@
 <style lang="scss">
 	.dx-calendar {
         width: 100%;
+        /* table-layout: fixed; */
     }
     // 月份选择器
     .dx-calendar-select {

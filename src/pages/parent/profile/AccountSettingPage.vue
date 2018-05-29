@@ -45,9 +45,9 @@
          margin-top: 0.62rem;
       }
       @include m(item) {
-         line-height: 1.39rem;
-         border-bottom: 0.02rem solid #EBEBEB;
-         &:last-child {
+         &:not(:last-child) {
+            line-height: 1.39rem;
+            border-bottom: 0.02rem solid #EBEBEB;
             border-bottom: none;
          } 
       }
