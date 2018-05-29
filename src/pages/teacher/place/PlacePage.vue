@@ -6,18 +6,13 @@
         <div class="index-place--title-icon"></div>
       </div>
       <div class="index-place--title-desc">
-        <span>人气10288</span><span>累计开课278</span><span>距离你3.5km</span>
+        <span>人气10288</span><span>·累计开课278</span><span>·距离你3.5km</span>
       </div>
     </div>
     <div class="index-place--content">
       <div class="index-place--banner"></div>
       <div class="index-place--list">
-        <ul class="index-place--tab">
-          <li class="index-place--tab-item">今天</li>
-          <!-- <li class="index-place--tab-item">今天</li>
-          <li class="index-place--tab-item">今天</li>
-          <li class="index-place--tab-item">今天</li> -->
-        </ul>
+        <dx-tabs v-model="tabValue" :tabs="tabs"></dx-tabs>
         <ul class="index-place--row">
           <li class="index-place--row-item">
             <div class="flex-center">
@@ -120,7 +115,48 @@
     </div>
   </div>
 </template>
+<script>
+  export default {
+    methods: {
+    },
+    computed: {
+    },
+    data() {
+      return {
+        tabValue: '05-05',
+        tabs: [{
+          label: '05-05',
+          value: '05-05',
+          active: true
+        },{
+          label: '05-0623131',
+          value: '05-06'
+        },{
+          label: '05-07',
+          value: '05-07'
+        },{
+          label: '05-08',
+          value: '05-08'
+        }]
+      }
+    }
+  }
+</script>
 <style scoped lang="scss">
+.tabs__active-bar { 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.07rem;
+  background-color: #57B8D7;
+  border-radius: 0.04rem;
+  z-index: 1;
+  transition: transform .3s cubic-bezier(.645,.045,.355,1);
+  list-style: none;
+}
+
+
+  .index-place--tab::-webkit-scrollbar { display: none }
   @include b(index-place) {
     @include m(title) {
       display: flex;
@@ -140,6 +176,7 @@
     @include m(title-desc) {
       font-size: $--common-illustration-text-font-size;
       padding-bottom: 0.45rem;
+      color: $--common-subtitle-font-color;
     }
     @include m(content) {
       border-top: 0.02rem #EBEBEB solid;
@@ -151,11 +188,20 @@
       background: #FF778C;
     }
     @include m(tab) {
+      position: relative;
       padding-top: 0.5rem;
+      padding-bottom: 0.14rem;
+      width: 100%;
+      overflow-x: scroll;
+      // 父元素会根据字体撑开 需要设为0
+      font-size: 0;
+      white-space:nowrap;
     }
     @include m(tab-item) {
       color: $--common-text-font-color;
       font-size: 0.28rem;
+      display: inline-block;
+      padding-right: 0.65rem;
     }
     @include m(row) {
       li:last-child {
