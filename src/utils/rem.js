@@ -23,7 +23,6 @@
     d.remove()
     d = null
     let designWidthFontSize = rem2px / defaultFontSize * 100
-		console.info(window.innerWidth + ' ==== ' + designWidth + ' ==== ' +  designWidthFontSize)
     document.documentElement.style.fontSize = window.innerWidth / designWidth * designWidthFontSize + '%'
     /* let st = document.createElement('style')
     let portrait = `@media screen and (min-width: ${window.innerWidth}px) {
