@@ -81,14 +81,14 @@
       bottom: 0;
       left: 0;
       height: 0.07rem;
-      background-color: #57B8D7;
+      background-color: $--common-selectd-text-font-color;
       border-radius: 0.04rem;
       z-index: 1;
       transition: transform .3s cubic-bezier(.645,.045,.355,1);
       list-style: none;
     }
     .tab__active{
-      color: #57B8D7;
+      color: $--common-selectd-text-font-color;
     }
   }
   &--tab-item {
