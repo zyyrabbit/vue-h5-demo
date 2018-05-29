@@ -25,9 +25,6 @@
         this.$emit('input', tab.value)
       }
     },
-    mounted(){
-      barStyle.get()
-    },
     computed: {
       barStyle: {
         cache: false,
