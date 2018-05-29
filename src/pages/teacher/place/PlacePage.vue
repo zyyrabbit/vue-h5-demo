@@ -137,26 +137,18 @@
         },{
           label: '05-08',
           value: '05-08'
+        },{
+          label: '05-09',
+          value: '05-09'
+        },{
+          label: '05-10',
+          value: '05-10'
         }]
       }
     }
   }
 </script>
 <style scoped lang="scss">
-.tabs__active-bar { 
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 0.07rem;
-  background-color: #57B8D7;
-  border-radius: 0.04rem;
-  z-index: 1;
-  transition: transform .3s cubic-bezier(.645,.045,.355,1);
-  list-style: none;
-}
-
-
-  .index-place--tab::-webkit-scrollbar { display: none }
   @include b(index-place) {
     @include m(title) {
       display: flex;

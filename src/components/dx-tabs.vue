@@ -66,6 +66,7 @@
   }
 </script>
 <style scoped lang="scss">
+.dx--tab::-webkit-scrollbar { display: none }
 .dx{
     &--tab {
     position: relative;
