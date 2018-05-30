@@ -36,7 +36,6 @@
         cache: false,
         get() {
           if (!this.$refs.tab) return
-            console.log('ddd')
           let style = {}
           let offset = 0
           let tabSize = 0

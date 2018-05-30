@@ -51,7 +51,7 @@ export default {
     }
 }
 </script>
-<style>
+<style lang="scss">
 /*按钮基本样式*/
 
 .dx-button {
@@ -147,8 +147,10 @@ export default {
 }
 
 .dx-button-small {
-    padding: 0.07rem 0.09rem;
-    font-size: 0.12rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.2rem;
+    font-size: $--common-illustration-text-font-size;
+    width: auto;
 }
 
 /*按钮禁用时的样式*/

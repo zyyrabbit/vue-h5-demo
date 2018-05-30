@@ -29,6 +29,7 @@ const DiscountDetailPage = () => import('pages/parent/profile/DiscountDetailPage
 const EditPage = () => import('pages/parent/profile/EditPage.vue')
 // 场地页面
 const PlacePage = () => import('pages/teacher/place/PlacePage.vue')
+const SelectRegionPage = () => import('pages/teacher/place/SelectRegionPage.vue')
 
 const pubRoutes = [
 		{ path: '/', component: HomePage, hidden: true },
@@ -74,7 +75,9 @@ const pubRoutes = [
 		{
 			path: '/place',
 			component: PlacePage,
-			children: []
+			children: [
+				{ path: 'select', component: SelectRegionPage, hidden: true }
+			]
 		}
 	]
 export default new VueRouter({

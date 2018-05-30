@@ -3,7 +3,7 @@
     <div>
       <div class="index-place--title">
         <p>南京市仙林校区</p>
-        <div class="index-place--title-icon"></div>
+        <div class="index-place--title-icon" @click="goTo('/place/select')"></div>
       </div>
       <div class="index-place--title-desc">
         <span>人气10288</span><span>·累计开课278</span><span>·距离你3.5km</span>
@@ -113,11 +113,19 @@
         </ul>
       </div>
     </div>
+   	<transition 
+			name="router"  
+			mode='out-in'>
+			<router-view class="full-screen"/>
+		</transition>    
   </div>
 </template>
 <script>
   export default {
     methods: {
+      goTo(path) {
+        this.$router.push({ path })
+      }
     },
     computed: {
     },

@@ -60,6 +60,7 @@ a {
   align-items: center;
 }
 .headline-upper-text{
+  font-weight: bold;
   font-size: $--common-headline-upper-font-size;
   color: $--common-text-font-color; 
 }
@@ -70,4 +71,9 @@ a {
 .subtitle-text{
   font-size: $--common-subtitle-font-size;
   color: $--common-text-font-color;   
+}
+// 32px #484848
+.headline-desc-text{
+  font-size: $--common-headline-desc-font-size;
+  color: $--common-text-font-color;
 }
