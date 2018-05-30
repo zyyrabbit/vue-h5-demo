@@ -134,8 +134,7 @@
         tabValue: '05-05',
         tabs: [{
           label: '05-05',
-          value: '05-05',
-          active: true
+          value: '05-05'
         }, {
           label: '05-0623131',
           value: '05-06'

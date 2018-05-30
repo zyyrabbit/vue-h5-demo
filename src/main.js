@@ -13,6 +13,7 @@ Vue.use(Lazy)
 Vue.use(VueRouter)
 Vue.use(VueUI)
 /* eslint-disable no-new */
+console.log('ddd')
 new Vue({
 	el: '#wrap-app',
 	router: Router,
