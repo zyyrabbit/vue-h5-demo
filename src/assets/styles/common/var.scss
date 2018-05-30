@@ -131,6 +131,11 @@ $--place-icon-park: url("../../../assets/images/index/place/icon_park.png") cent
 $--place-icon-tv: url("../../../assets/images/index/place/icon_tv.png") center center no-repeat !default;
 $--place-icon-pen: url("../../../assets/images/index/place/icon_pen.png") center center no-repeat !default;
 $--place-icon-air: url("../../../assets/images/index/place/icon_air.png") center center no-repeat !default;
+$--place-icon-big-wifi: url("../../../assets/images/index/place/icon_place_wifi.png") center center no-repeat !default;
+$--place-icon-big-park: url("../../../assets/images/index/place/icon_place_park.png") center center no-repeat !default;
+$--place-icon-big-tv: url("../../../assets/images/index/place/icon_place_tv.png") center center no-repeat !default;
+$--place-icon-big-pen: url("../../../assets/images/index/place/icon_place_pen.png") center center no-repeat !default;
+$--place-icon-big-air: url("../../../assets/images/index/place/icon_place_air.png") center center no-repeat !default;
 // 公共样式变量库
 $--common-headline-upper-font-size: 0.6rem !default; // 60px大标题
 $--common-headline-font-size: 0.48rem !default; // 48px大标题
@@ -142,5 +147,6 @@ $--common-illustration-text-font-size: 0.24rem !default; //24px说明内容
 $--common-illustration-lower-text-font-size: 0.22rem !default; //22px次级说明内容
 $--common-text-font-color: #484848 !default; // 正常文字颜色
 $--common-subtitle-font-color: #7E7E7E !default; // 副标题颜色
-$--common-price-text-font-color: #F098BE !default; //红色重要文字颜色
+$--common-price-text-font-color: #F098BE !default; //粉色重要文字颜色
 $--common-selectd-text-font-color: #57B8D7 !default; //蓝色选中颜色
+$--common-detail-title-font-color: #333333 !default; // 详情标题

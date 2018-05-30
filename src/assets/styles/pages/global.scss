@@ -77,3 +77,16 @@ a {
   font-size: $--common-headline-desc-font-size;
   color: $--common-text-font-color;
 }
+// 36px #333333
+.detail-desc-text{
+  font-size: $--common-subtitle-font-size;
+  color: $--common-detail-title-font-color;
+}
+.price-text{
+  font-size: $--common-headline-font-size;
+  color: $--common-price-text-font-color;
+}
+.btn-text{
+  font-size: $--common-button-text-font-size;
+  color: $--common-text-font-color;  
+}

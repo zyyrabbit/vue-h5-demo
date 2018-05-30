@@ -30,6 +30,7 @@ const EditPage = () => import('pages/parent/profile/EditPage.vue')
 // 场地页面
 const PlacePage = () => import('pages/teacher/place/PlacePage.vue')
 const SelectRegionPage = () => import('pages/teacher/place/SelectRegionPage.vue')
+const PlaceDetlPage = () => import('pages/teacher/place/PlaceDetlPage.vue')
 
 const pubRoutes = [
 		{ path: '/', component: HomePage, hidden: true },
@@ -76,7 +77,8 @@ const pubRoutes = [
 			path: '/place',
 			component: PlacePage,
 			children: [
-				{ path: 'select', component: SelectRegionPage, hidden: true }
+				{ path: 'select', component: SelectRegionPage, hidden: true },
+				{ path: 'detail', component: PlaceDetlPage, hidden: true }
 			]
 		}
 	]

@@ -165,6 +165,13 @@ export default {
     border-color: #d1dbe5;
 }
 
+.dx-button-full {
+    height: 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    font-size: 0.3rem;
+}
+
 /* 与父元素同宽并且设置圆角 */
 .dx-button-max {
     height: 1rem;

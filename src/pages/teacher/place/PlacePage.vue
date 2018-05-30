@@ -13,7 +13,7 @@
       <div class="index-place--banner"></div>
       <div class="index-place--list">
         <dx-tabs v-model="tabValue" :tabs="tabs"></dx-tabs>
-        <ul class="index-place--row">
+        <ul class="index-place--row" @click="goTo('/place/detail')">
           <li class="index-place--row-item">
             <div class="flex-center">
               <div class="index-place--row-pic"></div>

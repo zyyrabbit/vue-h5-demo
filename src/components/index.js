@@ -9,6 +9,7 @@ import DxRate from './dx-rate.vue'
 import DxItem from './dx-item.vue'
 import DxCalender from './calendar/dx-calendar.vue'
 import DxTabs from './dx-tabs.vue'
+import DxCellItem from './dx-cell-item.vue'
 const components = [
 	DxFormItem,
 	DxForm,
@@ -20,7 +21,8 @@ const components = [
 	DxRate,
 	DxItem,
 	DxCalender,
-	DxTabs
+	DxTabs,
+	DxCellItem
 ]
 
 const install = function(Vue) {
