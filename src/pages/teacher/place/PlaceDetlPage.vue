@@ -77,7 +77,7 @@
   width:100%;
   z-index: 99;
   background:rgba(255,255,255,1);
-  box-shadow:0 -0.01rem 0.02rem 0.02rem rgba(0,0,0,0.06);
+  box-shadow:0 -0.02rem 0.06rem 0.06rem rgba(0,0,0,0.06);
   align-items:center;
   &-btn{
     width:3rem;
