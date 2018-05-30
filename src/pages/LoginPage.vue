@@ -110,6 +110,7 @@ export default{
 	@include b(login) {
 		background: $--login-background;
 		posiiton: relative;
+		padding: 0;
 		font-size: $--login-form-font-size;
 		@include b(login-form) {
 			position: absolute;
@@ -136,6 +137,7 @@ export default{
 				align-items: center;
 				height: 1.34rem;
 				margin-bottom: 0.42rem;
+				margin-top: 0.65rem;
 				color: #fff;
 				font-size: 0.3rem;
 				background: $--login-btn-background;

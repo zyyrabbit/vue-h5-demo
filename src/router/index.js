@@ -9,6 +9,8 @@ import VueRouter from 'vue-router'
  const CoursePage = () => import('pages/parent/CoursePage.vue')
  const MessagePage = () => import('pages/parent/MessagePage.vue')
  const MePage = () => import('pages/parent/MePage.vue')
+ //  首页
+ const CourseDetailPage = () => import('pages/parent/home/CourseDetailPage.vue')
  // 上课页面组
  const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
  const JudgePage = () => import('pages/parent/course/JudgePage.vue')
@@ -37,7 +39,13 @@ const pubRoutes = [
 		{ path: '/login', component: Login, hidden: true },
 		{ path: '/reg', component: Register, hidden: true },
 		{ path: '/getpwd', component: GetPassword, hidden: true },
-		{ path: '/home', component: HomePage, hidden: true },
+		{
+			path: '/home',
+			component: HomePage,
+			children: [
+				{ path: 'courseDetail', component: CourseDetailPage, hidden: true }
+			]
+		},
 		{
 			path: '/course',
 			component: CoursePage,

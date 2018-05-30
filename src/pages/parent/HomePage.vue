@@ -11,7 +11,10 @@
    		<div class="index-home-course">
    			<div class="index-home-course__desc clearfix">
    				<span class="index-home--title block--float-left">精选课程</span>
-   				<span class="index-home-course__desc--all block--float-right">查看全部</span>
+   				<span 
+   					class="index-home-course__desc--all block--float-right"
+   					@click="goNext('/home/courseDetail')"
+   				>查看全部</span>
    			</div>
    			<div class="index-home-course__slide">
    				<dx-ul>
@@ -149,7 +152,9 @@
 </template>
 <script>
 	import DxFooter from '../common/FooterPage.vue'
+	import mixin from 'utils/mixin.js'
 	export default {
+		mixins: [mixin],
 		components: {
 			DxFooter
 		},

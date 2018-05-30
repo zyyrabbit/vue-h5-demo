@@ -10,6 +10,7 @@ import DxItem from './dx-item.vue'
 import DxCalender from './calendar/dx-calendar.vue'
 import DxTabs from './dx-tabs.vue'
 import DxCellItem from './dx-cell-item.vue'
+import DxRadio from './dx-radio.vue'
 const components = [
 	DxFormItem,
 	DxForm,
@@ -22,7 +23,8 @@ const components = [
 	DxItem,
 	DxCalender,
 	DxTabs,
-	DxCellItem
+	DxCellItem,
+	DxRadio
 ]
 
 const install = function(Vue) {

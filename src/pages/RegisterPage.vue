@@ -156,6 +156,7 @@ export default{
 
 	@include b(register) {
 		posiiton: relative;
+		padding: 0;
 		font-size: $--register-form-font-size;
 		@include b(register-form) {
 			position: absolute;
