@@ -33,6 +33,8 @@ const EditPage = () => import('pages/parent/profile/EditPage.vue')
 const PlacePage = () => import('pages/teacher/place/PlacePage.vue')
 const SelectRegionPage = () => import('pages/teacher/place/SelectRegionPage.vue')
 const PlaceDetlPage = () => import('pages/teacher/place/PlaceDetlPage.vue')
+const BookDetlPage = () => import('pages/teacher/place/BookDetlPage.vue')
+const BookSuccPage = () => import('pages/teacher/place/BookSuccessPage.vue')
 
 const pubRoutes = [
 		{ path: '/', component: HomePage, hidden: true },
@@ -86,7 +88,9 @@ const pubRoutes = [
 			component: PlacePage,
 			children: [
 				{ path: 'select', component: SelectRegionPage, hidden: true },
-				{ path: 'detail', component: PlaceDetlPage, hidden: true }
+				{ path: 'detail', component: PlaceDetlPage, hidden: true },
+				{ path: 'book', component: BookDetlPage, hidden: true },
+				{ path: 'success', component: BookSuccPage, hidden: true }
 			]
 		}
 	]

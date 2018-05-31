@@ -52,19 +52,16 @@
       </div>
     </div>
     <!-- footer -->
-    <div class="place-footer">
-      <div class="place-footer-price">
-        <p class="price-text">¥60<span class="price-text-small">/小时</span></p>
-        <p class="btn-text">评分9.6</p>
-      </div>
-      <div class="place-footer-btn">
-        <dx-button size="full" type="pinking">确定</dx-button>
-      </div>
-    </div>    
+    <price-footer to="/place/book" price="￥60" priceSmall="/小时" priceInfo="评分9.6" btnText="确定">
+    </price-footer>   
   </div>
 </template>
 <script>
+  import PriceFooter from 'pages/common/PriceFooter.vue'
   export default {
+		components: {
+			PriceFooter
+		},
     mounted() {
     },
     methods: {
@@ -78,27 +75,6 @@
   }
 </script>
 <style scoped lang="scss">
-.place-footer{
-  position: fixed;
-  padding: 0.2rem 0.4rem;
-  bottom: 0;
-  display: flex;
-  width:100%;
-  z-index: 99;
-  background:rgba(255,255,255,1);
-  box-shadow:0 -0.02rem 0.06rem 0.06rem rgba(0,0,0,0.06);
-  align-items:center;
-  &-btn{
-    width:3rem;
-    font-size:0;
-  }
-  &-price{
-    flex-grow: 1;
-  }
-  .price-text-small{
-    font-size:$--common-button-text-font-size;
-  }
-}
 .place-detail{
   &--header-bg{
     height: 4.14rem;

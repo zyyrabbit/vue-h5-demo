@@ -6,7 +6,9 @@
           <slot name="left"></slot>
         </template>
 				<template slot="right">
-          <slot name="right"></slot>
+					<div :class="{'can-access': canAccess}" class="cell-right">
+          	<slot name="right"></slot>
+					</div>
         </template>
 			</dx-item>
     </div>
@@ -14,13 +16,19 @@
 <script>
 	export default {
 		name: 'DxCellItem',
-		componentName: 'DxCellItem'
+		componentName: 'DxCellItem',
+		props: {
+			canAccess: Boolean,
+			to: String
+		}
 	}
 </script>
 <style lang="scss">
 .dx-cell-item {
 	padding: 0.56rem 0;
 	position: relative;
+	font-size: $--common-subtitle-font-size;
+  color: $--common-text-font-color;
 	&:before {
 		content: " ";
 		position: absolute;
@@ -36,6 +44,12 @@
 		&:before {
 			display: none;
 		}
-	}	
+	}
+	.can-access{
+		color:$--common-selectd-text-font-color;
+	}
+	.cell-right{
+		max-width: 3.8rem;
+	}
 }
 </style>

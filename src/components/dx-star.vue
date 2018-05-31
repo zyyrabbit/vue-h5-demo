@@ -2,7 +2,7 @@
 	<dx-rate 
 		:type="type"
 		:rating="rating"
-		:onlyDisplay="true"
+		only-display
 		:rateClass="iconClass"
 		:selectRateClass="selectIconClass">
 	</dx-rate>
