@@ -32,6 +32,7 @@ export default {
 	color: $--common-text-font-color;
 	.comment-head{
 		display: flex;
+		align-items: center;
 		.comment-user-avatar{
 			background-color: #F098BE;
 			width: 0.94rem;
