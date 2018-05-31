@@ -39,7 +39,16 @@
         </dx-cell-item>
       </div>
       <!-- 评价内容 -->
-      <div>
+      <div class="place-detail--cont-comm">
+        <div class="place-detail--cont-comment">
+          <p class="place-detail--cont-comment-text">场地评价</p>
+          <p class="place-detail--cont-comment-amount">99+</p>
+          <dx-star :rating=3 type="small"></dx-star>
+        </div>
+        <div>
+          <dx-comment></dx-comment>
+          <dx-comment></dx-comment>
+        </div>
       </div>
     </div>
     <!-- footer -->
@@ -101,6 +110,7 @@
   }
   &--cont{
     padding: 0.34rem 0.4rem;
+    padding-bottom: 1.2rem;
     &--icons{
       padding: 0.56rem 0.1rem 0.73rem;
       display: flex;
@@ -139,12 +149,20 @@
       font-size: 0.34rem;
       color: $--common-text-font-color;
     }
-    &-cells{
-      &:first-child {
-        &:before {
-          display: none;
-        }
-      }      
+    &-comm{
+      border-top: 0.02rem solid #e5e5e5;
+      padding: 0.56rem 0; 
+    }
+    &-comment{
+      display: flex;
+      align-items: center;
+      &-text{
+        font-size: 0.36rem;
+        flex-grow: 1;
+      }
+      &-amount{
+        font-size: 0.4rem;
+      }
     }
   }
 }

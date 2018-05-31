@@ -1,13 +1,15 @@
 <template>
 	<ul class="dx-rate clearfix">
-      	<li 
-         v-for="index in 5"
-         :key="index"
-         :class="[rateClass, level > index ? selectRateClass : '']"
-         @click="select(index)"
-         class="dx-rate-item"
-      	>
-      	</li>
+		<li 
+			v-for="index in 5"
+			:key="index"
+			:class="[
+			rateClass, 
+			level > index ? selectRateClass : '', 
+			type ? 'dx-rate-item-' + type : '',]"
+			@click="select(index)"
+			class="dx-rate-item">
+		</li>
    </ul>
 </template>
 <script>
@@ -15,13 +17,16 @@ export default {
     name: 'DxRate',
     componentName: 'DxRate',
     props: {
-       value: {},
-       rateClass: String,
-       selectRateClass: String
+			value: {},
+			rating: Number,
+			type: String,
+			onlyDisplay: Boolean,
+			rateClass: String,
+			selectRateClass: String
     },
     data() {
 			return {
-				level: 0
+				level: this.onlyDisplay ? this.rating + 1 : 0
 			}
     },
 		computed: {
@@ -36,8 +41,10 @@ export default {
 		},
 		methods: {
 			select(index) {
-				this.level = index + 1
-				this.model = this.level
+				if (!this.onlyDisplay) {
+					this.level = index + 1
+					this.model = this.level
+				}
 			}
 		}
 }

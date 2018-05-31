@@ -1,18 +1,14 @@
 <template>
 	<!-- 两列排列 -->
     <div class="dx-cell-item clearfix">
-    	<div 
-    		v-if="$slots.left"
-    		class="block--float-left"
-    	>
-    		<slot name="left"></slot>
-    	</div>
-    	<div 
-    		v-if="$slots.right"
-    		class="block--float-right"
-    	>
-    		<slot name="right"></slot>
-    	</div>
+			<dx-item>
+				<template slot="left">
+          <slot name="left"></slot>
+        </template>
+				<template slot="right">
+          <slot name="right"></slot>
+        </template>
+			</dx-item>
     </div>
 </template>
 <script>
