@@ -13,7 +13,7 @@
       </dx-button>
     </div>
     <div class="place-select--btn-ok">
-      <dx-button size="max" type="primary">确定</dx-button>
+      <dx-button size="max" type="primary" @dx-button-click="goTo('/place')">确定</dx-button>
     </div>
   </div>
 </template>
@@ -24,6 +24,9 @@
     methods: {
       handleClick(obj) {
         this.region = obj.id
+      },
+      goTo(path) {
+        this.$router.push(path)
       }
     },
     computed: {

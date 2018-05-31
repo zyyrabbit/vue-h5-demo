@@ -21,7 +21,7 @@
         </template>
       </dx-cell-item>
     </div>
-    <button-footer to="/place" btnText="关联课程">
+    <button-footer to="/place/relate" btnText="关联课程">
     </button-footer>    
   </div>
 </template>

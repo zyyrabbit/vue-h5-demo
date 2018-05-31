@@ -35,6 +35,7 @@ const SelectRegionPage = () => import('pages/teacher/place/SelectRegionPage.vue'
 const PlaceDetlPage = () => import('pages/teacher/place/PlaceDetlPage.vue')
 const BookDetlPage = () => import('pages/teacher/place/BookDetlPage.vue')
 const BookSuccPage = () => import('pages/teacher/place/BookSuccessPage.vue')
+const RelateCoursePage = () => import('pages/teacher/place/RelateCoursePage.vue')
 
 const pubRoutes = [
 		{ path: '/', component: HomePage, hidden: true },
@@ -90,7 +91,8 @@ const pubRoutes = [
 				{ path: 'select', component: SelectRegionPage, hidden: true },
 				{ path: 'detail', component: PlaceDetlPage, hidden: true },
 				{ path: 'book', component: BookDetlPage, hidden: true },
-				{ path: 'success', component: BookSuccPage, hidden: true }
+				{ path: 'success', component: BookSuccPage, hidden: true },
+				{ path: 'relate', component: RelateCoursePage, hidden: true }
 			]
 		}
 	]
