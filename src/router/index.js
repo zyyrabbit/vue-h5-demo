@@ -1,23 +1,24 @@
 import VueRouter from 'vue-router'
 // 方案2---路由懒加载
- const Login = () => import('pages/LoginPage.vue')
- const Register = () => import('pages/RegisterPage.vue')
- const GetPassword = () => import('pages/GetPasswordPage.vue')
- /* 家长 */
- // 主页面
- const HomePage = () => import('pages/parent/HomePage.vue')
- const CoursePage = () => import('pages/parent/CoursePage.vue')
- const MessagePage = () => import('pages/parent/MessagePage.vue')
- const MePage = () => import('pages/parent/MePage.vue')
- //  首页
- const CourseDetailPage = () => import('pages/parent/home/CourseDetailPage.vue')
- // 上课页面组
- const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
- const JudgePage = () => import('pages/parent/course/JudgePage.vue')
- // 消息页面组
- const SystemMessagePage = () => import('pages/parent/message/SystemMessagePage.vue')
- const ChatPage = () => import('pages/parent/message/ChatPage.vue')
- const SearchTeacherPage = () => import('pages/parent/message/SearchTeacherPage.vue')
+const Login = () => import('pages/LoginPage.vue')
+const Register = () => import('pages/RegisterPage.vue')
+const GetPassword = () => import('pages/GetPasswordPage.vue')
+/* 家长 */
+// 主页面
+const HomePage = () => import('pages/parent/HomePage.vue')
+const CoursePage = () => import('pages/parent/CoursePage.vue')
+const MessagePage = () => import('pages/parent/MessagePage.vue')
+const MePage = () => import('pages/parent/MePage.vue')
+//  首页
+const CourseDetailPage = () => import('pages/parent/home/CourseDetailPage.vue')
+// 上课页面组
+const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
+const JudgePage = () => import('pages/parent/course/JudgePage.vue')
+const EvalPage = () => import('pages/parent/course/evaluatePage.vue')
+// 消息页面组
+const SystemMessagePage = () => import('pages/parent/message/SystemMessagePage.vue')
+const ChatPage = () => import('pages/parent/message/ChatPage.vue')
+const SearchTeacherPage = () => import('pages/parent/message/SearchTeacherPage.vue')
 // 个人账户
 const AccountSettingPage = () => import('pages/parent/profile/AccountSettingPage.vue')
 const PwdModPage = () => import('pages/parent/profile/PwdModPage.vue')
@@ -55,7 +56,8 @@ const pubRoutes = [
 			children: [
 				// path加'/'为相对根路径--课程页面
 				{ path: 'bill', component: BillingDetailPage, hidden: true },
-				{ path: 'judge', component: JudgePage }
+				{ path: 'judge', component: JudgePage },
+				{ path: 'evaluate', component: EvalPage }
 			]
 		},
 		{
