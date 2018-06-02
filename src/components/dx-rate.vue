@@ -6,7 +6,7 @@
 			:class="[
 			rateClass, 
 			level > index ? selectRateClass : '', 
-			type ? 'dx-rate-item-' + type : '',]"
+			type ? 'dx-rate-item-' + type : '']"
 			@click="select(index)"
 			class="dx-rate-item">
 		</li>
@@ -25,28 +25,18 @@ export default {
 			selectRateClass: String
     },
     data() {
-			return {
-				level: this.onlyDisplay ? this.rating + 1 : 0
-			}
+		return {
+			level: this.onlyDisplay ? this.rating + 1 : 0
+		}
     },
-		computed: {
-			model: {
-				get() {
-					return this.value
-				},
-				set(val) {
-					this.$emit('input', val)
-				}
-			}
-		},
-		methods: {
-			select(index) {
-				if (!this.onlyDisplay) {
-					this.level = index + 1
-					this.model = this.level
-				}
+	methods: {
+		select(index) {
+			if (!this.onlyDisplay) {
+				this.level = index + 1
+				this.$emit('level', index)
 			}
 		}
+	}
 }
 </script>
 <style>
