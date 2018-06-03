@@ -62,15 +62,17 @@
 		@include e(tab) {
 			&>li {
 				position: relative;
-				width: 1.1rem;
+				width: 25%;
+				display: flex;
+				align-items: flex-end;
+				padding-bottom: .1rem;
 				height: 1.1rem;
 				@include when(select) {
 					color: #EF95BD;
 				}
 				>p {
-					position: absolute;
-					left: 0.37rem;
-					bottom: 0.16rem;
+					text-align: center;
+					width: 100%;
 				}
 			}
 			/* 底部栏背景图标 */
