@@ -3,13 +3,13 @@
     <div class="dx-cell-item clearfix">
 			<dx-item>
 				<template slot="left">
-          <slot name="left"></slot>
-        </template>
+          			<slot name="left"></slot>
+		        </template>
 				<template slot="right">
 					<div :class="{'can-access': canAccess}" class="cell-right">
-          	<slot name="right"></slot>
+          				<slot name="right"></slot>
 					</div>
-        </template>
+		        </template>
 			</dx-item>
     </div>
 </template>

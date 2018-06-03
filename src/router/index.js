@@ -11,6 +11,9 @@ const MessagePage = () => import('pages/parent/MessagePage.vue')
 const MePage = () => import('pages/parent/MePage.vue')
 //  首页
 const CourseDetailPage = () => import('pages/parent/home/CourseDetailPage.vue')
+const JoinLearningPage = () => import('pages/parent/home/JoinLearningPage.vue')
+const LessonPeriodPage = () => import('pages/parent/home/LessonPeriodPage.vue')
+const PayMethodPage = () => import('pages/parent/home/PayMethodPage.vue')
 // 上课页面组
 const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
 const JudgePage = () => import('pages/parent/course/JudgePage.vue')
@@ -47,7 +50,10 @@ const pubRoutes = [
 			path: '/home',
 			component: HomePage,
 			children: [
-				{ path: 'courseDetail', component: CourseDetailPage, hidden: true }
+				{ path: 'courseDetail', component: CourseDetailPage, hidden: true },
+				{ path: 'join', component: JoinLearningPage, hidden: true },
+				{ path: 'period', component: LessonPeriodPage, hidden: true },
+				{ path: 'pay', component: PayMethodPage, hidden: true }
 			]
 		},
 		{

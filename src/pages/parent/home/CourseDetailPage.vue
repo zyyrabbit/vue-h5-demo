@@ -43,7 +43,7 @@
 	        </div>
 	        <div class="home-course-detail__parent-judge--more">查看全部评价</div>
       	</div>
-	   <price-footer to="/place/book" price="￥60" priceSmall="/小时" priceInfo="评分9.6" btnText="加入学习">
+	   <price-footer to="/home/join" price="￥60" priceSmall="/小时" priceInfo="评分9.6" btnText="加入学习">
     	</price-footer>
    	</div>
 </template>
