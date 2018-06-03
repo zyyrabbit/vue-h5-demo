@@ -1,12 +1,15 @@
 <template>
    <div class="index-home">
-   		<dx-input 
-   			v-model="searchContent"
-   			inputClass="index-home__input"
-   			placeholder="搜索'趣味大百科'试试"
-   		>
-   			<span class="index-home__input--icon-search"></span>
-   		</dx-input>
+		 	<div class="index-home-search">
+				<dx-input 
+					v-model="searchContent"
+					inputClass="index-home__input"
+					placeholder="搜索'趣味大百科'试试"
+					originType="text"
+				>
+					<span class="index-home__input--icon-search"></span>
+				</dx-input>
+		 	</div>
    		<!-- 课程 -->
    		<div class="index-home-course">
    			<div class="index-home-course__desc clearfix">
@@ -166,13 +169,15 @@
 		}
 	}
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 	@include b(index-home) {
 		& .index-home__input {
 			border-bottom: none ;
 			padding: 0.2rem 0 0.2rem 0.87rem;
 			background-color: #F3F3F3;
 			border-radius: 0.2rem;
+			line-height: .36rem;
+			font-size: .3rem;
 			@include m(icon-search) {
 				display: inline-block;
 				margin-left: 0.32rem;
@@ -181,12 +186,17 @@
 				background: $--index-home-background;
 				vertical-align: middle;
 			}
-			
 		}
-
+	}
+</style>
+<style scoped lang="scss">
+	@include b(index-home) {
 		@include m(title) {
 			font-size: 0.46rem;
 			color: #484848;
+		}
+		@include b(index-home-search) {
+			-webkit-user-select:text!important;
 		}
 		/* 课程 */
 		@include b(index-home-course) {
@@ -354,6 +364,7 @@
 			margin-top: 0.97rem;
 			width: 100%;
 			overflow: hidden;
+			padding-bottom: 1.6rem;
 			@include e(slide) {
 				width: 100%;
 				margin-top: 0.42rem;

@@ -62,8 +62,8 @@
 		@include e(tab) {
 			&>li {
 				position: relative;
-				width: 25%;
 				display: flex;
+				flex-grow: 1;
 				align-items: flex-end;
 				padding-bottom: .1rem;
 				height: 1.1rem;

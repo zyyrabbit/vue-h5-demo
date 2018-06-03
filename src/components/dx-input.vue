@@ -86,7 +86,7 @@
 	/* 以下设置为输入框最大长度即与父元素宽度一样 */
 	.dx-input-origin-input{
 		width: 100%;
-		padding-left: 2.1rem;
+		padding-left: 1.2rem;
 		padding-bottom: 0.54rem;
 		border: none;
 		border-bottom: 1px solid #D3D3D3;
