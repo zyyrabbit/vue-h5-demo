@@ -15,20 +15,20 @@
        					class="home-course-join__detail-desc--star"
        				></dx-star>
        			</div>
-	   			<div>趣味科学大百科</div>
+	   			<div>小学6年纪升初中...</div>
 	   			<div>老师：奕爸CY</div>
 	   			<div>儿童心理达人</div>
        		</div>
        	</div>
-       	<div @click="goNext('/home/period')">
+       	<div @click="goNext('/home/contPeriod')">
 	       	<dx-item class="home-course-join__item">
 	       		<div slot="left">上课时间</div>
 	       		<div 
 	       			slot="right" 
 	       			class="home-course-join--color-blue"
 	       		>
-	       			<p>4月11号</p>
-					<p>19:00~21:00</p>
+	       			<p>2018年1月11号</p>
+					<p>至 2018年7月11号</p>
 				</div>
 	       	</dx-item>
        	</div>
@@ -43,7 +43,7 @@
        	</dx-item>
        	<dx-item class="home-course-join__item">
        		<div slot="left">课程单价</div>
-       		<div slot="right">￥120/学员</div>
+       		<div slot="right">￥1200/半年/学员</div>
        	</dx-item>
        	<div @click="goNext('/home/edit')">
 	       	<dx-item class="home-course-join__item">
@@ -77,7 +77,7 @@
        	<dx-item class="home-course-join__item">
        		<div slot="left">注意：课程开始前，可申请退款</div>
        	</dx-item>
-	   <price-footer to="/place/book" price="￥360" priceInfo="￥120X3" btnText="立即支付">
+	   <price-footer to="/place/book" price="￥2400" priceInfo="￥1200X2人" btnText="立即支付">
     	</price-footer>
    	</div>
 </template>

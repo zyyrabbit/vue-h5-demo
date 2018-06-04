@@ -118,7 +118,10 @@
    		<div class="index-home-course-recommend">
    			<div class="index-home-course__desc clearfix">
    				<span class="index-home--title block--float-left">课程推荐</span>
-   				<span class="index-home-course__desc--all block--float-right">查看全部</span>
+   				<span 
+   					class="index-home-course__desc--all block--float-right"
+   					@click="goNext('/home/contDetail')"
+   				>查看全部</span>
    			</div>
    			<div class="index-home-course-recommend__slide">
    				<dx-ul>

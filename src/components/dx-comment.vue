@@ -9,7 +9,7 @@
 			<dx-star :rating=3 type="small"></dx-star>
 		</div>
 		<div class="comment-cont">
-			<p>环境舒适,我都想在这里多呆一会,我家小孩也喜欢这里的老师,下次还来。</p>
+			<slot>环境舒适,我都想在这里多呆一会,我家小孩也喜欢这里的老师,下次还来。</slot>
 		</div>
 	</div>
 </template>

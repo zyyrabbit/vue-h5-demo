@@ -14,6 +14,12 @@ const CourseDetailPage = () => import('pages/parent/home/CourseDetailPage.vue')
 const JoinLearningPage = () => import('pages/parent/home/JoinLearningPage.vue')
 const LessonPeriodPage = () => import('pages/parent/home/LessonPeriodPage.vue')
 const PayMethodPage = () => import('pages/parent/home/PayMethodPage.vue')
+const EditStudentPage = () => import('pages/parent/home/EditStudentPage.vue')
+const AddStudentPage = () => import('pages/parent/home/AddStudentPage.vue')
+const CourseJudgePage = () => import('pages/parent/home/CourseJudgePage.vue')
+const ContractCourseDetailPage = () => import('pages/parent/home/ContractCourseDetailPage.vue')
+const ContractJoinLearningPage = () => import('pages/parent/home/ContractJoinLearningPage.vue')
+const ContractLessonPeriodPage = () => import('pages/parent/home/ContractLessonPeriodPage.vue')
 // 上课页面组
 const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
 const JudgePage = () => import('pages/parent/course/JudgePage.vue')
@@ -53,7 +59,13 @@ const pubRoutes = [
 				{ path: 'courseDetail', component: CourseDetailPage, hidden: true },
 				{ path: 'join', component: JoinLearningPage, hidden: true },
 				{ path: 'period', component: LessonPeriodPage, hidden: true },
-				{ path: 'pay', component: PayMethodPage, hidden: true }
+				{ path: 'pay', component: PayMethodPage, hidden: true },
+				{ path: 'add', component: AddStudentPage, hidden: true },
+				{ path: 'edit', component: EditStudentPage, hidden: true },
+				{ path: 'judge', component: CourseJudgePage, hidden: true },
+				{ path: 'contDetail', component: ContractCourseDetailPage, hidden: true },
+				{ path: 'contPeriod', component: ContractLessonPeriodPage, hidden: true },
+				{ path: 'contJoin', component: ContractJoinLearningPage, hidden: true }
 			]
 		},
 		{
