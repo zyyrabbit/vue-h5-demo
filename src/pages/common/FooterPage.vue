@@ -5,12 +5,16 @@
     		<li  
     			v-for="(tabComponent, index) in tabComponents"
     			:class="[
-    					{'is-select': selectTab === index},
-    					tabComponent.iconClass
+    					{'is-select': selectTab === index}
     				]"
     			:key="index" 
     			@click="goPath(tabComponent)"
     		>
+					<div :class="[
+    					{'is-select': selectTab === index},
+    					tabComponent.iconClass
+    				]">
+					</div>
     			<p 
     				:class="{'is-select': selectTab === index}"
     				class="index-footer__tab--index-text"
@@ -64,15 +68,24 @@
 				position: relative;
 				display: flex;
 				flex-grow: 1;
-				align-items: flex-end;
+				flex-direction: column;
+				align-items: center;
 				padding-bottom: .1rem;
 				height: 1.1rem;
 				@include when(select) {
 					color: #EF95BD;
 				}
+				>div {
+					height: 1.1rem;
+					width: 1.1rem;
+					background-size: 100% 100%!important;
+				}
 				>p {
 					text-align: center;
 					width: 100%;
+					position: absolute;
+					bottom: 0;
+					padding-bottom: 0.1rem;
 				}
 			}
 			/* 底部栏背景图标 */
