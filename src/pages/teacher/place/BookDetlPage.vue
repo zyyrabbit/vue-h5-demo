@@ -128,6 +128,7 @@
     display: flex;
     align-items: center;
     padding: 0.5rem 0 0.65rem 0;
+    border-bottom: 0.02rem solid #e5e5e5;
     &-pic{
       width: 2.33rem;
       height: 1.9rem;

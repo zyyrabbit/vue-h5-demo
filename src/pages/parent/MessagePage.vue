@@ -15,11 +15,11 @@
 		  	>
 				<div class="index-message-teacher--icon block--float-left"></div>
 				<div class="index-message-teacher__detail">
-					<div>
+					<div class="index-message-teacher__detail--info">
 						<span class="index-message-teacher__detail--name">
 							{{message.title}}
 						</span>
-						<span v-if="!message.system">
+						<span class="index-message-teacher__detail--detl" v-if="!message.system">
 							<span class="index-message-teacher__detail--male"></span>
 							<span class="index-message-teacher__detail--role"></span>
 						</span>
@@ -106,8 +106,16 @@
 				font-size: 0.34rem;
 				color: #7E7E7E;
 				word-wrap: break-word;
+				@include m(info) {
+					display: flex;
+					align-items: center;
+				}				
 				@include m(name) {
 					color: #333;
+				}
+				@include m(detl) {
+					display: flex;
+					flex-grow: 1;
 				}
 				@include m(male) {
 					display: inline-block;
@@ -124,8 +132,14 @@
 					background: $--index-home-teacher-role-background;
 				}
 				@include m(desc) {
-				width: 100%;
+					width: 100%;
 					margin-top: 0.2rem; 
+					a{
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+						-webkit-line-clamp: 2;
+						color: $--common-subtitle-font-color;
+					}
 				}
 			}
 		}

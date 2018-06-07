@@ -245,7 +245,7 @@
         height: 0.36rem;
         width: 0.36rem;
         background-size: 100% 100%;
-        margin-right: 0.2rem;
+        margin-right: 0.1rem;
       }
     }
     @include m(row-icon-wifi) {

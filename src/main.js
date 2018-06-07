@@ -9,6 +9,7 @@ import 'utils/rem.js'
 import 'utils/filters'
 import 'directives'
 import App from './App.vue'
+import 'assets/styles/fonts/font.css'
 Vue.use(Lazy)
 Vue.use(VueRouter)
 Vue.use(VueUI)
