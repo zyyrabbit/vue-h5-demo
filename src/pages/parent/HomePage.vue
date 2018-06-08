@@ -1,6 +1,9 @@
 <template>
    <div class="index-home">
-		 	<div class="index-home-search">
+		 	<div 
+		 		class="index-home-search"
+		 		@click="goNext('/home/search')"
+		 	>
 				<dx-input 
 					v-model="searchContent"
 					inputClass="index-home__input"
@@ -46,7 +49,7 @@
    				<div class="index-home-wiki__desc--detail block--float-left">
    					“通过趣味生动、幽默诙谐的语言，	带领孩子一起探索科学领域。”
    				</div>
-   				<div class="index-home-wiki__desc--price block--float-right">查看全部</div>
+   				<div class="index-home-wiki__desc--price block--float-right">Y 120</div>
    			</div>
    		</div>
    		<!-- 本周新课 -->
@@ -93,7 +96,10 @@
    								英语协会副会长，多次获得国际英语口语竞赛金奖
    							</div>
    						</div>
-	   					<div class="index-home-star-list__slide-item--course ">他的课</div>
+	   					<div 
+	   						class="index-home-star-list__slide-item--course"
+	   						@click="goNext('/home/teacherDetail')"
+	   					>他的课</div>
    					</div>
    				</li>
 	   		</dx-ul>

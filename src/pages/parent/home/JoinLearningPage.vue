@@ -77,7 +77,7 @@
        	<dx-item class="home-course-join__item">
        		<div slot="left">注意：课程开始前，可申请退款</div>
        	</dx-item>
-	   <price-footer to="/place/book" price="￥360" priceInfo="￥120X3" btnText="立即支付">
+	   <price-footer to="/home/bookSuccess" price="￥360" priceInfo="￥120X3" btnText="立即支付">
     	</price-footer>
    	</div>
 </template>

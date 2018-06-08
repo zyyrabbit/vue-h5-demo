@@ -20,6 +20,10 @@ const CourseJudgePage = () => import('pages/parent/home/CourseJudgePage.vue')
 const ContractCourseDetailPage = () => import('pages/parent/home/ContractCourseDetailPage.vue')
 const ContractJoinLearningPage = () => import('pages/parent/home/ContractJoinLearningPage.vue')
 const ContractLessonPeriodPage = () => import('pages/parent/home/ContractLessonPeriodPage.vue')
+const SearchPage = () => import('pages/parent/home/SearchPage.vue')
+const SearchResultPage = () => import('pages/parent/home/SearchResultPage.vue')
+const TeacherDetailPage = () => import('pages/parent/home/TeacherDetailPage.vue')
+const BookSuccessPage = () => import('pages/parent/home/BookSuccessPage.vue')
 // 上课页面组
 const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
 const JudgePage = () => import('pages/parent/course/JudgePage.vue')
@@ -65,7 +69,11 @@ const pubRoutes = [
 				{ path: 'judge', component: CourseJudgePage, hidden: true },
 				{ path: 'contDetail', component: ContractCourseDetailPage, hidden: true },
 				{ path: 'contPeriod', component: ContractLessonPeriodPage, hidden: true },
-				{ path: 'contJoin', component: ContractJoinLearningPage, hidden: true }
+				{ path: 'contJoin', component: ContractJoinLearningPage, hidden: true },
+				{ path: 'search', component: SearchPage, hidden: true },
+				{ path: 'searchResult', component: SearchResultPage, hidden: true },
+				{ path: 'teacherDetail', component: TeacherDetailPage, hidden: true },
+				{ path: 'bookSuccess', component: BookSuccessPage, hidden: true }
 			]
 		},
 		{
