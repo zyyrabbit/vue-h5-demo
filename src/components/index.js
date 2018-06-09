@@ -13,6 +13,7 @@ import DxCellItem from './dx-cell-item.vue'
 import DxRadio from './dx-radio.vue'
 import DxStar from './dx-star.vue'
 import DxComment from './dx-comment.vue'
+import DxTag from './dx-tag.vue'
 const components = [
 	DxFormItem,
 	DxForm,
@@ -28,7 +29,8 @@ const components = [
 	DxCellItem,
 	DxRadio,
 	DxStar,
-	DxComment
+	DxComment,
+	DxTag
 ]
 
 const install = function(Vue) {

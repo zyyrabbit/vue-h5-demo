@@ -101,3 +101,8 @@ a {
   font-size: $--common-button-text-font-size;
   color: $--common-text-font-color;  
 }
+.text-ellipsis{
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

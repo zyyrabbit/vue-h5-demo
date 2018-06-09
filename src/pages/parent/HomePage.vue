@@ -36,9 +36,9 @@
    		<!-- 百科 -->
    		<div class="index-home-wiki">
    			<div class="index-home-wiki__title clearfix">
-   				<div class="index-home-wiki__title--left block--float-left">趣味科学大百科</div>
+   				<div class="index-home-wiki__title--left block--float-left text-ellipsis">趣味科学大百科</div>
    				<div class="index-home-wiki__title--right block--float-right">
-   					<dx-ul>
+   					<dx-ul class="index-home-wiki__title--right-text">
    						<li>一八CY</li>
    						<li>3-12</li>
    						<li>自然科学</li>
@@ -76,7 +76,7 @@
    							<div>
    								<span class="index-home-star-teacher__detail--name">杨帆</span>
    								<span class="index-home-star-teacher__detail--male"></span>
-   								<span class="index-home-star-teacher__detail--role"></span>
+   								<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
    							</div>
    							<div class="index-home-star-teacher__detail--desc">
    								英语协会副会长，多次获得国际英语口语竞赛金奖
@@ -90,7 +90,7 @@
    							<div>
    								<span class="index-home-star-teacher__detail--name">杨帆</span>
    								<span class="index-home-star-teacher__detail--male"></span>
-   								<span class="index-home-star-teacher__detail--role"></span>
+   								<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
    							</div>
    							<div class="index-home-star-teacher__detail--desc">
    								英语协会副会长，多次获得国际英语口语竞赛金奖
@@ -180,14 +180,21 @@
 </script>
 <style lang="scss">
 	@include b(index-home) {
+		// 修复inline-block占高问题
+		.dx-input-label-text{
+			display: block;
+		}
 		& .index-home__input {
+			// 修复inline-block占高问题
+			display: block;
 			border-bottom: none ;
 			padding: 0.2rem 0 0.2rem 0.87rem;
 			background-color: #F3F3F3;
 			border-radius: 0.2rem;
 			line-height: .36rem;
-			font-size: .3rem;
+			font-size: .3rem;	
 			@include m(icon-search) {
+				padding: 0.36rem 0;
 				display: inline-block;
 				margin-left: 0.32rem;
 				width: 0.32rem;
@@ -206,10 +213,11 @@
 		}
 		@include b(index-home-search) {
 			-webkit-user-select:text!important;
+			padding-top: 0.15rem;
 		}
 		/* 课程 */
 		@include b(index-home-course) {
-			margin-top: 0.49rem;
+			margin-top: 0.5rem;
 			@include e(desc) {
 				line-height: 0.44rem;
 				@include m(all) {
@@ -223,6 +231,7 @@
 				margin-top: 0.36rem;
 				overflow: hidden;
 				@include m(item) {
+					border-radius: 0.14rem;
 					width: 100%;
 					height: 3.7rem;
 					background: red;
@@ -232,7 +241,7 @@
 
 		/* 百科 */
 		@include b(index-home-wiki) {
-			margin-top: 0.31rem;
+			margin-top: 0.3rem;
 			@include e(title) {
 				line-height: 0.36rem;
 				@include m(left) {
@@ -243,6 +252,21 @@
 				@include m(right) {
 					font-size: 0.24rem;
 				}
+				@include m(right-text) {
+					>li{
+						&:first-child {
+							&:before {
+								display: none;
+							}
+						}	
+						&:before {
+							content: "|";
+							padding:0 0.2rem;
+							color: #e5e5e5;
+							z-index: 2;
+						}
+					}									
+				}
 			}
 
 			@include e(desc) {
@@ -251,7 +275,7 @@
 				@include m(detail) {
 					width: 3.22rem;
 					font-size: 0.22rem;
-					color: #484848;
+					color: #7e7e7e;
 				}
 				@include m(price) {
 					width: 1.82rem;
@@ -269,6 +293,7 @@
 			height: 3.7rem;
 			overflow: hidden;
 			@include e(slide-item) {
+				border-radius: 0.14rem;
 				width: 100%;
 				height: 3.7rem;
 				background: red;
@@ -316,19 +341,17 @@
 				font-size: 0.32rem;
 				@include m(male) {
 					display: inline-block;
-					margin-left: 0.1rem;
-					width: 0.28rem;
-					height: 0.28rem;
+					// margin-left: 0.1rem;
+					width: 0.32rem;
+					height: 0.32rem;
 					background: $--index-home-teacher-male-background;
+					vertical-align: middle;
 				}
 				@include m(role) {
-					display: inline-block;
 					margin-left: 0.1rem;
-					width: 0.66rem;
-					height: 0.32rem;
-					background: $--index-home-teacher-role-background;
 				}
 				@include m(desc) {
+					padding-top: 0.15rem;
 					font-size: 0.24rem;
 					color: #7E7E7E; 
 				}
