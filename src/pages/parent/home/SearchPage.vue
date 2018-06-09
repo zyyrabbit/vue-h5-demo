@@ -8,7 +8,7 @@
 				placeholder="试试看搜索“英语”"
 				originType="text"
     		>
-    			<span class="home-search--input-left"></span>
+    			<!-- <span class="home-search--input-left"></span> -->
     		</dx-input>
     	</div>
     	<ul class="home-search__content">
