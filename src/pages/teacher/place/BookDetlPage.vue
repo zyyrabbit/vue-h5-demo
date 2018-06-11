@@ -1,5 +1,8 @@
 <template>
-  <div class="place-book">
+  <div
+    v-footer 
+    class="place-book"
+  >
     <p class="headline-upper-text">预订场所</p>
     <div class="place-book-info">
       <div class="place-book-info-pic"></div>
@@ -97,7 +100,13 @@
         </template>
       </dx-cell-item>
     </div>
-    <price-footer to="/place/success" price="￥60" priceSmall="/小时" priceInfo="￥60 x 6小时" btnText="立即支付">
+    <price-footer 
+        to="/place/success" 
+        price="￥60" 
+        priceSmall="/小时" 
+        priceInfo="￥60 x 6小时" 
+        btnText="立即支付"
+    >
     </price-footer>    
   </div>
 </template>

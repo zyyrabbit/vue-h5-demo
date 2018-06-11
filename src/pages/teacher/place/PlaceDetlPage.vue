@@ -1,5 +1,8 @@
 <template>
-  <div class="place-detail">
+  <div 
+    v-footer
+    class="place-detail"
+  >
     <div class="place-detail--header-bg"></div>
     <div class="place-detail--cont">
       <p class="headline-upper-text">南师大文渊楼305室</p>
@@ -52,7 +55,13 @@
       </div>
     </div>
     <!-- footer -->
-    <price-footer to="/place/book" price="￥60" priceSmall="/小时" priceInfo="评分9.6" btnText="确定">
+    <price-footer 
+        to="/place/book" 
+        price="￥60" 
+        priceSmall="/小时" 
+        priceInfo="评分9.6" 
+        btnText="确定"
+      >
     </price-footer>   
   </div>
 </template>

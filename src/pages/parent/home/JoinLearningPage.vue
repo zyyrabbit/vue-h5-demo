@@ -1,5 +1,8 @@
 <template>
-    <div class="home-course-join">
+    <div 
+    	v-footer 
+    	class="home-course-join"
+    >
     	<dx-header></dx-header>
     	<p class="home-course-join--title">加入学习</p>
        	<div class="home-course-join__detail">
@@ -25,7 +28,7 @@
 	       		<div slot="left">上课时间</div>
 	       		<div 
 	       			slot="right" 
-	       			class="home-course-join--color-blue"
+	       			class="home-course-join--color-blue text-right"
 	       		>
 	       			<p>4月11号</p>
 					<p>19:00~21:00</p>
@@ -36,21 +39,24 @@
        		<div slot="left">上课地点</div>
        		<p 
        			slot="right" 
-       			class="home-course-join--course-place"
+       			class="home-course-join--course-place text-right"
        		>
        			西溪湿地商务园区1号教室 西湖区文二西路好西城广场4楼
        		</p>
        	</dx-item>
        	<dx-item class="home-course-join__item">
        		<div slot="left">课程单价</div>
-       		<div slot="right">￥120/学员</div>
+       		<div 
+       			slot="right"
+       			class="text-right"
+       		>￥120/学员</div>
        	</dx-item>
        	<div @click="goNext('/home/edit')">
 	       	<dx-item class="home-course-join__item">
 	       		<div slot="left">学员</div>
 	       		<div 
 	       			slot="right"
-	       			class="home-course-join--color-blue home-course-join--student"
+	       			class="home-course-join--color-blue home-course-join--student text-right"
 	       		>
 	       			<p>Yummy</p>
 					<p>陈粒</p>
@@ -69,7 +75,7 @@
        		<div slot="left">付款方式</div>
        		<div 
        			slot="right"
-       			class="home-course-join--color-blue"
+       			class="home-course-join--color-blue text-right"
        		>
        			<span @click="goNext('/home/pay')">支付宝（默认）</span>
 			</div>
@@ -77,7 +83,12 @@
        	<dx-item class="home-course-join__item">
        		<div slot="left">注意：课程开始前，可申请退款</div>
        	</dx-item>
-	   <price-footer to="/home/bookSuccess" price="￥360" priceInfo="￥120X3" btnText="立即支付">
+	   <price-footer
+	   		to="/home/bookSuccess" 
+	   		price="￥360" 
+	   		priceInfo="￥120X3" 
+	   		btnText="立即支付"
+	   	>
     	</price-footer>
    	</div>
 </template>
@@ -142,8 +153,10 @@
 		@include e(item) {
 			padding: 0.52rem 0;
 			border-top: 0.02rem solid #EBEBEB;
-			text-align: right;
 			font-size: 0.36rem;
+			>div:nth-child(2) {
+				text-align: right;
+			}
 		}
 
 		// 上课地点样式

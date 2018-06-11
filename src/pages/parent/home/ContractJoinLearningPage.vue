@@ -1,5 +1,8 @@
 <template>
-    <div class="home-course-join">
+    <div 
+    	v-footer
+    	class="home-course-join"
+    >
     	<dx-header></dx-header>
     	<p class="home-course-join--title">加入学习</p>
        	<div class="home-course-join__detail">
@@ -77,7 +80,12 @@
        	<dx-item class="home-course-join__item">
        		<div slot="left">注意：课程开始前，可申请退款</div>
        	</dx-item>
-	   <price-footer to="/place/book" price="￥2400" priceInfo="￥1200X2人" btnText="立即支付">
+	   <price-footer 
+	   		to="/place/book" 
+	   		price="￥2400" 
+	   		priceInfo="￥1200X2人" 
+	   		btnText="立即支付"
+	   	>
     	</price-footer>
    	</div>
 </template>

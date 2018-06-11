@@ -1,5 +1,8 @@
 <template>
-    <div class="home-contract-course-detail">
+    <div 
+    	v-footer
+    	class="home-contract-course-detail"
+    >
     	<div class="home-contract-course-detail--banner"></div>
     	<div class="home-contract-course-detail__header">
 	       	<dx-header>
@@ -55,7 +58,13 @@
 	        	@click="goNext('/home/judge')"
 	        >查看全部评价</div>
       	</div>
-	   <price-footer to="/home/contJoin" price="¥1220" priceSmall="/半年/学年" priceInfo="评分9.6" btnText="加入学习">
+	   <price-footer 
+	   		to="/home/contJoin" 
+	   		price="¥1220" 
+	   		priceSmall="/半年/学年" 
+	   		priceInfo="评分9.6" 
+	   		btnText="加入学习"
+	   	>
     	</price-footer>
    	</div>
 </template>
