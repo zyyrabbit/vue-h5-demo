@@ -67,10 +67,12 @@ export default {
 </script>
 <style>
 .dx-checkbox {
-	padding: 0.12rem 0.19rem;
-	border-radius: 0.19rem;
+	padding: 0.12rem 0.24rem;
+	border-radius: 0.2rem;
 	background-color: #DDDDDD;
 	color: #fff;
+	font-size: 0.24rem;
+  line-height: 1;
 }
 .dx-checkbox.is-checked {
 	background-color: #93D5F1;

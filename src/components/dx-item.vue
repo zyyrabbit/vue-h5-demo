@@ -26,6 +26,7 @@
     }
     .dx-item-left {
         flex-grow: 1;
+        text-align: left;
     }
     .dx-item.dx-item-top {
         align-items: flex-start;
