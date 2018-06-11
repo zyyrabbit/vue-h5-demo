@@ -36,7 +36,7 @@
 	    				<div class="index-course-list__item-detail--time-begin">
 	    					<div>07:00</div>开始
 	    				</div>
-	    				<div class="index-course-list__item-detail--time-during">--2小时--</div>
+	    				<div class="index-course-list__item-detail--time-during">2小时</div>
 	    				<div class="index-course-list__item-detail--time-end">
 	    					<div>09:00</div>结束
 	    				</div>
@@ -207,6 +207,27 @@
                   text-align: center;
                }
             }
+				@include m(time-during) {
+                    position: relative;
+                    &:before{
+                        content: "";
+                        position: absolute;
+                        height: 0.01rem;
+                        width: 0.34rem;
+                        background: #7E7E7E;
+                        left: -0.4rem;
+                        top: 42%;
+                    }
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        height: 0.01rem;
+                        width: 0.34rem;
+                        background: #7E7E7E;
+                        top: 42%;
+                        right: -0.4rem;
+                    }
+				}            
 				@include m(time-begin time-end) {
 					>div {
 						font-size: 0.48rem;
