@@ -27,19 +27,29 @@
    	    		>编辑个人资料</span>
    	    	</div>
    	    </div>
-   	    <div class="index-me--record">
-   	    	<span @click="goPath('profile/sign')">上课记录</span>
-   	    </div>
-   	    <div class="index-me--sign">
-   	    	<span @click="goPath('profile/sign')">会员签到</span>
-   	    	<span  class="block--float-right">2998积分</span>
-   	    </div>
-   	    <div class="index-me--friend">
-   	    	<span @click="goPath('profile/invitefriends')">邀请好友</span>
-   	    </div>
-   	    <div class="index-me--feedback">
-   	    	<span @click="goPath('profile/advise')">意见反馈</span>
-   	    </div>
+				<dx-cell-item to='profile/sign'>
+					<template slot="left">
+						<p>上课记录</p>
+					</template>
+				</dx-cell-item>
+				<dx-cell-item to='profile/sign'>
+					<template slot="left">
+						<p>会员签到</p>
+					</template>
+					<template slot="right">
+						<p>2998积分</p>
+					</template>
+				</dx-cell-item>
+				<dx-cell-item to='profile/invitefriends'>
+					<template slot="left">
+						<p>邀请好友</p>
+					</template>
+				</dx-cell-item>		
+				<dx-cell-item to='profile/advise'>
+					<template slot="left">
+						<p>意见反馈</p>
+					</template>
+				</dx-cell-item>
    	    <dx-footer :selectTab="3"></dx-footer>
    	    <transition 
 			name="router"  
@@ -69,7 +79,7 @@
 		padding-top: 0.33rem;
 		color: #484848;
 		@include e(introduction) {
-			border-bottom: 2px solid #EBEBEB;
+			// border-bottom: 2px solid #EBEBEB;
 			/* 介绍公共样式 */
 			@include m(title name detail) {
 				display: flex;
@@ -120,11 +130,6 @@
 				font-size: 0.3rem;
 				color: #FF9CC8;
 			}
-		}
-		@include m(record sign friend feedback) {
-			font-size: 0.36rem;
-			line-height: 1.44rem;
-			border-bottom: 2px solid #EBEBEB;
 		}
 		@include m(feedback) {
 			border: none;

@@ -1,15 +1,15 @@
 <template>
 	<!-- 两列排列 -->
-    <div class="dx-cell-item clearfix">
+    <div class="dx-cell-item clearfix" @click="goPath()">
 			<dx-item>
 				<template slot="left">
-          			<slot name="left"></slot>
-		        </template>
+						<slot name="left"></slot>
+				</template>
 				<template slot="right">
 					<div :class="{'can-access': canAccess}" class="cell-right">
-          				<slot name="right"></slot>
+						<slot name="right"></slot>
 					</div>
-		        </template>
+		    </template>
 			</dx-item>
     </div>
 </template>
@@ -20,6 +20,13 @@
 		props: {
 			canAccess: Boolean,
 			to: String
+		},
+		methods: {
+			goPath() {
+				if (this.to) {
+					this.$router.push(this.to)
+				}
+			}
 		}
 	}
 </script>
