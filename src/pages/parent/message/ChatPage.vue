@@ -79,7 +79,7 @@
 			margin-bottom: 0.26rem;
 		}
 		@include e(detail) {
-			margin-top: 0.5rem;
+			margin-top: 0.35rem;
 			@include m(time){
 				font-size: 0.3rem;
 				text-align: center;
@@ -95,14 +95,14 @@
 				border-radius: 0.1rem;
 				padding: 0.26rem;
 				font-size: 0.34rem;
-				margin-bottom: 0.21rem;
+				// margin-bottom: 0.21rem;
 			}
 			@include m(ta) {
 				>div:nth-child(1) {
 					background-color: #444;
 				}
 				>div:nth-child(2) {
-					background-color: rgba(218,218,218,0.3);
+					background-color: #f7f7f7;
 					color: #484848;
 					margin-left: 0.2rem;
 				}
@@ -120,20 +120,20 @@
 			// 三角形
 			@include m(triangle) {
 				width: 0;
-   		 		height: 0;
-			    border-width: 0.2rem;
-			    border-style: solid;
+				height: 0;
+				border-width: 0.2rem;
+				border-style: solid;
 			}
 			@include m(ta-triangle) {
 				position: absolute;
 				left: -0.35rem;
-				top: 0.07rem;
-				border-color: transparent  rgba(218,218,218,0.3)  transparent  transparent;
+				top: 0.27rem;
+				border-color: transparent  #f7f7f7  transparent  transparent;
 			}
 			@include m(me-triangle) {
 				position: absolute;
 				right: -0.35rem;
-				top: 0.07rem;
+				top: 0.27rem;
 				border-color: transparent  transparent  transparent #57B8D7;
 			}
 		}
