@@ -10,20 +10,22 @@ const CoursePage = () => import('pages/parent/CoursePage.vue')
 const MessagePage = () => import('pages/parent/MessagePage.vue')
 const MePage = () => import('pages/parent/MePage.vue')
 //  首页
-const CourseDetailPage = () => import('pages/parent/home/CourseDetailPage.vue')
-const JoinLearningPage = () => import('pages/parent/home/JoinLearningPage.vue')
-const LessonPeriodPage = () => import('pages/parent/home/LessonPeriodPage.vue')
-const PayMethodPage = () => import('pages/parent/home/PayMethodPage.vue')
-const EditStudentPage = () => import('pages/parent/home/EditStudentPage.vue')
-const AddStudentPage = () => import('pages/parent/home/AddStudentPage.vue')
-const CourseJudgePage = () => import('pages/parent/home/CourseJudgePage.vue')
-const ContractCourseDetailPage = () => import('pages/parent/home/ContractCourseDetailPage.vue')
-const ContractJoinLearningPage = () => import('pages/parent/home/ContractJoinLearningPage.vue')
-const ContractLessonPeriodPage = () => import('pages/parent/home/ContractLessonPeriodPage.vue')
+const CourseDetailPage = () => import('pages/parent/home/courseDetail/CourseDetailPage.vue')
+const JoinLearningPage = () => import('pages/parent/home/courseDetail/JoinLearningPage.vue')
+const LessonPeriodPage = () => import('pages/parent/home/courseDetail/LessonPeriodPage.vue')
+const PayMethodPage = () => import('pages/parent/home/courseDetail/PayMethodPage.vue')
+const EditStudentPage = () => import('pages/parent/home/courseDetail/EditStudentPage.vue')
+// const AddStudentPage = () => import('pages/parent/home/courseDetail/AddStudentPage.vue')
+const CourseJudgePage = () => import('pages/parent/home/courseDetail/CourseJudgePage.vue')
+const BookSuccessPage = () => import('pages/parent/home/courseDetail/BookSuccessPage.vue')
+
+const ContractCourseDetailPage = () => import('pages/parent/home/contractCourseDetail/ContractCourseDetailPage.vue')
+const ContractJoinLearningPage = () => import('pages/parent/home/contractCourseDetail/ContractJoinLearningPage.vue')
+const ContractLessonPeriodPage = () => import('pages/parent/home/contractCourseDetail/ContractLessonPeriodPage.vue')
 const SearchPage = () => import('pages/parent/home/SearchPage.vue')
 const SearchResultPage = () => import('pages/parent/home/SearchResultPage.vue')
 const TeacherDetailPage = () => import('pages/parent/home/TeacherDetailPage.vue')
-const BookSuccessPage = () => import('pages/parent/home/BookSuccessPage.vue')
+
 // 上课页面组
 const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
 const JudgePage = () => import('pages/parent/course/JudgePage.vue')
@@ -33,16 +35,16 @@ const SystemMessagePage = () => import('pages/parent/message/SystemMessagePage.v
 const ChatPage = () => import('pages/parent/message/ChatPage.vue')
 const SearchTeacherPage = () => import('pages/parent/message/SearchTeacherPage.vue')
 // 个人账户
-const AccountSettingPage = () => import('pages/parent/profile/AccountSettingPage.vue')
-const PwdModPage = () => import('pages/parent/profile/PwdModPage.vue')
-const TelephoneModPage = () => import('pages/parent/profile/TelephoneModPage.vue')
+const AccountSettingPage = () => import('pages/parent/profile/setting/AccountSettingPage.vue')
+const PwdModPage = () => import('pages/parent/profile/setting/PwdModPage.vue')
+const TelephoneModPage = () => import('pages/parent/profile/setting/TelephoneModPage.vue')
 const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
 const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
-const SignInPage = () => import('pages/parent/profile/SignInPage.vue')
-const IntegralMallPage = () => import('pages/parent/profile/IntegralMallPage.vue')
-const ExchangeRecordPage = () => import('pages/parent/profile/ExchangeRecordPage.vue')
-const DiscountDetailPage = () => import('pages/parent/profile/DiscountDetailPage.vue')
+const SignInPage = () => import('pages/parent/profile/integral/SignInPage.vue')
 const EditPage = () => import('pages/parent/profile/EditPage.vue')
+const IntegralMallPage = () => import('pages/parent/profile/integral/IntegralMallPage.vue')
+const ExchangeRecordPage = () => import('pages/parent/profile/integral/ExchangeRecordPage.vue')
+const DiscountDetailPage = () => import('pages/parent/profile/integral/DiscountDetailPage.vue')
 // 场地页面
 const PlacePage = () => import('pages/teacher/place/PlacePage.vue')
 const SelectRegionPage = () => import('pages/teacher/place/SelectRegionPage.vue')
@@ -56,26 +58,39 @@ const pubRoutes = [
 		{ path: '/login', component: Login, hidden: true },
 		{ path: '/reg', component: Register, hidden: true },
 		{ path: '/getpwd', component: GetPassword, hidden: true },
+		{ path: '/home', component: HomePage, hidden: true },
+		// 课程详情
 		{
-			path: '/home',
-			component: HomePage,
+			path: '/courseDetail',
+			component: CourseDetailPage,
 			children: [
-				{ path: 'courseDetail', component: CourseDetailPage, hidden: true },
-				{ path: 'join', component: JoinLearningPage, hidden: true },
+				{ path: 'judge', component: CourseJudgePage, hidden: true }
+			]
+		},
+		{
+			path: '/join',
+			component: JoinLearningPage,
+			children: [
 				{ path: 'period', component: LessonPeriodPage, hidden: true },
 				{ path: 'pay', component: PayMethodPage, hidden: true },
-				{ path: 'add', component: AddStudentPage, hidden: true },
 				{ path: 'edit', component: EditStudentPage, hidden: true },
-				{ path: 'judge', component: CourseJudgePage, hidden: true },
-				{ path: 'contDetail', component: ContractCourseDetailPage, hidden: true },
-				{ path: 'contPeriod', component: ContractLessonPeriodPage, hidden: true },
-				{ path: 'contJoin', component: ContractJoinLearningPage, hidden: true },
-				{ path: 'search', component: SearchPage, hidden: true },
-				{ path: 'searchResult', component: SearchResultPage, hidden: true },
-				{ path: 'teacherDetail', component: TeacherDetailPage, hidden: true },
 				{ path: 'bookSuccess', component: BookSuccessPage, hidden: true }
 			]
 		},
+		{
+			path: '/contDetail',
+			component: ContractCourseDetailPage,
+			chidren: [
+				{ path: 'contPeriod', component: ContractLessonPeriodPage, hidden: true },
+				{ path: 'contJoin', component: ContractJoinLearningPage, hidden: true }
+			]
+		},
+		// 首页搜索页
+		{ path: '/search', component: SearchPage, hidden: true },
+		// 首页搜索结果页
+		{ path: '/searchResult', component: SearchResultPage, hidden: true },
+		// 首页教师详情
+		{ path: '/teacherDetail', component: TeacherDetailPage, hidden: true },
 		{
 			path: '/course',
 			component: CoursePage,
@@ -90,16 +105,21 @@ const pubRoutes = [
 			path: '/profile',
 			component: MePage,
 			children: [
-				{ path: 'account', component: AccountSettingPage, hidden: true },
-				{ path: 'pwdMod', component: PwdModPage, hidden: true },
-				{ path: 'phoneMod', component: TelephoneModPage, hidden: true },
 				{ path: 'invitefriends', component: InvitingFriendsPage, hidden: true },
 				{ path: 'advise', component: AdvisePage, hidden: true },
-				{ path: 'sign', component: SignInPage, hidden: true },
-				{ path: 'integralMall', component: IntegralMallPage, hidden: true },
-				{ path: 'exhRecord', component: ExchangeRecordPage, hidden: true },
-				{ path: 'discount', component: DiscountDetailPage, hidden: true },
 				{ path: 'edit', component: EditPage, hidden: true }
+			]
+		},
+		{ path: '/account', component: AccountSettingPage, hidden: true },
+		{ path: '/pwdMod', component: PwdModPage, hidden: true },
+		{ path: '/phoneMod', component: TelephoneModPage, hidden: true },
+		{ path: '/sign', component: SignInPage, hidden: true },
+		{
+			path: '/integralMall',
+			component: IntegralMallPage,
+			children: [
+				{ path: 'exhRecord', component: ExchangeRecordPage, hidden: true },
+				{ path: 'discount', component: DiscountDetailPage, hidden: true }
 			]
 		},
 		{
@@ -107,11 +127,11 @@ const pubRoutes = [
 			component: MessagePage,
 			children: [
 				// path加'/'为相对根路径--消息页面
-				{ path: 'system', component: SystemMessagePage, hidden: true },
-				{ path: 'chat', component: ChatPage, hidden: true },
 				{ path: 'query', component: SearchTeacherPage, hidden: true }
 			]
 		},
+		{ path: '/system', component: SystemMessagePage, hidden: true },
+		{ path: '/chat', component: ChatPage, hidden: true },
 		{
 			path: '/place',
 			component: PlacePage,
@@ -125,6 +145,5 @@ const pubRoutes = [
 		}
 	]
 export default new VueRouter({
-	scrollBehavior: () => ({ y: 0 }),
 	routes: pubRoutes
 })

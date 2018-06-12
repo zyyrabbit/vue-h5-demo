@@ -3,37 +3,22 @@
     	<dx-header>
     		<span 
     			slot="next"
-    			@click="goNext('/home/add')"
     			class="home-course-edit-student--add"
     		>添加</span>
     	</dx-header>
     	<p class="home-course-edit-student--title">编辑学员</p>
-    	<ul class="home-course-edit-student__list">
-    		<li class="home-course-edit-student__list-item">
+    	<ul v-if="students.length" class="home-course-edit-student__list">
+    		<li 
+    			v-for="student in students"
+    			class="home-course-edit-student__list-item"
+    		>
 	    		<div class="home-course-edit-student__list-item--desc">
 	    			<span></span>
-	    			<span>Yummy</span>
+	    			<span>{{student.name}}</span>
 	    		</div>
 				<dx-radio 
 					v-model="select"
-					:label="1"
-					no-label
-					class="home-course-edit-student__list-item--radio"
-				>
-					<span 
-						slot="radio-icon" 
-						class="home-course-edit-student__list-item--radio-icon"
-					></span>
-				</dx-radio>
-    		</li>
-    		<li class="home-course-edit-student__list-item">
-	    		<div class="home-course-edit-student__list-item--desc">
-	    			<span></span>
-	    			<span>陈粒</span>
-	    		</div>
-				<dx-radio 
-					v-model="select"
-					:label="2"
+					:label="student.value"
 					no-label
 					class="home-course-edit-student__list-item--radio"
 				>
@@ -44,6 +29,7 @@
 				</dx-radio>
     		</li>
     	</ul>
+    	<p v-else class="home-course-edit-student--no">还没有在编学员,请点击添加</p>
     	<button-footer 
     		to="" 
     		btnText="确定"
@@ -62,7 +48,16 @@
 		},
 		data() {
 			return {
-				select: 1
+				select: 1,
+				students: [{
+						name: 'Yummy',
+						value: 1
+					},
+					{
+						name: '陈粒',
+						value: 2
+					}
+				]
 			}
 		}
 	}
@@ -116,6 +111,9 @@
 				  	background-color: red;
 				}
 			}
+		}
+		@include m(no) {
+			color: #484848;
 		}
 	}
 

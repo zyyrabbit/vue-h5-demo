@@ -41,7 +41,7 @@
    	</div>
 </template>
 <script>
-   	import DxHeader from '../../common/HeaderPage.vue'
+   	import DxHeader from 'pages/common/HeaderPage.vue'
    	export default {
 		components: {
 			DxHeader

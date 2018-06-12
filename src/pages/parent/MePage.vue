@@ -7,7 +7,7 @@
    	    		</span>
    	    		<span 
    	    			class="index-me__introduction--setting"
-  					@click="goNext('profile/account')"
+  					@click="goNext('/account')"
    	    		></span>
    	    	</div>
    	    	<div class="index-me__introduction--name">
@@ -32,7 +32,7 @@
 						<p>上课记录</p>
 					</template>
 				</dx-cell-item>
-				<dx-cell-item to='profile/sign'>
+				<dx-cell-item to='/sign'>
 					<template slot="left">
 						<p>会员签到</p>
 					</template>
@@ -52,7 +52,7 @@
 				</dx-cell-item>
    	    <dx-footer :selectTab="3"></dx-footer>
    	    <transition 
-			name="router"  
+			name="router-slide"  
 			mode='out-in'
 		>
 			<router-view class="full-screen"/>

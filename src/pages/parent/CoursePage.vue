@@ -83,7 +83,7 @@
 	    </ul>
        <dx-footer :selectTab="1"></dx-footer>
        <transition 
-         name="router"  
+         name="router-slide"  
          mode='out-in'
       >
          <router-view class="full-screen"/>

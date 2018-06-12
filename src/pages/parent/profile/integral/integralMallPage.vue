@@ -10,7 +10,7 @@
 		   		<span 
 		   			slot="next"
 		   			class="profile-account-mall__head--record"
-		   			@click="goPath('/profile/exhRecord')"
+		   			@click="goPath('/integralMall/exhRecord')"
 		   		>兑换记录</span>
 		   </dx-header>
 		   <div class="profile-account-mall__head--integral-number">
@@ -21,7 +21,7 @@
 	   		<li class="profile-account-mall__item-prize">
 	   			<div 
 	   				class="profile-account-mall__item-prize--title"
-	   				@click="goPath('/profile/discount')"
+	   				@click="goPath('/integralMall/discount')"
 	   			>
 	   				<div class="profile-account-mall__item-discount">
 		   				<p class="profile-account-mall__item-discount--number">
@@ -39,7 +39,7 @@
 	   		<li class="profile-account-mall__item-prize">
 	   			<div 
 	   				class="profile-account-mall__item-prize--title"
-	   				@click="goPath('/profile/discount')"
+	   				@click="goPath('/integralMall/discount')"
 	   			>
 	   				<div class="profile-account-mall__item-prize--pic">
 		   				
@@ -53,7 +53,7 @@
 	   		<li class="profile-account-mall__item-prize">
 	   			<div 
 	   				class="profile-account-mall__item-prize--title"
-	   				@click="goPath('/profile/discount')"
+	   				@click="goPath('/integralMall/discount')"
 	   			>
 	   				<div class="profile-account-mall__item-discount">
 		   				<p class="profile-account-mall__item-discount--number">
@@ -71,7 +71,7 @@
 	   		<li class="profile-account-mall__item-prize">
 	   			<div 
 	   				class="profile-account-mall__item-prize--title"
-	   				@click="goPath('/profile/discount')"
+	   				@click="goPath('/integralMall/discount')"
 	   			>
 	   				<div class="profile-account-mall__item-prize--pic">
 		   				
@@ -83,10 +83,16 @@
 	   			</div>
 	   		</li>
 	   </dx-ul>
+	   	<transition 
+			name="router-slide"  
+			mode='out-in'
+		>
+			<router-view class="full-screen"/>
+		</transition>
    </div>
 </template>
 <script>
-    import DxHeader from '../../common/HeaderPage.vue'
+    import DxHeader from 'pages/common/HeaderPage.vue'
     export default {
         components: {
            DxHeader

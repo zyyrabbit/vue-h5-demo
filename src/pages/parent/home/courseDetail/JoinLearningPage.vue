@@ -23,7 +23,7 @@
 	   			<div>儿童心理达人</div>
        		</div>
        	</div>
-       	<div @click="goNext('/home/period')">
+       	<div @click="goNext('/join/period')">
 	       	<dx-item class="home-course-join__item">
 	       		<div slot="left">上课时间</div>
 	       		<div 
@@ -51,7 +51,7 @@
        			class="text-right"
        		>￥120/学员</div>
        	</dx-item>
-       	<div @click="goNext('/home/edit')">
+       	<div @click="goNext('/join/edit')">
 	       	<dx-item class="home-course-join__item">
 	       		<div slot="left">学员</div>
 	       		<div 
@@ -77,19 +77,25 @@
        			slot="right"
        			class="home-course-join--color-blue text-right"
        		>
-       			<span @click="goNext('/home/pay')">支付宝（默认）</span>
+       			<span @click="goNext('/join/pay')">支付宝（默认）</span>
 			</div>
        	</dx-item>
        	<dx-item class="home-course-join__item">
        		<div slot="left">注意：课程开始前，可申请退款</div>
        	</dx-item>
 	   <price-footer
-	   		to="/home/bookSuccess" 
+	   		to="/join/bookSuccess" 
 	   		price="￥360" 
 	   		priceInfo="￥120X3" 
 	   		btnText="立即支付"
 	   	>
     	</price-footer>
+    	<transition
+			name="router-slide"  
+			mode='out-in'
+		>
+			<router-view class="full-screen"/>
+		</transition>
    	</div>
 </template>
 <script>

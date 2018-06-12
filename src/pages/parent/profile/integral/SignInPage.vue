@@ -5,7 +5,7 @@
 	   		<span 
 	   			slot="next"
 	   			class="profile-account-sign--integral-mall"
-	   			@click="goPath('/profile/integralMall')"
+	   			@click="goNext('/integralMall')"
 	   		>积分商城</span>
 	    </dx-header>
 	    <div class="profile-account-sign__introduce">
@@ -52,11 +52,19 @@
 	   			class="profile-account-sign--submit-btn"
 	   		>签到 今日+25</dx-button>
 	   	</div>
+	   	<transition 
+			name="router-slide"  
+			mode='out-in'
+		>
+			<router-view class="full-screen"/>
+		</transition>
    </div>
 </template>
 <script>
-    import DxHeader from '../../common/HeaderPage.vue'
+	import mixin from 'utils/mixin.js'
+    import DxHeader from 'pages/common/HeaderPage.vue'
     export default {
+		mixins: [mixin],
         components: {
            DxHeader
         },
@@ -67,11 +75,6 @@
 					5: 10,
 					3: 15
 				}
-			}
-		},
-		methods: {
-			goPath(path) {
-				this.$router.push(path)
 			}
 		}
    }

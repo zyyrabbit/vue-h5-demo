@@ -1,10 +1,10 @@
 <template>
     <div 
     	v-footer
-    	class="home-contract-course-detail"
+    	class="home-course-detail"
     >
-    	<div class="home-contract-course-detail--banner"></div>
-    	<div class="home-contract-course-detail__header">
+    	<div class="home-course-detail--banner"></div>
+    	<div class="home-course-detail__header">
 	       	<dx-header>
 	       		<span slot="next">
 	       			<span></span>
@@ -13,39 +13,30 @@
 	       	</dx-header>
        	</div>
        	
-	   	<div class="home-contract-course-detail--item home-contract-course-detail__teacher">
-	   		<p>小学6年级升初中特训班一年合约班</p>
+	   	<div class="home-course-detail--item home-course-detail__teacher">
+	   		<p>趣味科学大百科</p>
 	   		<dx-item>
 	   			<div 
 	   				slot="left"
-	   				class="home-contract-course-detail__teacher--des" 
+	   				class="home-course-detail__teacher--des" 
 	   			>
 	   				<div>老师：奕爸CY</div>
 	   				<div>儿童心理达人</div>
+	   				<div>联系老师</div>
 	   			</div>
 	   			<div 
 	   				slot="right"
-	   				class="home-contract-course-detail__teacher--icon"
+	   				class="home-course-detail__teacher--icon"
 	   			></div>
 	   		</dx-item>
 	   	</div>  
-	   	<div class="home-contract-course-detail--item home-contract-course-detail__introduce">
+	   	<div class="home-course-detail--item home-course-detail__introduce">
 	   		<p>课程介绍</p>
 	   		<p>为了认识世界，孩子们需建立一些科学概念，这些概念可帮助他们总结的经验。还需要学习搜集和组织信息，以及运用和辨别思想的方法。</p>
 	   		<div>阅读更多</div>
-	   	</div>	
-	   	<div class="home-contract-course-detail--item home-contract-course-detail__courses">
-	   		<dx-item>
-	   			<p slot="left">已开课10堂</p>
-	   			<p slot="right">共220堂</p>
-	   		</dx-item>
-	   		<div class="home-contract-course-detail__courses--precess">
-	   			<div class="home-contract-course-detail__courses--started"></div>
-	   		</div>
-	   		<div class="home-contract-course-detail__courses--during">2017年10月12号 至 2018年4月12号</div>
 	   	</div>
-	   	<div class="home-contract-course-detail--item home-contract-course-detail__parent-judge">
-	        <div class="home-contract-course-detail__parent-judge-comment">
+	   	<div class="home-course-detail--item home-course-detail__parent-judge">
+	        <div class="home-course-detail__parent-judge-comment">
 	          <p>家长评价</p>
 	          <p>99+</p>
 	          <dx-star :rating="3" type="small"></dx-star>
@@ -54,18 +45,24 @@
 	        	<dx-comment></dx-comment>
 	        </div>
 	        <div 
-	        	class="home-contract-course-detail__parent-judge--more"
-	        	@click="goNext('/home/judge')"
+	        	class="home-course-detail__parent-judge--more"
+	        	@click="goNext('/courseDetail/judge')"
 	        >查看全部评价</div>
       	</div>
 	   <price-footer 
-	   		to="/home/contJoin" 
-	   		price="¥1220" 
-	   		priceSmall="/半年/学年" 
+	   		to="/join" 
+	   		price="￥60" 
+	   		priceSmall="/小时" 
 	   		priceInfo="评分9.6" 
 	   		btnText="加入学习"
 	   	>
     	</price-footer>
+    	<transition
+			name="router-slide"  
+			mode='out-in'
+		>
+			<router-view class="full-screen"/>
+		</transition>
    	</div>
 </template>
 <script>
@@ -81,7 +78,7 @@
 	}
 </script>
 <style scoped lang="scss">
-	@include b(home-contract-course-detail) {
+	@include b(home-course-detail) {
 		font-size: 0.36rem;
 		padding: 0 0.4rem;
 		@include e(header) {
@@ -138,7 +135,7 @@
 
 		// 课程介绍
 		@include e(introduce) {
-			font-size: 0.42rem;
+			font-size: 0.34rem;
 			>p:nth-child(1) {
 				font-size: 0.36rem;
 				margin-bottom: 0.25rem;
@@ -148,22 +145,6 @@
 			}
 			div:last-child {
 				color: #57B8D7;
-			}
-		}
-		// 课程进度
-		@include e(courses) {
-			font-size: 0.34rem;
-			@include m(precess) {
-				width: 100%;
-				height: 0.8rem;
-				border-radius: 0.1rem;
-				margin: 0.28rem 0;
-				background-color: #EBEBEB;
-			}
-			@include m(started) {
-				background-color: #FF9CC8;
-				height: 100%;
-				width: 20%;
 			}
 		}
 		// 家长评价

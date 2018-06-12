@@ -1,7 +1,15 @@
-/* 路由切换动画 */
-.router-enter-active, .router-enter-leave {
-	transition: opacity .8s;
+/* 路由fade切换动画 */
+.router-fade-enter-active, .router-fade-leave-active {
+	transition: opacity .4s;
 }
-.router-enter, .router-leave-to {
+.router-fade-enter, .router-fade-leave-to {
+	opacity: 0;
+}
+/* 路由slide互动切换页面 */
+.router-slide-enter-active, .router-slide-leave-active {
+	transition: all .4s;
+}
+.router-slide-enter, .router-slide-leave-to {
+	transform: translate3d(2rem, 0, 0);
 	opacity: 0;
 }

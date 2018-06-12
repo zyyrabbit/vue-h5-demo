@@ -2,7 +2,7 @@
    <div class="index-home">
 		 	<div 
 		 		class="index-home-search"
-		 		@click="goNext('/home/search')"
+		 		@click="goNext('/search')"
 		 	>
 				<dx-input 
 					v-model="searchContent"
@@ -14,13 +14,13 @@
 				</dx-input>
 		 	</div>
    		<!-- 课程 -->
-   		<div class="index-home-course">
+   		<div 
+   			class="index-home-course"
+   			@click="goNext('/courseDetail')"
+   		>
    			<div class="index-home-course__desc clearfix">
    				<span class="index-home--title block--float-left">精选课程</span>
-   				<span 
-   					class="index-home-course__desc--all block--float-right"
-   					@click="goNext('/home/courseDetail')"
-   				>查看全部</span>
+   				<span class="index-home-course__desc--all block--float-right">查看全部</span>
    			</div>
    			<div class="index-home-course__slide">
    				<dx-ul>
@@ -70,7 +70,10 @@
    				<li 
    					class="index-home-star-list__slide-item"
    				>
-   					<div class="index-home-star-teacher">
+   					<div 
+   						class="index-home-star-teacher"
+   						@click="goNext('/teacherDetail')"
+   					>
    						<div class="index-home-star-teacher--icon"></div>
    						<div class="index-home-star-teacher__detail">
    							<div>
@@ -133,7 +136,9 @@
    				<dx-ul>
    					<li  
    					    v-for="index in 2"
-   						class="index-home-course-recommend__slide--item">
+   						class="index-home-course-recommend__slide--item"
+   						@click="goNext('/contDetail')"
+   					>
    						<div class="index-home-course-recommend__slide--item-pic"></div>
    						<div class="index-home-course-recommend__slide--item-desc">
    							</p>
@@ -154,12 +159,6 @@
    			</div>
    		</div>
 		<dx-footer :selectTab="0"></dx-footer>
-		<transition
-			name="router"  
-			mode='out-in'
-		>
-			<router-view class="full-screen"/>
-		</transition>
    </div>
 </template>
 <script>
