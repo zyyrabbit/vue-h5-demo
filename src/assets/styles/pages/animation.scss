@@ -1,6 +1,6 @@
 /* 路由fade切换动画 */
 .router-fade-enter-active, .router-fade-leave-active {
-	transition: opacity .4s;
+	transition: opacity .2s;
 }
 .router-fade-enter, .router-fade-leave-to {
 	opacity: 0;
@@ -10,6 +10,14 @@
 	transition: all .4s;
 }
 .router-slide-enter, .router-slide-leave-to {
-	transform: translate3d(2rem, 0, 0);
+	transform: translate3d(100%, 0, 0);
+	opacity: 0;
+}
+/* 路由从下至上切换动画 */
+.router-updown-enter-active, .router-updown-leave-active {
+	transition: all .4s;
+}
+.router-updown-enter, .router-updown-leave-to {
+	transform: translate3d(0, 100%, 0);
 	opacity: 0;
 }
