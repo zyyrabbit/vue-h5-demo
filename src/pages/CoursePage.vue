@@ -91,7 +91,7 @@
    </div>
 </template>
 <script>
-   import DxFooter from '../common/FooterPage.vue'
+   import DxFooter from 'pages/common/FooterPage.vue'
    import mixin from 'utils/mixin.js'
    export default {
       mixins: [mixin],

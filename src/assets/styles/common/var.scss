@@ -29,10 +29,10 @@ $--index-shopping-cart-z-index: 1 !default;
 $--index-shopping-cart-inner-color: #333 !default;
 
 // homePage页面样式变量
-$--index-home-background: url("../../assets/images/index/home/home_icon_search.png") center center no-repeat !default;
-$--index-home-teacher-male-background: url("../../assets/images/index/home/home_icon_male.png") center center no-repeat !default;
-$--index-home-teacher-role-background: url("../../assets/images/index/home/home_icon_teacher.png") center center no-repeat !default;
-$--index-home-nor: url("../../assets/images/index/home/home_btn_price_nor.png") center center no-repeat !default;
+$--index-home-background: url("../assets/images/index/home/home_icon_search.png") center center no-repeat !default;
+$--index-home-teacher-male-background: url("../assets/images/index/home/home_icon_male.png") center center no-repeat !default;
+$--index-home-teacher-role-background: url("../assets/images/index/home/home_icon_teacher.png") center center no-repeat !default;
+$--index-home-nor: url("../assets/images/index/home/home_btn_price_nor.png") center center no-repeat !default;
 // productsPage页面样式变量
 $--product-nav-font-size: 1.6rem !default;
 $--product-nav-item-border-bottom-color: #e9e9e9 !default;
@@ -66,7 +66,7 @@ $--login-form-font-size: 0.36rem !default;
 $--login-form-item-title-font-size: 0.54rem !default;
 $--login-form-foget-password-link-color: #7E7E7E !default;
 // messagePage页面
-$--message-search-background: url("../../assets/images/index/message_btn_search.png") center center no-repeat !default;;
+$--message-search-background: url("../assets/images/index/message_btn_search.png") center center no-repeat !default;;
 
 // judgePage页面
 $--judge-icon-gray-background: url("../../../assets/images/index/course_icon_score_gray_big.png") center center no-repeat !default;
@@ -152,5 +152,9 @@ $--common-selectd-text-font-color: #57B8D7 !default; //蓝色选中颜色
 $--common-other-text-font-color: #FFAF14 !default; //橙色点缀颜色
 $--common-detail-title-font-color: #333333 !default; // 详情标题
 // 星星(组件调用路径)
-$--star-icon-gray-background: url("../assets/images/index/course_icon_score_gray_big.png") center center no-repeat !default;
-$--star-icon-red-background: url("../assets/images/index/course_icon_score_red_big.png") center center no-repeat !default;
+$--star-icon-gray-background: url("../assets/images/star_gray_small.png") center center no-repeat !default;
+$--star-icon-red-background: url("../assets/images/star_red_small.png") center center no-repeat !default;
+
+// 后退关闭
+$--nav-back-icon: url("../../assets/images/back.png") center center no-repeat !default;
+$--nav-close-icon: url("../../assets/images/close.png") center center no-repeat !default;

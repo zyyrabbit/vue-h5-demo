@@ -42,7 +42,7 @@
    
 </template>
 <script>
-	import DxFooter from '../common/FooterPage.vue'
+	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
 		mixins: [mixin],
@@ -98,7 +98,7 @@
 				height: 1.09rem;
 				margin-right: 0.28rem;
 				border-radius: 50%;
-				background: url('../../assets/images/index/home/teacher1.png');
+				background: url('../assets/images/index/home/teacher1.png');
 				background-size: 100% 100%;
 			}
 			@include e(detail) {

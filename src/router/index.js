@@ -5,10 +5,10 @@ const Register = () => import('pages/RegisterPage.vue')
 const GetPassword = () => import('pages/GetPasswordPage.vue')
 /* 家长 */
 // 主页面
-const HomePage = () => import('pages/parent/HomePage.vue')
-const CoursePage = () => import('pages/parent/CoursePage.vue')
-const MessagePage = () => import('pages/parent/MessagePage.vue')
-const MePage = () => import('pages/parent/MePage.vue')
+const HomePage = () => import('pages/HomePage.vue')
+const CoursePage = () => import('pages/CoursePage.vue')
+const MessagePage = () => import('pages/MessagePage.vue')
+const MePage = () => import('pages/MePage.vue')
 //  首页
 const CourseDetailPage = () => import('pages/parent/home/courseDetail/CourseDetailPage.vue')
 const JoinLearningPage = () => import('pages/parent/home/courseDetail/JoinLearningPage.vue')

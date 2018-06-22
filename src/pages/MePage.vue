@@ -60,7 +60,7 @@
     </div>
 </template>
 <script>
-	import DxFooter from '../common/FooterPage.vue'
+	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
 		mixins: [mixin],
@@ -93,7 +93,7 @@
 				height: 0.88rem;
 			}
 			@include m(setting) {
-				background-color: red;
+				// background-color: red;
 				display: inline-block;
 				width: 0.88rem;
 				height: 0.88rem;
@@ -110,7 +110,8 @@
 				}
 			}
 			@include m(icon) {
-				background-color: red;
+				background: url('../assets/images/index/home/teacher1.png');
+				background-size: 100% 100%;
 				border-radius: 50%;
 				display: inline-block;
 				width: 0.88rem;

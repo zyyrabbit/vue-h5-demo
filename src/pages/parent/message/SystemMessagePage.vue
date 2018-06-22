@@ -1,12 +1,6 @@
 <template>
    <div class="system-message">
-   	  <div class="system-message--title clearfix">
-   	  	<span 
-   	  		class="block--float-left"
-   	  		@click="goBack()"
-   	  	> < </span>
-   	  	系统消息
-   	  </div>
+   	<dx-header><template slot="title">系统消息</template></dx-header>
 	  <ul>
 	  	<li 
 	  		v-for="(message, index) in messages"
@@ -34,7 +28,11 @@
     </div>
 </template>
 <script>
+	import DxHeader from 'pages/common/HeaderPage.vue'
 	export default {
+		components: {
+			DxHeader
+		},
 		data() {
 			return {
 				messages: [

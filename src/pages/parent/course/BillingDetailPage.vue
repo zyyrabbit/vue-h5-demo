@@ -1,14 +1,6 @@
 <template>
    <div class="index-billing">
-         <div class="index-billing--title"> 
-               <span 
-                  @click="goBack()"
-                  class="index-billing--back block--float-left"
-               >
-                  X
-               </span>
-               账单明细
-         </div>
+         <dx-header is-close><template slot="title">账单明细</template></dx-header>
          <div class="index-billing--money">
                +260.00
          </div>
@@ -31,13 +23,17 @@
     </div>
 </template>
 <script>
-   export default {
-      methods: {
-         goBack() {
-            this.$router.go(-1)
-         }
+  import DxHeader from 'pages/common/HeaderPage.vue'
+  export default {
+		components: {
+			DxHeader
+		},
+    methods: {
+      goBack() {
+        this.$router.go(-1)
       }
-   }
+    }
+  }
 </script>
 <style  lang="scss">
    @include b(index-billing) {

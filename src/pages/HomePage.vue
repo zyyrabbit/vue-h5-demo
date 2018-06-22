@@ -163,7 +163,7 @@
 </template>
 <script>
 	// import api from 'api/userApi.js'
-	import DxFooter from '../common/FooterPage.vue'
+	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
 		mixins: [mixin],
@@ -238,7 +238,7 @@
 					border-radius: 0.14rem;
 					width: 100%;
 					height: 3.7rem;
-					background: url('../../assets/images/index/home/wiki.png');
+					background: url('../assets/images/index/home/wiki.png');
 					background-size: 100% 100%;
 					color:transparent;
 				}
@@ -302,7 +302,7 @@
 				border-radius: 0.14rem;
 				width: 100%;
 				height: 3.7rem;
-				background: url('../../assets/images/index/home/new.png');
+				background: url('../assets/images/index/home/new.png');
 				background-size: 100% 100%;
 				color:transparent;
 			}
@@ -339,7 +339,7 @@
 				width: 1.29rem;
 				height: 1.29rem;
 				border-radius: 50%;
-				background: url('../../assets/images/index/home/teacher1.png');
+				background: url('../assets/images/index/home/teacher1.png');
 				background-size: 100% 100%;
 			}
 			@include e(detail) {
@@ -380,7 +380,7 @@
 				@include m(pic) {
 					width: 1.22rem;
 					height: 1.6rem;
-					background: url('../../assets/images/index/home/coming.png');
+					background: url('../assets/images/index/home/coming.png');
 					background-size: 100% 100%;
 				}
 				@include m(desc) {
@@ -417,7 +417,7 @@
 				@include m(item-pic) {
 					width: 3.26rem;
 					height: 2.66rem;
-					background: url('../../assets/images/index/home/recommend.png');
+					background: url('../assets/images/index/home/recommend.png');
 					background-size: 100% 100%;
 				}	
 				@include m(item-desc) {
@@ -447,7 +447,7 @@
 						width: 0.32rem;
 						height: 0.32rem;
 						margin-right: 0.11rem;
-						background: url('../../assets/images/index/home/teacher1.png');
+						background: url('../assets/images/index/home/teacher1.png');
 						background-size: 100% 100%;
 						border-radius: 50%;
 					}

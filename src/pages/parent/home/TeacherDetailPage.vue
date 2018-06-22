@@ -63,7 +63,7 @@
 <style scoped lang="scss">
 	@include b(home-teacher-detail) {
 		font-size: 0.34rem;
-		padding: 0.31rem 0.4rem 0;
+		padding: 0 0.4rem;
 		// 老师介绍
 		@include e(teacher) {
 			@include m(des) {
@@ -78,7 +78,7 @@
 
 			@include m(icon) {
 				width: 1.44rem;
-				height: 1.67rem;
+				height: 1.44rem;
 				border-radius: 50%;
 				background-color: red;
 			}
