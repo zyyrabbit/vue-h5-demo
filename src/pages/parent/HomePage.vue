@@ -39,9 +39,9 @@
    				<div class="index-home-wiki__title--left block--float-left text-ellipsis">趣味科学大百科</div>
    				<div class="index-home-wiki__title--right block--float-right">
    					<dx-ul class="index-home-wiki__title--right-text">
-   						<li>一八CY</li>
-   						<li>3-12</li>
-   						<li>自然科学</li>
+   						<li class="color-blue">一八CY</li>
+   						<li class="color-pink">3-12</li>
+   						<li class="color-orange">自然科学</li>
    					</dx-ul>
    				</div>
    			</div>
@@ -49,7 +49,7 @@
    				<div class="index-home-wiki__desc--detail block--float-left">
    					“通过趣味生动、幽默诙谐的语言，	带领孩子一起探索科学领域。”
    				</div>
-   				<div class="index-home-wiki__desc--price block--float-right">Y 120</div>
+   				<div class="index-home-wiki__desc--price block--float-right">￥120</div>
    			</div>
    		</div>
    		<!-- 本周新课 -->
@@ -162,6 +162,7 @@
    </div>
 </template>
 <script>
+	// import api from 'api/userApi.js'
 	import DxFooter from '../common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
@@ -173,6 +174,10 @@
 			return {
 				searchContent: '',
 				courses: ['1', '2', '3']
+			}
+		},
+		methods: {
+			getPersonalInfo() {
 			}
 		}
 	}
@@ -233,7 +238,9 @@
 					border-radius: 0.14rem;
 					width: 100%;
 					height: 3.7rem;
-					background: red;
+					background: url('../../assets/images/index/home/wiki.png');
+					background-size: 100% 100%;
+					color:transparent;
 				}
 			}
 		}
@@ -295,7 +302,9 @@
 				border-radius: 0.14rem;
 				width: 100%;
 				height: 3.7rem;
-				background: red;
+				background: url('../../assets/images/index/home/new.png');
+				background-size: 100% 100%;
+				color:transparent;
 			}
 		}
 		/* 明星榜单 */
@@ -330,7 +339,8 @@
 				width: 1.29rem;
 				height: 1.29rem;
 				border-radius: 50%;
-				background-color: #444;
+				background: url('../../assets/images/index/home/teacher1.png');
+				background-size: 100% 100%;
 			}
 			@include e(detail) {
 				display: inline-block;
@@ -344,6 +354,7 @@
 					width: 0.32rem;
 					height: 0.32rem;
 					background: $--index-home-teacher-male-background;
+					background-size: 100% 100%;
 					vertical-align: middle;
 				}
 				@include m(role) {
@@ -369,7 +380,8 @@
 				@include m(pic) {
 					width: 1.22rem;
 					height: 1.6rem;
-					background: #666;
+					background: url('../../assets/images/index/home/coming.png');
+					background-size: 100% 100%;
 				}
 				@include m(desc) {
 					margin-left: 0.31rem;
@@ -405,7 +417,8 @@
 				@include m(item-pic) {
 					width: 3.26rem;
 					height: 2.66rem;
-					background: red;
+					background: url('../../assets/images/index/home/recommend.png');
+					background-size: 100% 100%;
 				}	
 				@include m(item-desc) {
 					margin-top: 0.29rem;
@@ -434,7 +447,8 @@
 						width: 0.32rem;
 						height: 0.32rem;
 						margin-right: 0.11rem;
-						background: red;
+						background: url('../../assets/images/index/home/teacher1.png');
+						background-size: 100% 100%;
 						border-radius: 50%;
 					}
 

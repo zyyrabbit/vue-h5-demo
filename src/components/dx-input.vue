@@ -92,6 +92,9 @@
 		border-bottom: 1px solid #D3D3D3;
 		line-height: 0;
 		font-size: 0.36rem;
+		// 修复ios中input自动圆角的问题
+		-webkit-appearance:none;
+		border-radius: 0;
 		@include placeholder {
 			color: #D3D3D3;
 		}

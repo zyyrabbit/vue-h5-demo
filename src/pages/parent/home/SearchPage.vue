@@ -5,10 +5,8 @@
     		<dx-input
     			v-model="searchContent"
     			:inputStyle="inputStyle"
-				placeholder="试试看搜索“英语”"
-				originType="text"
-    		>
-    			<!-- <span class="home-search--input-left"></span> -->
+					placeholder="试试看搜索“英语”"
+					originType="text">
     		</dx-input>
     	</div>
     	<ul class="home-search__content">
@@ -56,6 +54,10 @@
 	}
 </script>
 <style scoped lang="scss">
+input { /* WebKit browsers */
+  line-height:normal;
+	font-size: 20px;
+}
 	@include b(home-search) {
 		font-size: 0.36rem;
 		padding: 0.31rem 0.4rem 0;

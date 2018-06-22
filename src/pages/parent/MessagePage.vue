@@ -21,7 +21,7 @@
 						</span>
 						<span class="index-message-teacher__detail--detl" v-if="!message.system">
 							<span class="index-message-teacher__detail--male"></span>
-							<span class="index-message-teacher__detail--role"></span>
+							<dx-tag class="index-message-teacher__detail--role">老师</dx-tag>
 						</span>
 						<span class="block--float-right">{{message.time}}</span>
 					</div>
@@ -98,7 +98,8 @@
 				height: 1.09rem;
 				margin-right: 0.28rem;
 				border-radius: 50%;
-				background-color: #444;
+				background: url('../../assets/images/index/home/teacher1.png');
+				background-size: 100% 100%;
 			}
 			@include e(detail) {
 				overflow: hidden;
@@ -115,6 +116,7 @@
 				}
 				@include m(detl) {
 					display: flex;
+					align-items: center;
 					flex-grow: 1;
 				}
 				@include m(male) {
@@ -123,13 +125,14 @@
 					width: 0.28rem;
 					height: 0.28rem;
 					background: $--index-home-teacher-male-background;
+					background-size: 100% 100%;
 				}
 				@include m(role) {
 					display: inline-block;
 					margin-left: 0.1rem;
-					width: 0.66rem;
-					height: 0.32rem;
-					background: $--index-home-teacher-role-background;
+					// width: 0.66rem;
+					// height: 0.32rem;
+					// background: $--index-home-teacher-role-background;
 				}
 				@include m(desc) {
 					width: 100%;

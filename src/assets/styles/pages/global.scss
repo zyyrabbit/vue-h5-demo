@@ -107,5 +107,18 @@ a {
   overflow: hidden;
 }
 .text-right {
-   text-align: right;
+  text-align: right;
+}
+.color-blue{
+  color: $--common-selectd-text-font-color;
+}
+.color-pink{
+  color: $--common-price-text-font-color;
+}
+.color-orange{
+  color: $--common-other-text-font-color;
+}
+// ios placeholder会靠上
+::-webkit-input-placeholder{
+  line-height: 1.2f;
 }
