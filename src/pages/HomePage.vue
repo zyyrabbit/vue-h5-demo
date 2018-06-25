@@ -25,10 +25,10 @@
    			<div class="index-home-course__slide">
    				<dx-ul>
    					<li 
-   						v-for="course in courses"
+   						v-for="course in bestCourse"
    						class="index-home-course__slide--item"
+							:style="{backgroundImage: 'url(' + course.courseImage + ')'}"
    					>
-   						{{course}}
    					</li>
    				</dx-ul>
    			</div>
@@ -36,30 +36,28 @@
    		<!-- 百科 -->
    		<div class="index-home-wiki">
    			<div class="index-home-wiki__title clearfix">
-   				<div class="index-home-wiki__title--left block--float-left text-ellipsis">趣味科学大百科</div>
+   				<div class="index-home-wiki__title--left block--float-left text-ellipsis">{{bestCourse[0].courseName}}</div>
    				<div class="index-home-wiki__title--right block--float-right">
    					<dx-ul class="index-home-wiki__title--right-text">
-   						<li class="color-blue">一八CY</li>
+   						<li class="color-blue">翼八CY</li>
    						<li class="color-pink">3-12</li>
    						<li class="color-orange">自然科学</li>
    					</dx-ul>
    				</div>
    			</div>
    			<div class="index-home-wiki__desc clearfix">
-   				<div class="index-home-wiki__desc--detail block--float-left">
-   					“通过趣味生动、幽默诙谐的语言，	带领孩子一起探索科学领域。”
-   				</div>
-   				<div class="index-home-wiki__desc--price block--float-right">￥120</div>
+   				<div class="index-home-wiki__desc--detail block--float-left">{{bestCourse[0].courseRecommend}}</div>
+   				<div class="index-home-wiki__desc--price block--float-right">￥{{bestCourse[0].coursePrice}}</div>
    			</div>
    		</div>
    		<!-- 本周新课 -->
    		<div class="index-home-course-new">
 	   		<dx-ul>
    				<li 
-   					v-for="course in courses"
+   					v-for="course in newCourse"
    					class="index-home-course-new__slide-item"
+						:style="{backgroundImage: 'url(' + course.courseImage + ')'}"
    				>
-   					{{course}}
    				</li>
 	   		</dx-ul>
    		</div>
@@ -162,7 +160,9 @@
    </div>
 </template>
 <script>
-	// import api from 'api/userApi.js'
+	import {mapState, mapMutations} from 'vuex'
+	import uapi from 'api/userApi.js'
+	import capi from 'api/courseApi.js'
 	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
@@ -176,8 +176,33 @@
 				courses: ['1', '2', '3']
 			}
 		},
+		computed: {
+			...mapState({
+				bestCourse: state => state.homePage.A,
+				newCourse: state => state.homePage.B
+			})
+		},
+		mounted() {
+			this.getPersonalInfo()
+		},
 		methods: {
+			...mapMutations([
+				'RECORD_USERINFO',
+				'SET_HOMEPAGE'
+			]),
 			getPersonalInfo() {
+				// FIXME
+				uapi.loginParent().then(r => {
+					console.info(r)
+					this.RECORD_USERINFO(r.data)
+					this.getHomePageData()
+				})
+			},
+			getHomePageData() {
+				capi.fetchHomepage().then(r => {
+					console.info(r)
+					this.SET_HOMEPAGE(r.data)
+				})
 			}
 		}
 	}

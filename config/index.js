@@ -4,7 +4,7 @@ const path = require("path");
 const BASE_PATH = path.join(path.resolve(__dirname, '../'));
 
 module.exports = {
-	//webpaack打开地址
+	//webpack打开地址
     APP_PATH: BASE_PATH,
     HTML_PATH: path.join(BASE_PATH, 'index.html'),
     STYLE_PATH: './styles',
@@ -15,7 +15,7 @@ module.exports = {
     PUBLIC_PATH: '/business/', // 服务器存放根目录
     PORT: 9000,
     //请求资源地址
-    REQUEST_ADDR:'http://localhost:8080/business',
+    REQUEST_ADDR:'/mobile-edurental-mgr/',
 
     build: {
         env: require('./prod.env'),

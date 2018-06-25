@@ -22,12 +22,12 @@ http.interceptors.response.use(
   response => {
     // FIXME
     if (response.data.resultCode === '0') {
-      return response
+      return Promise.resolve(response.data)
     } else if (response.data.resultCode === '-999') {
       // TODO
     } else {
       ResponseNullError(response.data.resultMsg)
-      return Promise.reject(response)
+      return Promise.reject(response.data)
     }
   },
   error => {

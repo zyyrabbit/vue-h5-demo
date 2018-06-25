@@ -50,6 +50,7 @@
 						<p>意见反馈</p>
 					</template>
 				</dx-cell-item>
+				{{latitude}}
    	    <dx-footer :selectTab="3"></dx-footer>
    	    <transition 
 			name="router-slide"  
@@ -60,6 +61,7 @@
     </div>
 </template>
 <script>
+  // import {mapState, mapMutations} from 'vuex'
 	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
@@ -67,7 +69,16 @@
 		components: {
 			DxFooter
 		},
+		computed: {
+			// ...mapState({
+			// 	latitude: state => state.latitude
+			// })
+		},
 		methods: {
+			// ...mapMutations([
+			// 	'RECORD_USERINFO'
+			// 	// this.RECORD_USERINFO(this.userInfo)
+			// ]),
 			goPath(path) {
 				this.$router.push(path)
 			}

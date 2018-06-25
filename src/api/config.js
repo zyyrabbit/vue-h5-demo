@@ -1,1 +1,0 @@
-export const REQUEST_ADDR = 'mobile-edurental-mgr/'

@@ -12,15 +12,22 @@ module.exports = webpackMerge(webpackConfig, {
     	new webpack.HotModuleReplacementPlugin()
     ],
     devServer:{
-    	    publicPath: config.PUBLIC_PATH,
-		    stats: {
-		        colors: true //显示不同的颜色区分打包的文件
-		    },
-		    // 热重载默认关闭，现在开启
-		    hot:true,
-		    // 项目根目录下的 output 目录设置成 DevServer 服务器的文件根目录
-		    contentBase: config.OUTPUT_PATH,
-		    port:9090,
-		    index:'index.html'
+		publicPath: config.PUBLIC_PATH,
+		stats: {
+			colors: true //显示不同的颜色区分打包的文件
+		},
+		// 热重载默认关闭，现在开启
+		hot:true,
+		// 项目根目录下的 output 目录设置成 DevServer 服务器的文件根目录
+		contentBase: config.OUTPUT_PATH,
+		port:9090,
+		index:'index.html',
+		proxy: {
+			'/mobile-edurental-mgr/*': {
+				target: 'http://39.104.67.0:8443/',
+				changeOrigin: true,
+				secure: false
+			}
+		}
 	}
 })

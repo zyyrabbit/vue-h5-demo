@@ -171,6 +171,24 @@ const setFirst = (array, prop, key) => {
          return array
 }
 
+const setStore = (name, content) => {
+  if (!name) return
+  if (typeof content !== 'string') {
+    content = JSON.stringify(content)
+  }
+  window.localStorage.setItem(name, content)
+}
+
+const getStore = name => {
+  if (!name) return
+  return window.localStorage.getItem(name)
+}
+
+const removeStore = name => {
+  if (!name) return
+  window.localStorage.removeItem(name)
+}
+
 export {
   getStyle,
   hasOwn,
@@ -182,7 +200,11 @@ export {
   _Cookies,
   contains,
   setFirst,
-  arrayObjSplice
+  arrayObjSplice,
+  setStore,
+  getStore,
+  removeStore
+
 }
 // 需要封装的方法
 /* 数组去重，打乱数组，统计数组各个元素出现的次数， 字符串各个字符的出现次数，获取地址链接的各个参数 */
