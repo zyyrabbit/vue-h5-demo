@@ -1,43 +1,46 @@
+import Store from 'store'
 import VueRouter from 'vue-router'
-// 方案2---路由懒加载
+
 const Login = () => import('pages/LoginPage.vue')
 const Register = () => import('pages/RegisterPage.vue')
 const GetPassword = () => import('pages/GetPasswordPage.vue')
-/* 家长 */
-// 主页面
-const HomePage = () => import('pages/HomePage.vue')
-const CoursePage = () => import('pages/CoursePage.vue')
-const MessagePage = () => import('pages/MessagePage.vue')
-const MePage = () => import('pages/MePage.vue')
-//  首页
-const CourseDetailPage = () => import('pages/parent/home/courseDetail/CourseDetailPage.vue')
-const JoinLearningPage = () => import('pages/parent/home/courseDetail/JoinLearningPage.vue')
-const LessonPeriodPage = () => import('pages/parent/home/courseDetail/LessonPeriodPage.vue')
-const PayMethodPage = () => import('pages/parent/home/courseDetail/PayMethodPage.vue')
-const EditStudentPage = () => import('pages/parent/home/courseDetail/EditStudentPage.vue')
+// 公共主页面
+const HomePage = () => import('pages/share/HomePage.vue')
+const MessagePage = () => import('pages/share/MessagePage.vue')
+const MePage = () => import('pages/share/MePage.vue')
+// 首页
+const CourseDetailPage = () => import('pages/share/home/courseDetail/CourseDetailPage.vue')
+const JoinLearningPage = () => import('pages/share/home/courseDetail/JoinLearningPage.vue')
+const LessonPeriodPage = () => import('pages/share/home/courseDetail/LessonPeriodPage.vue')
+const PayMethodPage = () => import('pages/share/home/courseDetail/PayMethodPage.vue')
+const EditStudentPage = () => import('pages/share/home/courseDetail/EditStudentPage.vue')
 // const AddStudentPage = () => import('pages/parent/home/courseDetail/AddStudentPage.vue')
-const CourseJudgePage = () => import('pages/parent/home/courseDetail/CourseJudgePage.vue')
-const BookSuccessPage = () => import('pages/parent/home/courseDetail/BookSuccessPage.vue')
+const CourseJudgePage = () => import('pages/share/home/courseDetail/CourseJudgePage.vue')
+const BookSuccessPage = () => import('pages/share/home/courseDetail/BookSuccessPage.vue')
 
-const ContractCourseDetailPage = () => import('pages/parent/home/contractCourseDetail/ContractCourseDetailPage.vue')
-const ContractJoinLearningPage = () => import('pages/parent/home/contractCourseDetail/ContractJoinLearningPage.vue')
-const ContractLessonPeriodPage = () => import('pages/parent/home/contractCourseDetail/ContractLessonPeriodPage.vue')
-const SearchPage = () => import('pages/parent/home/SearchPage.vue')
-const SearchResultPage = () => import('pages/parent/home/SearchResultPage.vue')
-const TeacherDetailPage = () => import('pages/parent/home/TeacherDetailPage.vue')
+const ContractCourseDetailPage = () => import('pages/share/home/contractCourseDetail/ContractCourseDetailPage.vue')
+const ContractJoinLearningPage = () => import('pages/share/home/contractCourseDetail/ContractJoinLearningPage.vue')
+const ContractLessonPeriodPage = () => import('pages/share/home/contractCourseDetail/ContractLessonPeriodPage.vue')
+const SearchPage = () => import('pages/share/home/SearchPage.vue')
+const SearchResultPage = () => import('pages/share/home/SearchResultPage.vue')
+const TeacherDetailPage = () => import('pages/share/home/TeacherDetailPage.vue')
+// 消息页面组
+const SystemMessagePage = () => import('pages/share/message/SystemMessagePage.vue')
+const ChatPage = () => import('pages/share/message/ChatPage.vue')
+const SearchTeacherPage = () => import('pages/share/message/SearchTeacherPage.vue')
+// 个人
+const AccountSettingPage = () => import('pages/share/profile/setting/AccountSettingPage.vue')
+const PwdModPage = () => import('pages/share/profile/setting/PwdModPage.vue')
+const TelephoneModPage = () => import('pages/share/profile/setting/TelephoneModPage.vue')
 
+/* 家长页面组 */
+// 家长tabs主页面
+const CoursePage = () => import('pages/parent/CoursePage.vue')
 // 上课页面组
 const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vue')
 const JudgePage = () => import('pages/parent/course/JudgePage.vue')
 const EvalPage = () => import('pages/parent/course/evaluatePage.vue')
-// 消息页面组
-const SystemMessagePage = () => import('pages/parent/message/SystemMessagePage.vue')
-const ChatPage = () => import('pages/parent/message/ChatPage.vue')
-const SearchTeacherPage = () => import('pages/parent/message/SearchTeacherPage.vue')
 // 个人账户
-const AccountSettingPage = () => import('pages/parent/profile/setting/AccountSettingPage.vue')
-const PwdModPage = () => import('pages/parent/profile/setting/PwdModPage.vue')
-const TelephoneModPage = () => import('pages/parent/profile/setting/TelephoneModPage.vue')
 const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
 const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
 const SignInPage = () => import('pages/parent/profile/integral/SignInPage.vue')
@@ -45,6 +48,8 @@ const EditPage = () => import('pages/parent/profile/EditPage.vue')
 const IntegralMallPage = () => import('pages/parent/profile/integral/IntegralMallPage.vue')
 const ExchangeRecordPage = () => import('pages/parent/profile/integral/ExchangeRecordPage.vue')
 const DiscountDetailPage = () => import('pages/parent/profile/integral/DiscountDetailPage.vue')
+
+/* 老师页面组 */
 // 场地页面
 const PlacePage = () => import('pages/teacher/place/PlacePage.vue')
 const SelectRegionPage = () => import('pages/teacher/place/SelectRegionPage.vue')
@@ -52,12 +57,13 @@ const PlaceDetlPage = () => import('pages/teacher/place/PlaceDetlPage.vue')
 const BookDetlPage = () => import('pages/teacher/place/BookDetlPage.vue')
 const BookSuccPage = () => import('pages/teacher/place/BookSuccessPage.vue')
 const RelateCoursePage = () => import('pages/teacher/place/RelateCoursePage.vue')
+// 个人账户（老师）
 
-const pubRoutes = [
+const routes = [
 		{ path: '/', component: HomePage, hidden: true },
-		{ path: '/login', component: Login, hidden: true },
-		{ path: '/reg', component: Register, hidden: true },
-		{ path: '/getpwd', component: GetPassword, hidden: true },
+		{ path: '/login', name: 'login', component: Login, hidden: true },
+		{ path: '/reg', name: 'reg', component: Register, hidden: true },
+		{ path: '/getpwd', name: 'getpwd', component: GetPassword, hidden: true },
 		{ path: '/home', component: HomePage, hidden: true },
 		// 课程详情
 		{
@@ -144,6 +150,19 @@ const pubRoutes = [
 			]
 		}
 	]
-export default new VueRouter({
-	routes: pubRoutes
+const router = new VueRouter({
+	/* scrollBehavior(to, from, savedPosition) {
+		return { x: 0, y: 0 }
+	}, */
+	routes: routes
 })
+const allowPage = ['login', 'reg', 'getpwd']
+router.beforeEach((to, from, next) => {
+	let login = Store.state.login
+	if (!login && allowPage.indexOf(to.name) === -1) {
+		next({ path: '/login' })
+	} else {
+		next()
+	}
+})
+export default router

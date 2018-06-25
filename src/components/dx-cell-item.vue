@@ -1,16 +1,16 @@
 <template>
 	<!-- 两列排列 -->
     <div class="dx-cell-item clearfix" @click="goPath()">
-			<dx-item>
-				<template slot="left">
-						<slot name="left"></slot>
-				</template>
-				<template slot="right">
-					<div :class="{'can-access': canAccess}" class="cell-right">
-						<slot name="right"></slot>
-					</div>
-		    </template>
-			</dx-item>
+		<dx-item>
+			<template slot="left">
+					<slot name="left"></slot>
+			</template>
+			<template slot="right">
+				<div :class="{'can-access': canAccess}" class="cell-right">
+					<slot name="right"></slot>
+				</div>
+	    	</template>
+		</dx-item>
     </div>
 </template>
 <script>
@@ -35,7 +35,7 @@
 	padding: 0.56rem 0;
 	position: relative;
 	font-size: $--common-subtitle-font-size;
-  color: $--common-text-font-color;
+  	color: $--common-text-font-color;
 	&:before {
 		content: " ";
 		position: absolute;
@@ -53,7 +53,7 @@
 		}
 	}
 	.can-access{
-		color:$--common-selectd-text-font-color;
+		color: $--common-selectd-text-font-color;
 	}
 	.cell-right{
 		max-width: 3.8rem;

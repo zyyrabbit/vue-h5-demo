@@ -3,7 +3,7 @@ import {
   RECORD_USERINFO,
   SET_HOMEPAGE
 } from './mutation-types.js'
-import { setStore } from '../utils/utils'
+import { setStore } from 'utils/utils'
 
 export default {
   [SET_HOMEPAGE](state, data) {

@@ -76,9 +76,7 @@ export default{
 	},
 	methods: {
 		...mapMutations({
-			setToken: Types.SET_TOKEN,
-			setAuthInfo: Types.SET_AUTH_INFO,
-			setCustInfo: Types.SET_CUST_INFO
+			recordUserinfo: Types.RECORD_USERINFO
 		}),
 		submit(formName) {
 			this.isLogining = true
@@ -89,6 +87,14 @@ export default{
 					params.custName = this.model.userName
 					params.custPassword = this.model.password
 					params.isRememberMe = this.model.isRememberMe
+					// 模拟登陆
+					let role = params.custName === '0' ? 0 : 1
+					this.recordUserinfo({
+						userId: 1,
+						tokenId: 123,
+						role
+					})
+					this.$router.push('/home')
 					try {
 					} catch (e) {
 						this.errorMsg = e.message

@@ -1,6 +1,12 @@
 <template>
    <div class="chat-message">
-   	  <dx-header><template slot="title">杨帆</template></dx-header>
+   	  <div class="chat-message--title clearfix">
+   	  	<span 
+   	  		class="block--float-left"
+   	  		@click="goBack()"
+   	  	> < </span>
+   	  	杨帆
+   	  </div>
 	  <ul>
 	  	<li 
 	  		v-for="(message, index) in messages"
@@ -38,11 +44,7 @@
     </div>
 </template>
 <script>
-	import DxHeader from 'pages/common/HeaderPage.vue'
 	export default {
-		components: {
-			DxHeader
-		},
 		data() {
 			return {
 				messages: [

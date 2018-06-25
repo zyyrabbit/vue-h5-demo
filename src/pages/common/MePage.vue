@@ -27,30 +27,7 @@
    	    		>编辑个人资料</span>
    	    	</div>
    	    </div>
-				<dx-cell-item to='profile/sign'>
-					<template slot="left">
-						<p>上课记录</p>
-					</template>
-				</dx-cell-item>
-				<dx-cell-item to='/sign'>
-					<template slot="left">
-						<p>会员签到</p>
-					</template>
-					<template slot="right">
-						<p>2998积分</p>
-					</template>
-				</dx-cell-item>
-				<dx-cell-item to='profile/invitefriends'>
-					<template slot="left">
-						<p>邀请好友</p>
-					</template>
-				</dx-cell-item>		
-				<dx-cell-item to='profile/advise'>
-					<template slot="left">
-						<p>意见反馈</p>
-					</template>
-				</dx-cell-item>
-				{{latitude}}
+   	    <dx-item-list :items="items"></dx-item-list>
    	    <dx-footer :selectTab="3"></dx-footer>
    	    <transition 
 			name="router-slide"  
@@ -61,24 +38,20 @@
     </div>
 </template>
 <script>
-  // import {mapState, mapMutations} from 'vuex'
 	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
+	import { profile } from 'pages/share/profile/model.js'
 	export default {
 		mixins: [mixin],
 		components: {
 			DxFooter
 		},
-		computed: {
-			// ...mapState({
-			// 	latitude: state => state.latitude
-			// })
+		data() {
+			return {
+				items: profile
+			}
 		},
 		methods: {
-			// ...mapMutations([
-			// 	'RECORD_USERINFO'
-			// 	// this.RECORD_USERINFO(this.userInfo)
-			// ]),
 			goPath(path) {
 				this.$router.push(path)
 			}
@@ -104,7 +77,7 @@
 				height: 0.88rem;
 			}
 			@include m(setting) {
-				// background-color: red;
+				background-color: red;
 				display: inline-block;
 				width: 0.88rem;
 				height: 0.88rem;
@@ -121,8 +94,7 @@
 				}
 			}
 			@include m(icon) {
-				background: url('../assets/images/index/home/teacher1.png');
-				background-size: 100% 100%;
+				background-color: red;
 				border-radius: 50%;
 				display: inline-block;
 				width: 0.88rem;

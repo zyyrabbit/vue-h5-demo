@@ -5,8 +5,10 @@
     		<dx-input
     			v-model="searchContent"
     			:inputStyle="inputStyle"
-					placeholder="试试看搜索“英语”"
-					originType="text">
+				placeholder="试试看搜索“英语”"
+				originType="text"
+    		>
+    			<!-- <span class="home-search--input-left"></span> -->
     		</dx-input>
     	</div>
     	<ul class="home-search__content">
@@ -14,9 +16,11 @@
     			v-for="index in 3" 
     			:key="index"
     			class="home-search__content-item"
-    			@click="goNext('/home/searchResult')"
     		>
-    			<dx-item alignItem="top">
+    			<dx-item 
+    				alignItem="top"
+    				to="/searchResult"
+    			>
     				<div slot="left" class="home-search__content-item--desc">
 		    			<p>我的第一个英语小对话</p>
 		    			<p>
@@ -54,10 +58,6 @@
 	}
 </script>
 <style scoped lang="scss">
-input { /* WebKit browsers */
-  line-height:normal;
-	font-size: 20px;
-}
 	@include b(home-search) {
 		font-size: 0.36rem;
 		padding: 0.31rem 0.4rem 0;

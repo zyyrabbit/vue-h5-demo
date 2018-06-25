@@ -3,6 +3,7 @@
     <div 
         class="dx-item"
         :class="[alignItem ? 'dx-item-' + alignItem : '']"
+        @click="goNext(to)"
     >
     	<div 
     		v-if="$slots.left"
@@ -18,6 +19,18 @@
     	</div>
     </div>
 </template>
+<script>
+    import mixin from 'utils/mixin.js'
+	export default {
+		name: 'DxItem',
+		componentName: 'DxItem',
+        mixins: [mixin],
+        props: {
+            alignItem: String,
+            to: [String, Object]
+        }
+	}
+</script>
 <style>
     .dx-item {
         display: flex;
@@ -35,13 +48,4 @@
         align-items: flex-end;
     }
 </style>
-<script>
-	export default {
-		name: 'DxItem',
-		componentName: 'DxItem',
-        props: {
-            alignItem: String
-        }
-	}
-</script>
 

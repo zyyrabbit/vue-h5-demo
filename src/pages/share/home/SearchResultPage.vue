@@ -6,7 +6,7 @@
     	</div>
     	<div 
     		class="home-search-result-content"
-    		@click="goNext('/home/courseDetail')"
+    		@click="goNext('/courseDetail')"
     	>
     		<div class="home-search-result-content--pic"></div>
 			<dx-item class="home-search-result-content__title">

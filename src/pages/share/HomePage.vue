@@ -25,10 +25,10 @@
    			<div class="index-home-course__slide">
    				<dx-ul>
    					<li 
-   						v-for="course in bestCourse"
+   						v-for="course in courses"
    						class="index-home-course__slide--item"
-							:style="{backgroundImage: 'url(' + course.courseImage + ')'}"
    					>
+   						{{course}}
    					</li>
    				</dx-ul>
    			</div>
@@ -36,28 +36,30 @@
    		<!-- 百科 -->
    		<div class="index-home-wiki">
    			<div class="index-home-wiki__title clearfix">
-   				<div class="index-home-wiki__title--left block--float-left text-ellipsis">{{bestCourse[0].courseName}}</div>
+   				<div class="index-home-wiki__title--left block--float-left text-ellipsis">趣味科学大百科</div>
    				<div class="index-home-wiki__title--right block--float-right">
    					<dx-ul class="index-home-wiki__title--right-text">
-   						<li class="color-blue">翼八CY</li>
-   						<li class="color-pink">3-12</li>
-   						<li class="color-orange">自然科学</li>
+   						<li>一八CY</li>
+   						<li>3-12</li>
+   						<li>自然科学</li>
    					</dx-ul>
    				</div>
    			</div>
    			<div class="index-home-wiki__desc clearfix">
-   				<div class="index-home-wiki__desc--detail block--float-left">{{bestCourse[0].courseRecommend}}</div>
-   				<div class="index-home-wiki__desc--price block--float-right">￥{{bestCourse[0].coursePrice}}</div>
+   				<div class="index-home-wiki__desc--detail block--float-left">
+   					“通过趣味生动、幽默诙谐的语言，	带领孩子一起探索科学领域。”
+   				</div>
+   				<div class="index-home-wiki__desc--price block--float-right">Y 120</div>
    			</div>
    		</div>
    		<!-- 本周新课 -->
    		<div class="index-home-course-new">
 	   		<dx-ul>
    				<li 
-   					v-for="course in newCourse"
+   					v-for="course in courses"
    					class="index-home-course-new__slide-item"
-						:style="{backgroundImage: 'url(' + course.courseImage + ')'}"
    				>
+   					{{course}}
    				</li>
 	   		</dx-ul>
    		</div>
@@ -160,10 +162,7 @@
    </div>
 </template>
 <script>
-	import {mapState, mapMutations} from 'vuex'
-	import uapi from 'api/userApi.js'
-	import capi from 'api/courseApi.js'
-	import DxFooter from 'pages/common/FooterPage.vue'
+	import DxFooter from '../common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
 		mixins: [mixin],
@@ -174,35 +173,6 @@
 			return {
 				searchContent: '',
 				courses: ['1', '2', '3']
-			}
-		},
-		computed: {
-			...mapState({
-				bestCourse: state => state.homePage.A,
-				newCourse: state => state.homePage.B
-			})
-		},
-		mounted() {
-			this.getPersonalInfo()
-		},
-		methods: {
-			...mapMutations([
-				'RECORD_USERINFO',
-				'SET_HOMEPAGE'
-			]),
-			getPersonalInfo() {
-				// FIXME
-				uapi.loginParent().then(r => {
-					console.info(r)
-					this.RECORD_USERINFO(r.data)
-					this.getHomePageData()
-				})
-			},
-			getHomePageData() {
-				capi.fetchHomepage().then(r => {
-					console.info(r)
-					this.SET_HOMEPAGE(r.data)
-				})
 			}
 		}
 	}
@@ -263,9 +233,7 @@
 					border-radius: 0.14rem;
 					width: 100%;
 					height: 3.7rem;
-					background: url('../assets/images/index/home/wiki.png');
-					background-size: 100% 100%;
-					color:transparent;
+					background: red;
 				}
 			}
 		}
@@ -327,9 +295,7 @@
 				border-radius: 0.14rem;
 				width: 100%;
 				height: 3.7rem;
-				background: url('../assets/images/index/home/new.png');
-				background-size: 100% 100%;
-				color:transparent;
+				background: red;
 			}
 		}
 		/* 明星榜单 */
@@ -364,8 +330,7 @@
 				width: 1.29rem;
 				height: 1.29rem;
 				border-radius: 50%;
-				background: url('../assets/images/index/home/teacher1.png');
-				background-size: 100% 100%;
+				background-color: #444;
 			}
 			@include e(detail) {
 				display: inline-block;
@@ -379,7 +344,6 @@
 					width: 0.32rem;
 					height: 0.32rem;
 					background: $--index-home-teacher-male-background;
-					background-size: 100% 100%;
 					vertical-align: middle;
 				}
 				@include m(role) {
@@ -405,8 +369,7 @@
 				@include m(pic) {
 					width: 1.22rem;
 					height: 1.6rem;
-					background: url('../assets/images/index/home/coming.png');
-					background-size: 100% 100%;
+					background: #666;
 				}
 				@include m(desc) {
 					margin-left: 0.31rem;
@@ -442,8 +405,7 @@
 				@include m(item-pic) {
 					width: 3.26rem;
 					height: 2.66rem;
-					background: url('../assets/images/index/home/recommend.png');
-					background-size: 100% 100%;
+					background: red;
 				}	
 				@include m(item-desc) {
 					margin-top: 0.29rem;
@@ -472,8 +434,7 @@
 						width: 0.32rem;
 						height: 0.32rem;
 						margin-right: 0.11rem;
-						background: url('../assets/images/index/home/teacher1.png');
-						background-size: 100% 100%;
+						background: red;
 						border-radius: 50%;
 					}
 

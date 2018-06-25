@@ -21,7 +21,7 @@
 						</span>
 						<span class="index-message-teacher__detail--detl" v-if="!message.system">
 							<span class="index-message-teacher__detail--male"></span>
-							<dx-tag class="index-message-teacher__detail--role">老师</dx-tag>
+							<span class="index-message-teacher__detail--role"></span>
 						</span>
 						<span class="block--float-right">{{message.time}}</span>
 					</div>
@@ -42,7 +42,7 @@
    
 </template>
 <script>
-	import DxFooter from 'pages/common/FooterPage.vue'
+	import DxFooter from '../common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
 		mixins: [mixin],
@@ -98,8 +98,7 @@
 				height: 1.09rem;
 				margin-right: 0.28rem;
 				border-radius: 50%;
-				background: url('../assets/images/index/home/teacher1.png');
-				background-size: 100% 100%;
+				background-color: #444;
 			}
 			@include e(detail) {
 				overflow: hidden;
@@ -116,7 +115,6 @@
 				}
 				@include m(detl) {
 					display: flex;
-					align-items: center;
 					flex-grow: 1;
 				}
 				@include m(male) {
@@ -125,14 +123,13 @@
 					width: 0.28rem;
 					height: 0.28rem;
 					background: $--index-home-teacher-male-background;
-					background-size: 100% 100%;
 				}
 				@include m(role) {
 					display: inline-block;
 					margin-left: 0.1rem;
-					// width: 0.66rem;
-					// height: 0.32rem;
-					// background: $--index-home-teacher-role-background;
+					width: 0.66rem;
+					height: 0.32rem;
+					background: $--index-home-teacher-role-background;
 				}
 				@include m(desc) {
 					width: 100%;

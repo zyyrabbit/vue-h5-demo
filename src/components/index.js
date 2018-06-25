@@ -7,6 +7,7 @@ import DxCheckbox from './dx-checkbox.vue'
 import DxCheckboxGroup from './dx-checkbox-group.vue'
 import DxRate from './dx-rate.vue'
 import DxItem from './dx-item.vue'
+import DxItemList from './dx-item-list.vue'
 import DxCalender from './calendar/dx-calendar.vue'
 import DxTabs from './dx-tabs.vue'
 import DxCellItem from './dx-cell-item.vue'
@@ -24,6 +25,7 @@ const components = [
 	DxCheckboxGroup,
 	DxRate,
 	DxItem,
+	DxItemList,
 	DxCalender,
 	DxTabs,
 	DxCellItem,

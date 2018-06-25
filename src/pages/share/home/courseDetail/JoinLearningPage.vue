@@ -23,18 +23,19 @@
 	   			<div>儿童心理达人</div>
        		</div>
        	</div>
-       	<div @click="goNext('/join/period')">
-	       	<dx-item class="home-course-join__item">
-	       		<div slot="left">上课时间</div>
-	       		<div 
-	       			slot="right" 
-	       			class="home-course-join--color-blue text-right"
-	       		>
-	       			<p>4月11号</p>
-					<p>19:00~21:00</p>
-				</div>
-	       	</dx-item>
-       	</div>
+       	<dx-item 
+       		class="home-course-join__item"
+       		to="/join/period"
+       	>
+       		<div slot="left">上课时间</div>
+       		<div 
+       			slot="right" 
+       			class="home-course-join--color-blue text-right"
+       		>
+       			<p>4月11号</p>
+				<p>19:00~21:00</p>
+			</div>
+       	</dx-item>
        	<dx-item class="home-course-join__item">
        		<div slot="left">上课地点</div>
        		<p 
@@ -51,18 +52,19 @@
        			class="text-right"
        		>￥120/学员</div>
        	</dx-item>
-       	<div @click="goNext('/join/edit')">
-	       	<dx-item class="home-course-join__item">
-	       		<div slot="left">学员</div>
-	       		<div 
-	       			slot="right"
-	       			class="home-course-join--color-blue home-course-join--student text-right"
-	       		>
-	       			<p>Yummy</p>
-					<p>陈粒</p>
-				</div>
-	       	</dx-item>
-       	</div>
+       	<dx-item 
+       		class="home-course-join__item"
+       		to="/join/edit"
+       	>
+       		<div slot="left">学员</div>
+       		<div 
+       			slot="right"
+       			class="home-course-join--color-blue home-course-join--student text-right"
+       		>
+       			<p>Yummy</p>
+				<p>陈粒</p>
+			</div>
+       	</dx-item>
        	<dx-item class="home-course-join__item">
        		<div slot="left">联系电话</div>
    			<input 
