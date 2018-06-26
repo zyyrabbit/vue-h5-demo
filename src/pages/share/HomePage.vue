@@ -39,7 +39,7 @@
 										<dx-ul class="index-home-wiki__title--right-text">
 											<li class="color-blue">{{course.user.name}}</li>
 											<li class="color-pink">3-12</li>
-											<li class="color-orange">自然科学</li>
+											<li class="color-orange">{{course.category.categoryName}}</li>
 										</dx-ul>
 									</div>
 								</div>
