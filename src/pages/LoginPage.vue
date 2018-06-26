@@ -116,10 +116,11 @@ export default{
 </script>
 
 <style scoped lang="scss">
-
 	@include b(login) {
+		height: 100%;
 		background: $--login-background;
-		posiiton: relative;
+		background-size: 100% 100%;
+		position: relative;
 		padding: 0;
 		font-size: $--login-form-font-size;
 		@include b(login-form) {
