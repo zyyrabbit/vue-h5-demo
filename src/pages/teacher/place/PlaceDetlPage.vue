@@ -88,6 +88,8 @@
   &--header-bg{
     height: 4.14rem;
     background: #BAB7B1;
+    background: $--place-room-pic;
+    background-size: 100% 100%;    
     // width: 100%;
     // position: absolute;
     // top: 0;
@@ -95,7 +97,7 @@
   }
   &--cont{
     padding: 0.34rem 0.4rem;
-    padding-bottom: 1.2rem;
+    // padding-bottom: 1.2rem;
     &--icons{
       padding: 0.56rem 0.1rem 0.73rem;
       display: flex;
@@ -136,7 +138,7 @@
     }
     &-comm{
       border-top: 0.02rem solid #e5e5e5;
-      padding: 0.56rem 0; 
+      padding-top: 0.56rem; 
     }
     &-comment{
       display: flex;

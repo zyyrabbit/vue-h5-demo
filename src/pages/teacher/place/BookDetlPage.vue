@@ -141,7 +141,8 @@
     &-pic{
       width: 2.33rem;
       height: 1.9rem;
-      background: $--common-price-text-font-color;
+      background: $--place-room-pic;
+      background-size: 100% 100%;
       border-radius: 0.1rem;
     }
     &-detl{
@@ -187,9 +188,6 @@
   }
   &-comment-amount{
     font-size: $--common-button-text-font-size;
-  }
-  &-list{
-    padding-bottom: 1.2rem;
   }
 }
 </style>

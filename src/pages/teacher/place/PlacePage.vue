@@ -189,7 +189,9 @@
     @include m(banner) {
       height: 2.24rem;
       border-radius: 0.2rem;
-      background: #FF778C;
+      // background: #FF778C;
+      background: $--place-banner;
+      background-size: 100% 100%;
     }
     @include m(tab) {
       position: relative;
@@ -220,7 +222,8 @@
       width: 2.1rem;
       height: 1.7rem;
       flex-shrink: 0;
-      background: #FF778C;
+      background: $--place-room-pic;
+      background-size: 100% 100%;
     }
     @include m(row-detl){
       padding-left: 0.3rem;
