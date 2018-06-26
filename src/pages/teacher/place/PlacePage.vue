@@ -1,5 +1,5 @@
 <template>
-  <div class="index-place">
+  <div class="index-place" v-footer>
     <div>
       <div class="index-place--title">
         <p>南京市仙林校区</p>
