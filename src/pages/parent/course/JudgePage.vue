@@ -1,12 +1,7 @@
 <template>
    <div>
       <div class="index-judging">
-         <div 
-            class="index-judging--back"
-            @click="goBack()"
-         > 
-         X
-         </div>
+         <dx-header is-close></dx-header>
          <div class="index-judging__label">
                <p>撰写评价</p>
                <dx-checkbox-group
@@ -63,7 +58,11 @@
    </div>
 </template>
 <script>
-   export default {
+    import DxHeader from 'pages/common/HeaderPage.vue'
+    export default {
+      components: {
+        DxHeader
+      },
       data() {
          return {
             labels: ['老师好', '知识实用', '教学效果好', '能及时纠正', '场地环境好', '很好'],

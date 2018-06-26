@@ -78,9 +78,10 @@
 
 			@include m(icon) {
 				width: 1.44rem;
-				height: 1.67rem;
+				height: 1.44rem;
 				border-radius: 50%;
-				background-color: red;
+				background: url('../../../assets/images/index/home/teacher1.png');
+				background-size: 100% 100%;
 			}
 		}
 		@include m(text) {

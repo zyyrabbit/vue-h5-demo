@@ -60,8 +60,9 @@ export default{
 		return {
 			errorMsg: '',
 			model: {
-				userName: '',
-				password: ''
+				// teacher parent
+				userName: 'teacher',
+				password: '123'
 			},
 			rules: {
 				// 公共验证规则

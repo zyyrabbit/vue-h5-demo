@@ -133,11 +133,11 @@ const routes = [
 			component: MessagePage,
 			children: [
 				// path加'/'为相对根路径--消息页面
-				{ path: 'query', component: SearchTeacherPage, hidden: true }
+				{ path: 'query', component: SearchTeacherPage, hidden: true },
+				{ path: '/system', component: SystemMessagePage, hidden: true },
+				{ path: '/chat', component: ChatPage, hidden: true }
 			]
 		},
-		{ path: '/system', component: SystemMessagePage, hidden: true },
-		{ path: '/chat', component: ChatPage, hidden: true },
 		{
 			path: '/place',
 			component: PlacePage,

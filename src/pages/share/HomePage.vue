@@ -1,7 +1,7 @@
 <template>
    <div class="index-home">
 		 	<div 
-		 		class="index-home-search"
+		 		class="index-home-search paddingspace"
 		 		@click="goNext('/search')"
 		 	>
 				<dx-input 
@@ -18,40 +18,42 @@
    			class="index-home-course"
    			@click="goNext('/courseDetail')"
    		>
-   			<div class="index-home-course__desc clearfix">
+   			<div class="index-home-course__desc clearfix paddingspace">
    				<span class="index-home--title block--float-left">精选课程</span>
    				<span class="index-home-course__desc--all block--float-right">查看全部</span>
    			</div>
    			<div class="index-home-course__slide">
-   				<dx-ul>
+   				<ul class="index-home-course__slide--list">
    					<li 
    						v-for="course in bestCourse"
    						class="index-home-course__slide--item"
-							:style="{backgroundImage: 'url(' + course.courseImage + ')'}"
    					>
+							<div class="index-home-course__slide--bg" 
+								:style="{backgroundImage: 'url(' + course.courseImage + ')'}">
+							</div>
+							<!-- 百科 -->
+							<div class="index-home-wiki">
+								<div class="index-home-wiki__title clearfix">
+									<div class="index-home-wiki__title--left block--float-left text-ellipsis">{{course.courseName}}</div>
+									<div class="index-home-wiki__title--right block--float-right">
+										<dx-ul class="index-home-wiki__title--right-text">
+											<li class="color-blue">{{course.user.name}}</li>
+											<li class="color-pink">3-12</li>
+											<li class="color-orange">自然科学</li>
+										</dx-ul>
+									</div>
+								</div>
+								<div class="index-home-wiki__desc clearfix">
+									<div class="index-home-wiki__desc--detail block--float-left">{{course.courseRecommend}}</div>
+									<div class="index-home-wiki__desc--price block--float-right">￥{{course.coursePrice}}</div>
+								</div>
+							</div>						
    					</li>
-   				</dx-ul>
-   			</div>
-   		</div>
-   		<!-- 百科 -->
-   		<div class="index-home-wiki">
-   			<div class="index-home-wiki__title clearfix">
-   				<div class="index-home-wiki__title--left block--float-left text-ellipsis">{{bestCourse[0].courseName}}</div>
-   				<div class="index-home-wiki__title--right block--float-right">
-   					<dx-ul class="index-home-wiki__title--right-text">
-   						<li class="color-blue">翼八CY</li>
-   						<li class="color-pink">3-12</li>
-   						<li class="color-orange">自然科学</li>
-   					</dx-ul>
-   				</div>
-   			</div>
-   			<div class="index-home-wiki__desc clearfix">
-   				<div class="index-home-wiki__desc--detail block--float-left">{{bestCourse[0].courseRecommend}}</div>
-   				<div class="index-home-wiki__desc--price block--float-right">￥{{bestCourse[0].coursePrice}}</div>
+   				</ul>
    			</div>
    		</div>
    		<!-- 本周新课 -->
-   		<div class="index-home-course-new">
+   		<div class="index-home-course-new paddingspace">
 	   		<dx-ul>
    				<li 
    					v-for="course in newCourse"
@@ -63,50 +65,92 @@
    		</div>
    		<!-- 明星榜单 -->
    		<div class="index-home-star-list">
-   			<div class="index-home--title index-home-star-list--title">明星榜单</div>
-	   		<dx-ul>
-   				<li 
-   					class="index-home-star-list__slide-item"
-   				>
-   					<div 
-   						class="index-home-star-teacher"
-   						@click="goNext('/teacherDetail')"
-   					>
-   						<div class="index-home-star-teacher--icon"></div>
-   						<div class="index-home-star-teacher__detail">
-   							<div>
-   								<span class="index-home-star-teacher__detail--name">杨帆</span>
-   								<span class="index-home-star-teacher__detail--male"></span>
-   								<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
-   							</div>
-   							<div class="index-home-star-teacher__detail--desc">
-   								英语协会副会长，多次获得国际英语口语竞赛金奖
-   							</div>
-   						</div>
-	   					<div class="index-home-star-list__slide-item--course ">他的课</div>
-   					</div>
-   					<div class="index-home-star-teacher">
-   						<div class="index-home-star-teacher--icon"></div>
-   						<div class="index-home-star-teacher__detail">
-   							<div>
-   								<span class="index-home-star-teacher__detail--name">杨帆</span>
-   								<span class="index-home-star-teacher__detail--male"></span>
-   								<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
-   							</div>
-   							<div class="index-home-star-teacher__detail--desc">
-   								英语协会副会长，多次获得国际英语口语竞赛金奖
-   							</div>
-   						</div>
-	   					<div 
-	   						class="index-home-star-list__slide-item--course"
-	   						@click="goNext('/home/teacherDetail')"
-	   					>他的课</div>
-   					</div>
-   				</li>
-	   		</dx-ul>
+   			<div class="index-home--title index-home-star-list--title paddingspace">明星榜单</div>
+				<div class="index-home-star-list--slide">
+					<dx-ul>
+						<li 
+							class="index-home-star-list__slide-item"
+						>
+							<div 
+								class="index-home-star-teacher"
+								@click="goNext('/teacherDetail')"
+							>
+								<div class="index-home-star-teacher--icon"></div>
+								<div class="index-home-star-teacher__detail">
+									<div>
+										<span class="index-home-star-teacher__detail--name">杨帆</span>
+										<span class="index-home-star-teacher__detail--male"></span>
+										<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
+									</div>
+									<div class="index-home-star-teacher__detail--desc">
+										英语协会副会长，多次获得国际英语口语竞赛金奖
+									</div>
+								</div>
+								<div class="index-home-star-list__slide-item--course ">他的课</div>
+							</div>
+							<div class="index-home-star-teacher">
+								<div class="index-home-star-teacher--icon"></div>
+								<div class="index-home-star-teacher__detail">
+									<div>
+										<span class="index-home-star-teacher__detail--name">杨帆</span>
+										<span class="index-home-star-teacher__detail--male"></span>
+										<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
+									</div>
+									<div class="index-home-star-teacher__detail--desc">
+										英语协会副会长，多次获得国际英语口语竞赛金奖
+									</div>
+								</div>
+								<div 
+									class="index-home-star-list__slide-item--course"
+									@click="goNext('/home/teacherDetail')"
+								>他的课</div>
+							</div>
+						</li>
+					</dx-ul>
+					<dx-ul>
+						<li 
+							class="index-home-star-list__slide-item"
+						>
+							<div 
+								class="index-home-star-teacher"
+								@click="goNext('/teacherDetail')"
+							>
+								<div class="index-home-star-teacher--icon"></div>
+								<div class="index-home-star-teacher__detail">
+									<div>
+										<span class="index-home-star-teacher__detail--name">杨帆</span>
+										<span class="index-home-star-teacher__detail--male"></span>
+										<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
+									</div>
+									<div class="index-home-star-teacher__detail--desc">
+										英语协会副会长，多次获得国际英语口语竞赛金奖
+									</div>
+								</div>
+								<div class="index-home-star-list__slide-item--course ">他的课</div>
+							</div>
+							<div class="index-home-star-teacher">
+								<div class="index-home-star-teacher--icon"></div>
+								<div class="index-home-star-teacher__detail">
+									<div>
+										<span class="index-home-star-teacher__detail--name">杨帆</span>
+										<span class="index-home-star-teacher__detail--male"></span>
+										<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
+									</div>
+									<div class="index-home-star-teacher__detail--desc">
+										英语协会副会长，多次获得国际英语口语竞赛金奖
+									</div>
+								</div>
+								<div 
+									class="index-home-star-list__slide-item--course"
+									@click="goNext('/home/teacherDetail')"
+								>他的课</div>
+							</div>
+						</li>
+					</dx-ul>					
+				</div>
    		</div>
    		<!-- 即将上课 -->
-   		<div class="index-home-course-going">
+   		<div class="index-home-course-going paddingspace" v-if="role===1">
    			<div class="index-home--title">即将上课</div>
    			<div class="index-home-course-going__slide">
 		   		<dx-ul>
@@ -123,7 +167,7 @@
    		</div>
    		<!-- 课程推荐 -->
    		<div class="index-home-course-recommend">
-   			<div class="index-home-course__desc clearfix">
+   			<div class="index-home-course__desc clearfix paddingspace">
    				<span class="index-home--title block--float-left">课程推荐</span>
    				<span 
    					class="index-home-course__desc--all block--float-right"
@@ -131,9 +175,9 @@
    				>查看全部</span>
    			</div>
    			<div class="index-home-course-recommend__slide">
-   				<dx-ul>
+   				<ul class="index-home-course-recommend__slide--list">
    					<li  
-   					    v-for="index in 2"
+   					  v-for="index in 5"
    						class="index-home-course-recommend__slide--item"
    						@click="goNext('/contDetail')"
    					>
@@ -153,7 +197,7 @@
    							</div>
    						</div>
    					</li>
-   				</dx-ul>
+   				</ul>
    			</div>
    		</div>
 		<dx-footer :selectTab="0"></dx-footer>
@@ -180,7 +224,8 @@
 			...mapState({
 				role: state => state.userInfo.role,
 				bestCourse: state => state.homePage.A,
-				newCourse: state => state.homePage.B
+				newCourse: state => state.homePage.B,
+				recommendCourse: state => state.homePage.C
 			})
 		},
 		mounted() {
@@ -232,7 +277,14 @@
 	}
 </style>
 <style scoped lang="scss">
+	.paddingspace{
+		padding: 0 0.4rem;
+	}
+	.index-footer{
+		margin: 0;
+	}
 	@include b(index-home) {
+		padding: 0;
 		@include m(title) {
 			font-size: 0.46rem;
 			color: #484848;
@@ -253,16 +305,34 @@
 			}
 			/* 课程左右滑动窗口 */
 			@include e(slide) {
-				height: 3.7rem;
+				// height: 3.7rem;
 				margin-top: 0.36rem;
 				overflow: hidden;
+				@include m(list) {
+					padding-left: 0.4rem;
+					padding-right: 0.4rem;
+					position: relative;
+					// width: 100%;
+					overflow-x: scroll;
+					font-size: 0;
+					white-space: nowrap;
+					.index-home-course__slide--item:not(:last-child){
+						margin-right: 0.2rem;
+					}
+				}
 				@include m(item) {
+					width: 6.73rem;
+					vertical-align: top;
+					display: inline-block;				
 					border-radius: 0.14rem;
+					// width: 100%;
+					color:transparent;
+				}
+				@include m(bg) {
 					width: 100%;
 					height: 3.7rem;
 					// background: url('../../assets/images/index/home/wiki.png');
 					background-size: 100% 100%;
-					color:transparent;
 				}
 			}
 		}
@@ -304,6 +374,7 @@
 					width: 3.22rem;
 					font-size: 0.22rem;
 					color: #7e7e7e;
+					white-space: normal;
 				}
 				@include m(price) {
 					width: 1.82rem;
@@ -334,6 +405,18 @@
 			margin-top: 1.04rem;
 			@include m(title) {
 				margin-bottom: 0.43rem;
+			}
+			@include m(slide) {
+				position: relative;
+				overflow-x: scroll;
+				font-size: 0;
+				white-space: nowrap;
+				padding-left: 0.4rem;
+			}
+			.dx-ul{
+				display: inline-block;
+				width: 6.73rem;
+				margin-right: 0.15rem;
 			}
 			@include e(slide-item) {
 				width: 100%;
@@ -370,6 +453,7 @@
 				width: 2.87rem;
 				margin-left: 0.2rem;
 				font-size: 0.32rem;
+				white-space: normal;
 				@include m(male) {
 					display: inline-block;
 					// margin-left: 0.1rem;
@@ -433,8 +517,19 @@
 			@include e(slide) {
 				width: 100%;
 				margin-top: 0.42rem;
+				@include m(list) {
+					position: relative;
+					overflow-x: scroll;
+					font-size: 0;
+					white-space: nowrap;
+					padding:0 0.4rem;
+					.index-home-course-recommend__slide--item:not(:last-child){
+						margin-right: 0.2rem;
+					}	
+				}
 				@include m(item) {
 					width: 3.26rem;
+					display: inline-block;
 				}
 				@include m(item-pic) {
 					width: 3.26rem;
@@ -445,6 +540,7 @@
 				@include m(item-desc) {
 					margin-top: 0.29rem;
 					font-size: 0.26rem;
+					white-space: normal;
 				}
 
 				@include m(item-message) {
@@ -479,7 +575,6 @@
 					float: right;
 					color: #57B8D7;
 					font-size: 0.22rem;
-
 				}
 			}
 		}
