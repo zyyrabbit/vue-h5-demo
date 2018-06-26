@@ -113,6 +113,7 @@
         </ul>
       </div>
     </div>
+    <dx-footer :selectTab="1"></dx-footer>
    	<transition 
 			name="router"  
 			mode='out-in'>
@@ -121,7 +122,11 @@
   </div>
 </template>
 <script>
+	import DxFooter from 'pages/common/FooterPage.vue'
   export default {
+		components: {
+			DxFooter
+		},
     methods: {
       goTo(path) {
         this.$router.push({ path })

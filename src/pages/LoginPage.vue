@@ -50,9 +50,9 @@
 	</div>
 </template>
 <script>
-    // import AuthApi from 'api/authApi.js'
-    import { mapMutations } from 'vuex'
-    import * as Types from 'store/mutation-types.js'
+// import AuthApi from 'api/authApi.js'
+import uapi from 'api/userApi.js'
+import { mapMutations } from 'vuex'
 export default{
 	name: 'login',
 	componentName: 'login',
@@ -75,26 +75,29 @@ export default{
 		}
 	},
 	methods: {
-		...mapMutations({
-			recordUserinfo: Types.RECORD_USERINFO
-		}),
+		...mapMutations([
+			'RECORD_USERINFO'
+		]),
 		submit(formName) {
 			this.isLogining = true
 			this.$refs[formName].validate(async valid => {
 				this.errorMsg = ''
 				if (valid) {
 					let params = {}
-					params.custName = this.model.userName
-					params.custPassword = this.model.password
-					params.isRememberMe = this.model.isRememberMe
+					params.userName = this.model.userName
+					params.userPwd = this.model.password
 					// 模拟登陆
-					let role = params.custName === '0' ? 0 : 1
-					this.recordUserinfo({
-						userId: 1,
-						tokenId: 123,
-						role
+					uapi.login(params).then(r => {
+						console.info(r)
+						// role: 0老师 1家长
+						let role = params.userName === 'teacher' ? 0 : 1
+						this.RECORD_USERINFO({
+							userId: 1,
+							tokenId: 123,
+							role
+						})
+						this.$router.push('/home')
 					})
-					this.$router.push('/home')
 					try {
 					} catch (e) {
 						this.errorMsg = e.message

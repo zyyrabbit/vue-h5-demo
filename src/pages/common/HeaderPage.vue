@@ -1,27 +1,27 @@
 <template>
 	<!-- 头部导航 -->
-    <header class="index-header clearfix">
-			<div v-if="!isClose"
-				class="index-header__go-back block--float-left"
-				@click="goBack()"
-			></div>
-			<div v-if="isClose"
-				class="index-header__close block--float-left"
-				@click="goBack()"
-			></div>
-    	<div 
-    		v-if="$slots.title"
-    		class="index-header__title detail-desc-text"
-    	>
-    		<slot name="title"></slot>
-    	</div>
-    	<div 
-    		v-if="$slots.next"
-    		class="block--float-right"
-    	>
-    		<slot name="next"></slot>
-    	</div>
-    </header>
+	<header class="index-header clearfix">
+		<div v-if="!isClose"
+			class="index-header__go-back block--float-left"
+			@click="goBack()"
+		></div>
+		<div v-if="isClose"
+			class="index-header__close block--float-left"
+			@click="goBack()"
+		></div>
+		<div 
+			v-if="$slots.title"
+			class="index-header__title detail-desc-text"
+		>
+			<slot name="title"></slot>
+		</div>
+		<div 
+			v-if="$slots.next"
+			class="block--float-right"
+		>
+			<slot name="next"></slot>
+		</div>
+	</header>
 </template>
 <script>
 	export default {

@@ -26,6 +26,7 @@
     </footer>
 </template>
 <script>
+	import {mapState} from 'vuex'
 	export default {
 		props: {
 			selectTab: {
@@ -33,14 +34,36 @@
 				default: 0
 			}
 		},
+		computed: {
+			...mapState({
+				role: state => state.userInfo.role
+			}),
+			tabComponents: function() {
+				if (this.role === 0) {
+					return [
+						{title: '首页', iconClass: 'index-footer__tab--home', path: '/home'},
+						{title: '场地', iconClass: 'index-footer__tab--place', path: '/place'},
+						{title: '消息', iconClass: 'index-footer__tab--message', path: '/message'},
+						{title: '我的', iconClass: 'index-footer__tab--me', path: '/profile'}
+					]
+				} else {
+					return [
+						{title: '首页', iconClass: 'index-footer__tab--home', path: '/home'},
+						{title: '上课', iconClass: 'index-footer__tab--course', path: '/course'},
+						{title: '消息', iconClass: 'index-footer__tab--message', path: '/message'},
+						{title: '我的', iconClass: 'index-footer__tab--me', path: '/profile'}
+					]
+				}
+			}
+		},
 		data() {
 			return {
-				tabComponents: [
-					{title: '首页', iconClass: 'index-footer__tab--home', path: '/home'},
-					{title: '上课', iconClass: 'index-footer__tab--course', path: '/course'},
-					{title: '消息', iconClass: 'index-footer__tab--message', path: '/message'},
-					{title: '我的', iconClass: 'index-footer__tab--me', path: '/profile'}
-				]
+				// tabComponents: [
+				// 	{title: '首页', iconClass: 'index-footer__tab--home', path: '/home'},
+				// 	{title: '上课', iconClass: 'index-footer__tab--course', path: '/course'},
+				// 	{title: '消息', iconClass: 'index-footer__tab--message', path: '/message'},
+				// 	{title: '我的', iconClass: 'index-footer__tab--me', path: '/profile'}
+				// ]
 			}
 		},
 		methods: {
@@ -93,6 +116,12 @@
 				background: $--index-tab-home-background;
 				@include when(select) {
 					background: $--index-tab-select-home-background;
+				}
+			}
+			@include m(place) {
+				background: $--index-tab-place-background;
+				@include when(select) {
+					background: $--index-tab-select-place-background;
 				}
 			}
 			@include m(course) {
