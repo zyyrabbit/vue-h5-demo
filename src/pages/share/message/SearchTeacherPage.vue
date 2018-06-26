@@ -1,9 +1,6 @@
 <template>
    <div class="search-teacher-list">
-   		<div 
-   			class="search-teacher-list--go-back"
-   			@click="$router.go(-1)"
-   		>X</div>
+   		<dx-header is-close></dx-header>
    		<div>
    			<dx-input 
 			    v-model="teacherName"
@@ -19,10 +16,10 @@
 				<div class="search-teacher">
 					<div class="search-teacher--icon"></div>
 					<div class="search-teacher__detail">
-						<div>
+						<div class="search-teacher__detail--info">
 							<span class="search-teacher__detail--name">杨帆</span>
 							<span class="search-teacher__detail--male"></span>
-							<span class="search-teacher__detail--role"></span>
+							<dx-tag class="search-teacher__detail--role">老师</dx-tag>
 						</div>
 						<div class="search-teacher__detail--desc">
 							英语协会副会长，多次获得国际英语口语竞赛金奖
@@ -37,10 +34,10 @@
 				<div class="search-teacher">
 					<div class="search-teacher--icon"></div>
 					<div class="search-teacher__detail">
-						<div>
+						<div class="search-teacher__detail--info">
 							<span class="search-teacher__detail--name">杨帆</span>
 							<span class="search-teacher__detail--male"></span>
-							<span class="search-teacher__detail--role"></span>
+							<dx-tag class="search-teacher__detail--role">老师</dx-tag>
 						</div>
 						<div class="search-teacher__detail--desc">
 							英语协会副会长，多次获得国际英语口语竞赛金奖
@@ -53,7 +50,11 @@
 	</div>
 </template>
 <script>
+	import DxHeader from 'pages/common/HeaderPage.vue'
 	export default {
+		components: {
+			DxHeader
+		},
 		data() {
 			return {
 				messages: [
@@ -122,19 +123,21 @@
 				width: 2.87rem;
 				margin-left: 0.2rem;
 				font-size: 0.32rem;
+				@include m(info) {
+					display: flex;
+					align-items: center;
+				}
 				@include m(male) {
 					display: inline-block;
 					margin-left: 0.1rem;
 					width: 0.28rem;
 					height: 0.28rem;
 					background: $--search-teacher-male-background;
+					background-size: 100% 100%;
 				}
 				@include m(role) {
 					display: inline-block;
 					margin-left: 0.1rem;
-					width: 0.66rem;
-					height: 0.32rem;
-					background: $--search-teacher-role-background;
 				}
 				@include m(	desc) {
 					font-size: 0.24rem;
