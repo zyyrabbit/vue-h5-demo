@@ -99,12 +99,13 @@
 			width: 100%;
 			height: 0.88rem;
 			line-height: 0.88rem;
-			background-color: red;
+			// background-color: red;
 		}
 		@include m(banner) {
 			height: 4.14rem;
 			margin: 0 -0.4rem;
-			background-color: gray;
+			background: url('../../../../assets/images/index/home/wiki.png');
+			background-size: 100% 100%;	
 		}
 		// 设置整体的样式
 		@include m(item) {
@@ -138,7 +139,8 @@
 				width: 1.29rem;
 				height: 1.29rem;
 				border-radius: 50%;
-				background-color: red;
+				background: url('../../../../assets/images/index/home/teacher1.png');
+				background-size: 100% 100%;
 			}
 		}
 
@@ -151,6 +153,7 @@
 			}
 			>p:nth-child(2) {
 				margin-bottom: 0.16rem;
+				font-size: 0.34rem;
 			}
 			div:last-child {
 				color: #57B8D7;

@@ -88,7 +88,10 @@
 								</div>
 								<div class="index-home-star-list__slide-item--course ">他的课</div>
 							</div>
-							<div class="index-home-star-teacher">
+							<div 
+								class="index-home-star-teacher"
+								@click="goNext('/teacherDetail')"
+							>
 								<div class="index-home-star-teacher--icon"></div>
 								<div class="index-home-star-teacher__detail">
 									<div>
@@ -100,10 +103,7 @@
 										英语协会副会长，多次获得国际英语口语竞赛金奖
 									</div>
 								</div>
-								<div 
-									class="index-home-star-list__slide-item--course"
-									@click="goNext('/home/teacherDetail')"
-								>他的课</div>
+								<div class="index-home-star-list__slide-item--course ">他的课</div>
 							</div>
 						</li>
 					</dx-ul>
@@ -128,7 +128,10 @@
 								</div>
 								<div class="index-home-star-list__slide-item--course ">他的课</div>
 							</div>
-							<div class="index-home-star-teacher">
+							<div 
+								class="index-home-star-teacher"
+								@click="goNext('/teacherDetail')"
+							>
 								<div class="index-home-star-teacher--icon"></div>
 								<div class="index-home-star-teacher__detail">
 									<div>
@@ -140,10 +143,7 @@
 										英语协会副会长，多次获得国际英语口语竞赛金奖
 									</div>
 								</div>
-								<div 
-									class="index-home-star-list__slide-item--course"
-									@click="goNext('/home/teacherDetail')"
-								>他的课</div>
+								<div class="index-home-star-list__slide-item--course ">他的课</div>
 							</div>
 						</li>
 					</dx-ul>					
