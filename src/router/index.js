@@ -22,7 +22,7 @@ const ContractCourseDetailPage = () => import('pages/share/home/contractCourseDe
 const ContractJoinLearningPage = () => import('pages/share/home/contractCourseDetail/ContractJoinLearningPage.vue')
 const ContractLessonPeriodPage = () => import('pages/share/home/contractCourseDetail/ContractLessonPeriodPage.vue')
 const SearchPage = () => import('pages/share/home/SearchPage.vue')
-const SearchResultPage = () => import('pages/share/home/SearchResultPage.vue')
+// const SearchResultPage = () => import('pages/share/home/SearchResultPage.vue')
 const TeacherDetailPage = () => import('pages/share/home/TeacherDetailPage.vue')
 // 消息页面组
 const SystemMessagePage = () => import('pages/share/message/SystemMessagePage.vue')
@@ -94,7 +94,7 @@ const routes = [
 		// 首页搜索页
 		{ path: '/search', component: SearchPage, hidden: true },
 		// 首页搜索结果页
-		{ path: '/searchResult', component: SearchResultPage, hidden: true },
+		// { path: '/searchResult', component: SearchResultPage, hidden: true },
 		// 首页教师详情
 		{ path: '/teacherDetail', component: TeacherDetailPage, hidden: true },
 		{

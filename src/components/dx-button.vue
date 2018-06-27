@@ -147,10 +147,11 @@ export default {
 }
 
 .dx-button-small {
-    padding: 0.1rem 0.3rem;
-    border-radius: 0.2rem;
+    padding: 0.14rem 0.3rem;
+    border-radius: 0.3rem;
     font-size: $--common-illustration-text-font-size;
     width: auto;
+    line-height: 1;
 }
 
 /*按钮禁用时的样式*/
