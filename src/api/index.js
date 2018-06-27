@@ -23,8 +23,9 @@ http.interceptors.response.use(
     // FIXME
     if (response.data.resultCode === '0') {
       return Promise.resolve(response.data)
-    } else if (response.data.resultCode === '-999') {
+    } else if (response.data.resultCode === '999') {
       // TODO
+      this.$router.go('/login')
     } else {
       ResponseNullError(response.data.resultMsg)
       return Promise.reject(response.data)

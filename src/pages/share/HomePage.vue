@@ -72,35 +72,20 @@
 							class="index-home-star-list__slide-item"
 						>
 							<div 
+								v-for="(teacher, index) in starTeacher" v-if="index < 2"
 								class="index-home-star-teacher"
 								@click="goNext('/teacherDetail')"
 							>
 								<div class="index-home-star-teacher--icon"></div>
 								<div class="index-home-star-teacher__detail">
 									<div>
-										<span class="index-home-star-teacher__detail--name">杨帆</span>
-										<span class="index-home-star-teacher__detail--male"></span>
+										<span class="index-home-star-teacher__detail--name">{{teacher.name}}</span>
+										<span class="index-home-star-teacher__detail--male" v-if="teacher.sex==='男'"></span>
+										<span class="index-home-star-teacher__detail--female" v-if="teacher.sex==='女'"></span>
 										<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
 									</div>
 									<div class="index-home-star-teacher__detail--desc">
-										英语协会副会长，多次获得国际英语口语竞赛金奖
-									</div>
-								</div>
-								<div class="index-home-star-list__slide-item--course ">他的课</div>
-							</div>
-							<div 
-								class="index-home-star-teacher"
-								@click="goNext('/teacherDetail')"
-							>
-								<div class="index-home-star-teacher--icon"></div>
-								<div class="index-home-star-teacher__detail">
-									<div>
-										<span class="index-home-star-teacher__detail--name">杨帆</span>
-										<span class="index-home-star-teacher__detail--male"></span>
-										<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
-									</div>
-									<div class="index-home-star-teacher__detail--desc">
-										英语协会副会长，多次获得国际英语口语竞赛金奖
+										{{teacher.persionalIntroduction}}
 									</div>
 								</div>
 								<div class="index-home-star-list__slide-item--course ">他的课</div>
@@ -112,38 +97,21 @@
 							class="index-home-star-list__slide-item"
 						>
 							<div 
+								v-for="(student, index) in starStudent" v-if="index < 2"
 								class="index-home-star-teacher"
 								@click="goNext('/teacherDetail')"
 							>
 								<div class="index-home-star-teacher--icon"></div>
-								<div class="index-home-star-teacher__detail">
+								<div class="index-home-star-teacher__detail widthauto">
 									<div>
-										<span class="index-home-star-teacher__detail--name">杨帆</span>
-										<span class="index-home-star-teacher__detail--male"></span>
-										<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
+										<span class="index-home-star-teacher__detail--name">{{student.name}}</span>
+										<span class="index-home-star-teacher__detail--male" v-if="student.sex==='男'"></span>
+										<span class="index-home-star-teacher__detail--female" v-if="student.sex==='女'"></span>
 									</div>
 									<div class="index-home-star-teacher__detail--desc">
-										英语协会副会长，多次获得国际英语口语竞赛金奖
+										{{student.persionalIntroduction}}
 									</div>
 								</div>
-								<div class="index-home-star-list__slide-item--course ">他的课</div>
-							</div>
-							<div 
-								class="index-home-star-teacher"
-								@click="goNext('/teacherDetail')"
-							>
-								<div class="index-home-star-teacher--icon"></div>
-								<div class="index-home-star-teacher__detail">
-									<div>
-										<span class="index-home-star-teacher__detail--name">杨帆</span>
-										<span class="index-home-star-teacher__detail--male"></span>
-										<dx-tag class="index-home-star-teacher__detail--role">老师</dx-tag>
-									</div>
-									<div class="index-home-star-teacher__detail--desc">
-										英语协会副会长，多次获得国际英语口语竞赛金奖
-									</div>
-								</div>
-								<div class="index-home-star-list__slide-item--course ">他的课</div>
 							</div>
 						</li>
 					</dx-ul>					
@@ -171,28 +139,27 @@
    				<span class="index-home--title block--float-left">课程推荐</span>
    				<span 
    					class="index-home-course__desc--all block--float-right"
-   					@click="goNext('/home/contDetail')"
+   					@click="goNext('/contDetail')"
    				>查看全部</span>
    			</div>
    			<div class="index-home-course-recommend__slide">
    				<ul class="index-home-course-recommend__slide--list">
    					<li  
-   					  v-for="index in 5"
+   					  v-for="course in recommendCourse"
    						class="index-home-course-recommend__slide--item"
    						@click="goNext('/contDetail')"
    					>
-   						<div class="index-home-course-recommend__slide--item-pic"></div>
+   						<div class="index-home-course-recommend__slide--item-pic"
+							 :style="{backgroundImage: 'url(' + course.courseImage + ')'}"></div>
    						<div class="index-home-course-recommend__slide--item-desc">
-   							</p>
-   								古诗词朗诵,让孩子在国学的熏陶中成长
-   							</p>
+   							<p>{{course.courseRecommend}}</p>
    							<div class="index-home-course-recommend__slide--item-message clearfix">
    								<div class="index-home-course-recommend__slide--item-message-left">
-   									<span></span>
-   									<span>阿杜</span>
+   									<span :style="{backgroundImage: 'url(' + course.user.persionalImage + ')'}"></span>
+   									<span>{{course.user.name}}</span>
    								</div>
    								<span>
-   									<span>1145</span> 人参见过
+   									<span>{{course.enteredCount}}</span> 人参加过
    								</span>
    							</div>
    						</div>
@@ -225,7 +192,9 @@
 				role: state => state.userInfo.role,
 				bestCourse: state => state.homePage.A,
 				newCourse: state => state.homePage.B,
-				recommendCourse: state => state.homePage.C
+				recommendCourse: state => state.homePage.C,
+				starTeacher: state => state.homePage.D,
+				starStudent: state => state.homePage.E
 			})
 		},
 		mounted() {
@@ -411,7 +380,7 @@
 				overflow-x: scroll;
 				font-size: 0;
 				white-space: nowrap;
-				padding-left: 0.4rem;
+				padding: 0 0.4rem;
 			}
 			.dx-ul{
 				display: inline-block;
@@ -447,6 +416,9 @@
 				background: url('../../assets/images/index/home/teacher1.png');
 				background-size: 100% 100%;
 			}
+			.widthauto{
+				width: auto;
+			}
 			@include e(detail) {
 				display: inline-block;
 				vertical-align: middle;
@@ -463,6 +435,15 @@
 					background-size: 100% 100%;
 					vertical-align: middle;
 				}
+				@include m(female) {
+					display: inline-block;
+					// margin-left: 0.1rem;
+					width: 0.32rem;
+					height: 0.32rem;
+					background: $--index-home-teacher-female-background;
+					background-size: 100% 100%;
+					vertical-align: middle;
+				}				
 				@include m(role) {
 					margin-left: 0.1rem;
 				}
@@ -530,6 +511,7 @@
 				@include m(item) {
 					width: 3.26rem;
 					display: inline-block;
+					vertical-align: top;
 				}
 				@include m(item-pic) {
 					width: 3.26rem;
