@@ -40,7 +40,7 @@
 	   					{{ slotProps.date }}
 	   				</p>
 	   				<p class="profile-account-sign--integral-number">
-	   					{{ sign[slotProps.date] ? 'X'+number : '' }}
+	   					{{ sign[slotProps.date] ? 'x'+number : '' }}
 	   				</p>
 	   			</div>
 	   		</dx-calendar>
@@ -73,7 +73,8 @@
 				number: 15,
 				sign: {
 					5: 10,
-					3: 15
+					3: 15,
+					10: 10
 				}
 			}
 		}
@@ -89,30 +90,30 @@
       	}
       	// 用户资料介绍
       	@include e(introduce) {
-			margin: {
-				top: 0.57rem;
-			}
-			border-bottom: solid  0.02rem rgba(235,235,235,1);
-			@include m(text) {
-				color: #484848;
-				font-size: 0.48rem;
-				line-height: 0.56rem;
-				padding-bottom: 0.66rem;
-			}
-			// 积分数量
-			@include m(integral-number-total) {
-				color: #FF9CC8;
-				font-size: 0.36rem;
-			}
-			// 用户头像
-			@include m(pic) {
-				width: 1.13rem;
-				height: 1.13rem;
-				border-radius: 50%;
-				background-color: red;
-			}
-  		}
-
+					padding-bottom: 0.66rem;
+					margin: {
+						top: 0.57rem;
+					}
+					border-bottom: solid  0.02rem rgba(235,235,235,1);
+					@include m(text) {
+						color: #484848;
+						font-size: 0.48rem;
+						line-height: 0.56rem;
+						// padding-bottom: 0.66rem;
+					}
+					// 积分数量
+					@include m(integral-number-total) {
+						color: #FF9CC8;
+						font-size: 0.36rem;
+					}
+					// 用户头像
+					@include m(pic) {
+						width: 1.13rem;
+						height: 1.13rem;
+						border-radius: 50%;
+						background-color: red;
+					}
+				}
   		@include e(calendar) {
 			margin: {
 				top: 0.5rem;
@@ -134,7 +135,7 @@
 						color: #FFFFFF;
 				   }
 				   @include when(today) {
-						border: 1px solid #8DD0EC;
+						border: 0.03rem solid #8DD0EC;
 				   }
 				}
 				
