@@ -6,11 +6,7 @@
 				:model="model" 
 				:rules="rules" 
 			>	
-				<div 
-					@click="goBack()"
-					class="register-form__back"
-				> < 
-				</div>
+				<dx-header></dx-header>
 				<div class="register-form__item--title">找回密码</div>
 				<div class="register-form__item register-form__item--phone-number" >
 					<dx-form-item  	
@@ -66,12 +62,16 @@
 	</div>
 </template>
 <script>
-    // import AuthApi from 'api/authApi.js'
-    import { mapMutations } from 'vuex'
-    import * as Types from 'store/mutation-types.js'
+		// import AuthApi from 'api/authApi.js'
+import DxHeader from 'pages/common/HeaderPage.vue'
+import { mapMutations } from 'vuex'
+import * as Types from 'store/mutation-types.js'
 export default{
 	name: 'register',
 	componentName: 'register',
+	components: {
+		DxHeader
+	},
 	data() {
 		return {
 			errorMsg: '',
