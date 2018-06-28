@@ -17,6 +17,7 @@
 						prop="userName"
 					>
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.userName"
 							placeholder="请输入手机号码"
 						>
@@ -28,14 +29,18 @@
 					<dx-form-item prop="password">
 						<dx-input 
 							v-model="model.password"
+							inputClass="dx-input-with-title"
 							:inputStyle = "verificationCodeStyle" 
 							placeholder="请输入验证码" 
 							input-class="register-form__item--input"
 						>
 							验证码
-							<span slot="leftText" class="register-form__item--verification-code">
+							<span slot="leftText" 
+								class="register-form__item--verification-code"
+								:class="{'register-form__item--verification-code-disabled': sendingVc}"
+								@click="sendVc">
 								<span class="register-form__item--verification-code-text">
-									获取验证码
+									{{sendingVc ? vcTime + 's后重发' : '获取验证码'}}
 								</span>
 							</span>
 						</dx-input>
@@ -45,6 +50,7 @@
 				<div class="register-form__item register-form__item--password" >
 					<dx-form-item prop="password">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password" 
 							placeholder="请输入6-20位数字和字母" 
 							originType="password"
@@ -115,7 +121,9 @@ export default{
 			isRegistering: false,
 			verificationCodeStyle: {
 				paddingRight: '2rem'
-			}
+			},
+			sendingVc: false,
+			vcTime: 60
 		}
 	},
 	methods: {
@@ -124,6 +132,25 @@ export default{
 			setAuthInfo: Types.SET_AUTH_INFO,
 			setCustInfo: Types.SET_CUST_INFO
 		}),
+		sendVc() {
+			// this.model.userName
+			if (!this.sendingVc) {
+				this.sendingVc = true
+				this.vcTime = 60
+				this.setCoutDown()
+			}
+		},
+		setCoutDown() {
+			if (this.vcTime === 0) {
+				this.sendingVc = false
+			} else {
+				let _this = this
+				setTimeout(function() {
+					_this.vcTime -= 1
+					_this.setCoutDown(_this.vcTime)
+				}, 1000)
+			}
+		},
 		submit(formName) {
 			this.isRegistering = true
 			this.$refs[formName].validate(async valid => {
@@ -186,6 +213,9 @@ export default{
 					text-align: center;
 					vertical-align: top;
 				}
+				@include m(verification-code-disabled) {
+					background: #C3C3C3;
+				}				
 				@include m(verification-code-text) {
 					vertical-align: middle;
 				}

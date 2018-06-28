@@ -17,6 +17,7 @@
 						prop="userName"
 					>
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.userName"
 							placeholder="请输入手机号码"
 						>
@@ -27,6 +28,7 @@
 				<div class="register-form__item register-form__item--password" >
 					<dx-form-item prop="password">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password"
 							:inputStyle = "verificationCodeStyle" 
 							placeholder="请输入验证码" 
@@ -45,6 +47,7 @@
 				<div class="register-form__item register-form__item--password" >
 					<dx-form-item prop="password">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password" 
 							placeholder="请输入6-20位数字和字母" 
 							originType="password"

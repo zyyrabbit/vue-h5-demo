@@ -12,6 +12,7 @@
 						prop="userName"
 					>
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.userName" 
 							placeholder="请输入手机号码"
 						>
@@ -22,6 +23,7 @@
 				<div class="login-form__item-password" >
 					<dx-form-item prop="password">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password"
 							placeholder="请输入密码" 
 							originType="password"
@@ -127,7 +129,7 @@ export default{
 			position: absolute;
 			width: 100%;
 			top: $--login-form-top;
-			padding: 0 0.4rem;
+			padding: 0 0.4rem;	
 			/* 标题 */
 			@include e(item-title) {
 				font-size: $--login-form-item-title-font-size;
@@ -136,10 +138,13 @@ export default{
 			/* 电话号码 */
 			@include e(item-phone-number) {
 				margin-bottom: 0.54rem;
+				.dx-input-origin-input{
+					padding-left: 1.8rem;
+				}				
 			}
 			/* 密码 */
 			@include e(password) {
-				margin-bottom: 0.65rem;
+				margin-bottom: 0.65rem;			
 			}
 			/* 提交按钮 */
 			@include e(item-btn) {

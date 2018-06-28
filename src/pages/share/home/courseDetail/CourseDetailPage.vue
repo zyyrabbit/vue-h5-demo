@@ -3,7 +3,8 @@
     	v-footer
     	class="home-course-detail"
     >
-    	<div class="home-course-detail--banner"></div>
+    	<div class="home-course-detail--banner" 
+				:style="{backgroundImage: 'url(' + course.courseImage + ')'}"></div>
     	<div class="home-course-detail__header">
 	       	<dx-header>
 	       		<span slot="next">
@@ -14,7 +15,7 @@
        	</div>
        	
 	   	<div class="home-course-detail--item home-course-detail__teacher">
-	   		<p>趣味科学大百科</p>
+	   		<p>{{course.courseName}}</p>
 	   		<dx-item>
 	   			<div 
 	   				slot="left"
@@ -32,8 +33,8 @@
 	   	</div>  
 	   	<div class="home-course-detail--item home-course-detail__introduce">
 	   		<p>课程介绍</p>
-	   		<p>为了认识世界，孩子们需建立一些科学概念，这些概念可帮助他们总结的经验。还需要学习搜集和组织信息，以及运用和辨别思想的方法。</p>
-	   		<div>阅读更多</div>
+	   		<p>{{course.courseRecommend}}</p>
+	   		<!-- <div>阅读更多</div> -->
 	   	</div>
 	   	<div class="home-course-detail--item home-course-detail__parent-judge">
 	        <div class="home-course-detail__parent-judge-comment">
@@ -51,9 +52,9 @@
       	</div>
 	   <price-footer 
 	   		to="/join" 
-	   		price="￥60" 
+	   		:price="'￥' + course.coursePrice" 
 	   		priceSmall="/小时" 
-	   		priceInfo="评分9.6" 
+	   		:priceInfo="'评分' + course.courseGrade" 
 	   		btnText="加入学习"
 	   	>
     	</price-footer>
@@ -66,6 +67,7 @@
    	</div>
 </template>
 <script>
+	import capi from 'api/courseApi.js'
 	import mixin from 'utils/mixin.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	import PriceFooter from 'pages/common/PriceFooter.vue'
@@ -74,6 +76,22 @@
 		components: {
 			DxHeader,
 			PriceFooter
+		},
+		data() {
+			return {
+				course: {},
+				courseId: this.$route.params.id
+			}
+		},
+		mounted() {
+			this.getCourseDetl()
+		},
+		methods: {
+			getCourseDetl() {
+				capi.getCourseDetl({id: this.courseId}).then(r => {
+					this.course = r.data
+				})
+			}
 		}
 	}
 </script>
@@ -95,7 +113,7 @@
 		@include m(banner) {
 			height: 4.14rem;
 			margin: 0 -0.4rem;
-			background: url('../../../../assets/images/index/home/wiki.png');
+			// background: url('../../../../assets/images/index/home/wiki.png');
 			background-size: 100% 100%;			
 			// background-color: gray;
 			

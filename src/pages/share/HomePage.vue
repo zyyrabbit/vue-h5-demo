@@ -16,7 +16,6 @@
    		<!-- 课程 -->
    		<div 
    			class="index-home-course"
-   			@click="goNext('/courseDetail')"
    		>
    			<div class="index-home-course__desc clearfix paddingspace">
    				<span class="index-home--title block--float-left">精选课程</span>
@@ -27,6 +26,7 @@
    					<li 
    						v-for="course in bestCourse"
    						class="index-home-course__slide--item"
+							@click="goNext('/courseDetail/' + course.id)"
    					>
 							<div class="index-home-course__slide--bg" 
 								:style="{backgroundImage: 'url(' + course.courseImage + ')'}">

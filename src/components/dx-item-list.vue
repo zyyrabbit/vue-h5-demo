@@ -10,7 +10,7 @@
 				v-if="item.leftText"
 				slot="left"
 			>
-				{{item.leftText}}
+			{{item.leftText}}
 			</p>
 			<p 
 				v-if="item.rightText"
@@ -42,7 +42,7 @@ export default {
 		padding: 0.56rem 0;
 		position: relative;
 		font-size: $--common-subtitle-font-size;
-	  	color: $--common-text-font-color;
+	  color: $--common-text-font-color;
 		&:before {
 			content: " ";
 			position: absolute;

@@ -67,7 +67,7 @@ const routes = [
 		{ path: '/home', component: HomePage, hidden: true },
 		// 课程详情
 		{
-			path: '/courseDetail',
+			path: '/courseDetail/:id',
 			component: CourseDetailPage,
 			children: [
 				{ path: 'judge', component: CourseJudgePage, hidden: true }

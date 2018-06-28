@@ -131,4 +131,8 @@
 			color: #D3D3D3;
 		}
 	} */
+		// 登录注册输入框
+	.dx-input-with-title{
+		padding-left: 1.8rem!important;
+	}
 </style>

@@ -6,5 +6,8 @@ export default {
   },
   searchCourse(param = {}) {
     return http.get('/course/fuzzyQuery', { params: param })
+  },
+  getCourseDetl(param = {}) {
+    return http.get('/course/getCourseInfo', { params: param })
   }
 }
