@@ -36,7 +36,7 @@ export const profile = {
 			leftText: '我的场地'
 		},
 		{
-			path: 'profile/advise',
+			path: '/sign',
 			leftText: '会员签到',
 			rightText: '2998积分'
 		},

@@ -32,6 +32,9 @@ const SearchTeacherPage = () => import('pages/share/message/SearchTeacherPage.vu
 const AccountSettingPage = () => import('pages/share/profile/setting/AccountSettingPage.vue')
 const PwdModPage = () => import('pages/share/profile/setting/PwdModPage.vue')
 const TelephoneModPage = () => import('pages/share/profile/setting/TelephoneModPage.vue')
+const EditPage = () => import('pages/share/profile/EditPage.vue')
+const AdvisePage = () => import('pages/share/profile/AdvisePage.vue')
+const SignInPage = () => import('pages/share/profile/integral/SignInPage.vue')
 
 /* 家长页面组 */
 // 家长tabs主页面
@@ -42,9 +45,6 @@ const JudgePage = () => import('pages/parent/course/JudgePage.vue')
 const EvalPage = () => import('pages/parent/course/evaluatePage.vue')
 // 个人账户
 const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
-const AdvisePage = () => import('pages/share/profile/AdvisePage.vue')
-const SignInPage = () => import('pages/share/profile/integral/SignInPage.vue')
-const EditPage = () => import('pages/parent/profile/EditPage.vue')
 const IntegralMallPage = () => import('pages/parent/profile/integral/IntegralMallPage.vue')
 const ExchangeRecordPage = () => import('pages/parent/profile/integral/ExchangeRecordPage.vue')
 const DiscountDetailPage = () => import('pages/parent/profile/integral/DiscountDetailPage.vue')
