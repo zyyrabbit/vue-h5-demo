@@ -35,13 +35,8 @@
 							input-class="register-form__item--input"
 						>
 							验证码
-							<span slot="leftText" 
-								class="register-form__item--verification-code"
-								:class="{'register-form__item--verification-code-disabled': sendingVc}"
-								@click="sendVc">
-								<span class="register-form__item--verification-code-text">
-									{{sendingVc ? vcTime + 's后重发' : '获取验证码'}}
-								</span>
+							<span slot="leftText">
+								<dx-vc></dx-vc>
 							</span>
 						</dx-input>
 						
@@ -201,23 +196,6 @@ export default{
 					font-size: $--register-form-item-title-font-size;
 					margin-top: 0.63rem;
 					margin-bottom: 0.78rem;
-				}
-				@include m(verification-code) {
-					display: inline-block;
-					width: 1.88rem;
-					height: 0.51rem;
-					background: rgba(255,156,200,1);
-					border-radius: 0.26rem;
-					font-size: 0.3rem;
-					color: #FFFFFF;
-					text-align: center;
-					vertical-align: top;
-				}
-				@include m(verification-code-disabled) {
-					background: #C3C3C3;
-				}				
-				@include m(verification-code-text) {
-					vertical-align: middle;
 				}
 				/* 选择角色 */
 				@include m(role) {

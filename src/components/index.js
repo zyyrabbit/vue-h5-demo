@@ -15,6 +15,7 @@ import DxRadio from './dx-radio.vue'
 import DxStar from './dx-star.vue'
 import DxComment from './dx-comment.vue'
 import DxTag from './dx-tag.vue'
+import DxVc from './dx-vc.vue'
 const components = [
 	DxFormItem,
 	DxForm,
@@ -32,7 +33,8 @@ const components = [
 	DxRadio,
 	DxStar,
 	DxComment,
-	DxTag
+	DxTag,
+	DxVc
 ]
 
 const install = function(Vue) {
