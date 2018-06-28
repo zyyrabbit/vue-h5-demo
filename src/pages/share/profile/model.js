@@ -28,7 +28,8 @@ export const profile = {
 		{
 			path: '/sign',
 			leftText: '我的开课',
-			rightText: '正在开课'
+			rightText: '正在开课',
+			color: '#FF9CC8'
 		},
 		{
 			path: 'profile/invitefriends',

@@ -156,10 +156,10 @@ const router = new VueRouter({
 	}, */
 	routes: routes
 })
-const allowPage = ['login', 'reg', 'getpwd']
+const allowRouteName = ['login', 'reg', 'getpwd']
 router.beforeEach((to, from, next) => {
 	let login = Store.state.login
-	if (!login && allowPage.indexOf(to.name) === -1) {
+	if (!login && allowRouteName.indexOf(to.name) === -1) {
 		next({ path: '/login' })
 	} else {
 		next()

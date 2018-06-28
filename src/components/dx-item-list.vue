@@ -1,26 +1,29 @@
 <template>
-	<div class="dx-item-list">
-		<dx-item 
+	<ul class="dx-item-list">
+		<li 
 			v-for="(item, index) in items" 
 			:key="index"
-			:to='item.path'
-			class="dx-item"
+			class="dx-item-li"
 		>
-			<p 
-				v-if="item.leftText"
-				slot="left"
-			>
-			{{item.leftText}}
-			</p>
-			<p 
-				v-if="item.rightText"
-				slot="right"
-				:class="{'is-link': item.link}"
-			>
-				{{item.rightText}}
-			</p>
-		</dx-item>
-	</div>
+			<slot  :item="item">
+				<dx-item :to='item.path'>
+					<p 
+						v-if="item.leftText"
+						slot="left"
+					>
+						{{item.leftText}}
+					</p>
+					<p 
+						v-if="item.rightText"
+						slot="right"
+						:style="{color: item.color}"
+					>
+						{{item.rightText}}
+					</p>
+				</dx-item>
+			</slot>
+		</li>
+	</ul>
 </template>
 <script>
 export default {
@@ -38,7 +41,7 @@ export default {
 </script>
 <style lang="scss">
 .dx-item-list {
-	.dx-item {
+	.dx-item-li {
 		padding: 0.56rem 0;
 		position: relative;
 		font-size: $--common-subtitle-font-size;
@@ -53,9 +56,6 @@ export default {
 			border-top: 0.02rem solid #e5e5e5;
 			color: #e5e5e5;
 			z-index: 2;
-		}
-		.is-link {
-			color: $--common-selectd-text-font-color;
 		}
 	}
 }

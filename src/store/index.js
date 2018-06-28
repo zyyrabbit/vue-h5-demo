@@ -9,7 +9,7 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
- const state = {
+const state = {
 	latitude: '',
 	homePage: {}, // 首页列表
 	login: false,
