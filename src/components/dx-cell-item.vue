@@ -59,4 +59,5 @@
 		max-width: 3.8rem;
 	}
 }
+
 </style>

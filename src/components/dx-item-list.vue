@@ -11,7 +11,8 @@
 				slot="left"
 			>	
 				<div class="dx-item-icon" 
-					v-if="item.icon" 
+					v-if="item.icon"
+					:class="'dx-item-icon-' + item.icon" 
 					></div>
 				<p>{{item.leftText}}</p>
 			</template>
@@ -45,9 +46,32 @@ export default {
 		display: flex;
 	}
 	.dx-item-icon{
+		margin-right: 0.2rem;
 		width: 0.4rem;
 		height: 0.4rem;
 		background-size: 100% 100%;
+		// 图标样式
+		&-course{
+			background-image: url("@~assets/images/index/profile/me_course.png")
+		}
+		&-openclass{
+			background-image: url("@~assets/images/index/profile/me_openclass.png")
+		}
+		&-room{
+			background-image: url("@~assets/images/index/profile/me_room.png")
+		}
+		&-suggestion{
+			background-image: url("@~assets/images/index/profile/me_suggestion.png")
+		}
+		&-punch{
+			background-image: url("@~assets/images/index/profile/me_punch.png")
+		}
+		&-wallet{
+			background-image: url("@~assets/images/index/profile/me_wallet.png")
+		}
+		&-invitation{
+			background-image: url("@~assets/images/index/profile/me_invitation.png")
+		}
 	}
 }
 </style>
