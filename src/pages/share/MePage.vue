@@ -63,7 +63,7 @@
 			}
 		},
 		created() {
-			this.items = this.userInfo.role ? profile['parent'] : profile['teacher']
+			this.items = this.userInfo.role === '1' ? profile['parent'] : profile['teacher']
 		}
 	}
 </script>

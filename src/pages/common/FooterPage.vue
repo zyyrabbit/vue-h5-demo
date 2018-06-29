@@ -39,7 +39,7 @@
 				role: state => state.userInfo.role
 			}),
 			tabComponents: function() {
-				if (this.role === 0) {
+				if (this.role === '0') {
 					return [
 						{title: '首页', iconClass: 'index-footer__tab--home', path: '/home'},
 						{title: '场地', iconClass: 'index-footer__tab--place', path: '/place'},

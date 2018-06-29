@@ -118,7 +118,7 @@
 				</div>
    		</div>
    		<!-- 即将上课 -->
-   		<div class="index-home-course-going paddingspace" v-if="role===1">
+   		<div class="index-home-course-going paddingspace" v-if="role==='1'">
    			<div class="index-home--title">即将上课</div>
    			<div class="index-home-course-going__slide">
 		   		<dx-ul>
