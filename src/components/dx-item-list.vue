@@ -20,6 +20,7 @@
 			</template>
 			<p 
 				v-if="item.rightText"
+				:style="{ color: item.color }"
 				slot="right"
 			>
 				{{item.rightText}}

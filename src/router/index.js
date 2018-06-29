@@ -58,7 +58,7 @@ const BookDetlPage = () => import('pages/teacher/place/BookDetlPage.vue')
 const BookSuccPage = () => import('pages/teacher/place/BookSuccessPage.vue')
 const RelateCoursePage = () => import('pages/teacher/place/RelateCoursePage.vue')
 // 个人账户（老师）
-
+const TeacherCoursePage = () => import('pages/teacher/profile/CoursePage.vue')
 const routes = [
 		{ path: '/', component: HomePage, hidden: true },
 		{ path: '/login', name: 'login', component: Login, hidden: true },
@@ -148,6 +148,10 @@ const routes = [
 				{ path: 'success', component: BookSuccPage, hidden: true },
 				{ path: 'relate', component: RelateCoursePage, hidden: true }
 			]
+		},
+		{
+			path: '/teacher/course',
+			component: TeacherCoursePage
 		}
 	]
 const router = new VueRouter({

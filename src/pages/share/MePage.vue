@@ -23,7 +23,7 @@
    	    		</span>
    	    		<span 
    	    			class="index-me__introduction--edit block--float-right"
-   	    			@click="goPath('/profile/edit')"
+   	    			@click="goNext('/profile/edit')"
    	    		>编辑个人资料</span>
    	    	</div>
    	    </div>
@@ -56,11 +56,6 @@
 			...mapGetters([
 				'userInfo'
 			])
-		},
-		methods: {
-			goPath(path) {
-				this.$router.push(path)
-			}
 		},
 		created() {
 			this.items = this.userInfo.role === '1' ? profile['parent'] : profile['teacher']

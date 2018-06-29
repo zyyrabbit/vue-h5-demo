@@ -30,7 +30,7 @@ export const profile = {
 			rightText: '共6门'
 		},
 		{
-			path: '/sign',
+			path: '/teacher/course',
 			icon: 'openclass',
 			leftText: '我的开课',
 			rightText: '正在开课',
