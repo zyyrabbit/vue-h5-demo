@@ -1,29 +1,28 @@
 <template>
-	<ul class="dx-item-list">
-		<li 
+	<div class="dx-item-list">
+		<dx-cell-item 
 			v-for="(item, index) in items" 
 			:key="index"
-			class="dx-item-li"
+			:to='item.path'
+			:canAccess= 'item.link'
 		>
-			<slot  :item="item">
-				<dx-item :to='item.path'>
-					<p 
-						v-if="item.leftText"
-						slot="left"
-					>
-						{{item.leftText}}
-					</p>
-					<p 
-						v-if="item.rightText"
-						slot="right"
-						:style="{color: item.color}"
-					>
-						{{item.rightText}}
-					</p>
-				</dx-item>
-			</slot>
-		</li>
-	</ul>
+			<template 
+				v-if="item.leftText"
+				slot="left"
+			>	
+				<div class="dx-item-icon" 
+					v-if="item.icon" 
+					></div>
+				<p>{{item.leftText}}</p>
+			</template>
+			<p 
+				v-if="item.rightText"
+				slot="right"
+			>
+				{{item.rightText}}
+			</p>
+		</dx-cell-item>
+	</div>
 </template>
 <script>
 export default {
@@ -40,24 +39,15 @@ export default {
 }
 </script>
 <style lang="scss">
-.dx-item-list {
-	.dx-item-li {
-		padding: 0.56rem 0;
-		position: relative;
-		font-size: $--common-subtitle-font-size;
-	  color: $--common-text-font-color;
-		&:before {
-			content: " ";
-			position: absolute;
-			left: 0;
-			top: 0;
-			right: 0;
-			height: 0.02rem;
-			border-top: 0.02rem solid #e5e5e5;
-			color: #e5e5e5;
-			z-index: 2;
-		}
+.dx-item-list{
+	border-top: 0.02rem solid #e5e5e5;
+	.dx-item-list-left{
+		display: flex;
+	}
+	.dx-item-icon{
+		width: 0.4rem;
+		height: 0.4rem;
+		background-size: 100% 100%;
 	}
 }
-
 </style>

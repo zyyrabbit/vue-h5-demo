@@ -1,5 +1,6 @@
 import config from 'config'
 import axios from 'axios'
+import router from 'router'
 
 Object.defineProperties(axios, {
   $context: {
@@ -25,7 +26,7 @@ http.interceptors.response.use(
       return Promise.resolve(response.data)
     } else if (response.data.resultCode === '999') {
       // TODO
-      this.$router.go('/login')
+      router.go('/login')
     } else {
       ResponseNullError(response.data.resultMsg)
       return Promise.reject(response.data)

@@ -5,16 +5,16 @@ $--text-hover-color: red !default;
 
 // IndexPage页面样式变量
 $--index-tab-background: #fff !default;
-$--index-tab-home-background: url("../../assets/images/index/tabbar_home_nor.png") center center no-repeat !default;
-$--index-tab-select-home-background: url("../../assets/images/index/tabbar_home_pre.png") center center no-repeat !default;
-$--index-tab-course-background: url("../../assets/images/index/tabbar_course_nor.png") center center no-repeat !default;
-$--index-tab-select-course-background: url("../../assets/images/index/tabbar_course_pre.png") center center no-repeat !default;
-$--index-tab-me-background: url("../../assets/images/index/tabbar_me_nor.png") center center no-repeat !default;
-$--index-tab-select-me-background: url("../../assets/images/index/tabbar_me_pre.png") center center no-repeat !default;
-$--index-tab-message-background: url("../../assets/images/index/tabbar_message_nor.png") center center no-repeat !default;
-$--index-tab-select-message-background: url("../../assets/images/index/tabbar_message_pre.png") center center no-repeat !default;
-$--index-tab-place-background: url("../../assets/images/index/tabbar_place_nor.png") center center no-repeat !default;
-$--index-tab-select-place-background: url("../../assets/images/index/tabbar_place_pre.png") center center no-repeat !default;
+$--index-tab-home-background: url("@~assets/images/index/tabbar_home_nor.png") center center no-repeat !default;
+$--index-tab-select-home-background: url("@~assets/images/index/tabbar_home_pre.png") center center no-repeat !default;
+$--index-tab-course-background: url("@~assets/images/index/tabbar_course_nor.png") center center no-repeat !default;
+$--index-tab-select-course-background: url("@~assets/images/index/tabbar_course_pre.png") center center no-repeat !default;
+$--index-tab-me-background: url("@~assets/images/index/tabbar_me_nor.png") center center no-repeat !default;
+$--index-tab-select-me-background: url("@~assets/images/index/tabbar_me_pre.png") center center no-repeat !default;
+$--index-tab-message-background: url("@~assets/images/index/tabbar_message_nor.png") center center no-repeat !default;
+$--index-tab-select-message-background: url("@~assets/images/index/tabbar_message_pre.png") center center no-repeat !default;
+$--index-tab-place-background: url("@~assets/images/index/tabbar_place_nor.png") center center no-repeat !default;
+$--index-tab-select-place-background: url("@~assets/images/index/tabbar_place_pre.png") center center no-repeat !default;
 $--index-background-color: #fff !default;
 $--index-header-z-index: 1 !default;
 $--index-banner-background-color: #eee !default;
@@ -31,11 +31,10 @@ $--index-shopping-cart-z-index: 1 !default;
 $--index-shopping-cart-inner-color: #333 !default;
 
 // homePage页面样式变量
-$--index-home-background: url("../../assets/images/index/home/home_icon_search.png") center center no-repeat !default;
-$--index-home-teacher-male-background: url("../../assets/images/index/home/home_icon_male.png") center center no-repeat !default;
-$--index-home-teacher-female-background: url("../../assets/images/index/home/home_icon_female.png") center center no-repeat !default;
-$--index-home-teacher-role-background: url("../../assets/images/index/home/home_icon_teacher.png") center center no-repeat !default;
-$--index-home-nor: url("../../assets/images/index/home/home_btn_price_nor.png") center center no-repeat !default;
+$--index-home-background: url("@~assets/images/index/home/home_icon_search.png") center center no-repeat !default;
+$--index-home-teacher-male-background: url("@~assets/images/index/home/home_icon_male.png") center center no-repeat !default;
+$--index-home-teacher-female-background: url("@~assets/images/index/home/home_icon_female.png") center center no-repeat !default;
+$--index-home-nor: url("@~assets/images/index/home/home_btn_price_nor.png") center center no-repeat !default;
 // productsPage页面样式变量
 $--product-nav-font-size: 1.6rem !default;
 $--product-nav-item-border-bottom-color: #e9e9e9 !default;
@@ -52,32 +51,32 @@ $--product-btn-border-color: #fff !default;
 
 // registerPage页面
 $--register-form-top: 0.68rem !default;
-$--register-btn-select-background: url("../assets/images/reg_btn_identity_sel.png") center center no-repeat !default;
-$--register-btn-no-select-background: url("../assets/images/reg_btn_identity_nor.png") center center no-repeat !default;
-$--register-btn-background: url("../assets/images/funstuye_btn_long_nor.png") center center no-repeat !default;
-$--register-btn-click-background: url("../assets/images/funstuye_btn_long_disabled.png") center center no-repeat !default;
+$--register-btn-select-background: url("@~assets/images/reg_btn_identity_sel.png") center center no-repeat !default;
+$--register-btn-no-select-background: url("@~assets/images/reg_btn_identity_nor.png") center center no-repeat !default;
+$--register-btn-background: url("@~assets/images/funstuye_btn_long_nor.png") center center no-repeat !default;
+$--register-btn-click-background: url("@~assets/images/funstuye_btn_long_disabled.png") center center no-repeat !default;
 $--register-form-font-size: 0.32rem !default;
 $--register-form-item-title-font-size: 0.6rem !default;
 $--register-form-foget-password-link-color: #7E7E7E !default;
 
 // loginPage页面
 $--login-form-top: 3.01rem !default;
-$--login-background: url("../assets/images/login_bg.png") center center no-repeat !default;
-$--login-btn-background: url("../assets/images/funstuye_btn_long_nor.png") center center no-repeat !default;
-$--login-btn-click-background: url("../assets/images/funstuye_btn_long_disabled.png") center center no-repeat !default;
+$--login-background: url("@~assets/images/login_bg.png") center center no-repeat !default;
+$--login-btn-background: url("@~assets/images/funstuye_btn_long_nor.png") center center no-repeat !default;
+$--login-btn-click-background: url("@~assets/images/funstuye_btn_long_disabled.png") center center no-repeat !default;
 $--login-form-font-size: 0.36rem !default;
 $--login-form-item-title-font-size: 0.54rem !default;
 $--login-form-foget-password-link-color: #7E7E7E !default;
 // messagePage页面
-$--message-search-background: url("../../assets/images/index/message_btn_search.png") center center no-repeat !default;;
+$--message-search-background: url("@~assets/images/index/message_btn_search.png") center center no-repeat !default;;
 
 // judgePage页面
-$--judge-icon-gray-background: url("../../../assets/images/index/course_icon_score_gray_big.png") center center no-repeat !default;
-$--judge-icon-red-background: url("../../../assets/images/index/course_icon_score_red_big.png") center center no-repeat !default;
+$--judge-icon-gray-background: url("@~assets/images/index/course_icon_score_gray_big.png") center center no-repeat !default;
+$--judge-icon-red-background: url("@~assets/images/index/course_icon_score_red_big.png") center center no-repeat !default;
 // searchTeacherPage
-$--search-teacher-male-background: url("../../../assets/images/index/home/home_icon_male.png") center center no-repeat !default;
-$--search-teacher-role-background: url("../../../assets/images/index/home/home_icon_teacher.png") center center no-repeat !default;
-$--search-contact-background: url("../../../assets/images/index/home/home_btn_price_nor.png") center center no-repeat !default;
+$--search-teacher-male-background: url("@~assets/images/index/home/home_icon_male.png") center center no-repeat !default;
+$--search-teacher-role-background: url("@~assets/images/index/home/home_icon_teacher.png") center center no-repeat !default;
+$--search-contact-background: url("@~assets/images/index/home/home_btn_price_nor.png") center center no-repeat !default;
 // accountPage页面
 $--account-nav-font-size: 1.3rem !default;
 $--account-nav-background-color: #fff !default;
@@ -128,19 +127,19 @@ $--account-address-form-wrap-font-size: 1.2rem !default;
 $--account-address-form-require-tag-color: red !default;
 
 // 课室页面样式
-$--place-headline-icon-background: url("../../../assets/images/index/place/location.png") center center no-repeat !default;
-$--place-icon-wifi: url("../../../assets/images/index/place/icon_wifi.png") center center no-repeat !default;
-$--place-icon-park: url("../../../assets/images/index/place/icon_park.png") center center no-repeat !default;
-$--place-icon-tv: url("../../../assets/images/index/place/icon_tv.png") center center no-repeat !default;
-$--place-icon-pen: url("../../../assets/images/index/place/icon_pen.png") center center no-repeat !default;
-$--place-icon-air: url("../../../assets/images/index/place/icon_air.png") center center no-repeat !default;
-$--place-icon-big-wifi: url("../../../assets/images/index/place/icon_place_wifi.png") center center no-repeat !default;
-$--place-icon-big-park: url("../../../assets/images/index/place/icon_place_park.png") center center no-repeat !default;
-$--place-icon-big-tv: url("../../../assets/images/index/place/icon_place_tv.png") center center no-repeat !default;
-$--place-icon-big-pen: url("../../../assets/images/index/place/icon_place_pen.png") center center no-repeat !default;
-$--place-icon-big-air: url("../../../assets/images/index/place/icon_place_air.png") center center no-repeat !default;
-$--place-banner: url("../../../assets/images/index/place/banner.png") center center no-repeat !default;
-$--place-room-pic: url("../../../assets/images/index/place/room.png") center center no-repeat !default;
+$--place-headline-icon-background: url("@~assets/images/index/place/location.png") center center no-repeat !default;
+$--place-icon-wifi: url("@~assets/images/index/place/icon_wifi.png") center center no-repeat !default;
+$--place-icon-park: url("@~assets/images/index/place/icon_park.png") center center no-repeat !default;
+$--place-icon-tv: url("@~assets/images/index/place/icon_tv.png") center center no-repeat !default;
+$--place-icon-pen: url("@~assets/images/index/place/icon_pen.png") center center no-repeat !default;
+$--place-icon-air: url("@~assets/images/index/place/icon_air.png") center center no-repeat !default;
+$--place-icon-big-wifi: url("@~assets/images/index/place/icon_place_wifi.png") center center no-repeat !default;
+$--place-icon-big-park: url("@~assets/images/index/place/icon_place_park.png") center center no-repeat !default;
+$--place-icon-big-tv: url("@~assets/images/index/place/icon_place_tv.png") center center no-repeat !default;
+$--place-icon-big-pen: url("@~assets/images/index/place/icon_place_pen.png") center center no-repeat !default;
+$--place-icon-big-air: url("@~assets/images/index/place/icon_place_air.png") center center no-repeat !default;
+$--place-banner: url("@~assets/images/index/place/banner.png") center center no-repeat !default;
+$--place-room-pic: url("@~assets/images/index/place/room.png") center center no-repeat !default;
 // 公共样式变量库
 $--common-headline-upper-font-size: 0.6rem !default; // 60px大标题
 $--common-headline-font-size: 0.48rem !default; // 48px大标题
@@ -157,9 +156,9 @@ $--common-selectd-text-font-color: #57B8D7 !default; //蓝色选中颜色
 $--common-other-text-font-color: #FFAF14 !default; //橙色点缀颜色
 $--common-detail-title-font-color: #333333 !default; // 详情标题
 // 星星(组件调用路径)
-$--star-icon-gray-background: url("../assets/images/star_gray_small.png") center center no-repeat !default;
-$--star-icon-red-background: url("../assets/images/star_red_small.png") center center no-repeat !default;
+$--star-icon-gray-background: url("@~assets/images/star_gray_small.png") center center no-repeat !default;
+$--star-icon-red-background: url("@~assets/images/star_red_small.png") center center no-repeat !default;
 
 // 后退关闭
-$--nav-back-icon: url("../../assets/images/back.png") center center no-repeat !default;
-$--nav-close-icon: url("../../assets/images/close.png") center center no-repeat !default;
+$--nav-back-icon: url("@~assets/images/back.png") center center no-repeat !default;
+$--nav-close-icon: url("@~assets/images/close.png") center center no-repeat !default;

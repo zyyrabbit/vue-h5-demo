@@ -1,9 +1,9 @@
 <template>
 	<!-- 两列排列 -->
-    <div class="dx-cell-item clearfix" @click="goPath()">
+  <div class="dx-cell-item clearfix" @click="goPath()">
 		<dx-item>
 			<template slot="left">
-					<slot name="left"></slot>
+				<slot name="left"></slot>
 			</template>
 			<template slot="right">
 				<div :class="{'can-access': canAccess}" class="cell-right">
@@ -11,7 +11,7 @@
 				</div>
 	    	</template>
 		</dx-item>
-    </div>
+  </div>
 </template>
 <script>
 	export default {
