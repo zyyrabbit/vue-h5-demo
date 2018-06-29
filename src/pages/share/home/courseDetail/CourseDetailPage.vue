@@ -16,7 +16,7 @@
        	
 	   	<div class="home-course-detail--item home-course-detail__teacher">
 	   		<p>{{course.courseName}}</p>
-	   		<dx-item to="/teacherDetail">
+	   		<dx-item :to="'/teacherDetail/' + course.teacherId">
 	   			<div 
 	   				slot="left"
 	   				class="home-course-detail__teacher--des" 

@@ -15,5 +15,8 @@ export default {
   },
   getPersonalInfo(param = {}) {
     return http.get('/user/getUserInfoByName', { params: param })
+  },
+  getUserInfo(param = {}) {
+    return http.get('/user/getUserInfo', { params: param })
   }
 }

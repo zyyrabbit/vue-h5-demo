@@ -74,7 +74,7 @@
 							<div 
 								v-for="(teacher, index) in starTeacher" v-if="index < 2"
 								class="index-home-star-teacher"
-								@click="goNext('/teacherDetail')"
+								@click="goNext('/teacherDetail/' + teacher.id)"
 							>
 								<div class="index-home-star-teacher--icon"></div>
 								<div class="index-home-star-teacher__detail">
@@ -99,7 +99,7 @@
 							<div 
 								v-for="(student, index) in starStudent" v-if="index < 2"
 								class="index-home-star-teacher"
-								@click="goNext('/teacherDetail')"
+								@click="goNext('/')"
 							>
 								<div class="index-home-star-teacher--icon"></div>
 								<div class="index-home-star-teacher__detail widthauto">
