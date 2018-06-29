@@ -6,10 +6,10 @@
     </div>
     <div class="place-select--btn-group">
       <dx-button size="small" 
-        v-for="item in radioGroup"
-        :type="item.id === region ? 'primary' : 'gray'"
+        v-for="item in regionList"
+        :type="item.regionId === region ? 'primary' : 'gray'"
         @dx-button-click="handleClick(item)"
-        key="item.id">{{item.label}}
+        key="item.id">{{item.fieldAddress}}
       </dx-button>
     </div>
     <div class="place-select--btn-ok">
@@ -18,32 +18,37 @@
   </div>
 </template>
 <script>
+  import pApi from 'api/placeApi.js'
+  import {mapState, mapMutations} from 'vuex'
   export default {
     mounted() {
+      this.getRegionList()
+    },
+    computed: {
+			...mapState({
+				regionList: state => state.regionList
+			})
     },
     methods: {
+			...mapMutations([
+				'SET_REGIONLIST'
+			]),
       handleClick(obj) {
-        this.region = obj.id
+        this.region = obj.regionId
       },
       goTo(path) {
         this.$router.push(path)
+      },
+      getRegionList() {
+        pApi.getRegionList().then(r => {
+          this.SET_REGIONLIST(r.data.list)
+				})
       }
-    },
-    computed: {
     },
     data() {
       return {
-        region: '1',
-        radioGroup: [{
-          id: '1',
-          label: '南京仙灵校区'
-        }, {
-          id: '2',
-          label: '南京鼓楼区'
-        }, {
-          id: '3',
-          label: '上海静安区'
-        }]
+        region: 2,
+        radioGroup: []
       }
     }
   }

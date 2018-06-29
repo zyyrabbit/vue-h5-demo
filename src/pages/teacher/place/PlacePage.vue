@@ -6,7 +6,8 @@
         <div class="index-place--title-icon" @click="goTo('/place/select')"></div>
       </div>
       <div class="index-place--title-desc">
-        <span>人气10288</span><span>·累计开课278</span><span>·距离你3.5km</span>
+        <span>人气10288</span><span>·累计开课278</span>
+        <!-- <span>·距离你3.5km</span> -->
       </div>
     </div>
     <div class="index-place--content">
@@ -141,7 +142,7 @@
           label: '05-05',
           value: '05-05'
         }, {
-          label: '05-0623131',
+          label: '05-06',
           value: '05-06'
         }, {
           label: '05-07',

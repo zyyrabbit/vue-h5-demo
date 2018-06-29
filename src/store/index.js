@@ -13,7 +13,9 @@ const state = {
 	latitude: '',
 	homePage: {}, // 首页列表
 	login: false,
-	userInfo: null // 用户信息
+	userInfo: null, // 用户信息
+	placeList: [], // 场地列表信息,
+	regionList: [] // 场地地区信息
 }
 
 export default new Vuex.Store({

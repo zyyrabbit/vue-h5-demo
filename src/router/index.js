@@ -96,7 +96,7 @@ const routes = [
 		// 首页搜索结果页
 		// { path: '/searchResult', component: SearchResultPage, hidden: true },
 		// 首页教师详情
-		{ path: '/teacherDetail', component: TeacherDetailPage, hidden: true },
+		{ path: '/teacherDetail/:id', component: TeacherDetailPage, hidden: true },
 		{
 			path: '/course',
 			component: CoursePage,

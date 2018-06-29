@@ -1,40 +1,40 @@
 <template>
-    <div class="home-teacher-detail">
+    <div class="home-teacher-detail" v-footer>
     	<dx-header></dx-header>
    		<dx-item class="home-teacher-detail__teacher">
    			<div 
    				slot="left"
    				class="home-teacher-detail__teacher--des" 
    			>
-   				<div>老师：奕爸CY</div>
-   				<div>儿童心理达人</div>
+   				<div>老师：{{teacher.name}}</div>
+   				<div>{{teacher.persionalSignature}}</div>
    			</div>
    			<div 
    				slot="right"
    				class="home-teacher-detail__teacher--icon"
+					:style="{backgroundImage: 'url(' + teacher.persionalImage + ')'}"
    			></div>
    		</dx-item>
    		<p class="home-teacher-detail--text">
-   			十年教育出版经验，资深英国图书出版人;教育理念倡导和实践者；一个孩子的爸爸,热衷于分享优质教育资源,想让孩子成为一个通达,只有快乐的小天使。
+   			{{teacher.persionalIntroduction}}
    		</p>
 		<div class="home-teacher-detail__courses">
-			<p class="home-teacher-detail__courses--title">他的2门课程</p>
+			<p class="home-teacher-detail__courses--title">他的{{teacherCourses.length}}门课程</p>
 			<dx-ul>
 				<li  
-				    v-for="index in 2"
+				  v-for="course in teacherCourses"
 					class="home-teacher-detail__courses--item">
-					<div class="home-teacher-detail__courses--item-pic"></div>
+					<div class="home-teacher-detail__courses--item-pic"
+						:style="{backgroundImage: 'url(' + course.courseImage + ')'}"></div>
 					<div class="home-teacher-detail__courses--item-desc">
-						</p>
-							古诗词朗诵,让孩子在国学的熏陶中成长
-						</p>
+						</p>{{course.courseRecommend}}</p>
 						<div class="home-teacher-detail__courses--item-message clearfix">
 							<div class="home-teacher-detail__courses--item-message-left">
-								<span></span>
-								<span>奕爸CY</span>
+								<span :style="{backgroundImage: 'url(' + teacher.persionalImage + ')'}"></span>
+								<span>{{teacher.name}}</span>
 							</div>
 							<span>
-								<span>1145</span> 人参见过
+								<span>{{course.enteredCount}}</span> 人参加过
 							</span>
 						</div>
 					</div>
@@ -45,6 +45,8 @@
    	</div>
 </template>
 <script>
+	import capi from 'api/courseApi.js'
+	import uapi from 'api/userApi.js'
 	import mixin from 'utils/mixin.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	import ButtonFooter from 'pages/common/ButtonFooter.vue'
@@ -56,6 +58,25 @@
 		},
 		data() {
 			return {
+				teacher: {},
+				teacherCourses: [],
+				teacherId: this.$route.params.id
+			}
+		},
+		mounted() {
+			this.getTeacherInfo()
+			this.getTeacherCourse()
+		},
+		methods: {
+			getTeacherInfo() {
+				uapi.getUserInfo({id: this.teacherId}).then(r => {
+					this.teacher = r.data
+				})
+			},
+			getTeacherCourse() {
+				capi.getCourseByUser({id: this.teacherId}).then(r => {
+					this.teacherCourses = r.data
+				})
 			}
 		}
 	}
@@ -80,7 +101,7 @@
 				width: 1.44rem;
 				height: 1.44rem;
 				border-radius: 50%;
-				background: url('../../../assets/images/index/home/teacher1.png');
+				// background: url('../../../assets/images/index/home/teacher1.png');
 				background-size: 100% 100%;
 			}
 		}
@@ -98,13 +119,17 @@
 				color: #484848;
 				margin-bottom: 0.37rem;
 			}
+			.dx-ul{
+				align-items: flex-start;
+			}
 			@include m(item) {
 				width: 3.26rem;
+				margin-bottom: 0.4rem;
 			}
 			@include m(item-pic) {
 				width: 3.26rem;
 				height: 2.66rem;
-				background: red;
+				background-size: 100% 100%;
 				border-radius: 0.1rem;
 			}	
 			@include m(item-desc) {
@@ -134,7 +159,7 @@
 					width: 0.32rem;
 					height: 0.32rem;
 					margin-right: 0.11rem;
-					background: red;
+					background-size: 100% 100%;
 					border-radius: 50%;
 				}
 

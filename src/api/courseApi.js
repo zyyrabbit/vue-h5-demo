@@ -12,5 +12,8 @@ export default {
   },
   getCourseEvaluation(param = {}) {
     return http.get('/evaluation/courseEvaluation', { params: param })
+  },
+  getCourseByUser(param = {}) {
+    return http.get('/course/queryCourse', { params: param })
   }
 }

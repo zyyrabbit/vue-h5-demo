@@ -1,13 +1,22 @@
 import {
   GET_USERINFO,
   RECORD_USERINFO,
-  SET_HOMEPAGE
+  SET_HOMEPAGE,
+  SET_PLACELIST,
+  SET_REGIONLIST
 } from './mutation-types.js'
 import { setStore } from 'utils/utils'
 
 export default {
   [SET_HOMEPAGE](state, data) {
     state.homePage = data
+  },
+  [SET_PLACELIST](state, data) {
+    state.placeList = data
+    setStore('region_id', data.regionId)
+  },
+  [SET_REGIONLIST](state, data) {
+    state.regionList = data
   },
   [RECORD_USERINFO](state, info) {
     state.userInfo = info
