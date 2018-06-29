@@ -50,8 +50,12 @@
         </div>
         <div>
           <dx-comment></dx-comment>
-          <dx-comment></dx-comment>
+          <!-- <dx-comment></dx-comment> -->
         </div>
+        <div 
+          class="place-detail--cont-comm-more"
+          @click="goNext('/courseDetail/6/judge')"
+          >查看全部评价</div>
       </div>
     </div>
     <!-- footer -->
@@ -67,7 +71,9 @@
 </template>
 <script>
   import PriceFooter from 'pages/common/PriceFooter.vue'
+  import mixin from 'utils/mixin.js'
   export default {
+    mixins: [mixin],
 		components: {
 			PriceFooter
 		},
@@ -99,7 +105,7 @@
     padding: 0.34rem 0.4rem;
     // padding-bottom: 1.2rem;
     &--icons{
-      padding: 0.56rem 0.1rem 0.73rem;
+      padding: 0.56rem 0 0.73rem;
       display: flex;
       border-bottom: 0.02rem #EBEBEB solid;
     }
@@ -139,6 +145,10 @@
     &-comm{
       border-top: 0.02rem solid #e5e5e5;
       padding-top: 0.56rem; 
+      &-more{
+        font-size: 0.36rem;
+        color: $--common-selectd-text-font-color;
+      }      
     }
     &-comment{
       display: flex;

@@ -10,11 +10,13 @@
 				v-if="item.leftText"
 				slot="left"
 			>	
-				<div class="dx-item-icon" 
-					v-if="item.icon"
-					:class="'dx-item-icon-' + item.icon" 
-					></div>
-				<p>{{item.leftText}}</p>
+				<div class="dx-item-list-left">
+					<div class="dx-item-icon" 
+						v-if="item.icon"
+						:class="'dx-item-icon-' + item.icon" 
+						></div>
+					<p>{{item.leftText}}</p>
+				</div>
 			</template>
 			<p 
 				v-if="item.rightText"
@@ -44,6 +46,7 @@ export default {
 	border-top: 0.02rem solid #e5e5e5;
 	.dx-item-list-left{
 		display: flex;
+		align-items: center;
 	}
 	.dx-item-icon{
 		margin-right: 0.2rem;

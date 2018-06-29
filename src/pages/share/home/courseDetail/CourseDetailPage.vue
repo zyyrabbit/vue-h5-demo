@@ -47,8 +47,7 @@
 	        </div>
 	        <div 
 	        	class="home-course-detail__parent-judge--more"
-	        	@click="goNext('/courseDetail/judge')"
-	        >查看全部评价</div>
+	        	@click="goNext('/courseDetail/' + courseId + '/judge')">查看全部评价</div>
       	</div>
 	   <price-footer 
 	   		to="/join" 

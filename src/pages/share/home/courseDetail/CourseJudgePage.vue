@@ -41,8 +41,12 @@
 		data() {
 			return {
 				labels: ['老师好', '知识实用', '教学效果好', '能及时纠正'],
-				judgies: ['老师好', '知识实用', '教学效果好', '能及时纠正']
+				judgies: ['老师好', '知识实用', '教学效果好', '能及时纠正'],
+				courseId: this.$route.params.id
 			}
+		},
+		mounted() {
+			console.info(this.courseId)
 		}
 	}
 </script>
