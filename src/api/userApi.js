@@ -4,16 +4,16 @@ export default {
   login(param = {}) {
     return http.get('/user/login', {params: param})
   },
-  loginTeacher(param = {}) {
-    return http.get('/user/login', { params: { userName: 'teacher', userPwd: '123' } })
-  },
-  loginParent(param = {}) {
-    return http.get('/user/login', { params: { userName: 'parent', userPwd: '123' } })
-  },
   register(param = {}) {
-    return http.get(``)
+    return http.post(`user/register`, param)
   },
   logout() {
     return http.get(``)
+  },
+  sendVc(param = {}) {
+    return http.get('/user/verificationCode', { params: param })
+  },
+  getPersonalInfo(param = {}) {
+    return http.get('/user/getUserInfoByName', { params: param })
   }
 }

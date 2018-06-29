@@ -3,7 +3,9 @@
     v-footer
     class="place-detail"
   >
-    <div class="place-detail--header-bg"></div>
+    <div class="place-detail--header-bg">
+      <dx-header></dx-header>
+    </div>
     <div class="place-detail--cont">
       <p class="headline-upper-text">南师大文渊楼305室</p>
       <div class="place-detail--cont--icons">
@@ -71,11 +73,12 @@
 </template>
 <script>
   import PriceFooter from 'pages/common/PriceFooter.vue'
+  import DxHeader from 'pages/common/HeaderPage.vue'
   import mixin from 'utils/mixin.js'
   export default {
     mixins: [mixin],
 		components: {
-			PriceFooter
+			PriceFooter, DxHeader
 		},
     mounted() {
     },
@@ -96,10 +99,10 @@
     background: #BAB7B1;
     background: $--place-room-pic;
     background-size: 100% 100%;    
-    // width: 100%;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
+    header{
+      padding-left: 0.4rem;
+      padding-right: 0.4rem;
+    }
   }
   &--cont{
     padding: 0.34rem 0.4rem;

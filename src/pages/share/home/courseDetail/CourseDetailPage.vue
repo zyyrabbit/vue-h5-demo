@@ -16,7 +16,7 @@
        	
 	   	<div class="home-course-detail--item home-course-detail__teacher">
 	   		<p>{{course.courseName}}</p>
-	   		<dx-item>
+	   		<dx-item to="/teacherDetail">
 	   			<div 
 	   				slot="left"
 	   				class="home-course-detail__teacher--des" 
@@ -42,10 +42,15 @@
 	          <p>99+</p>
 	          <dx-star :rating="3" type="small"></dx-star>
 	        </div>
-	        <div>
-	        	<dx-comment></dx-comment>
+	        <div v-if="evaluation.length !== 0">
+	        	<dx-comment 
+							v-for="item in evaluation"
+							:key="item.id" 
+							:item="item">
+						</dx-comment>
 	        </div>
 	        <div 
+						v-if="evaluation.length !== 0"
 	        	class="home-course-detail__parent-judge--more"
 	        	@click="goNext('/courseDetail/' + courseId + '/judge')">查看全部评价</div>
       	</div>
@@ -79,16 +84,28 @@
 		data() {
 			return {
 				course: {},
-				courseId: this.$route.params.id
+				courseId: this.$route.params.id,
+				evaluation: []
 			}
 		},
 		mounted() {
 			this.getCourseDetl()
+			this.getCourseEval()
 		},
 		methods: {
 			getCourseDetl() {
 				capi.getCourseDetl({id: this.courseId}).then(r => {
 					this.course = r.data
+				})
+			},
+			getCourseEval() {
+				let param = {
+					courseId: this.courseId,
+					pageIndex: 1,
+					pageSize: 1
+				}
+				capi.getCourseEvaluation(param).then(r => {
+					this.evaluation = r.data.list
 				})
 			}
 		}

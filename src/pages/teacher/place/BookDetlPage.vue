@@ -3,6 +3,7 @@
     v-footer 
     class="place-book"
   >
+    <dx-header></dx-header>
     <p class="headline-upper-text">预订场所</p>
     <div class="place-book-info">
       <div class="place-book-info-pic"></div>
@@ -111,10 +112,11 @@
   </div>
 </template>
 <script>
+  import DxHeader from 'pages/common/HeaderPage.vue'
   import PriceFooter from 'pages/common/PriceFooter.vue'
   export default {
 		components: {
-			PriceFooter
+			PriceFooter, DxHeader
 		},
     mounted() {
     },

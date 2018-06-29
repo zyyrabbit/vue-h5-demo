@@ -12,7 +12,8 @@ Object.defineProperties(axios, {
 
 // 自定义错误类型
 const ResponseNullError = function(message) {
-	this.message = message
+  console.info(message)
+  alert(message)
 }
 
 const http = axios.create({
@@ -24,7 +25,7 @@ http.interceptors.response.use(
     // FIXME
     if (response.data.resultCode === '0') {
       return Promise.resolve(response.data)
-    } else if (response.data.resultCode === '999') {
+    } else if (response.data.resultCode === '-999') {
       // TODO
       router.go('/login')
     } else {

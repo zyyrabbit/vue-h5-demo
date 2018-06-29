@@ -3,13 +3,13 @@
 		<div class="comment-head">
 			<div class="comment-user-avatar"/>
 			<div class="comment-user">
-				<p class="comment-user-name">邦里</p>
-				<p class="comment-user-date">4月1号 2018</p>
+				<p class="comment-user-name">{{comment.userName || '邦里'}}</p>
+				<p class="comment-user-date">{{comment.createDate | formatInEvaluation}}</p>
 			</div>
-			<dx-star :rating=3 type="small"></dx-star>
+			<dx-star :rating="comment.evaluationGrade/2 || 3" type="small"></dx-star>
 		</div>
 		<div class="comment-cont">
-			<slot>环境舒适,我都想在这里多呆一会,我家小孩也喜欢这里的老师,下次还来。</slot>
+			<slot>{{comment.evaluationConent || '环境舒适,我都想在这里多呆一会,我家小孩也喜欢这里的老师,下次还来。'}}</slot>
 		</div>
 	</div>
 </template>
@@ -18,9 +18,11 @@ export default {
 	name: 'DxComment',
 	componentName: 'DxComment',
 	props: {
+		item: Object
 	},
 	data() {
 		return {
+			comment: this.item || {}
 		}
 	}
 }

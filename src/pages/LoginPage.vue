@@ -52,6 +52,7 @@
 	</div>
 </template>
 <script>
+import md5 from 'js-md5'
 // import AuthApi from 'api/authApi.js'
 import uapi from 'api/userApi.js'
 import { mapMutations } from 'vuex'
@@ -88,18 +89,16 @@ export default{
 				if (valid) {
 					let params = {}
 					params.userName = this.model.userName
-					params.userPwd = this.model.password
-					// 模拟登陆
+					params.userPwd = md5(this.model.password)
+					// 登陆
 					uapi.login(params).then(r => {
 						console.info(r)
 						// role: 0老师 1家长
-						let role = params.userName === 'teacher' ? 0 : 1
-						this.RECORD_USERINFO({
-							userId: 1,
-							tokenId: 123,
-							role
+						uapi.getPersonalInfo().then(r => {
+							const user = r.data
+							this.RECORD_USERINFO(user)
+							this.$router.push('/home')
 						})
-						this.$router.push('/home')
 					})
 					try {
 					} catch (e) {

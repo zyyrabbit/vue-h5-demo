@@ -62,6 +62,8 @@
     "webpack-parallel-uglify-plugin": "^1.0.2"
   },
   "dependencies": {
+    "dayjs": "^1.6.10",
+    "js-md5": "^0.7.3",
     "vue": "^2.5.9"
   }
 }

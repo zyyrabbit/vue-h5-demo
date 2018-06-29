@@ -1,36 +1,32 @@
 <template>
-    <div class="home-course-judging">
-    	<dx-header></dx-header>
-    	 <div class="home-course-judging__label">
-               <p>共189人评价-9.5分</p>
-               <dx-checkbox-group
-                  v-model="judgies"
-                  class="home-course-judging__label--group clearfix"
-               >
-                  <dx-checkbox 
-                     v-for="(label, index) in labels"
-                     :key="index"
-                     :label="label"
-                     name="home-course-judging-checkbox"
-                     class="block--float-left"
-                  ></dx-checkbox>
-               </dx-checkbox-group>
-         </div>
-    	<ul class="home-course-judging__list">
-    		<li class="home-course-judging--item">
-	        	<dx-comment>
-	        		课程特别好,孩子学到了很多,特别是教室,是在南京师范大学里面,哈哈,我和孩子还是第一次南师大教室上课。还想让孩子以后报考这个大学呢,是不是想太多啦~总之是一次很开心的学习体验。
-	        	</dx-comment>
-      		</li>
-      		<li class="home-course-judging--item">
-	        	<dx-comment>
-	        		课程特别好,孩子学到了很多,特别是教室,是在南京师范大学里面,哈哈,我和孩子还是第一次南师大教室上课。还想让孩子以后报考这个大学呢,是不是想太多啦~总之是一次很开心的学习体验。
-	        	</dx-comment>
-      		</li>
-    	</ul>
-   	</div>
+	<div class="home-course-judging">
+		<dx-header></dx-header>
+		<div class="home-course-judging__label">
+			<p>共189人评价-9.5分</p>
+			<dx-checkbox-group
+				v-model="judgies"
+				class="home-course-judging__label--group clearfix"
+			>
+				<dx-checkbox 
+					v-for="(label, index) in labels"
+					:key="index"
+					:label="label"
+					name="home-course-judging-checkbox"
+					class="block--float-left"
+				></dx-checkbox>
+			</dx-checkbox-group>
+		</div>
+		<ul class="home-course-judging__list">
+			<li class="home-course-judging--item" 
+				v-for="item in evaluation"
+				:key="item.id">
+				<dx-comment :item="item"></dx-comment>
+			</li>
+		</ul>
+	</div>
 </template>
 <script>
+	import capi from 'api/courseApi.js'
 	import mixin from 'utils/mixin.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	export default {
@@ -42,11 +38,25 @@
 			return {
 				labels: ['老师好', '知识实用', '教学效果好', '能及时纠正'],
 				judgies: ['老师好', '知识实用', '教学效果好', '能及时纠正'],
-				courseId: this.$route.params.id
+				courseId: this.$route.params.id,
+				evaluation: []
 			}
 		},
 		mounted() {
 			console.info(this.courseId)
+			this.getCourseEval()
+		},
+		methods: {
+			getCourseEval() {
+				let param = {
+					courseId: this.courseId,
+					pageIndex: 1,
+					pageSize: 999
+				}
+				capi.getCourseEvaluation(param).then(r => {
+					this.evaluation = r.data.list
+				})
+			}
 		}
 	}
 </script>

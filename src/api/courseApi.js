@@ -9,5 +9,8 @@ export default {
   },
   getCourseDetl(param = {}) {
     return http.get('/course/getCourseInfo', { params: param })
+  },
+  getCourseEvaluation(param = {}) {
+    return http.get('/evaluation/courseEvaluation', { params: param })
   }
 }

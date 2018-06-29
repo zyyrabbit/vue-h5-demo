@@ -10,11 +10,11 @@
 				<div class="register-form__item--title">注册</div>
 				<div class="register-form__item register-form__item--phone-number" >
 					<dx-form-item  	
-						prop="userName"
+						prop="phoneNumber"
 					>
 						<dx-input 
 							inputClass="dx-input-with-title"
-							v-model="model.userName"
+							v-model="model.phoneNumber"
 							placeholder="请输入手机号码"
 						>
 							手机号
@@ -24,7 +24,7 @@
 				<div class="register-form__item register-form__item--password" >
 					<dx-form-item prop="password">
 						<dx-input 
-							v-model="model.password"
+							v-model="model.verificationCode"
 							inputClass="dx-input-with-title"
 							:inputStyle = "verificationCodeStyle" 
 							placeholder="请输入验证码" 
@@ -32,17 +32,17 @@
 						>
 							验证码
 							<span slot="leftText">
-								<dx-vc></dx-vc>
+								<dx-vc v-model="model.phoneNumber"></dx-vc>
 							</span>
 						</dx-input>
 						
 					</dx-form-item>
 				</div>
 				<div class="register-form__item register-form__item--password" >
-					<dx-form-item prop="password">
+					<dx-form-item prop="userPwd">
 						<dx-input 
 							inputClass="dx-input-with-title"
-							v-model="model.password" 
+							v-model="model.userPwd" 
 							placeholder="请输入6-20位数字和字母" 
 							originType="password"
 						>
@@ -87,10 +87,10 @@
 	</div>
 </template>
 <script>
-		// import AuthApi from 'api/authApi.js'
+import md5 from 'js-md5'
+import uapi from 'api/userApi.js'
 import DxHeader from 'pages/common/HeaderPage.vue'
 import { mapMutations } from 'vuex'
-import * as Types from 'store/mutation-types.js'
 export default{
 	name: 'register',
 	componentName: 'register',
@@ -101,67 +101,58 @@ export default{
 		return {
 			errorMsg: '',
 			model: {
-				userName: '',
-				password: '',
-				role: '0'
+				phoneNumber: '',
+				userPwd: '',
+				role: '0',
+				verificationCode: ''
 			},
 			rules: {
 				// 公共验证规则
 				baseRule: [
 					{name: 'required', message: '* 请输入账户名和密码！'}
 				],
-				userName: [],
-				password: []
+				phoneNumber: [],
+				userPwd: []
 			},
 			isRegistering: false,
 			verificationCodeStyle: {
 				paddingRight: '2rem'
-			},
-			sendingVc: false,
-			vcTime: 60
+			}
 		}
 	},
 	methods: {
-		...mapMutations({
-			setToken: Types.SET_TOKEN,
-			setAuthInfo: Types.SET_AUTH_INFO,
-			setCustInfo: Types.SET_CUST_INFO
-		}),
-		sendVc() {
-			// this.model.userName
-			if (!this.sendingVc) {
-				this.sendingVc = true
-				this.vcTime = 60
-				this.setCoutDown()
-			}
-		},
-		setCoutDown() {
-			if (this.vcTime === 0) {
-				this.sendingVc = false
-			} else {
-				let _this = this
-				setTimeout(function() {
-					_this.vcTime -= 1
-					_this.setCoutDown(_this.vcTime)
-				}, 1000)
-			}
-		},
+		...mapMutations([
+			'RECORD_USERINFO'
+		]),
 		submit(formName) {
 			this.isRegistering = true
 			this.$refs[formName].validate(async valid => {
 				this.errorMsg = ''
 				if (valid) {
 					let params = {}
-					params.custName = this.model.userName
-					params.custPassword = this.model.password
-					params.isRememberMe = this.model.isRememberMe
+					params.phoneNumber = this.model.phoneNumber
+					params.userPwd = md5(this.model.userPwd)
+					params.role = this.model.role
+					params.verificationCode = this.model.verificationCode
 					try {
+						uapi.register(params).then(r => {
+							alert('注册成功!')
+							uapi.login(params).then(r => {
+								console.info(r)
+								// role: 0老师 1家长
+								uapi.getPersonalInfo().then(r => {
+									const user = r.data
+									this.RECORD_USERINFO(user)
+									this.$router.push('/home')
+								})
+							})
+						})
 					} catch (e) {
 						this.errorMsg = e.message
 					}
 				} else {
 					this.isRegistering = false
-					this.errorMsg = '* 用户名或密码不能为空!'
+					alert('* 用户名或密码不能为空!')
 					console.log('error submit!')
 					return false
 				}

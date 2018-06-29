@@ -7,9 +7,13 @@
 	</div>
 </template>
 <script>
+import uapi from 'api/userApi.js'
 export default {
 	name: 'DxVc',
 	componentName: 'DxVc',
+	props: {
+		value: String
+	},
 	data() {
 		return {
 			sendingVc: false,
@@ -18,11 +22,12 @@ export default {
 	},
 	methods: {
 		sendVc() {
-			// this.model.userName
 			if (!this.sendingVc) {
-				this.sendingVc = true
-				this.vcTime = 60
-				this.setCoutDown()
+				uapi.sendVc({phoneNumber: this.value}).then(r => {
+					this.sendingVc = true
+					this.vcTime = 60
+					this.setCoutDown()
+				}).catch({})
 			}
 		},
 		setCoutDown() {
@@ -40,6 +45,13 @@ export default {
 }
 </script>
 <style scope lang="scss">
+.dx-button-pinking{
+	background: #FF9CC8!important;
+}
+.dx-button-pinking:focus, .dx-button-pinking:hover{
+	border-color: #FF9CC8!important;
+	color: white!important;
+}
 .dx-vc-disabled{
 	background: #C3C3C3!important;
 }
