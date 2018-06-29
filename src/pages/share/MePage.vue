@@ -86,7 +86,8 @@
 				height: 0.88rem;
 			}
 			@include m(setting) {
-				background-color: red;
+				background: $--me-btn-setting;
+				background-size: 100% 100%;
 				display: inline-block;
 				width: 0.88rem;
 				height: 0.88rem;
