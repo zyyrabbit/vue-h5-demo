@@ -33,7 +33,6 @@ const AccountSettingPage = () => import('pages/share/profile/setting/AccountSett
 const PwdModPage = () => import('pages/share/profile/setting/PwdModPage.vue')
 const TelephoneModPage = () => import('pages/share/profile/setting/TelephoneModPage.vue')
 const EditPage = () => import('pages/share/profile/EditPage.vue')
-const AdvisePage = () => import('pages/share/profile/AdvisePage.vue')
 const SignInPage = () => import('pages/share/profile/integral/SignInPage.vue')
 
 /* 家长页面组 */
@@ -48,6 +47,7 @@ const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPa
 const IntegralMallPage = () => import('pages/parent/profile/integral/IntegralMallPage.vue')
 const ExchangeRecordPage = () => import('pages/parent/profile/integral/ExchangeRecordPage.vue')
 const DiscountDetailPage = () => import('pages/parent/profile/integral/DiscountDetailPage.vue')
+const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
 
 /* 老师页面组 */
 // 场地页面
@@ -59,6 +59,10 @@ const BookSuccPage = () => import('pages/teacher/place/BookSuccessPage.vue')
 const RelateCoursePage = () => import('pages/teacher/place/RelateCoursePage.vue')
 // 个人账户（老师）
 const TeacherCoursePage = () => import('pages/teacher/profile/CoursePage.vue')
+const JudgeStudentPage = () => import('pages/teacher/profile/JudgeStudentPage.vue')
+const DoJudgePage = () => import('pages/teacher/profile/DoJudgePage.vue')
+const MySutdentPage = () => import('pages/teacher/profile/MystudentPage.vue')
+const ChangePlacePage = () => import('pages/teacher/profile/ChangePlacePage.vue')
 const routes = [
 		{ path: '/', component: HomePage, hidden: true },
 		{ path: '/login', name: 'login', component: Login, hidden: true },
@@ -151,7 +155,18 @@ const routes = [
 		},
 		{
 			path: '/teacher/course',
-			component: TeacherCoursePage
+			component: TeacherCoursePage,
+			children: [
+				{ path: 'students', component: MySutdentPage, hidden: true },
+				{ path: 'changePla', component: ChangePlacePage, hidden: true }
+			]
+		},
+		{
+			path: '/teacher/judgeStu',
+			component: JudgeStudentPage,
+			children: [
+				{ path: 'DojudgeStu', component: DoJudgePage, hidden: true }
+			]
 		}
 	]
 const router = new VueRouter({

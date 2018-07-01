@@ -17,12 +17,12 @@ export default {
     name: 'DxRate',
     componentName: 'DxRate',
     props: {
-			value: {},
-			rating: Number,
-			type: String,
-			onlyDisplay: Boolean,
-			rateClass: String,
-			selectRateClass: String
+		value: {},
+		rating: Number,
+		type: String,
+		onlyDisplay: Boolean,
+		rateClass: String,
+		selectRateClass: String
     },
     data() {
 		return {
@@ -33,7 +33,7 @@ export default {
 		select(index) {
 			if (!this.onlyDisplay) {
 				this.level = index + 1
-				this.$emit('level', index)
+				this.$emit('input', index)
 			}
 		}
 	}
