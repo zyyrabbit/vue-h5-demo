@@ -6,7 +6,8 @@ import {
   SET_REGIONLIST,
   SELECTING_REGION,
   SET_SELECTREGION,
-  SET_SELECT_PLACE_DATE
+  SET_SELECT_PLACE_DATE,
+  SET_REGIONINFO
 } from './mutation-types.js'
 import { setStore } from 'utils/utils'
 
@@ -20,6 +21,9 @@ export default {
   },
   [SET_SELECT_PLACE_DATE](state, data) {
     state.selectPlaceDate = data
+  },
+  [SET_REGIONINFO](state, data) {
+    state.regionInfo = data
   },
   [SELECTING_REGION](state, data) {
     state.selectingRegion = data

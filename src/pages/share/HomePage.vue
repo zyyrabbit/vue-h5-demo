@@ -198,7 +198,6 @@
 			})
 		},
 		mounted() {
-			this.getPersonalInfo()
 			this.getHomePageData()
 		},
 		methods: {
@@ -206,9 +205,6 @@
 				'RECORD_USERINFO',
 				'SET_HOMEPAGE'
 			]),
-			getPersonalInfo() {
-				// TODO
-			},
 			getHomePageData() {
 				capi.fetchHomepage().then(r => {
 					console.info(r)

@@ -7,7 +7,7 @@
     <div class="place-select--btn-group">
       <dx-button size="small" 
         v-for="item in regionList"
-        :type="item.id === selecting ? 'primary' : 'gray'"
+        :type="item.rId === selecting ? 'primary' : 'gray'"
         @dx-button-click="handleClick(item)"
         key="item.id">{{item.fieldRegion}}
       </dx-button>
@@ -38,8 +38,8 @@
         'SET_SELECTREGION'
 			]),
       handleClick(obj) {
-        this.SELECTING_REGION(obj.id)
-        this.id = obj.id
+        this.SELECTING_REGION(obj.rId)
+        this.id = obj.rId
       },
       submitRegion() {
         if (this.id) {

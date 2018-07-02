@@ -2,8 +2,8 @@
   <div class="index-place" v-footer>
     <div>
       <div class="index-place--title">
-        <p>南京市仙林校区</p>
-        <div class="index-place--title-icon" @click="goTo('/place/select')"></div>
+        <p>{{regionInfo.fieldRegion}}</p>
+        <div class="index-place--title-icon" @click="goNext('/place/select')"></div>
       </div>
       <div class="index-place--title-desc">
         <span>人气10288</span><span>·累计开课278</span>
@@ -14,103 +14,42 @@
       <div class="index-place--banner"></div>
       <div class="index-place--list">
         <dx-tabs v-model="tabValue" :active="tabActive" :tabs="tabs" @input="tabClick()"></dx-tabs>
-        <ul class="index-place--row" @click="goTo('/place/detail')">
-          <li class="index-place--row-item">
+        <ul class="index-place--row" @click="goNext('/place/detail')">
+          <li class="index-place--row-item" v-for="item in placeList">
             <div class="flex-center">
-              <div class="index-place--row-pic"></div>
+              <div class="index-place--row-pic"
+                :style="{backgroundImage: 'url(' + item.imagesPath + ')'}"></div>
               <div class="index-place--row-detl">
-                <p class="index-place--row-title subtitle-text">南师大文渊楼305室</p>
-                <p class="index-place--row-text">江苏省南京市近郊栖霞区文苑路</p>
-                <p class="index-place--row-text">开放时间: 每天9:00 ~ 20:00</p>
+                <p class="index-place--row-title subtitle-text">{{item.fieldName}}</p>
+                <p class="index-place--row-text">{{item.fieldAddress}}</p>
+                <p class="index-place--row-text">{{item.fieldOpenDate}}</p>
                 <div class="index-place--row-info">
                   <div class="index-place--row-icon-group">
-                    <div class="index-place--row-icon-wifi"></div>
-                    <div class="index-place--row-icon-park"></div>
-                    <div class="index-place--row-icon-tv"></div>
-                    <div class="index-place--row-icon-pen"></div>
-                    <div class="index-place--row-icon-air"></div>
+                    <div class="index-place--row-icon-wifi" v-if="item.siteLabel.indexOf('wifi') > -1"></div>
+                    <div class="index-place--row-icon-park" v-if="item.siteLabel.indexOf('听陈昌') > -1"></div>
+                    <div class="index-place--row-icon-tv" v-if="item.siteLabel.indexOf('液晶电视') > -1"></div>
+                    <div class="index-place--row-icon-pen" v-if="item.siteLabel.indexOf('白板') > -1"></div>
+                    <div class="index-place--row-icon-air" v-if="item.siteLabel.indexOf('空调') > -1"></div>
                   </div>
                   <div>
                     <div class="index-place--row-price">
-                      <span>￥60</span>
+                      <span>￥{{item.fieldAmount}}</span>
                       <span class="index-place--row-unit">/小时</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="index-place--row-time flex-center">
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">11:00 ~ 10:00</p>
+            <div class="index-place--row-time flex-center"
+              v-if="!item.openDateList || item.openDateList.length === 0">
+              <p class="index-place--row-time-label" >全天已满</p>
             </div>
-          </li>
-          <li class="index-place--row-item">
-            <div class="flex-center">
-              <div class="index-place--row-pic"></div>
-              <div class="index-place--row-detl">
-                <p class="index-place--row-title subtitle-text">南师大文渊楼305室</p>
-                <p class="index-place--row-text">江苏省南京市近郊栖霞区文苑路</p>
-                <p class="index-place--row-text">开放时间: 每天9:00 ~ 20:00</p>
-                <div class="index-place--row-info">
-                  <div class="index-place--row-icon-group">
-                    <div class="index-place--row-icon-wifi"></div>
-                    <div class="index-place--row-icon-park"></div>
-                    <div class="index-place--row-icon-tv"></div>
-                    <div class="index-place--row-icon-pen"></div>
-                    <div class="index-place--row-icon-air"></div>
-                  </div>
-                  <div>
-                    <div class="index-place--row-price">
-                      <span>￥60</span>
-                      <span class="index-place--row-unit">/小时</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="index-place--row-time flex-center">
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">11:00 ~ 10:00</p>
-            </div>
-          </li>
-          <li class="index-place--row-item">
-            <div class="flex-center">
-              <div class="index-place--row-pic"></div>
-              <div class="index-place--row-detl">
-                <p class="index-place--row-title subtitle-text">南师大文渊楼305室</p>
-                <p class="index-place--row-text">江苏省南京市近郊栖霞区文苑路</p>
-                <p class="index-place--row-text">开放时间: 每天9:00 ~ 20:00</p>
-                <div class="index-place--row-info">
-                  <div class="index-place--row-icon-group">
-                    <div class="index-place--row-icon-wifi"></div>
-                    <div class="index-place--row-icon-park"></div>
-                    <div class="index-place--row-icon-tv"></div>
-                    <div class="index-place--row-icon-pen"></div>
-                    <div class="index-place--row-icon-air"></div>
-                  </div>
-                  <div>
-                    <div class="index-place--row-price">
-                      <span>￥60</span>
-                      <span class="index-place--row-unit">/小时</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="index-place--row-time flex-center">
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">9:00 ~ 10:00</p>
-              <p class="index-place--row-time-label">11:00 ~ 10:00</p>
-            </div>
-          </li>                    
+            <div class="index-place--row-time flex-center"
+              v-if="item.openDateList && item.openDateList.length !== 0 && item.openDateList[0]">
+              <p class="index-place--row-time-label"
+                v-for="time in item.openDateList[0].openTime.split(',')">{{time}}</p>
+            </div>            
+          </li>                   
         </ul>
       </div>
     </div>
@@ -123,16 +62,22 @@
   </div>
 </template>
 <script>
-	import {mapState, mapMutations} from 'vuex'
+  import {mapState, mapMutations} from 'vuex'
+  import papi from 'api/placeApi.js'
+  import mixin from 'utils/mixin.js'
   import dayjs from 'dayjs'
 	import DxFooter from 'pages/common/FooterPage.vue'
   export default {
+    mixins: [mixin],
 		components: {
 			DxFooter
     },
 		computed: {
 			...mapState({
-				selectedDate: state => state.selectPlaceDate
+        selectedDate: state => state.selectPlaceDate,
+        selectRegion: state => state.selectRegion,
+        regionInfo: state => state.regionInfo,
+        placeList: state => state.placeList
       }),
       tabValue: {
         get: function() {
@@ -152,12 +97,31 @@
         return _a
       }
     },
+    mounted() {
+      this.getRegionInfo()
+      this.getFieldList()
+    },
     methods: {
 			...mapMutations([
-				'SET_SELECT_PLACE_DATE'
+        'SET_SELECT_PLACE_DATE',
+        'SET_REGIONINFO',
+        'SET_PLACELIST'
 			]),
-      goTo(path) {
-        this.$router.push({ path })
+      getRegionInfo() {
+				papi.getRegionInfo({rid: this.selectRegion}).then(r => {
+					this.SET_REGIONINFO(r.data)
+				})
+      },
+      getFieldList() {
+        let date = null
+        if (this.selectedDate) {
+          date = dayjs().year() + '-' + this.selectedDate
+        } else {
+          date = dayjs().format('YYYY-MM-DD')
+        }
+				papi.getFieldList({rid: this.selectRegion, date: date}).then(r => {
+					this.SET_PLACELIST(r.data)
+				})
       },
       tabClick() {
         // this.SET_SELECT_PLACE_DATE(this.tabValue)
@@ -251,7 +215,7 @@
       width: 2.1rem;
       height: 1.7rem;
       flex-shrink: 0;
-      background: $--place-room-pic;
+      // background: $--place-room-pic;
       background-size: 100% 100%;
     }
     @include m(row-detl){

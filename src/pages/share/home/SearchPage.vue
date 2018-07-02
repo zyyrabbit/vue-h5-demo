@@ -24,13 +24,14 @@
     				<div slot="left" class="home-search__content-item--desc">
 		    			<p>{{course.courseName}}</p>
 		    			<p>
-		    				<span class="home-search__content-item--icon"></span>
-		    				<span>鲁彬</span>
-		    				<span>儿童心理专家</span>
+		    				<span class="home-search__content-item--icon"
+									:style="{backgroundImage: 'url(' + course.user.persionalImage + ')'}"></span>
+		    				<span>{{course.user.name}}</span>
+		    				<span>{{course.user.persionalSignature}}</span>
 		    			</p>
 	    			</div>
 		    		<div slot="right" class="home-search__content-item--number">
-		    			356人参加过
+		    			{{course.enteredCount || 0}}人参加过
 		    		</div>
     			</dx-item>
     		</li>
@@ -156,7 +157,8 @@
 						width: 0.32rem;
 						height: 0.32rem;
 						border-radius: 50%;
-						background-color: red;
+						// background-color: red;
+						background-size: 100% 100%;
 					}
 					>span:nth-child(2) {
 						margin: 0 0.12rem;
