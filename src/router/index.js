@@ -63,6 +63,7 @@ const JudgeStudentPage = () => import('pages/teacher/profile/JudgeStudentPage.vu
 const DoJudgePage = () => import('pages/teacher/profile/DoJudgePage.vue')
 const MySutdentPage = () => import('pages/teacher/profile/MystudentPage.vue')
 const ChangePlacePage = () => import('pages/teacher/profile/ChangePlacePage.vue')
+const TeacherPlacePage = () => import('pages/teacher/profile/TeacherPlacePage.vue')
 const routes = [
 		{ path: '/', component: HomePage, hidden: true },
 		{ path: '/login', name: 'login', component: Login, hidden: true },
@@ -158,7 +159,8 @@ const routes = [
 			component: TeacherCoursePage,
 			children: [
 				{ path: 'students', component: MySutdentPage, hidden: true },
-				{ path: 'changePla', component: ChangePlacePage, hidden: true }
+				{ path: 'changePla', component: ChangePlacePage, hidden: true },
+                { path: 'place', component: TeacherPlacePage, hidden: true }
 			]
 		},
 		{

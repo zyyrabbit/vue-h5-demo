@@ -36,7 +36,7 @@ export const profile = {
 			color: '#FF9CC8'
 		},
 		{
-			path: 'profile/invitefriends',
+			path: '/teacher/course/place',
 			icon: 'room',
 			leftText: '我的场地'
 		},

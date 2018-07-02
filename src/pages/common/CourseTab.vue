@@ -45,14 +45,7 @@
                class="course-tab-list__item-operate"
             >  
                <p v-if="tabs[selectTabIndex].text">{{tabs[selectTabIndex].text}}</p>
-               <dx-button 
-                  v-for="(btn, index) in tabs[selectTabIndex].btns"
-                  :key="index"
-                  :type="btn.type ? btn.type : 'primary'" 
-                  @dx-button-click="goNext(btn.path)"
-               >
-                  {{btn.text}}
-               </dx-button>
+               <button-list :btns="tabs[selectTabIndex].btns"></button-list>
             </div>
 	    	</li>
 	    </ul>
@@ -60,7 +53,11 @@
 </template>
 <script>
    import mixin from 'utils/mixin.js'
+   import ButtonList from 'pages/common/ButtonList.vue'
    export default {
+      components: {
+         ButtonList
+      },
       mixins: [mixin],
       props: {
          tabs: {
@@ -197,20 +194,6 @@
 					}
 				}
 			}
-         /* 操作按钮 */
-         @include e(item-operate) {
-            @include space-between;
-            height: 1.52rem;
-            font-size: 0.3rem;
-            >button {
-               height: 0.58rem;
-               margin-right: 0.27rem;
-               border-radius: 0.29rem;
-               &:last-child {
-                  margin-right: 0;
-               }
-            }
-         }
          @include e(item-operate-doing) {
             >button {
                width: 6rem;
