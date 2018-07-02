@@ -124,8 +124,7 @@
 				})
       },
       tabClick() {
-        // this.SET_SELECT_PLACE_DATE(this.tabValue)
-        console.info(this.tabValue)
+        this.getFieldList()
       },
       contributeDates() {
         // 今天开始往后七天
