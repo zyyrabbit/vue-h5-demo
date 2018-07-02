@@ -15,7 +15,10 @@ const state = {
 	login: false,
 	userInfo: null, // 用户信息
 	placeList: [], // 场地列表信息,
-	regionList: [] // 场地地区信息
+	selectingRegion: 2, // 选择中地区
+	selectRegion: 2, // 选中地区
+	regionList: [], // 场地地区信息,
+	selectPlaceDate: null // 场地选择日期与索引
 }
 
 export default new Vuex.Store({

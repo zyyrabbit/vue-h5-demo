@@ -21,9 +21,9 @@
       }
     },
     data() {
-        return {
-          select: this.active
-        }
+      return {
+        // select: this.active
+      }
     },
     methods: {
       onTabClick(tab, index) {
@@ -32,6 +32,13 @@
       }
     },
     computed: {
+      select: {
+        get() {
+          return this.active
+        },
+        set(val) {
+        }
+      },
       barStyle: {
         cache: false,
         get() {

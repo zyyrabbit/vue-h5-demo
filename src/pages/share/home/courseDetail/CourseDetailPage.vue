@@ -21,8 +21,8 @@
 	   				slot="left"
 	   				class="home-course-detail__teacher--des" 
 	   			>
-	   				<div>老师：奕爸CY</div>
-	   				<div>儿童心理达人</div>
+	   				<div>老师：{{course.user.name}}</div>
+	   				<div>{{course.user.persionalSignature}}</div>
 	   				<div>联系老师</div>
 	   			</div>
 	   			<div 
@@ -39,8 +39,8 @@
 	   	<div class="home-course-detail--item home-course-detail__parent-judge">
 	        <div class="home-course-detail__parent-judge-comment">
 	          <p>家长评价</p>
-	          <p>99+</p>
-	          <dx-star :rating="3" type="small"></dx-star>
+	          <p style="margin-right: 0.1rem;">{{course.evaluationCount > 99 ? '99+' : course.evaluationCount}}</p>
+	          <dx-star :rating="Math.ceil(course.courseGrade/2)" type="small"></dx-star>
 	        </div>
 	        <div v-if="evaluation.length !== 0">
 	        	<dx-comment 

@@ -13,7 +13,7 @@
     <div class="index-place--content">
       <div class="index-place--banner"></div>
       <div class="index-place--list">
-        <dx-tabs v-model="tabValue" :tabs="tabs"></dx-tabs>
+        <dx-tabs v-model="tabValue" :active="tabActive" :tabs="tabs" @input="tabClick()"></dx-tabs>
         <ul class="index-place--row" @click="goTo('/place/detail')">
           <li class="index-place--row-item">
             <div class="flex-center">
@@ -123,40 +123,68 @@
   </div>
 </template>
 <script>
+	import {mapState, mapMutations} from 'vuex'
+  import dayjs from 'dayjs'
 	import DxFooter from 'pages/common/FooterPage.vue'
   export default {
 		components: {
 			DxFooter
-		},
-    methods: {
-      goTo(path) {
-        this.$router.push({ path })
+    },
+		computed: {
+			...mapState({
+				selectedDate: state => state.selectPlaceDate
+      }),
+      tabValue: {
+        get: function() {
+          return this.selectedDate
+        },
+        set: function(val) {
+          this.SET_SELECT_PLACE_DATE(val)
+        }
+      },
+      tabActive() {
+        let _a = 0
+        this.tabs.forEach((i, index) => {
+          if (i.value === this.tabValue) {
+            _a = index
+          }
+        })
+        return _a
       }
     },
-    computed: {
+    methods: {
+			...mapMutations([
+				'SET_SELECT_PLACE_DATE'
+			]),
+      goTo(path) {
+        this.$router.push({ path })
+      },
+      tabClick() {
+        // this.SET_SELECT_PLACE_DATE(this.tabValue)
+        console.info(this.tabValue)
+      },
+      contributeDates() {
+        // 今天开始往后七天
+        this.tabs = []
+        for (var i = 0; i < 7; i++) {
+          let obj = {
+            label: dayjs().add(i, 'day').format('MM-DD'),
+            value: dayjs().add(i, 'day').format('MM-DD')
+          }
+          i === 0 ? obj.label = '今天' : obj.label = obj.label
+          i === 1 ? obj.label = '明天' : obj.label = obj.label
+          this.tabs.push(obj)
+        }
+      }
+    },
+    created() {
+      this.contributeDates()
     },
     data() {
       return {
-        tabValue: '05-05',
-        tabs: [{
-          label: '05-05',
-          value: '05-05'
-        }, {
-          label: '05-06',
-          value: '05-06'
-        }, {
-          label: '05-07',
-          value: '05-07'
-        }, {
-          label: '05-08',
-          value: '05-08'
-        }, {
-          label: '05-09',
-          value: '05-09'
-        }, {
-          label: '05-10',
-          value: '05-10'
-        }]
+        // tabValue: dayjs().format('MM-DD'),
+        // tabActive: 0,
+        tabs: []
       }
     }
   }

@@ -3,7 +3,10 @@ import {
   RECORD_USERINFO,
   SET_HOMEPAGE,
   SET_PLACELIST,
-  SET_REGIONLIST
+  SET_REGIONLIST,
+  SELECTING_REGION,
+  SET_SELECTREGION,
+  SET_SELECT_PLACE_DATE
 } from './mutation-types.js'
 import { setStore } from 'utils/utils'
 
@@ -14,6 +17,16 @@ export default {
   [SET_PLACELIST](state, data) {
     state.placeList = data
     setStore('region_id', data.regionId)
+  },
+  [SET_SELECT_PLACE_DATE](state, data) {
+    state.selectPlaceDate = data
+  },
+  [SELECTING_REGION](state, data) {
+    state.selectingRegion = data
+  },
+  [SET_SELECTREGION](state, data) {
+    state.selectingRegion = data
+    state.selectRegion = data
   },
   [SET_REGIONLIST](state, data) {
     state.regionList = data

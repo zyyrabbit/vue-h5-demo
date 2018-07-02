@@ -22,11 +22,12 @@ export default {
     name: 'DxCheckbox',
     componentName: 'DxCheckbox',
     props: {
-       label: String,
-       name: {
-			type: String,
-			default: 'dx-checkbox'
-       }
+			onlyDisplay: Boolean,
+      label: String,
+      name: {
+				type: String,
+				default: 'dx-checkbox'
+      }
     },
     data() {
 		return {
@@ -47,13 +48,15 @@ export default {
     },
     methods: {
 			select() {
-				let model = this.parent.model
-				this.checked = !this.checked
-				if (this.checked) {
-					model.push(this.label)
-				} else {
-					let index = model.indexOf(this.label)
-					model.splice(index, 1)
+				if (!this.onlyDisplay) {
+					let model = this.parent.model
+					this.checked = !this.checked
+					if (this.checked) {
+						model.push(this.label)
+					} else {
+						let index = model.indexOf(this.label)
+						model.splice(index, 1)
+					}
 				}
 			}
     },

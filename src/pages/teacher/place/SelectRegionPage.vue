@@ -7,13 +7,13 @@
     <div class="place-select--btn-group">
       <dx-button size="small" 
         v-for="item in regionList"
-        :type="item.regionId === region ? 'primary' : 'gray'"
+        :type="item.id === selecting ? 'primary' : 'gray'"
         @dx-button-click="handleClick(item)"
-        key="item.id">{{item.fieldAddress}}
+        key="item.id">{{item.fieldRegion}}
       </dx-button>
     </div>
     <div class="place-select--btn-ok">
-      <dx-button size="max" type="primary" @dx-button-click="goTo('/place')">确定</dx-button>
+      <dx-button size="max" type="primary" @dx-button-click="submitRegion()">确定</dx-button>
     </div>
   </div>
 </template>
@@ -26,18 +26,26 @@
     },
     computed: {
 			...mapState({
-				regionList: state => state.regionList
-			})
+        regionList: state => state.regionList,
+        selecting: state => state.selectingRegion,
+        regionId: state => state.selectRegion
+      })
     },
     methods: {
 			...mapMutations([
-				'SET_REGIONLIST'
+        'SET_REGIONLIST',
+        'SELECTING_REGION',
+        'SET_SELECTREGION'
 			]),
       handleClick(obj) {
-        this.region = obj.regionId
+        this.SELECTING_REGION(obj.id)
+        this.id = obj.id
       },
-      goTo(path) {
-        this.$router.push(path)
+      submitRegion() {
+        if (this.id) {
+          this.SET_SELECTREGION(this.id)
+        }
+        this.$router.push('/place')
       },
       getRegionList() {
         pApi.getRegionList().then(r => {
@@ -47,8 +55,7 @@
     },
     data() {
       return {
-        region: 2,
-        radioGroup: []
+        id: null
       }
     }
   }

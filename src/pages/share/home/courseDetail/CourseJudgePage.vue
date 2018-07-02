@@ -4,13 +4,14 @@
 		<div class="home-course-judging__label">
 			<p>共189人评价-9.5分</p>
 			<dx-checkbox-group
-				v-model="judgies"
+				v-model="labels"
 				class="home-course-judging__label--group clearfix"
 			>
 				<dx-checkbox 
 					v-for="(label, index) in labels"
 					:key="index"
 					:label="label"
+					only-display
 					name="home-course-judging-checkbox"
 					class="block--float-left"
 				></dx-checkbox>
@@ -37,7 +38,6 @@
 		data() {
 			return {
 				labels: ['老师好', '知识实用', '教学效果好', '能及时纠正'],
-				judgies: ['老师好', '知识实用', '教学效果好', '能及时纠正'],
 				courseId: this.$route.params.id,
 				evaluation: []
 			}
