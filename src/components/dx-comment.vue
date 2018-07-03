@@ -1,7 +1,8 @@
 <template>
 	<div class="comment-section">
 		<div class="comment-head">
-			<div class="comment-user-avatar"/>
+			<div class="comment-user-avatar"
+				:style="{backgroundImage: 'url(' + comment.image + ')'}"/>
 			<div class="comment-user">
 				<p class="comment-user-name">{{comment.userName || '邦里'}}</p>
 				<p class="comment-user-date">{{comment.createDate | formatInEvaluation}}</p>
@@ -36,7 +37,8 @@ export default {
 		display: flex;
 		align-items: center;
 		.comment-user-avatar{
-			background-color: #F098BE;
+			// background-color: #F098BE;
+			background-size: 100% 100%;
 			width: 0.94rem;
 			height: 0.94rem;
 			border-radius: 50%;

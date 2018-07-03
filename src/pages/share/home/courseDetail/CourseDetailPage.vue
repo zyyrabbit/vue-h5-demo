@@ -42,7 +42,7 @@
 					<p style="margin-right: 0.1rem;">{{course.evaluationCount > 99 ? '99+' : course.evaluationCount}}</p>
 					<dx-star :rating="Math.ceil(course.courseGrade/2)" type="small"></dx-star>
 				</div>
-				<div v-if="evaluation.length !== 0">
+				<div v-if="evaluation && evaluation.length !== 0">
 					<dx-comment 
 						v-for="item in evaluation"
 						:key="item.id" 
@@ -50,7 +50,7 @@
 					</dx-comment>
 				</div>
 				<div 
-					v-if="evaluation.length !== 0"
+					v-if="evaluation && evaluation.length !== 0"
 					class="home-course-detail__parent-judge--more"
 					@click="goNext('/courseDetail/' + courseId + '/judge')">查看全部评价</div>
       	</div>
@@ -105,7 +105,7 @@
 					pageSize: 1
 				}
 				capi.getCourseEvaluation(param).then(r => {
-					this.evaluation = r.data.list
+					this.evaluation = r.data.pageInfo.list
 				})
 			}
 		}

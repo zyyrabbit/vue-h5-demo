@@ -74,6 +74,10 @@ export default {
     font-size: 0.14rem;
     background-color: transparent;
     border-radius: 0.04rem;
+    span{
+        line-height: 1;
+        vertical-align: middle;       
+    }
 }
 
 .dx-button:focus,

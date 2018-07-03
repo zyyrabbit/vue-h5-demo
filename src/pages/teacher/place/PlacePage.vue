@@ -13,7 +13,7 @@
     <div class="index-place--content">
       <div class="index-place--banner"></div>
       <div class="index-place--list">
-        <dx-tabs v-model="tabValue" :active="tabActive" :tabs="tabs" @input="tabClick()"></dx-tabs>
+        <dx-tabs v-model="tabValue" :tabs="tabs" @input="tabClick()"></dx-tabs>
         <ul class="index-place--row" @click="goNext('/place/detail')">
           <li class="index-place--row-item" v-for="item in placeList">
             <div class="flex-center">
@@ -86,15 +86,6 @@
         set: function(val) {
           this.SET_SELECT_PLACE_DATE(val)
         }
-      },
-      tabActive() {
-        let _a = 0
-        this.tabs.forEach((i, index) => {
-          if (i.value === this.tabValue) {
-            _a = index
-          }
-        })
-        return _a
       }
     },
     mounted() {

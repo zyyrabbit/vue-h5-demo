@@ -1,91 +1,122 @@
 <template>
    <div class="course-tab">
-	    <ul class="course-tab__status clearfix">
-         <li 
-            v-for="(tab, index) in tabs"
-            :class="{'is-active': selectTabIndex === index}"
-            :key="index"
-            @click="selectTab(index)"
-         >
-            {{tab.title}}<div data-desc="border-bottom"></div>
-
-         </li>
-	    </ul>
 	    <ul class="course-tab-list">
-	    	<li class="course-tab-list__item">
+	    	<li class="course-tab-list__item" v-for="course in courses">
 	    		<div class="course-tab-list__item-detail">
 	    			<div class="course-tab-list__item-detail--head">
 	    				<span
-                     :class="{'is-no-valid': tabs[selectTabIndex].isNoValid}" 
-                     class="course-tab-list__item-detail--date"
-                  >
-                     <span></span>
-                     <span>4月26号 周四</span>
-                  </span>
-	    				<span class="course-tab-list__item-detail--sign-up-number">2人报名</span>
+                :class="{'is-no-valid': state === 2}" 
+                class="course-tab-list__item-detail--date"
+                >
+                <span></span>
+                <span>4月26号 周四</span>
+              </span>
+	    				<span class="course-tab-list__item-detail--sign-up-number">{{course.count || 0}}人报名</span>
 	    			</div>
 	    			<div class="course-tab-list__item-detail--content">
-	    				<p class="course-tab-list__item-detail--title">带孩子走进故事王国</p>
-	    				<p class="course-tab-list__item-detail--classroom">西溪湿地商务园区1号教室</p>
+	    				<p class="course-tab-list__item-detail--title">{{course.courseName}}</p>
+	    				<p class="course-tab-list__item-detail--classroom">{{course.fileldRegion}}</p>
 	    				<p class="course-tab-list__item-detail--open-time">开放时间: 2018年4月26日 07:00~20:00</p>
-	    				<p class="course-tab-list__item-detail--place">详细地址: 西湖区文二西路551号好西城广场4楼</p>
+	    				<p class="course-tab-list__item-detail--place">详细地址: {{course.fieldAddress}}</p>
 	    			</div>
 	    			<div class="course-tab-list__item-detail--time">
 	    				<div class="course-tab-list__item-detail--time-begin">
-	    					<div>07:00</div>开始
+	    					<div>{{course.beginTime}}</div>开始
 	    				</div>
-	    				<div class="course-tab-list__item-detail--time-during">2小时</div>
+	    				<div class="course-tab-list__item-detail--time-during">{{dayjs(course.beginTime, course.overTime)}}小时</div>
 	    				<div class="course-tab-list__item-detail--time-end">
-	    					<div>09:00</div>结束
+	    					<div>{{course.overTime}}</div>结束
 	    				</div>
 	    			</div>
 	    		</div>
-            <div 
-               v-if="isShowBottom"
-               class="course-tab-list__item-operate"
-            >  
-               <p v-if="tabs[selectTabIndex].text">{{tabs[selectTabIndex].text}}</p>
-               <button-list :btns="tabs[selectTabIndex].btns"></button-list>
+          <div class="course-tab-list__item-operate">   
+            <!-- 家长 已上课 -->
+            <div class="button-list" v-if="state === 2 && !isTeacher" >
+              <dx-button type='primary'>再次学习</dx-button>
+              <dx-button type='primary'>评价课程</dx-button>
+              <dx-button type='primary'>确认上课</dx-button>
             </div>
+            <!-- 家长 正在上课 -->
+            <div class="button-list"  v-if="state === 1 && !isTeacher">
+              <dx-button type='pinking'>视频直播</dx-button>
+            </div>
+            <!-- 家长 待上课 -->
+            <div class="button-list" v-if="state === 0 && !isTeacher">
+              <dx-button type='gray'>取消课程</dx-button>
+              <dx-button type='pinking'>联系老师</dx-button>
+            </div>
+            <!-- 老师 待开课 -->
+            <div class="button-list" v-if="state === 0 && isTeacher">
+              <dx-button type='gray'>取消课程</dx-button>
+              <dx-button type='primary'>更换场地</dx-button>
+              <dx-button type='primary'>修改价格</dx-button>
+            </div>
+            <!-- 老师 课程结束 -->
+            <div class="button-list" v-if="state === 2 && isTeacher">
+              <dx-button type='primary'>评价学员</dx-button>
+              <dx-button type='primary'>查看评价</dx-button>
+            </div>
+            <!-- <button-list :btns="tabs[selectTabIndex].btns"></button-list> -->
+          </div>
 	    	</li>
 	    </ul>
    </div>
 </template>
 <script>
-   import mixin from 'utils/mixin.js'
-   import ButtonList from 'pages/common/ButtonList.vue'
-   export default {
-      components: {
-         ButtonList
-      },
-      mixins: [mixin],
-      props: {
-         tabs: {
-            type: Array,
-            default: function() {
-               return []
-            }
-         }
-      },
-      data() {
-         return {
-            selectTabIndex: 0
-         }
-      },
-      computed: {
-         isShowBottom() {
-            let selectTab = this.tabs[this.selectTabIndex]
-            return selectTab && (selectTab.text || (selectTab.btns && selectTab.btns.length))
-         }
-      },
-      methods: {
-         selectTab(index) {
-            this.selectTabIndex = index
-         }
+	import {mapState} from 'vuex'
+  import dayjs from 'dayjs'
+  import mixin from 'utils/mixin.js'
+  import ButtonList from 'pages/common/ButtonList.vue'
+  export default {
+    components: {
+      ButtonList
+    },
+		computed: {
+			...mapState({
+				role: state => state.userInfo.role
+      })
+    },
+    mixins: [mixin],
+    props: {
+      state: Number,
+      courses: {
+        type: Array,
+        default: function() {
+          return []
+        }
       }
-   }
+    },
+    data() {
+      return {
+        isTeacher: this.role === '0'
+      }
+    },
+    methods: {
+      dayjs(startTime, endTime) {
+        const st = dayjs('2001-01-01 ' + startTime)
+        const et = dayjs('2001-01-01 ' + endTime)
+        return et.diff(st, 'hours')
+      },
+      selectTab(index) {
+        this.selectTabIndex = index
+      }
+    }
+  }
 </script>
 <style scoped lang="scss">
+.button-list {
+  @include space-between;
+  padding: 0.44rem 0 0.5rem;
+  >button {
+    height: 0.58rem;
+    font-size: 0.3rem;
+    margin-right: 0.27rem;
+    border-radius: 0.29rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
 	@include b(course-tab) {
 		@include e(status) {
 			margin: {
@@ -111,13 +142,16 @@
 			}
 		}
 		@include b(course-tab-list) {
-			width: 100%;
-			padding-top: 0.34rem;
-         border: 1px solid #D7D7D7;
-         box-shadow: 0  0.08rem 0.1rem rgba(91,91,91,0.1);
-         @include e(item-detail item-operate) {
-            padding: 0 0.31rem;
-         }
+      width: 100%;
+      @include e(item){
+        padding-top: 0.34rem;
+        margin-top: 0.56rem;
+        border: 1px solid #D7D7D7;
+        box-shadow: 0  0.08rem 0.1rem rgba(91,91,91,0.1);        
+      }
+      @include e(item-detail item-operate) {
+        padding: 0 0.31rem;
+      }
 			@include e(item-detail) {
 				font-size: 0.24rem;
 				color: #484848;
@@ -172,7 +206,7 @@
                     &:before{
                         content: "";
                         position: absolute;
-                        height: 0.01rem;
+                        height: 0.02rem;
                         width: 0.34rem;
                         background: #7E7E7E;
                         left: -0.4rem;
@@ -181,7 +215,7 @@
                     &::after{
                         content: "";
                         position: absolute;
-                        height: 0.01rem;
+                        height: 0.02rem;
                         width: 0.34rem;
                         background: #7E7E7E;
                         top: 42%;

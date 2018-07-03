@@ -14,11 +14,7 @@
 		name: 'DxTabs',
     props: {
       value: {},
-      tabs: Array,
-      active: {
-        type: Number,
-        default: 0
-      }
+      tabs: Array
     },
     data() {
       return {
@@ -34,7 +30,13 @@
     computed: {
       select: {
         get() {
-          return this.active
+          let active = 0
+          this.tabs.forEach((i, index) => {
+            if (i.value === this.value) {
+              active = index
+            }
+          })
+          return active || 0
         },
         set(val) {
         }

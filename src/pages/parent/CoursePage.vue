@@ -1,9 +1,10 @@
 <template>
-   <div class="index-course">
+   <div class="index-course" v-footer>
 	    <div class="index-course--title">
 	    	我的课程
 	    </div>
-       <course-tab :tabs="tabs"></course-tab>
+      <dx-tabs v-model="tabValue" :tabs="tabss" @input="tabClick()"></dx-tabs>
+       <course-tab :courses="courseList" :state="this.tabValue"></course-tab>
             <!-- <div  
                v-show="selectTabIndex === 0 && !isValid"
                class="index-course-list__item-operate index-course-list__item-operate-wating">
@@ -17,67 +18,54 @@
             </div> -->
        <dx-footer :selectTab="1"></dx-footer>
        <transition 
-         name="router-slide"  
-         mode='out-in'
-      >
-         <router-view class="full-screen"/>
+        name="router-slide"  
+        mode='out-in'>
+        <router-view class="full-screen"/>
       </transition>
    </div>
 </template>
 <script>
-   import DxFooter from 'pages/common/FooterPage.vue'
-   import CourseTab from 'pages/common/CourseTab.vue'
-   import mixin from 'utils/mixin.js'
-   export default {
-      mixins: [mixin],
-      components: {
-         CourseTab,
-         DxFooter
+	import papi from 'api/periodApi.js'
+  import DxFooter from 'pages/common/FooterPage.vue'
+  import CourseTab from 'pages/common/CourseTab.vue'
+  import mixin from 'utils/mixin.js'
+  export default {
+    mixins: [mixin],
+    components: {
+      CourseTab,
+      DxFooter
+    },
+    mounted() {
+      this.getPeriodList()
+    },
+    methods: {
+      tabClick() {
+        this.courseList = []
+        this.getPeriodList()
       },
-      data() {
-         return {
-            tabs: [
-               {
-                  title: '待上课',
-                  btns: [
-                     {
-                        type: 'gray',
-                        text: '取消课程'
-                     },
-                     {
-                        text: '联系老师'
-                     }
-                  ]
-               },
-                {
-                  title: '正在上课',
-                  btns: [
-                     {
-                        type: 'pinking',
-                        text: '视频直播'
-                     }
-                  ]
-               },
-                {
-                  title: '已上课',
-                  isNoValid: true,
-                  btns: [
-                     {
-                        text: '再次学习'
-                     },
-                     {
-                        text: '评价课程',
-                        path: '/course/judge'
-                     },
-                     {
-                        text: '已确认上课'
-                     }
-                  ]
-               }
-            ]
-         }
+      getPeriodList() {
+        papi.getPeriodList({state: this.tabValue}).then(r => {
+					this.courseList = (r.data)
+				})
       }
-   }
+    },
+    data() {
+      return {
+        courseList: [],
+        tabValue: 0,
+        tabss: [{
+          label: '待上课',
+          value: 0
+        }, {
+          label: '正在上课',
+          value: 1
+        }, {
+          label: '已上课',
+          value: 2
+        }]
+      }
+    }
+  }
 </script>
 <style scoped lang="scss">
 	@include b(index-course) {

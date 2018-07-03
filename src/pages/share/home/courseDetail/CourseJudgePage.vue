@@ -2,15 +2,12 @@
 	<div class="home-course-judging">
 		<dx-header></dx-header>
 		<div class="home-course-judging__label">
-			<p>共189人评价-9.5分</p>
-			<dx-checkbox-group
-				v-model="labels"
-				class="home-course-judging__label--group clearfix"
-			>
+			<p>共{{eval.evaluationCount}}人评价 · {{eval.residueCourse}}分</p>
+			<dx-checkbox-group class="home-course-judging__label--group clearfix">
 				<dx-checkbox 
-					v-for="(label, index) in labels"
+					v-for="(label, index) in eval.list"
 					:key="index"
-					:label="label"
+					:label="label.name"
 					only-display
 					name="home-course-judging-checkbox"
 					class="block--float-left"
@@ -37,8 +34,8 @@
 		},
 		data() {
 			return {
-				labels: ['老师好', '知识实用', '教学效果好', '能及时纠正'],
 				courseId: this.$route.params.id,
+				eval: {},
 				evaluation: []
 			}
 		},
@@ -54,7 +51,8 @@
 					pageSize: 999
 				}
 				capi.getCourseEvaluation(param).then(r => {
-					this.evaluation = r.data.list
+					this.eval = r.data
+					this.evaluation = r.data.pageInfo.list
 				})
 			}
 		}
@@ -76,6 +74,7 @@
 	        @include m(group) {
 	            margin-top: 0.32rem;
 	            >label {
+								background: #93D5F1;
 	               margin-right: 0.16rem;
 	               margin-bottom: 0.42rem;
 	            }
