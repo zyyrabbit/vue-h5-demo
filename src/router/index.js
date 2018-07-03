@@ -158,7 +158,7 @@ const routes = [
 			path: '/teacher/course',
 			component: TeacherCoursePage,
 			children: [
-				{ path: 'students', component: MySutdentPage, hidden: true },
+				{ path: 'students/:id', component: MySutdentPage, hidden: true },
 				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true },
         { path: 'place', component: TeacherPlacePage, hidden: true }
 			]

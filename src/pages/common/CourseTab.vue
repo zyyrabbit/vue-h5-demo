@@ -11,7 +11,7 @@
                 <span></span>
                 <span>4月26号 周四</span>
               </span>
-	    				<span class="course-tab-list__item-detail--sign-up-number">{{course.count || 0}}人报名</span>
+	    				<span class="course-tab-list__item-detail--sign-up-number" @click="isTeacher && goNext('/teacher/course/students/' + course.periodId)">{{course.count || 0}}人报名</span>
 	    			</div>
 	    			<div class="course-tab-list__item-detail--content">
 	    				<p class="course-tab-list__item-detail--title">{{course.courseName}}</p>
