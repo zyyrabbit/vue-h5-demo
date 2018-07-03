@@ -6,7 +6,7 @@
 		@click="select()"
 	>
 		<input 
-			:value="label"
+			:value="value"
 			:name="name"
 			:checked="checked"
 			type="checkbox"
@@ -23,7 +23,8 @@ export default {
     componentName: 'DxCheckbox',
     props: {
 			onlyDisplay: Boolean,
-      label: String,
+			label: String,
+			value: Number,
       name: {
 				type: String,
 				default: 'dx-checkbox'
@@ -52,9 +53,9 @@ export default {
 					let model = this.parent.model
 					this.checked = !this.checked
 					if (this.checked) {
-						model.push(this.label)
+						model.push(this.value)
 					} else {
-						let index = model.indexOf(this.label)
+						let index = model.indexOf(this.value)
 						model.splice(index, 1)
 					}
 				}

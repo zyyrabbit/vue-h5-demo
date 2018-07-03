@@ -7,7 +7,8 @@ import {
   SELECTING_REGION,
   SET_SELECTREGION,
   SET_SELECT_PLACE_DATE,
-  SET_REGIONINFO
+  SET_REGIONINFO,
+  SET_JUDGEDICTS
 } from './mutation-types.js'
 import { setStore } from 'utils/utils'
 
@@ -34,6 +35,9 @@ export default {
   },
   [SET_REGIONLIST](state, data) {
     state.regionList = data
+  },
+  [SET_JUDGEDICTS](state, data) {
+    state.judgeDicts = data
   },
   [RECORD_USERINFO](state, info) {
     state.userInfo = info

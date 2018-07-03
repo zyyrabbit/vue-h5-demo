@@ -15,5 +15,11 @@ export default {
   },
   getCourseByUser(param = {}) {
     return http.get('/course/queryCourse', { params: param })
+  },
+  getJudgeDict(param = {}) {
+    return http.get('/dictionary/queryDictionary', { params: param })
+  },
+  submitJudge(param = {}) {
+    return http.post('/evaluation/insertEvaluationInfo', param)
   }
 }

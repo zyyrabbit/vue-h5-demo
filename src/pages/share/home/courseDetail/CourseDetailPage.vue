@@ -37,31 +37,31 @@
 	   		<!-- <div>阅读更多</div> -->
 	   	</div>
 	   	<div class="home-course-detail--item home-course-detail__parent-judge">
-	        <div class="home-course-detail__parent-judge-comment">
-	          <p>家长评价</p>
-	          <p style="margin-right: 0.1rem;">{{course.evaluationCount > 99 ? '99+' : course.evaluationCount}}</p>
-	          <dx-star :rating="Math.ceil(course.courseGrade/2)" type="small"></dx-star>
-	        </div>
-	        <div v-if="evaluation.length !== 0">
-	        	<dx-comment 
-							v-for="item in evaluation"
-							:key="item.id" 
-							:item="item">
-						</dx-comment>
-	        </div>
-	        <div 
-						v-if="evaluation.length !== 0"
-	        	class="home-course-detail__parent-judge--more"
-	        	@click="goNext('/courseDetail/' + courseId + '/judge')">查看全部评价</div>
+				<div class="home-course-detail__parent-judge-comment">
+					<p>家长评价</p>
+					<p style="margin-right: 0.1rem;">{{course.evaluationCount > 99 ? '99+' : course.evaluationCount}}</p>
+					<dx-star :rating="Math.ceil(course.courseGrade/2)" type="small"></dx-star>
+				</div>
+				<div v-if="evaluation.length !== 0">
+					<dx-comment 
+						v-for="item in evaluation"
+						:key="item.id" 
+						:item="item">
+					</dx-comment>
+				</div>
+				<div 
+					v-if="evaluation.length !== 0"
+					class="home-course-detail__parent-judge--more"
+					@click="goNext('/courseDetail/' + courseId + '/judge')">查看全部评价</div>
       	</div>
-	   <price-footer 
-	   		to="/join" 
-	   		:price="'￥' + course.coursePrice" 
-	   		priceSmall="/小时" 
-	   		:priceInfo="'评分' + course.courseGrade" 
-	   		btnText="加入学习"
-	   	>
-    	</price-footer>
+			<price-footer 
+					to="/join" 
+					:price="'￥' + course.coursePrice" 
+					priceSmall="/小时" 
+					:priceInfo="'评分' + course.courseGrade" 
+					btnText="加入学习"
+				>
+				</price-footer>
     	<transition
 			name="router-slide"  
 			mode='out-in'

@@ -3,85 +3,118 @@
       <div class="index-judging">
          <dx-header is-close></dx-header>
          <div class="index-judging__label">
-               <p>撰写评价</p>
-               <dx-checkbox-group
-                  v-model="judgies"
-                  class="index-judging__label--group clearfix"
-               >
-                  <dx-checkbox 
-                     v-for="(label, index) in labels"
-                     :key="index"
-                     :label="label"
-                     name="index-judging-checkbox"
-                     class="index-judging__label--group--item block--float-left"
-                  ></dx-checkbox>
-               </dx-checkbox-group>
+            <p>撰写评价</p>
+            <dx-checkbox-group
+              v-model="str"
+              class="index-judging__label--group clearfix"
+            >
+              <dx-checkbox 
+                v-for="(dict, index) in judgeDicts"
+                :key="dict.id"
+                :label="dict.name"
+                :value="dict.id"
+                name="index-judging-checkbox"
+                class="index-judging__label--group--item block--float-left"
+              ></dx-checkbox>
+            </dx-checkbox-group>
          </div>
          <div>
             <div class="index-judging__content">
-               <p>评价教学质量</p>
-               <div>
-                  <dx-rate 
-                     v-model="rate"
-                     :rateClass="iconClass"
-                     :selectRateClass="selectIconClass"
-                  ></dx-rate>
-               </div>
-               <p>
-                  课程特别好,孩子学到了很多,特别是教室,是在南京师范大学里面,哈哈,我和孩子还是第一次南师大教室上课。还想让孩子以后报考这个大学呢,是不是想太多啦~总之是一次很开心的学习体验。
-               </p>
+              <p>评价教学质量</p>
+              <div>
+                <dx-rate
+                  v-model="periodGrade"
+                  :rateClass="iconClass"
+                  :selectRateClass="selectIconClass"
+                ></dx-rate>
+              </div>
+              <textarea :class="inputClass" rows="3"
+                v-model="periodContent"
+                placeholder="写几句对课程的评价吧..."></textarea>
             </div>
 
             <div class="index-judging__content">
                <p>评价场地环境</p>
                <div>
                   <dx-rate 
-                     v-model="rate"
+                     v-model="placeGrade"
                      :rateClass="iconClass"
                      :selectRateClass="selectIconClass"
                   ></dx-rate>
                </div>
                <div>
-                  <dx-input 
-                     v-model="environmentJudging"
-                     :inputClass="inputClass"
-                     placeholder="写几句对场地环境的评价吧..."
-                  >
-                  </dx-input>
+                <textarea :class="inputClass" rows="3"
+                  v-model="placeContent"
+                  placeholder="写几句对场地环境的评价吧..."></textarea>
                </div>
             </div>
          </div>
       </div>
       <div class="index-judging__submit-btn">
-         <dx-button size="max" type="primary">提交评价</dx-button>
+        <dx-button size="max" type="primary" @dx-button-click="submitEvalution()">提交评价</dx-button>
       </div>
    </div>
 </template>
 <script>
-    import DxHeader from 'pages/common/HeaderPage.vue'
-    export default {
-      components: {
-        DxHeader
-      },
-      data() {
-         return {
-            labels: ['老师好', '知识实用', '教学效果好', '能及时纠正', '场地环境好', '很好'],
-            judgies: ['老师好', '教学效果好'],
-            rate: 2,
-            iconClass: 'index-judging__content--rate-icon',
-            selectIconClass: 'index-judging__content--rate-icon-select',
-            environmentJudging: '',
-            inputClass: 'index-judging__content--environment'
-         }
-      },
-      methods: {
-         goBack() {
-            this.$router.go(-1)
-         }
+  import {mapState, mapMutations} from 'vuex'
+  import capi from 'api/courseApi.js'
+  import DxHeader from 'pages/common/HeaderPage.vue'
+  export default {
+    components: {
+      DxHeader
+    },
+		computed: {
+			...mapState({
+        judgeDicts: state => state.judgeDicts
+      })
+    },
+    data() {
+      return {
+        labels: ['老师好', '知识实用', '教学效果好', '能及时纠正', '场地环境好', '很好'],
+        // periodId: this.$route.param.id,
+        str: [],
+        periodGrade: 2,
+        placeGrade: 0,
+        iconClass: 'index-judging__content--rate-icon',
+        selectIconClass: 'index-judging__content--rate-icon-select',
+        periodContent: '',
+        placeContent: '',
+        inputClass: 'index-judging__content--environment'
       }
-   }
+    },
+    mounted() {
+      this.getDicts()
+    },
+    methods: {
+			...mapMutations([
+        'SET_JUDGEDICTS'
+			]),
+      getDicts() {
+				capi.getJudgeDict().then(r => {
+					this.SET_JUDGEDICTS(r.data)
+				})
+      },
+      submitEvalution() {
+        let param = {
+          str: this.str,
+          periodId: this.periodId,
+          periodGrade: this.periodGrade * 2,
+          periodContent: this.periodContent,
+          placeGrade: this.placeGrade * 2,
+          placeContent: this.periodContent
+        }
+				capi.submitJudge(param).then(r => {
+          alert('提交成功!')
+          this.$route.go(-1)
+				})
+      }
+    }
+  }
 </script>
-<style  lang="scss">
+<style lang="scss">
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #b3b3b3;
+}
    @include b(index-judging) {
       padding: 0.31rem 0.4rem 0;
       color: #484848;
@@ -135,8 +168,10 @@
          }
 
          @include m(environment) {
-            padding: 0 !important;
-            border: none !important;
+          padding: 0 !important;
+          border: none !important;
+          font-size: 0.36rem;   
+          width: 100%;      
          }
          // 最后一个元素border: none
          &:last-child {

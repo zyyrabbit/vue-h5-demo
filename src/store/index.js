@@ -19,7 +19,8 @@ const state = {
 	regionList: [], // 场地地区信息,
 	selectPlaceDate: null, // 场地选择日期
 	placeList: [], // 场地列表信息
-	regionInfo: null
+	regionInfo: null,
+	judgeDicts: [] // 评价标签字典
 }
 
 export default new Vuex.Store({
