@@ -159,12 +159,12 @@ const routes = [
 			component: TeacherCoursePage,
 			children: [
 				{ path: 'students', component: MySutdentPage, hidden: true },
-				{ path: 'changePla', component: ChangePlacePage, hidden: true },
-                { path: 'place', component: TeacherPlacePage, hidden: true }
+				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true },
+        { path: 'place', component: TeacherPlacePage, hidden: true }
 			]
 		},
 		{
-			path: '/teacher/judgeStu',
+			path: '/teacher/judgeStu/:id',
 			component: JudgeStudentPage,
 			children: [
 				{ path: 'DojudgeStu', component: DoJudgePage, hidden: true }

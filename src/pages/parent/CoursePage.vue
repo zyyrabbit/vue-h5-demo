@@ -4,7 +4,7 @@
 	    	我的课程
 	    </div>
       <dx-tabs v-model="tabValue" :tabs="tabss" @input="tabClick()"></dx-tabs>
-       <course-tab :courses="courseList" :state="this.tabValue"></course-tab>
+      <course-tab :courses="courseList" :state="this.tabValue"></course-tab>
             <!-- <div  
                v-show="selectTabIndex === 0 && !isValid"
                class="index-course-list__item-operate index-course-list__item-operate-wating">

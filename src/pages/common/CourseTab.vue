@@ -48,13 +48,13 @@
             <!-- 老师 待开课 -->
             <div class="button-list" v-if="state === 0 && isTeacher">
               <dx-button type='gray'>取消课程</dx-button>
-              <dx-button type='primary'>更换场地</dx-button>
-              <dx-button type='primary'>修改价格</dx-button>
+              <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">更换场地</dx-button>
+              <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">修改价格</dx-button>
             </div>
             <!-- 老师 课程结束 -->
             <div class="button-list" v-if="state === 2 && isTeacher">
-              <dx-button type='primary'>评价学员</dx-button>
-              <dx-button type='primary'>查看评价</dx-button>
+              <dx-button type='primary' @dx-button-click="goNext('/teacher/judgeStu/' + course.periodId)">评价学员</dx-button>
+              <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">查看评价</dx-button>
             </div>
             <!-- <button-list :btns="tabs[selectTabIndex].btns"></button-list> -->
           </div>
@@ -74,7 +74,13 @@
 		computed: {
 			...mapState({
 				role: state => state.userInfo.role
-      })
+      }),
+      isTeacher() {
+        return this.role === '0'
+      }
+    },
+    mounted() {
+      console.info(this.isTeacher)
     },
     mixins: [mixin],
     props: {
@@ -88,7 +94,6 @@
     },
     data() {
       return {
-        isTeacher: this.role === '0'
       }
     },
     methods: {
