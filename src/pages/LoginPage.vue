@@ -100,10 +100,10 @@ export default{
 							this.$router.push('/home')
 						})
 					})
-					try {
+					/* try {
 					} catch (e) {
 						this.errorMsg = e.message
-					}
+					} */
 				} else {
 					this.isLogining = false
 					this.errorMsg = '* 用户名或密码不能为空!'

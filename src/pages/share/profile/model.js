@@ -24,6 +24,7 @@ export const profile = {
 	],
 	teacher: [
 		{
+			path: '/teacher/course/all',
 			icon: 'course',
 			leftText: '我的课程',
 			rightText: '共6门'
