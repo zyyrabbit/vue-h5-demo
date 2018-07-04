@@ -23,8 +23,8 @@
    </div>
 </template>
 <script>
-		import DxHeader from '../../common/HeaderPage.vue'
-		import ButtonFooter from 'pages/common/ButtonFooter.vue'
+	import DxHeader from '../../common/HeaderPage.vue'
+	import ButtonFooter from 'pages/common/ButtonFooter.vue'
     export default {
         components: {
            DxHeader, ButtonFooter

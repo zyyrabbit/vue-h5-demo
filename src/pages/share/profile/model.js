@@ -42,13 +42,13 @@ export const profile = {
 			leftText: '我的场地'
 		},
 		{
-			path: '/sign',
+			path: '/teacher/punch',
 			icon: 'punch',
 			leftText: '会员签到',
 			rightText: '2998积分'
 		},
 		{
-			path: 'profile/advise',
+			path: '/teacher/punch',
 			icon: 'wallet',
 			leftText: '我的钱包'
 		},
