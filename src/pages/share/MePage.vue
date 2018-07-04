@@ -68,6 +68,15 @@
 		},
 		created() {
 			this.items = this.userInfo.role === '1' ? profile['parent'] : profile['teacher']
+		},
+		mounted() {
+			// FIXME
+			if (this.userInfo.role === '0') {
+				this.items[0].rightText = '共' + (this.userInfo.courseNumber || 0) + '门'
+				this.items[3].rightText = (this.userInfo.grossScore || 0) + '积分'
+			} else if (this.userInfo.role === '1') {
+				this.items[1].rightText = (this.userInfo.grossScore || 0) + '积分'
+			}
 		}
 	}
 </script>
