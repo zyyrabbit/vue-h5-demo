@@ -24,7 +24,7 @@
 	</div>
 </template>
 <script>
-	import capi from 'api/courseApi.js'
+	import papi from 'api/placeApi.js'
 	import mixin from 'utils/mixin.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	export default {
@@ -34,23 +34,23 @@
 		},
 		data() {
 			return {
-				courseId: this.$route.params.id,
+				placeId: this.$route.params.id,
 				eval: {},
 				evaluation: []
 			}
 		},
 		mounted() {
-			console.info(this.courseId)
+			console.info(this.placeId)
 			this.getCourseEval()
 		},
 		methods: {
 			getCourseEval() {
 				let param = {
-					courseId: this.courseId,
+					placeId: this.placeId,
 					pageIndex: 1,
 					pageSize: 999
 				}
-				capi.getCourseEvaluation(param).then(r => {
+				papi.getFieldEvalutions(param).then(r => {
 					this.eval = r.data
 					this.evaluation = r.data.pageInfo.list
 				})
