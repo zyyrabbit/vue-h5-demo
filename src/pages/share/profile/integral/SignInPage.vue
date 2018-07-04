@@ -87,13 +87,15 @@
 		methods: {
 			getSignHistory() {
 				uapi.getSignHistory().then(r => {
-					this.score = r.data.grossScore
-					this.number = 10 * r.data.signCount > 25 ? 25 : 10 * r.data.signCount
-					let h = r.data.historyList
-					this.sign = {}
-					h.forEach(i => {
-						this.sign[dayjs(i.signDate).date()] = i.score
-					})
+					if (r.data) {
+						this.score = r.data.grossScore
+						this.number = 10 * r.data.signCount > 25 ? 25 : 10 * r.data.signCount
+						let h = r.data.historyList
+						this.sign = {}
+						h.forEach(i => {
+							this.sign[dayjs(i.signDate).date()] = i.score
+						})
+					}
 				})
 			},
 			signToday() {
