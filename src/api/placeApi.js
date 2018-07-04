@@ -12,5 +12,8 @@ export default {
   },
   getFieldDetl(param = {}) {
     return http.get('/field/reserveFieldInfo', { params: param })
+  },
+  getFieldEvalutions(param = {}) {
+    return http.get('/evaluation/placeEvaluation', { params: param })
   }
 }

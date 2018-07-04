@@ -62,7 +62,7 @@
         <div 
           v-if="place.evaluationList && place.evaluationList.length !== 0"
           class="place-detail--cont-comm-more"
-          @click="goNext('/courseDetail/6/judge')"
+          @click="goNext('/place/judge/' + place.id)"
           >查看全部评价</div>
       </div>
     </div>
