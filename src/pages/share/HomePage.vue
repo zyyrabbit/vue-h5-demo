@@ -139,7 +139,7 @@
    				<span class="index-home--title block--float-left">课程推荐</span>
    				<span 
    					class="index-home-course__desc--all block--float-right"
-   					@click="goNext('/contDetail')"
+   					@click="goNext('/courseDetail/' + course.id)"
    				>查看全部</span>
    			</div>
    			<div class="index-home-course-recommend__slide">
@@ -147,7 +147,7 @@
    					<li  
    					  v-for="course in recommendCourse"
    						class="index-home-course-recommend__slide--item"
-   						@click="goNext('/contDetail')"
+   						@click="goNext('/courseDetail/' + course.id)"
    					>
    						<div class="index-home-course-recommend__slide--item-pic"
 							 :style="{backgroundImage: 'url(' + course.courseImage + ')'}"></div>

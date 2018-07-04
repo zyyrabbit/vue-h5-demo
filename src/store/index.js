@@ -19,7 +19,7 @@ const state = {
 	regionList: [], // 场地地区信息,
 	selectPlaceDate: null, // 场地选择日期
 	placeList: [], // 场地列表信息
-	regionInfo: null,
+	regionInfo: {},
 	courseList: [], // 教师 - 我的课程
 	judgeDicts: [] // 评价标签字典
 }

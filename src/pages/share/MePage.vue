@@ -3,7 +3,7 @@
    	    <div class="index-me__introduction">
    	    	<div class="index-me__introduction--title">
    	    		<span class="index-me__introduction--title-text">
-   	    			么么茶
+   	    			{{userInfo.name}}
    	    		</span>
    	    		<span 
    	    			class="index-me__introduction--setting"
@@ -12,14 +12,15 @@
    	    	</div>
    	    	<div class="index-me__introduction--name">
    	    		<div class="index-me__introduction--name-text">
-   	    			<p>学无止境</p>
-   	    			<p>2018年加入</p>
+   	    			<p>{{userInfo.persionalSignature || '暂无签名'}}</p>
+   	    			<p>{{formatYear(userInfo.createDate)}}年加入</p>
    	    		</div>
-   	    		<span class="index-me__introduction--icon"></span>
+   	    		<span class="index-me__introduction--icon"
+							:style="{backgroundImage: 'url(' + userInfo.persionalImage + ')'}"></span>
    	    	</div>
    	    	<div class="index-me__introduction--detail">
    	    		<span class="index-me__introduction--detail-text">
-   	    			29关注<span>143粉丝</span>
+   	    			0关注<span>0粉丝</span>
    	    		</span>
    	    		<span 
    	    			class="index-me__introduction--edit block--float-right"
@@ -38,6 +39,7 @@
     </div>
 </template>
 <script>
+  import dayjs from 'dayjs'
 	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	import { profile } from 'pages/share/profile/model.js'
@@ -50,6 +52,13 @@
 		data() {
 			return {
 				items: []
+			}
+		},
+		methods: {
+			formatYear(val) {
+				if (dayjs(val).isValid()) {
+					return dayjs(val).format('YYYY')
+				}
 			}
 		},
 		computed: {
@@ -99,7 +108,7 @@
 				}
 			}
 			@include m(icon) {
-				background: url('../../assets/images/index/home/teacher1.png');
+				// background: url('../../assets/images/index/home/teacher1.png');
 				background-size: 100% 100%;
 				border-radius: 50%;
 				display: inline-block;
