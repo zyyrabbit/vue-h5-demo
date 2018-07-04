@@ -122,3 +122,16 @@ a {
 ::-webkit-input-placeholder{
   line-height: 1.2;
 }
+.button-list {
+  @include space-between;
+  padding: 0.44rem 0 0.5rem;
+  >button {
+    height: 0.58rem;
+    font-size: 0.3rem;
+    margin-right: 0.27rem;
+    border-radius: 0.29rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

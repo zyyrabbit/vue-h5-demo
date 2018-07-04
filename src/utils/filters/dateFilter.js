@@ -15,9 +15,9 @@ export const formatInEvaluation = (val, formatString = 'M月D日 YYYY') => {
   return '-'
 }
 
-export const formatInPeriod = (val, formatString = 'M月D日 dddd') => {
+export const formatInPeriod = (val, formatString = 'M月D日') => {
   if (dayjs(val).isValid()) {
-    return dayjs(val).locale('zh-cn').format(formatString)
+    return dayjs(val).format(formatString)
   }
   return '-'
 }

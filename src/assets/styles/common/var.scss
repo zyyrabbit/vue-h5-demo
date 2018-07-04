@@ -160,7 +160,12 @@ $--common-detail-title-font-color: #333333 !default; // 详情标题
 // 星星(组件调用路径)
 $--star-icon-gray-background: url("@~assets/images/star_gray_small.png") center center no-repeat !default;
 $--star-icon-red-background: url("@~assets/images/star_red_small.png") center center no-repeat !default;
-
+$--btn-select-background: url("@~assets/images/btn_select_sel.png") center center no-repeat !default;
+$--btn-select-nor-background: url("@~assets/images/btn_select_nor.png") center center no-repeat !default;
+$--btn-select-disabled-background: url("@~assets/images/btn_select_sel.png") center center no-repeat !default;
+$--calendar-left-icon: url("@~assets/images/index/profile/sign_left.png") center center no-repeat !default;
+$--calendar-right-icon: url("@~assets/images/index/profile/sign_right.png") center center no-repeat !default;
+$--me-score-icon: url("@~assets/images/index/profile/me_icon_score.png") center center no-repeat !default;
 // 后退关闭
 $--nav-back-icon: url("@~assets/images/back.png") center center no-repeat !default;
 $--nav-close-icon: url("@~assets/images/close.png") center center no-repeat !default;

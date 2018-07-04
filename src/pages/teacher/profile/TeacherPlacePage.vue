@@ -2,8 +2,9 @@
     <div class="teacher-course-place">
         <dx-header>
             <span 
-                slot="next" 
-                class="teacher-course-place--book"
+              slot="next" 
+              class="teacher-course-place--book"
+              @click="goNext('/place')"
             >预定</span>
         </dx-header>
         <div class="teacher-course-place--title">
@@ -73,7 +74,7 @@
 </script>
 <style scoped lang="scss">
     @include b(teacher-course-place) {
-        padding: 0.33rem 0.37rem 0;
+        padding: 0.4rem;
         color: #484848;
         font-size: 0.36rem;
         @include m(book) {

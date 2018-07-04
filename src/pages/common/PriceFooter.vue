@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="place-footer-btn">
-      <dx-button size="full" type="pinking" @dx-button-click="goTo()">
+      <dx-button :disabled="btnDisabled" size="full" type="pinking" @dx-button-click="goTo()">
         {{btnText}}
       </dx-button>
     </div>
@@ -23,6 +23,7 @@
     props: {
       to: String,
       btnText: String,
+      btnDisabled: Boolean,
       price: String,
       priceSmall: String,
       priceInfo: String

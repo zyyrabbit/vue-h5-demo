@@ -80,7 +80,7 @@ const routes = [
 			]
 		},
 		{
-			path: '/join',
+			path: '/join/:id',
 			component: JoinLearningPage,
 			children: [
 				{ path: 'period', component: LessonPeriodPage, hidden: true },
@@ -149,8 +149,9 @@ const routes = [
 			component: PlacePage,
 			children: [
 				{ path: 'select', component: SelectRegionPage, hidden: true },
-				{ path: 'detail', component: PlaceDetlPage, hidden: true },
-				{ path: 'book', component: BookDetlPage, hidden: true },
+				{ path: 'detail/:id', component: PlaceDetlPage, hidden: true },
+				{ path: 'book/:id', component: BookDetlPage, hidden: true },
+				{ path: 'book/:id/:oid', component: BookDetlPage, hidden: true },
 				{ path: 'success', component: BookSuccPage, hidden: true },
 				{ path: 'relate', component: RelateCoursePage, hidden: true }
 			]

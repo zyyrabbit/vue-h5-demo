@@ -18,5 +18,11 @@ export default {
   },
   getUserInfo(param = {}) {
     return http.get('/user/getUserInfo', { params: param })
+  },
+  getSignHistory(param = {}) {
+    return http.get('/sign/history', { params: param })
+  },
+  submitSign(param = {}) {
+    return http.get('/sign/sign', { params: param })
   }
 }

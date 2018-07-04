@@ -3,17 +3,17 @@
     <div class="dx-calendar">
     	<div class="dx-calendar-select clearfix">
     		<span 
-                class="block--float-left"
+                class="block--float-left dx-calendar-select-left"
                 @click="preMonth()"
-            > < </span>
+            ></span>
             <input 
                 v-model="month"
                 readonly="readonly" 
             />
             <span 
-                class="block--float-right"
+                class="block--float-right dx-calendar-select-right"
                  @click="nextMonth()"
-            > > </span>
+            ></span>
     	</div>
     	<div class="dx-calendar-content">
     		<table class="dx-calendar-content__table" width="100%">
@@ -83,11 +83,13 @@
                 let month = this.dateStore.month
                 month = month < 1 ? 11 : month - 1
                 this.dateStore.setMonth(month)
+                this.$emit('month-change', 32)
             },
             nextMonth() {
                 let month = this.dateStore.month
                 month = month > 10 ? 0 : month + 1
                 this.dateStore.setMonth(month)
+                this.$emit('month-change', 23)
             }
         }
 	}
@@ -102,12 +104,28 @@
         padding: 0 0.4rem;
         margin-bottom: 0.51rem;
         text-align: center;
+        display: flex;
+        align-items: center;
         >input {
             text-align: center;
             border: none;
+            flex-grow: 1;
+            font-size: 0.36rem;
         }
         >span {
             color: #8DD0EC;
+        }
+        &-left{
+            background: $--calendar-left-icon;
+            background-size: 100% 100%;
+            width: 0.15rem;
+            height: 0.27rem;
+        }
+        &-right{
+            background: $--calendar-right-icon;
+            background-size: 100% 100%;
+            width: 0.15rem;
+            height: 0.27rem;
         }
     }
     // 空格
@@ -119,11 +137,12 @@
         border-collapse: collapse;
         >thead {
             background-color: #F5F5F5;
-            border-radius: 0.25rem;
+            border-radius: 50%;
             margin-bottom: 0.63rem;
             >th {
                 font-weight: normal;
                 font-size: 0.3rem;
+                padding: 0.1rem 0;
             }
         }
         // 表格样式

@@ -9,7 +9,7 @@
                 class="course-tab-list__item-detail--date"
                 >
                 <span></span>
-                <span>4月26号 周四</span>
+                <span>{{course.periodDate | formatInPeriod}} {{course.week}}</span>
               </span>
 	    				<span class="course-tab-list__item-detail--sign-up-number" @click="isTeacher && goNext('/teacher/course/students/' + course.periodId)">{{course.count || 0}}人报名</span>
 	    			</div>
@@ -109,19 +109,6 @@
   }
 </script>
 <style scoped lang="scss">
-.button-list {
-  @include space-between;
-  padding: 0.44rem 0 0.5rem;
-  >button {
-    height: 0.58rem;
-    font-size: 0.3rem;
-    margin-right: 0.27rem;
-    border-radius: 0.29rem;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
 	@include b(course-tab) {
 		@include e(status) {
 			margin: {

@@ -2,7 +2,7 @@
 	<div class="home-course-judging">
 		<dx-header></dx-header>
 		<div class="home-course-judging__label">
-			<p>共{{eval.evaluationCount}}人评价 · {{eval.residueCourse}}分</p>
+			<p>共{{eval.evaluationCount}}人评价 · {{eval.residueCourse.toFixed(1)}}分</p>
 			<dx-checkbox-group class="home-course-judging__label--group clearfix">
 				<dx-checkbox 
 					v-for="(label, index) in eval.list"
@@ -65,7 +65,7 @@
 		@include e(label) {
 	        font-size: 0.24rem;
 	        color: #57B8D7;
-	        margin-top: 0.63rem;
+	        margin-top: 0.4rem;
 	        >p {
 	           font-size: 0.6rem;
 	           font-weight: bold;

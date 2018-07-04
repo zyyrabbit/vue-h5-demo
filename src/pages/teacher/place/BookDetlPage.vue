@@ -112,6 +112,8 @@
   </div>
 </template>
 <script>
+  import {mapState} from 'vuex'
+  import papi from 'api/placeApi.js'
   import DxHeader from 'pages/common/HeaderPage.vue'
   import PriceFooter from 'pages/common/PriceFooter.vue'
   export default {
@@ -119,13 +121,25 @@
 			PriceFooter, DxHeader
 		},
     mounted() {
+      this.getPlaceDetl()
     },
     methods: {
+      getPlaceDetl() {
+				papi.getFieldList({id: this.id, date: this.selectedDate}).then(r => {
+					this.place = r.data
+				})
+      }
     },
-    computed: {
+		computed: {
+			...mapState({
+        selectedDate: state => state.selectPlaceDate
+      })
     },
     data() {
       return {
+        id: this.$route.params.id,
+        oid: this.$route.params.oid,
+        place: {}
       }
     }
   }

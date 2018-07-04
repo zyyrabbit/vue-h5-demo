@@ -14,9 +14,9 @@
       <div class="index-place--banner"></div>
       <div class="index-place--list">
         <dx-tabs v-model="tabValue" :tabs="tabs" @input="tabClick()"></dx-tabs>
-        <ul class="index-place--row" @click="goNext('/place/detail')">
+        <ul class="index-place--row">
           <li class="index-place--row-item" v-for="item in placeList">
-            <div class="flex-center">
+            <div class="flex-center" @click="goNext('/place/detail/' + item.id)">
               <div class="index-place--row-pic"
                 :style="{backgroundImage: 'url(' + item.imagesPath + ')'}"></div>
               <div class="index-place--row-detl">
@@ -26,7 +26,7 @@
                 <div class="index-place--row-info">
                   <div class="index-place--row-icon-group">
                     <div class="index-place--row-icon-wifi" v-if="item.siteLabel.indexOf('wifi') > -1"></div>
-                    <div class="index-place--row-icon-park" v-if="item.siteLabel.indexOf('听陈昌') > -1"></div>
+                    <div class="index-place--row-icon-park" v-if="item.siteLabel.indexOf('停车场') > -1"></div>
                     <div class="index-place--row-icon-tv" v-if="item.siteLabel.indexOf('液晶电视') > -1"></div>
                     <div class="index-place--row-icon-pen" v-if="item.siteLabel.indexOf('白板') > -1"></div>
                     <div class="index-place--row-icon-air" v-if="item.siteLabel.indexOf('空调') > -1"></div>
@@ -45,9 +45,10 @@
               <p class="index-place--row-time-label" >全天已满</p>
             </div>
             <div class="index-place--row-time flex-center"
-              v-if="item.openDateList && item.openDateList.length !== 0 && item.openDateList[0]">
+              v-if="item.openDateList && item.openDateList.length !== 0">
               <p class="index-place--row-time-label"
-                v-for="time in item.openDateList[0].openTime.split(',')">{{time}}</p>
+                v-for="time in item.openDateList"
+                @click="goNext('place/book/' + item.id + '/' + time.oId)">{{time.openTime}}</p>
             </div>            
           </li>                   
         </ul>
@@ -91,6 +92,9 @@
     mounted() {
       this.getRegionInfo()
       this.getFieldList()
+      if (!this.tabValue) {
+        this.tabValue = dayjs().format('YYYY-MM-DD')
+      }
     },
     methods: {
 			...mapMutations([
@@ -106,7 +110,7 @@
       getFieldList() {
         let date = null
         if (this.selectedDate) {
-          date = dayjs().year() + '-' + this.selectedDate
+          date = this.selectedDate
         } else {
           date = dayjs().format('YYYY-MM-DD')
         }
@@ -123,7 +127,7 @@
         for (var i = 0; i < 7; i++) {
           let obj = {
             label: dayjs().add(i, 'day').format('MM-DD'),
-            value: dayjs().add(i, 'day').format('MM-DD')
+            value: dayjs().add(i, 'day').format('YYYY-MM-DD')
           }
           i === 0 ? obj.label = '今天' : obj.label = obj.label
           i === 1 ? obj.label = '明天' : obj.label = obj.label

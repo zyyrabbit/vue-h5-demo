@@ -3,29 +3,30 @@
     v-footer
     class="place-detail"
   >
-    <div class="place-detail--header-bg">
+    <div class="place-detail--header-bg"
+      :style="{backgroundImage: 'url(' + place.imagesPath + ')'}">
       <dx-header></dx-header>
     </div>
     <div class="place-detail--cont">
-      <p class="headline-upper-text">南师大文渊楼305室</p>
+      <p class="headline-upper-text">{{place.fieldName}}</p>
       <div class="place-detail--cont--icons">
-        <div class="place-detail--cont--icon">
+        <div class="place-detail--cont--icon" v-if="place.siteLabel.indexOf('wifi') > -1">
           <div class="place-detail--cont--icon-wifi"></div>
           <p>Wifi</p>
         </div>
-        <div class="place-detail--cont--icon">
+        <div class="place-detail--cont--icon" v-if="place.siteLabel.indexOf('停车场') > -1">
           <div class="place-detail--cont--icon-park"></div>
           <p>停车场</p>
         </div>
-        <div class="place-detail--cont--icon">
+        <div class="place-detail--cont--icon" v-if="place.siteLabel.indexOf('液晶电视') > -1">
           <div class="place-detail--cont--icon-tv"></div>
           <p>液晶电视</p>
         </div>
-        <div class="place-detail--cont--icon">
+        <div class="place-detail--cont--icon" v-if="place.siteLabel.indexOf('白板') > -1">
           <div class="place-detail--cont--icon-pen"></div>
           <p>白板</p>
         </div>
-        <div class="place-detail--cont--icon">
+        <div class="place-detail--cont--icon" v-if="place.siteLabel.indexOf('空调') > -1">
           <div class="place-detail--cont--icon-air"></div>
           <p>空调</p>
         </div>
@@ -34,12 +35,12 @@
         <dx-cell-item>
           <template slot="left">
             <p class="detail-desc-text">场所地址</p>
-            <p class="place-detail--cont-desc">江苏省南京市近郊栖霞区文苑路</p>
+            <p class="place-detail--cont-desc">{{place.fieldAddress}}</p>
           </template>
         </dx-cell-item>      
         <dx-cell-item>
           <template slot="left">
-            <p class="place-detail--cont-desc">可容纳12人</p>
+            <p class="place-detail--cont-desc">可容纳{{place.adaptCount}}人</p>
           </template>
         </dx-cell-item>
       </div>
@@ -62,16 +63,18 @@
     </div>
     <!-- footer -->
     <price-footer 
-        to="/place/book" 
-        price="￥60" 
+        :to="'/place/book/' + place.id" 
+        :price="'￥' + place.fieldAmount" 
         priceSmall="/小时" 
-        priceInfo="评分9.6" 
+        :priceInfo="'评分' + 0" 
         btnText="确定"
       >
     </price-footer>   
   </div>
 </template>
 <script>
+  import {mapState} from 'vuex'
+  import papi from 'api/placeApi.js'
   import PriceFooter from 'pages/common/PriceFooter.vue'
   import DxHeader from 'pages/common/HeaderPage.vue'
   import mixin from 'utils/mixin.js'
@@ -81,13 +84,26 @@
 			PriceFooter, DxHeader
 		},
     mounted() {
+      this.getPlaceDetl()
     },
     methods: {
+      getPlaceDetl() {
+				papi.getFieldList({id: this.id, date: this.selectedDate}).then(r => {
+					this.place = r.data[0]
+				})
+      }
     },
-    computed: {
+		computed: {
+			...mapState({
+        selectedDate: state => state.selectPlaceDate
+      })
     },
     data() {
       return {
+        id: this.$route.params.id,
+        place: {
+          siteLabel: ''
+        }
       }
     }
   }
@@ -97,7 +113,7 @@
   &--header-bg{
     height: 4.14rem;
     background: #BAB7B1;
-    background: $--place-room-pic;
+    // background: $--place-room-pic;
     background-size: 100% 100%;    
     header{
       padding-left: 0.4rem;

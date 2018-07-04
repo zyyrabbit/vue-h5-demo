@@ -7,51 +7,55 @@
     	<p class="home-course-join--title">加入学习</p>
        	<div class="home-course-join__detail">
        		<div class="home-course-join__detail--icon">
-       			<div></div>
+       			<div :style="{backgroundImage: 'url(' + course.courseImage + ')'}"></div>
        		</div>
        		<div class="home-course-join__detail-desc">
        			<div>
-       				99+
+       				{{course.evaluationCount > 99 ? '99+' : course.evaluationCount}}
        				<dx-star  
        					type="small"
-       					:rating="3"
+       					:rating="Math.ceil(course.courseGrade/2)"
        					class="home-course-join__detail-desc--star"
        				></dx-star>
        			</div>
-	   			<div>趣味科学大百科</div>
-	   			<div>老师：奕爸CY</div>
-	   			<div>儿童心理达人</div>
+	   			<div>{{course.courseName}}</div>
+	   			<div>老师：{{course.user.name}}</div>
+	   			<div>{{course.user.persionalSignature}}</div>
        		</div>
        	</div>
-       	<dx-item 
-       		class="home-course-join__item"
-       		to="/join/period"
-       	>
-       		<div slot="left">上课时间</div>
-       		<div 
-       			slot="right" 
-       			class="home-course-join--color-blue text-right"
-       		>
-       			<p>4月11号</p>
-				<p>19:00~21:00</p>
-			</div>
-       	</dx-item>
-       	<dx-item class="home-course-join__item">
-       		<div slot="left">上课地点</div>
-       		<p 
-       			slot="right" 
-       			class="home-course-join--course-place text-right"
-       		>
-       			西溪湿地商务园区1号教室 西湖区文二西路好西城广场4楼
-       		</p>
-       	</dx-item>
-       	<dx-item class="home-course-join__item">
-       		<div slot="left">课程单价</div>
-       		<div 
-       			slot="right"
-       			class="text-right"
-       		>￥120/学员</div>
-       	</dx-item>
+				<div>
+					<dx-item 
+						class="home-course-join__item"
+						:to="'/join/' + courseId + '/period'"
+					>
+						<div slot="left">上课时间</div>
+						<div 
+							slot="right" 
+							class="home-course-join--color-blue text-right" v-if="period.periodDate">
+							<p>{{period.periodDate | formatInPeriod}}</p>
+							<p>{{period.periodStartTime}} ~ {{period.periodEndTime}}</p>
+						</div>
+						<div 
+							slot="right" 
+							class="text-right" v-if="!period.periodDate">
+							<p>此课程暂无课时</p>
+						</div>
+					</dx-item>
+					<dx-item class="home-course-join__item">
+						<div slot="left">上课地点</div>
+						<p 
+							slot="right" 
+							class="home-course-join--course-place text-right"
+						>{{period.periodAddress || '-'}}</p>
+					</dx-item>
+					<dx-item class="home-course-join__item">
+						<div slot="left">课程单价</div>
+						<div 
+							slot="right"
+							class="text-right"
+						>￥{{period.periodMoney || '-'}}/小时</div>
+					</dx-item>
+				</div>
        	<dx-item 
        		class="home-course-join__item"
        		to="/join/edit"
@@ -62,16 +66,15 @@
        			class="home-course-join--color-blue home-course-join--student text-right"
        		>
        			<p>Yummy</p>
-				<p>陈粒</p>
 			</div>
        	</dx-item>
        	<dx-item class="home-course-join__item">
        		<div slot="left">联系电话</div>
-   			<input 
-   				slot="right"
-   				class="home-course-join--telephone"
-   				placeholder="请输入联系人手机号码" 
-   			/>
+					<input 
+						slot="right"
+						class="home-course-join--telephone"
+						placeholder="请输入联系人手机号码" 
+					/>
        	</dx-item>
        	<dx-item class="home-course-join__item">
        		<div slot="left">付款方式</div>
@@ -80,18 +83,19 @@
        			class="home-course-join--color-blue text-right"
        		>
        			<span @click="goNext('/join/pay')">支付宝（默认）</span>
-			</div>
+					</div>
        	</dx-item>
        	<dx-item class="home-course-join__item">
        		<div slot="left">注意：课程开始前，可申请退款</div>
        	</dx-item>
-	   <price-footer
-	   		to="/join/bookSuccess" 
-	   		price="￥360" 
-	   		priceInfo="￥120X3" 
-	   		btnText="立即支付"
-	   	>
-    	</price-footer>
+				<price-footer
+					:btn-disabled="!period.periodDate"
+					:to="'/join/' + courseId + '/bookSuccess'" 
+					:price="'￥' + course.coursePrice * courseHour(period.periodStartTime, period.periodEndTime)" 
+					:priceInfo="'￥' + course.coursePrice + ' x ' + courseHour(period.periodStartTime, period.periodEndTime)" 
+					btnText="立即支付"
+				>
+				</price-footer>
     	<transition
 			name="router-slide"  
 			mode='out-in'
@@ -102,13 +106,57 @@
 </template>
 <script>
 	import mixin from 'utils/mixin.js'
+	import dayjs from 'dayjs'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	import PriceFooter from 'pages/common/PriceFooter.vue'
+	import capi from 'api/courseApi.js'
+	import pApi from 'api/periodApi.js'
 	export default {
 		mixins: [mixin],
 		components: {
 			DxHeader,
 			PriceFooter
+		},
+		mounted() {
+			this.getPeriodByCourse()
+			this.getCourseDetl()
+		},
+		methods: {
+      courseHour(startTime, endTime) {
+        const st = dayjs('2001-01-01 ' + startTime)
+        const et = dayjs('2001-01-01 ' + endTime)
+        return et.diff(st, 'hours') || 0
+      },
+			getCourseDetl() {
+				capi.getCourseDetl({id: this.courseId}).then(r => {
+					this.course = r.data
+				})
+			},
+			getPeriodByCourse() {
+				pApi.getPeriodByCourse({courseId: this.courseId}).then(r => {
+					this.periodList = r.data.period
+				})
+			}
+		},
+		data() {
+			return {
+				courseId: this.$route.params.id,
+				periodList: [],
+				// FIXME
+				selectedPeriod: 0,
+				course: {
+					user: {}
+				}
+			}
+		},
+		computed: {
+			period() {
+				if (this.periodList && this.periodList.length > 0) {
+					return this.periodList[this.selectedPeriod]
+				} else {
+					return {}
+				}
+			}
 		}
 	}
 </script>
@@ -136,7 +184,8 @@
 				flex-grow: 1;
 				>div{
 					border-radius: 0.03rem;
-					background-color: #ccc;
+					// background-color: #ccc;
+					background-size: 100% 100%;
 					width: 2.33rem;
 					height: 1.9rem;
 				}
@@ -152,9 +201,6 @@
 			}
 			>div:nth-child(2) {
 				font-size: 0.44rem;
-			}
-			>div:last-child {
-				color: #FF9CC8;
 			}
 		}
 		// 每一行的样式
@@ -173,7 +219,7 @@
 		}
 		// 学员
 		@include m(student) {
-			>p:nth-child(1) {
+			>p:not(:last-child) {
 				margin-bottom: 0.38rem;
 			}
 		}

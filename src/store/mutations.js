@@ -8,6 +8,7 @@ import {
   SET_SELECTREGION,
   SET_SELECT_PLACE_DATE,
   SET_REGIONINFO,
+  SET_COURSELIST,
   SET_JUDGEDICTS
 } from './mutation-types.js'
 import { setStore } from 'utils/utils'
@@ -38,6 +39,9 @@ export default {
   },
   [SET_JUDGEDICTS](state, data) {
     state.judgeDicts = data
+  },
+  [SET_COURSELIST](state, data) {
+    state.courseList = data
   },
   [RECORD_USERINFO](state, info) {
     state.userInfo = info

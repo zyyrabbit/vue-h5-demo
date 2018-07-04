@@ -51,7 +51,7 @@
 					</dx-form-item>
 				</div>
 				<div class="register-form__item register-form__item--role clearfix" >
-					<dx-form-item prop="password">
+					<dx-form-item>
 						<dx-radio 
 							v-model="model.role"
 							label="0"

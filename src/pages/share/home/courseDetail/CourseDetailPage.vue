@@ -55,10 +55,10 @@
 					@click="goNext('/courseDetail/' + courseId + '/judge')">查看全部评价</div>
       	</div>
 			<price-footer 
-					to="/join" 
+					:to="'/join/' + courseId" 
 					:price="'￥' + course.coursePrice" 
 					priceSmall="/小时" 
-					:priceInfo="'评分' + course.courseGrade" 
+					:priceInfo="'评分' + course.courseGrade.toFixed(1)" 
 					btnText="加入学习"
 				>
 				</price-footer>

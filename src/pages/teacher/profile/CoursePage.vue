@@ -1,9 +1,7 @@
 <template>
    <div class="teacher-opening-course">
     <dx-header></dx-header>
-	   <div class="teacher-opening-course--title">
-	    	我的学员
-	    </div>
+	    <div class="teacher-opening-course--title">我的开课</div>
       <dx-tabs v-model="tabValue" :tabs="tabss" @input="tabClick()"></dx-tabs>
 	    <course-tab :courses="courseList" :state="this.tabValue"></course-tab>
        <transition 
@@ -64,6 +62,7 @@
 </script>
 <style scoped lang="scss">
 	@include b(teacher-opening-course) {
+    padding-top: 0.4rem;
 		@include m(title) {
 			font-size: 0.48rem;
 			color: #484848;
