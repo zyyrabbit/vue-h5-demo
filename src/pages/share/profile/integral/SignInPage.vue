@@ -50,7 +50,7 @@
 	    </div>
 	    <div class="profile-account-sign--submit">
 	   		<dx-button 
-				 	:disabled="sign[today] !== null"
+				 	:disabled="sign[today] !== null && sign[today] !== undefined"
 	   			size="max" 
 	   			type="primary"
 	   			class="profile-account-sign--submit-btn"

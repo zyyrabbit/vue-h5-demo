@@ -9,5 +9,8 @@ export default {
   },
   getFieldList(param = {}) {
     return http.get('/field/queryFieldInfo', { params: param })
+  },
+  getFieldDetl(param = {}) {
+    return http.get('/field/reserveFieldInfo', { params: param })
   }
 }

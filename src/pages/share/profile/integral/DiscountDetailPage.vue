@@ -1,5 +1,5 @@
 <template>
-   	<div class="profile-account-discount">
+   	<div class="profile-account-discount" v-footer>
       	<dx-header>
       		<span
       			slot="title"
@@ -8,9 +8,10 @@
       	</dx-header>
       	<div class="profile-account-discount__title">
 			<div class="profile-account-discount__title-discount">
-				<p class="profile-account-discount__title-discount--number">
-					<span>8</span>折
-				</p>
+				<div class="profile-account-discount__title-discount--number">
+					<p>8</p>
+					<p>折</p>
+				</div>
 				<p>折扣券</p>
 				<p>购买课程时自动使用</p>
 			</div>
@@ -18,7 +19,7 @@
       	<div class="profile-account-discount__detail">
       		<div class="profile-account-discount__detail--title">
 	   			<p>一起趣学8折折扣券</p>
-	   			<p><span>star</span>760</p>
+	   			<p>760</p>
 	   		</div>
 	   		<div class="profile-account-discount__detail--desc">
 	   			<p>商品介绍</p>
@@ -61,20 +62,28 @@
       	margin-bottom: 1.62rem;
       	overflow: scroll;
       	@include e(title) {
-			height: 5.98rem;
+			height: 6rem;
 			margin: 0.25rem -0.4rem 0;
 			background-color: #F6F6F6;
 			color: #FF3D3D;	
 			@include center;
   		}
   		@include e(title-discount) {
-			text-align: center;
+				padding: 0.5rem 0.7rem;
+				background: #FFF8F8;
+				text-align: center;
+				border: 0.01rem solid #BFBFBF;
+				border-radius: 0.1rem;
 			@include m(number) {
-				line-height: 1.02rem;
-				vertical-align: middle;
-				font-size: 1.13rem;
-				>span {
+				@include center;
+				align-items: baseline;
+				>p:nth-child(1) {
+					line-height: 0.8;
 					font-size: 2.56rem;
+				}
+				>p:nth-child(2) {
+					line-height: 1.13rem;
+					font-size: 1.13rem;
 				}
 			}
 			>p:nth-child(2) {

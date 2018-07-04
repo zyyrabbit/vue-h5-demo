@@ -48,14 +48,19 @@
       <div class="place-detail--cont-comm">
         <div class="place-detail--cont-comment">
           <p class="place-detail--cont-comment-text">场地评价</p>
-          <p class="place-detail--cont-comment-amount">99+</p>
-          <dx-star :rating=3 type="small"></dx-star>
+          <p style="margin-right: 0.1rem;" class="place-detail--cont-comment-amount">{{place.evaluationCount > 99 ? '99+' : (place.evaluationCount || 0)}}</p>
+          <dx-star :rating="Math.ceil(place.evaluationAvgGrade/2)" type="small"></dx-star>
         </div>
-        <div>
-          <dx-comment></dx-comment>
-          <!-- <dx-comment></dx-comment> -->
-        </div>
+				<div 
+          v-if="place.evaluationList && place.evaluationList.length !== 0">
+					<dx-comment 
+						v-for="item in place.evaluationList"
+						:key="item.id" 
+						:item="item">
+					</dx-comment>
+				</div>
         <div 
+          v-if="place.evaluationList && place.evaluationList.length !== 0"
           class="place-detail--cont-comm-more"
           @click="goNext('/courseDetail/6/judge')"
           >查看全部评价</div>
@@ -66,7 +71,7 @@
         :to="'/place/book/' + place.id" 
         :price="'￥' + place.fieldAmount" 
         priceSmall="/小时" 
-        :priceInfo="'评分' + 0" 
+        :priceInfo="'评分' + (place.evaluationAvgGrade || 0)" 
         btnText="确定"
       >
     </price-footer>   
@@ -88,8 +93,8 @@
     },
     methods: {
       getPlaceDetl() {
-				papi.getFieldList({id: this.id, date: this.selectedDate}).then(r => {
-					this.place = r.data[0]
+				papi.getFieldDetl({id: this.id, openDate: this.selectedDate}).then(r => {
+					this.place = r.data
 				})
       }
     },

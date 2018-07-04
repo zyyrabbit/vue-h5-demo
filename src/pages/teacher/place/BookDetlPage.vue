@@ -12,7 +12,7 @@
           <p class="place-book-comment-amount">99+</p>
           <dx-star :rating=3 type="small"></dx-star>
         </div>
-        <p class="place-book-info-name">南师大文渊楼305室</p>
+        <p class="place-book-info-name">{{place.fieldName}}</p>
         <div class="place-book-icon-group">
           <div class="place-book-icon-group-wifi"></div>
           <div class="place-book-icon-group-park"></div>
@@ -28,7 +28,7 @@
           <p>场地地址</p>
         </template>
         <template slot="right">
-          <p>西溪湿地商务园区1号教室 西溪湿地商务园区1号教室</p>
+          <p>{{place.fieldAddress}}</p>
         </template>
       </dx-cell-item>
       <dx-cell-item>
@@ -36,7 +36,7 @@
           <p>场地单价</p>
         </template>
         <template slot="right">
-          <p>￥60/小时</p>
+          <p>￥{{place.fieldAmount}}/小时</p>
         </template>
       </dx-cell-item>
       <dx-cell-item can-access>
@@ -44,7 +44,7 @@
           <p>预订日期</p>
         </template>
         <template slot="right">
-          <p>4月2号 今天</p>
+          <p>{{place.openDateDTO.openDate | formatInPeriod}}</p>
         </template>
       </dx-cell-item>
       <dx-cell-item can-access>
@@ -60,7 +60,7 @@
           <p>开始时间</p>
         </template>
         <template slot="right">
-          <p>15:30</p>
+          <p>{{place.openDateDTO.openTime.split('-')[0]}}</p>
         </template>
       </dx-cell-item>
       <dx-cell-item can-access>
@@ -68,7 +68,7 @@
           <p>结束时间</p>
         </template>
         <template slot="right">
-          <p>17:30</p>
+          <p>{{place.openDateDTO.openTime.split('-')[1]}}</p>
         </template>
       </dx-cell-item>
       <dx-cell-item>
@@ -76,7 +76,7 @@
           <p>时长合计</p>
         </template>
         <template slot="right">
-          <p>2小时</p>
+          <p>{{dataBetween(place.openDateDTO.openTime.split('-')[0], place.openDateDTO.openTime.split('-')[1])}}小时</p>
         </template>
       </dx-cell-item>
       <dx-cell-item>
@@ -112,6 +112,7 @@
   </div>
 </template>
 <script>
+  import dayjs from 'dayjs'
   import {mapState} from 'vuex'
   import papi from 'api/placeApi.js'
   import DxHeader from 'pages/common/HeaderPage.vue'
@@ -125,9 +126,14 @@
     },
     methods: {
       getPlaceDetl() {
-				papi.getFieldList({id: this.id, date: this.selectedDate}).then(r => {
+				papi.getFieldDetl({id: this.id, openDate: this.selectedDate}).then(r => {
 					this.place = r.data
 				})
+      },
+      dataBetween(startTime, endTime) {
+        const st = dayjs('2001-01-01 ' + startTime)
+        const et = dayjs('2001-01-01 ' + endTime)
+        return et.diff(st, 'hours')
       }
     },
 		computed: {

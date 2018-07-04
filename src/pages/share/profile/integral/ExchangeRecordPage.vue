@@ -73,9 +73,12 @@
          &:last-child {
             border-bottom: none;
          }
-         @include m(left right) {
-            text-align: center;
+         @include m(left) {
+            text-align: left;
             margin: 0.6rem 0;
+         }
+         @include m(right) {
+            text-align: right;
          }
          @include m(left) {
             >p:nth-child(1) {

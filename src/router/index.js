@@ -44,9 +44,9 @@ const JudgePage = () => import('pages/parent/course/JudgePage.vue')
 const EvalPage = () => import('pages/parent/course/evaluatePage.vue')
 // 个人账户
 const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
-const IntegralMallPage = () => import('pages/parent/profile/integral/IntegralMallPage.vue')
-const ExchangeRecordPage = () => import('pages/parent/profile/integral/ExchangeRecordPage.vue')
-const DiscountDetailPage = () => import('pages/parent/profile/integral/DiscountDetailPage.vue')
+const IntegralMallPage = () => import('pages/share/profile/integral/IntegralMallPage.vue')
+const ExchangeRecordPage = () => import('pages/share/profile/integral/ExchangeRecordPage.vue')
+const DiscountDetailPage = () => import('pages/share/profile/integral/DiscountDetailPage.vue')
 const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
 
 /* 老师页面组 */
