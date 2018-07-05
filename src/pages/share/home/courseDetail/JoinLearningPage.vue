@@ -89,8 +89,8 @@
        		<div slot="left">注意：课程开始前，可申请退款</div>
        	</dx-item>
 				<price-footer
+					@price-footer-click="createOrder()"
 					:btn-disabled="!period.periodDate"
-					:to="'/join/' + courseId + '/bookSuccess'" 
 					:price="'￥' + course.coursePrice * courseHour(period.periodStartTime, period.periodEndTime)" 
 					:priceInfo="'￥' + course.coursePrice + ' x ' + courseHour(period.periodStartTime, period.periodEndTime)" 
 					btnText="立即支付"
@@ -109,6 +109,7 @@
 	import dayjs from 'dayjs'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	import PriceFooter from 'pages/common/PriceFooter.vue'
+	import oapi from 'api/orderApi.js'
 	import capi from 'api/courseApi.js'
 	import pApi from 'api/periodApi.js'
 	export default {
@@ -136,6 +137,15 @@
 				pApi.getPeriodByCourse({courseId: this.courseId}).then(r => {
 					this.periodList = r.data.period
 				})
+			},
+			createOrder() {
+        console.info('create order')
+        let param = {
+          orderType: '3',
+          arbitrarilyId: this.periodList[this.selectedPeriod].id
+        }
+        oapi.createPlaceOrder(param).then(r => {
+        })
 			}
 		},
 		data() {

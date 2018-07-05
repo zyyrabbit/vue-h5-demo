@@ -25,6 +25,9 @@ export default {
   getChatMessages(param = {}) {
     return http.get('/msg/record', { params: param })
   },
+  searchTeacher(param = {}) {
+    return http.get('/user/fuzzyQuery', { params: param })
+  },
   getSignHistory(param = {}) {
     return http.get('/sign/history', { params: param })
   },

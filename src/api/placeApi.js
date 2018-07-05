@@ -18,5 +18,8 @@ export default {
   },
   getFieldEvalutions(param = {}) {
     return http.get('/evaluation/placeEvaluation', { params: param })
+  },
+  getUserField(param = {}) {
+    return http.get('/user/userFieldInfo', { params: param })
   }
 }

@@ -37,7 +37,7 @@
 	   			size="max" 
 	   			type="primary"
 	   			class="profile-account-discount--submit-btn"
-	   		>立即签到</dx-button>
+	   		>立即兑换</dx-button>
       	</div>
    	</div>
 </template>

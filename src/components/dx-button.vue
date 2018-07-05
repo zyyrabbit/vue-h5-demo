@@ -163,11 +163,11 @@ export default {
 .dx-button.is-disabled,
 .dx-button.is-disabled:focus,
 .dx-button.is-disabled:hover {
-    color: #bfcbd9;
+    color: #bfcbd9!important;
     cursor: not-allowed;
     background-image: none;
-    background-color: #eef1f6;
-    border-color: #d1dbe5;
+    background-color: #eef1f6!important;
+    border-color: #d1dbe5!important;
 }
 
 .dx-button-full {

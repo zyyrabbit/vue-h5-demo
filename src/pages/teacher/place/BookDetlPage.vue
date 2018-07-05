@@ -122,6 +122,7 @@
   import dayjs from 'dayjs'
   import {mapState, mapMutations} from 'vuex'
   import papi from 'api/placeApi.js'
+  import oapi from 'api/orderApi.js'
   import DxHeader from 'pages/common/HeaderPage.vue'
   import PriceFooter from 'pages/common/PriceFooter.vue'
   export default {
@@ -158,6 +159,12 @@
       },
       createOrder() {
         console.info('create order')
+        let param = {
+          orderType: '1',
+          arbitrarilyId: this.openDateId
+        }
+        oapi.createPlaceOrder(param).then(r => {
+        })
       }
     },
 		computed: {

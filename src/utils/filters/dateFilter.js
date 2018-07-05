@@ -28,3 +28,10 @@ export const formatInChat = (val, formatString = 'M月D日 hh:mm') => {
   }
   return '-'
 }
+
+export const formatDate = (val, formatString = 'YYYY年M月D日') => {
+  if (dayjs(val).isValid()) {
+    return dayjs(val).format(formatString)
+  }
+  return '-'
+}

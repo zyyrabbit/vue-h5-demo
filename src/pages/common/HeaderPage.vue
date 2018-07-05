@@ -55,7 +55,7 @@
 		@include e(title) {
 			line-height: 1;
 			position: absolute;
-			top: 0.27rem;
+			top: 0.29rem;
 			left: 50%;
 			transform: translateX(-50%);
 		}		
