@@ -4,6 +4,7 @@
       <span 
         slot="next" 
         class="teacher-all-course--add"
+        @click="goNext('/teacher/course/all/operate')"
       >新增</span>
     </dx-header>
     <div class="teacher-all-course--title">
@@ -21,6 +22,12 @@
         </div>
       </li>
     </ul>
+    <transition
+            name="router-slide"
+            mode='out-in'
+    >
+      <router-view class="full-screen"/>
+    </transition>
   </div>
 </template>
 <script>

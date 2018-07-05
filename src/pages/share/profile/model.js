@@ -27,7 +27,7 @@ export const profile = {
 			path: '/teacher/course/all',
 			icon: 'course',
 			leftText: '我的课程',
-			rightText: '共6门'
+			rightText: '共0门'
 		},
 		{
 			path: '/teacher/course',
@@ -37,7 +37,7 @@ export const profile = {
 			color: '#FF9CC8'
 		},
 		{
-			path: '/teacher/course/place',
+			path: '/teacher/place',
 			icon: 'room',
 			leftText: '我的场地'
 		},

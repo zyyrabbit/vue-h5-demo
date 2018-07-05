@@ -67,6 +67,7 @@ const MySutdentPage = () => import('pages/teacher/profile/MystudentPage.vue')
 const ChangePlacePage = () => import('pages/teacher/profile/ChangePlacePage.vue')
 const TeacherPlacePage = () => import('pages/teacher/profile/TeacherPlacePage.vue')
 const TeacherAllCoursePage = () => import('pages/teacher/profile/TeacherAllCoursePage.vue')
+const TeacherCourseOperatePage = () => import('pages/teacher/profile/CourseOperatePage.vue')
 const TeacherPunchPage = () => import('pages/teacher/profile/TeacherPunchPage.vue')
 const TeacherBillingDetailsPage = () => import('pages/teacher/profile/BillingDetailsPage.vue')
 const TeacherMoneyWidthdrawalPage = () => import('pages/teacher/profile/MoneyWithdrawalPage.vue')
@@ -176,8 +177,7 @@ const routes = [
 				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true }
 			]
 		},
-		{ path: '/teacher/course/place', component: TeacherPlacePage, hidden: true },
-		{ path: '/teacher/course/all', component: TeacherAllCoursePage, hidden: true },
+		{ path: '/teacher/course/place', component: TeacherPlacePage, hidden: true },	
 		{
 				path: '/teacher/punch',
 				component: TeacherPunchPage,
@@ -192,6 +192,20 @@ const routes = [
 						{ path: 'success', component: TeacherWidthdrawalSubmitSuccessPage, hidden: true }
 				]
 		},
+        {
+            path: '/teacher/course/all',
+            component: TeacherAllCoursePage,
+            children: [
+                { path: 'operate', component: TeacherCourseOperatePage, hidden: true }
+            ]
+        },
+        {
+            path: '/teacher/withDrawal',
+            component: TeacherMoneyWidthdrawalPage,
+            children: [
+                { path: 'success', component: TeacherWidthdrawalSubmitSuccessPage, hidden: true }
+            ]
+        },
 		{
 			path: '/teacher/judgeStu/:id',
 			component: JudgeStudentPage,

@@ -16,6 +16,7 @@ import DxStar from './dx-star.vue'
 import DxComment from './dx-comment.vue'
 import DxTag from './dx-tag.vue'
 import DxVc from './dx-vc.vue'
+import DxSelect from './dx-select.vue'
 const components = [
 	DxFormItem,
 	DxForm,
@@ -34,7 +35,8 @@ const components = [
 	DxStar,
 	DxComment,
 	DxTag,
-	DxVc
+	DxVc,
+    DxSelect
 ]
 
 const install = function(Vue) {
