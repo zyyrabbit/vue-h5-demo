@@ -64,7 +64,7 @@ export default{
 			errorMsg: '',
 			model: {
 				// teacher parent
-				userName: 'teacher',
+				userName: 'sign_test',
 				password: '123'
 			},
 			rules: {

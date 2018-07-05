@@ -1,68 +1,75 @@
 <template>
    <div class="chat-message">
-   	  <dx-header><template slot="title">杨帆</template></dx-header>
+   	  <dx-header><template slot="title">{{sender.name}}</template></dx-header>
 	  <ul>
 	  	<li 
 	  		v-for="(message, index) in messages"
 	  		:key="index"
 	  		class="chat-message__detail"
 	  	>
-	  		<div 
-	  			v-if="message.time" 
-	  			class="chat-message__detail--time"
-	  		>
-	  				{{message.time}}
+	  		<div class="chat-message__detail--time">
+	  			{{message.generateDate | formatInChat}}
 	  		</div>
 	  		<div 
-	  			v-else-if="message.me"
-	  			class="chat-message__detail--ta clearfix"
-	  		>
-	  			<div class="chat-message__detail--icon block--float-left"></div>
-				<div class="chat-message__detail--text block--float-left">
-					{{message.content}}
-					<div class="chat-message__detail--ta-triangle chat-message__detail--triangle"></div>
-				</div>
+	  			v-if="message.sendId === userInfo.id"
+	  			class="chat-message__detail--ta clearfix">
+	  			<div class="chat-message__detail--icon block--float-left"
+						:style="{backgroundImage: 'url(' + sender.persionalImage + ')'}"></div>
+					<div class="chat-message__detail--text block--float-left">
+						{{message.msgContent}}
+						<div class="chat-message__detail--ta-triangle chat-message__detail--triangle"></div>
+					</div>
 	  		</div>	
 	  		<div 
 	  			v-else 
 	  			class="chat-message__detail--me clearfix"
 	  		>
-	  			<div class="chat-message__detail--icon block--float-right"></div>
-				<div class="chat-message__detail--text block--float-right">
-					{{message.content}}
-					<div class="chat-message__detail--me-triangle chat-message__detail--triangle"></div>
-				</div>
+	  		<div class="chat-message__detail--icon block--float-right"
+					:style="{backgroundImage: 'url(' + userInfo.persionalImage + ')'}"></div>
+					<div class="chat-message__detail--text block--float-right">
+						{{message.msgContent}}
+						<div class="chat-message__detail--me-triangle chat-message__detail--triangle"></div>
+					</div>
 	  		</div>	
 		</li>
 	</ul>
     </div>
 </template>
 <script>
+	import uapi from 'api/userApi.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
+	import { mapGetters } from 'vuex'
 	export default {
 		components: {
 			DxHeader
 		},
+		computed: {
+			...mapGetters([
+				'userInfo'
+			])
+		},
 		data() {
 			return {
-				messages: [
-					{
-						time: '2018年3月29号 15:29',
-						content: '请对课程进行评价'
-					},
-					{
-						me: true,
-						content: '大壮壮您好,你报名的课程是明天下午两点的,记得准时参加。'
-					},
-					{
-						content: '好的,谢谢老师提醒,到时候我会准时参加的。'
-					}
-				]
+				sendId: this.$route.params.id,
+				sender: {},
+				messages: []
 			}
 		},
+		mounted() {
+			this.getSenderInfo()
+			this.getMessageList()
+		},
 		methods: {
-			goBack() {
-				this.$router.go(-1)
+			getSenderInfo() {
+				uapi.getUserInfo({id: this.sendId}).then(r => {
+					this.sender = r.data
+				})
+				// this.$router.go(-1)
+			},
+			getMessageList() {
+				uapi.getChatMessages({sendId: this.sendId}).then(r => {
+					this.messages = r.data.list
+				})
 			}
 		}
 	}
@@ -81,6 +88,7 @@
 			@include m(time){
 				font-size: 0.3rem;
 				text-align: center;
+				padding: 0.3rem 0;
 			}
 			@include m(icon) {
 				width: 0.8rem;
@@ -97,7 +105,8 @@
 			}
 			@include m(ta) {
 				>div:nth-child(1) {
-					background-color: #444;
+					// background-color: #444;
+					background-size: 100% 100%;
 				}
 				>div:nth-child(2) {
 					background-color: #f7f7f7;
@@ -107,7 +116,7 @@
 			}
 			@include m(me) {
 				>div:nth-child(1) {
-					background-color: #666;
+					// background-color: #666;
 				}
 				>div:nth-child(2) {
 					background-color: #57B8D7;

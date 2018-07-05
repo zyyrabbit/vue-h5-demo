@@ -10,7 +10,8 @@ import {
   SET_REGIONINFO,
   SET_COURSELIST,
   SET_JUDGEDICTS,
-  SET_OPENDATE_ID
+  SET_OPENDATE_ID,
+  SET_MESSAGELIST
 } from './mutation-types.js'
 import { setStore } from 'utils/utils'
 
@@ -46,6 +47,9 @@ export default {
   },
   [SET_COURSELIST](state, data) {
     state.courseList = data
+  },
+  [SET_MESSAGELIST](state, data) {
+    state.messageList = data
   },
   [RECORD_USERINFO](state, info) {
     state.userInfo = info

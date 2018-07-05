@@ -19,6 +19,12 @@ export default {
   getUserInfo(param = {}) {
     return http.get('/user/getUserInfo', { params: param })
   },
+  getUserMessages(param = {}) {
+    return http.get('/msg/contact', { params: param })
+  },
+  getChatMessages(param = {}) {
+    return http.get('/msg/record', { params: param })
+  },
   getSignHistory(param = {}) {
     return http.get('/sign/history', { params: param })
   },

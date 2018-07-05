@@ -22,6 +22,7 @@ const state = {
 	openDateId: '', // 选择场地时间段
 	regionInfo: {},
 	courseList: [], // 教师 - 我的课程
+	messageList: [], // 消息列表
 	judgeDicts: [] // 评价标签字典
 }
 

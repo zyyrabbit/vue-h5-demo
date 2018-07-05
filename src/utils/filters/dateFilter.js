@@ -21,3 +21,10 @@ export const formatInPeriod = (val, formatString = 'M月D日') => {
   }
   return '-'
 }
+
+export const formatInChat = (val, formatString = 'M月D日 hh:mm') => {
+  if (dayjs(val).isValid()) {
+    return dayjs(val).format(formatString)
+  }
+  return '-'
+}
