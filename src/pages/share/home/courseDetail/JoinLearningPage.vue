@@ -107,6 +107,7 @@
 <script>
 	import mixin from 'utils/mixin.js'
 	import dayjs from 'dayjs'
+  import {mapState, mapMutations} from 'vuex'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	import PriceFooter from 'pages/common/PriceFooter.vue'
 	import oapi from 'api/orderApi.js'
@@ -121,8 +122,31 @@
 		mounted() {
 			this.getPeriodByCourse()
 			this.getCourseDetl()
+			this.SET_SELECT_PERIOD_ID(0)
 		},
+		computed: {
+			...mapState({
+        selectPeriodId: state => state.selectPeriodId
+			}),
+			selectedPeriod: {
+        get: function() {
+          return this.selectPeriodId
+        },
+        set: function(val) {
+        }
+			},
+			period() {
+				if (this.periodList && this.periodList.length > 0) {
+					return this.periodList[this.selectedPeriod]
+				} else {
+					return {}
+				}
+			}
+    },
 		methods: {
+			...mapMutations([
+        'SET_SELECT_PERIOD_ID'
+			]),
       courseHour(startTime, endTime) {
         const st = dayjs('2001-01-01 ' + startTime)
         const et = dayjs('2001-01-01 ' + endTime)
@@ -139,10 +163,10 @@
 				})
 			},
 			createOrder() {
-        console.info('create order')
+        console.info(this.period)
         let param = {
           orderType: '3',
-          arbitrarilyId: this.periodList[this.selectedPeriod].id
+          arbitrarilyId: this.period.id
         }
         oapi.createPlaceOrder(param).then(r => {
         })
@@ -153,18 +177,9 @@
 				courseId: this.$route.params.id,
 				periodList: [],
 				// FIXME
-				selectedPeriod: 0,
+				// selectedPeriod: 0,
 				course: {
 					user: {}
-				}
-			}
-		},
-		computed: {
-			period() {
-				if (this.periodList && this.periodList.length > 0) {
-					return this.periodList[this.selectedPeriod]
-				} else {
-					return {}
 				}
 			}
 		}

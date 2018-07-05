@@ -21,6 +21,7 @@ const state = {
 	placeList: [], // 场地列表信息
 	openDateId: '', // 选择场地时间段
 	regionInfo: {},
+	selectPeriodId: '',
 	courseList: [], // 教师 - 我的课程
 	messageList: [], // 消息列表
 	judgeDicts: [] // 评价标签字典

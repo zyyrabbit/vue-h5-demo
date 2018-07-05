@@ -1,9 +1,9 @@
 <template>
-    <div class="home-course-period">
+    <div class="home-course-period" v-footer>
     	<dx-header is-close></dx-header>
     	<ul class="home-course-period__content">
     		<li 
-    			v-for="period in periodList" 
+    			v-for="(period, index) in periodList" 
     			:key="period.id"
     			:class="{'is-disabled': disabled === index}"
     			class="home-course-period__content-item"
@@ -19,7 +19,7 @@
 								class="home-course-period__content-item--price-text">/学员</span>
 	    			</p>
 	    			<p>{{period.periodDate | formatInPeriod}} {{period.periodStartTime}}~{{period.periodEndTime}}</p>
-	    			<p>南师大文渊楼303室</p>
+	    			<p v-if="period.field">{{period.field.fieldName}}</p>
 	    			<p>{{period.periodAddress}}</p>
 	    		</div>
 					<dx-radio 
@@ -37,12 +37,13 @@
     		</li>
     	</ul>
     	<button-footer 
-    		to="" 
+    		@button-footer-click="handleClick()"
     		btnText="下一步"
     	></button-footer>
    	</div>
 </template>
 <script>
+  import {mapState, mapMutations} from 'vuex'
 	import mixin from 'utils/mixin.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	import ButtonFooter from 'pages/common/ButtonFooter.vue'
@@ -56,19 +57,38 @@
 		mounted() {
 			this.getPeriodByCourse()
 		},
+		computed: {
+			...mapState({
+        selectPeriodId: state => state.selectPeriodId
+			}),
+			select: {
+        get: function() {
+          return this.selectPeriodId
+        },
+        set: function(val) {
+          this.SET_SELECT_PERIOD_ID(val)
+        }
+			}
+    },
 		methods: {
+			...mapMutations([
+        'SET_SELECT_PERIOD_ID'
+			]),
 			getPeriodByCourse() {
 				pApi.getPeriodByCourse({courseId: this.courseId}).then(r => {
 					this.periodList = r.data.period
 				})
+			},
+			handleClick() {
+				this.$router.go(-1)
 			}
 		},
 		data() {
 			return {
 				courseId: this.$route.params.id,
 				periodList: [],
-				select: 1,
-				disabled: 3
+				// select: 0,
+				disabled: -1
 			}
 		}
 	}

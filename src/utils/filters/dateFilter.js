@@ -35,3 +35,6 @@ export const formatDate = (val, formatString = 'YYYY年M月D日') => {
   }
   return '-'
 }
+
+export const formatInDialog = (val) => {
+}

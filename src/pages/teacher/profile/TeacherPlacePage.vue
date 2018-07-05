@@ -15,7 +15,7 @@
           :tabs="tabs"
         ></dx-tabs>
         <ul class="teacher-course-place__detail">   
-          <li v-for="place in placeList" :key="place.id" v-if="(tabValue===1 && place.pId!==0) || (tabValue===0 && place.pId===0) ">
+          <li v-for="place in placeList" :key="place.id" v-if="(tabValue===1 && place.pId!==null) || (tabValue===0 && place.pId===null)">
             <p>{{place.fieldName}}</p>
             <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
             <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
@@ -59,10 +59,13 @@
             return !!this.tabs[this.tabValue].btns.length
         }
     },
+    mounted() {
+      this.getMyPlace()
+    },
     methods: {
       getMyPlace() {
         papi.getUserField().then(r => {
-					console(r.data)
+					this.placeList = r.data
 				})
       }
     }
