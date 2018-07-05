@@ -22,6 +22,7 @@
 			<p class="home-teacher-detail__courses--title">他的{{teacherCourses.length}}门课程</p>
 			<dx-ul>
 				<li  
+					@click="goNext('/courseDetail/' + course.id)"
 				  v-for="course in teacherCourses"
 					class="home-teacher-detail__courses--item">
 					<div class="home-teacher-detail__courses--item-pic"
