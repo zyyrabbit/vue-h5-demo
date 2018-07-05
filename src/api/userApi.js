@@ -25,6 +25,9 @@ export default {
   getChatMessages(param = {}) {
     return http.get('/msg/record', { params: param })
   },
+  sendChatMessge(param = {}) {
+    return http.post('/msg/record', param)
+  },
   searchTeacher(param = {}) {
     return http.get('/user/fuzzyQuery', { params: param })
   },

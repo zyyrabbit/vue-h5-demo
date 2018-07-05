@@ -1,39 +1,43 @@
 <template>
-   <div class="chat-message">
-   	  <dx-header><template slot="title">{{sender.name}}</template></dx-header>
-	  <ul>
-	  	<li 
-	  		v-for="(message, index) in messages"
-	  		:key="index"
-	  		class="chat-message__detail"
-	  	>
-	  		<div class="chat-message__detail--time">
-	  			{{message.generateDate | formatInChat}}
-	  		</div>
-	  		<div 
-	  			v-if="message.sendId === userInfo.id"
-	  			class="chat-message__detail--ta clearfix">
-	  			<div class="chat-message__detail--icon block--float-left"
+  <div class="chat-message" v-footer>
+		<dx-header><template slot="title">{{sender.name}}</template></dx-header>
+		<ul>
+			<li 
+				v-for="(message, index) in messages"
+				:key="index"
+				class="chat-message__detail"
+			>
+				<div class="chat-message__detail--time">
+					{{message.generateDate | formatInChat}}
+				</div>
+				<div 
+					v-if="message.sendId === userInfo.id"
+					class="chat-message__detail--ta clearfix">
+					<div class="chat-message__detail--icon block--float-left"
 						:style="{backgroundImage: 'url(' + sender.persionalImage + ')'}"></div>
 					<div class="chat-message__detail--text block--float-left">
 						{{message.msgContent}}
 						<div class="chat-message__detail--ta-triangle chat-message__detail--triangle"></div>
 					</div>
-	  		</div>	
-	  		<div 
-	  			v-else 
-	  			class="chat-message__detail--me clearfix"
-	  		>
-	  		<div class="chat-message__detail--icon block--float-right"
+				</div>	
+				<div 
+					v-else 
+					class="chat-message__detail--me clearfix"
+				>
+				<div class="chat-message__detail--icon block--float-right"
 					:style="{backgroundImage: 'url(' + userInfo.persionalImage + ')'}"></div>
 					<div class="chat-message__detail--text block--float-right">
 						{{message.msgContent}}
 						<div class="chat-message__detail--me-triangle chat-message__detail--triangle"></div>
 					</div>
-	  		</div>	
-		</li>
-	</ul>
-    </div>
+				</div>	
+			</li>
+		</ul>
+		<div class="chat-message__footer">
+			<textarea rows="1" placeholder="输入消息" v-model="content"></textarea>
+			<dx-button type="primary" size="small" @dx-button-click="sendMsg()">发送</dx-button>
+		</div>
+  </div>
 </template>
 <script>
 	import uapi from 'api/userApi.js'
@@ -52,7 +56,8 @@
 			return {
 				sendId: this.$route.params.id,
 				sender: {},
-				messages: []
+				messages: [],
+				content: ''
 			}
 		},
 		mounted() {
@@ -69,6 +74,11 @@
 			getMessageList() {
 				uapi.getChatMessages({sendId: this.sendId}).then(r => {
 					this.messages = r.data.list
+				})
+			},
+			sendMsg() {
+				uapi.sendChatMessge().then(r => {
+					this.content = ''
 				})
 			}
 		}
@@ -142,6 +152,29 @@
 				right: -0.35rem;
 				top: 0.27rem;
 				border-color: transparent  transparent  transparent #57B8D7;
+			}
+		}
+		@include e(footer) {
+			display: flex;
+			position: fixed;
+			width: 100%;
+			left: 0;
+			bottom: 0;
+			padding: 0.4rem 0.4rem;
+			textarea{
+				border: none;
+				background: #F0F0F0;
+				width: 4.8rem;
+				border-radius: 0.1rem;
+				padding: 0.2rem 0.2rem;
+				font-size: 0.36rem;
+				color: #7E7E7E;
+				resize:none;
+				line-height: 1;
+			}
+			button{
+				flex-grow: 1;
+				margin-left: 0.4rem;
 			}
 		}
 	}	
