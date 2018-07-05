@@ -68,11 +68,12 @@
     </div>
     <!-- footer -->
     <price-footer 
-        :to="'/place/book/' + place.id" 
-        :price="'￥' + place.fieldAmount" 
-        priceSmall="/小时" 
-        :priceInfo="'评分' + (place.evaluationAvgGrade || 0)" 
-        btnText="确定"
+      :btn-disabled="!place.openDateDTO"
+      :to="'/place/book/' + place.id" 
+      :price="'￥' + place.fieldAmount" 
+      priceSmall="/小时" 
+      :priceInfo="'评分' + (place.evaluationAvgGrade || 0)" 
+      :btnText="place.openDateDTO ? '确定' : '全天已满'"
       >
     </price-footer>   
   </div>

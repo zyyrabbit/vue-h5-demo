@@ -58,6 +58,7 @@ const PlaceJudgePage = () => import('pages/teacher/place/PlaceJudgePage.vue')
 const BookDetlPage = () => import('pages/teacher/place/BookDetlPage.vue')
 const BookSuccPage = () => import('pages/teacher/place/BookSuccessPage.vue')
 const RelateCoursePage = () => import('pages/teacher/place/RelateCoursePage.vue')
+const OpenDatePage = () => import('pages/teacher/place/OpenDatePage.vue')
 // 个人账户（老师）
 const TeacherCoursePage = () => import('pages/teacher/profile/CoursePage.vue')
 const JudgeStudentPage = () => import('pages/teacher/profile/JudgeStudentPage.vue')
@@ -156,8 +157,13 @@ const routes = [
 				{ path: 'select', component: SelectRegionPage, hidden: true },
 				{ path: 'detail/:id', component: PlaceDetlPage, hidden: true },
 				{ path: 'judge/:id', component: PlaceJudgePage, hidden: true },
-				{ path: 'book/:id', component: BookDetlPage, hidden: true },
-				{ path: 'book/:id/:oid', component: BookDetlPage, hidden: true },
+				{ path: 'book/:id',
+					component: BookDetlPage,
+					hidden: true,
+					children: [
+						{ path: 'opendate', component: OpenDatePage, hidden: true }
+					]
+				},
 				{ path: 'success', component: BookSuccPage, hidden: true },
 				{ path: 'relate', component: RelateCoursePage, hidden: true }
 			]

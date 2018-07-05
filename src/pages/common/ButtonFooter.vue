@@ -1,7 +1,7 @@
 <template>
   <div class="button-footer">
     <div class="button-footer-btn">
-      <dx-button size="full" type="primary" @dx-button-click="goTo()">
+      <dx-button size="full" type="primary" @dx-button-click="handleClick()">
         {{btnText}}
       </dx-button>
     </div>
@@ -10,6 +10,7 @@
 <script>
 	export default {
     props: {
+      // to是简单跳转
       to: String,
       btnText: String,
       price: String,
@@ -17,10 +18,12 @@
       priceInfo: String
     },
     methods: {
-      goTo() {
+      handleClick(e) {
         console.info(this.to)
         if (this.to) {
           this.$router.push(this.to)
+        } else {
+          this.$emit('button-footer-click', e)
         }
       }
     }

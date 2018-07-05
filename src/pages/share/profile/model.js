@@ -42,7 +42,7 @@ export const profile = {
 			leftText: '我的场地'
 		},
 		{
-			path: '/teacher/punch',
+			path: '/sign',
 			icon: 'punch',
 			leftText: '会员签到',
 			rightText: '2998积分'
@@ -53,7 +53,7 @@ export const profile = {
 			leftText: '我的钱包'
 		},
 		{
-			path: 'profile/advise',
+			path: '/profile/advise',
 			icon: 'suggestion',
 			leftText: '意见反馈'
 		}

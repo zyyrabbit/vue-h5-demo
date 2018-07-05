@@ -16,7 +16,7 @@
         <dx-tabs v-model="tabValue" :tabs="tabs" @input="tabClick()"></dx-tabs>
         <ul class="index-place--row">
           <li class="index-place--row-item" v-for="item in placeList">
-            <div class="flex-center" @click="goNext('/place/detail/' + item.id)">
+            <div class="flex-center" @click="goDetail(item.id)">
               <div class="index-place--row-pic"
                 :style="{backgroundImage: 'url(' + item.imagesPath + ')'}"></div>
               <div class="index-place--row-detl">
@@ -48,7 +48,7 @@
               v-if="item.openDateList && item.openDateList.length !== 0">
               <p class="index-place--row-time-label"
                 v-for="time in item.openDateList"
-                @click="goNext('place/book/' + item.id + '/' + time.oId)">{{time.openTime}}</p>
+                @click="goBookDetl(item.id, time.oId)">{{time.openTime}}</p>
             </div>            
           </li>                   
         </ul>
@@ -100,7 +100,8 @@
 			...mapMutations([
         'SET_SELECT_PLACE_DATE',
         'SET_REGIONINFO',
-        'SET_PLACELIST'
+        'SET_PLACELIST',
+        'SET_OPENDATE_ID'
 			]),
       getRegionInfo() {
 				papi.getRegionInfo({rid: this.selectRegion}).then(r => {
@@ -120,6 +121,14 @@
       },
       tabClick() {
         this.getFieldList()
+      },
+      goBookDetl(id, oid) {
+        this.SET_OPENDATE_ID(oid)
+        this.$router.push('place/book/' + id)
+      },
+      goDetail(id) {
+        this.SET_OPENDATE_ID('')
+        this.$router.push('place/detail/' + id)
       },
       contributeDates() {
         // 今天开始往后七天

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import dayjs from 'dayjs'
 import * as actions from './actions.js'
 import * as getters from './getters.js'
-// import * as state from './state.js'
 import mutations from './mutations.js'
 import createLogger from 'vuex/dist/logger'
 Vue.use(Vuex)
@@ -17,8 +17,9 @@ const state = {
 	selectingRegion: 2, // 选择中地区
 	selectRegion: 2, // 选中地区 因为其他模块需要请求 必须有初始变量
 	regionList: [], // 场地地区信息,
-	selectPlaceDate: null, // 场地选择日期
+	selectPlaceDate: dayjs().format('YYYY-MM-DD'), // 场地选择日期 默认今天
 	placeList: [], // 场地列表信息
+	openDateId: '', // 选择场地时间段
 	regionInfo: {},
 	courseList: [], // 教师 - 我的课程
 	judgeDicts: [] // 评价标签字典

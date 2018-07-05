@@ -9,7 +9,8 @@ import {
   SET_SELECT_PLACE_DATE,
   SET_REGIONINFO,
   SET_COURSELIST,
-  SET_JUDGEDICTS
+  SET_JUDGEDICTS,
+  SET_OPENDATE_ID
 } from './mutation-types.js'
 import { setStore } from 'utils/utils'
 
@@ -23,6 +24,9 @@ export default {
   },
   [SET_SELECT_PLACE_DATE](state, data) {
     state.selectPlaceDate = data
+  },
+  [SET_OPENDATE_ID](state, data) {
+    state.openDateId = data
   },
   [SET_REGIONINFO](state, data) {
     state.regionInfo = data

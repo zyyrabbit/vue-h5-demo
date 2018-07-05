@@ -6,19 +6,21 @@
     <dx-header></dx-header>
     <p class="headline-upper-text">预订场所</p>
     <div class="place-book-info">
-      <div class="place-book-info-pic"></div>
+      <div class="place-book-info-pic"
+        :style="{backgroundImage: 'url(' + place.imagesPath + ')'}"
+      ></div>
       <div class="place-book-info-detl">
         <div class="place-book-info-comment">
-          <p class="place-book-comment-amount">99+</p>
-          <dx-star :rating=3 type="small"></dx-star>
+          <p class="place-book-comment-amount">{{place.evaluationCount > 99 ? '99+' : (place.evaluationCount || 0)}}</p>
+          <dx-star :rating="0"  type="small"></dx-star>
         </div>
         <p class="place-book-info-name">{{place.fieldName}}</p>
         <div class="place-book-icon-group">
-          <div class="place-book-icon-group-wifi"></div>
-          <div class="place-book-icon-group-park"></div>
-          <div class="place-book-icon-group-tv"></div>
-          <div class="place-book-icon-group-pen"></div>
-          <div class="place-book-icon-group-air"></div>
+          <div class="place-book-icon-group-wifi" v-if="place.siteLabel.indexOf('wifi') > -1"></div>
+          <div class="place-book-icon-group-park" v-if="place.siteLabel.indexOf('停车场') > -1"></div>
+          <div class="place-book-icon-group-tv" v-if="place.siteLabel.indexOf('液晶电视') > -1"></div>
+          <div class="place-book-icon-group-pen" v-if="place.siteLabel.indexOf('白板') > -1"></div>
+          <div class="place-book-icon-group-air" v-if="place.siteLabel.indexOf('空调') > -1"></div>
         </div>
       </div>
     </div>
@@ -39,7 +41,7 @@
           <p>￥{{place.fieldAmount}}/小时</p>
         </template>
       </dx-cell-item>
-      <dx-cell-item can-access>
+      <dx-cell-item can-access :to="'/place/book/' + place.id + '/opendate'">
         <template slot="left">
           <p>预订日期</p>
         </template>
@@ -47,20 +49,20 @@
           <p>{{place.openDateDTO.openDate | formatInPeriod}}</p>
         </template>
       </dx-cell-item>
-      <dx-cell-item can-access>
+      <!-- <dx-cell-item can-access>
         <template slot="left">
           <p>重复预订</p>
         </template>
         <template slot="right">
           <p>不重复</p>
         </template>
-      </dx-cell-item>
+      </dx-cell-item> -->
       <dx-cell-item can-access>
         <template slot="left">
           <p>开始时间</p>
         </template>
         <template slot="right">
-          <p>{{place.openDateDTO.openTime.split('-')[0]}}</p>
+          <p>{{place.startTime}}</p>
         </template>
       </dx-cell-item>
       <dx-cell-item can-access>
@@ -68,7 +70,7 @@
           <p>结束时间</p>
         </template>
         <template slot="right">
-          <p>{{place.openDateDTO.openTime.split('-')[1]}}</p>
+          <p>{{place.endTime}}</p>
         </template>
       </dx-cell-item>
       <dx-cell-item>
@@ -76,7 +78,7 @@
           <p>时长合计</p>
         </template>
         <template slot="right">
-          <p>{{dataBetween(place.openDateDTO.openTime.split('-')[0], place.openDateDTO.openTime.split('-')[1])}}小时</p>
+          <p>{{place.betweenTime}}小时</p>
         </template>
       </dx-cell-item>
       <dx-cell-item>
@@ -84,7 +86,7 @@
           <p>折扣</p>
         </template>
         <template slot="right">
-          <p>8.5折</p>
+          <p>-</p>
         </template>
       </dx-cell-item>
       <dx-cell-item can-access>
@@ -102,18 +104,23 @@
       </dx-cell-item>
     </div>
     <price-footer 
-        to="/place/success" 
-        price="￥60" 
-        priceSmall="/小时" 
-        priceInfo="￥60 x 6小时" 
-        btnText="立即支付"
+      @price-footer-click="createOrder()"
+      :price="'￥' + (place.fieldAmount * place.betweenTime || 0)" 
+      priceSmall="/小时" 
+      :priceInfo="'￥' + place.fieldAmount + ' x ' +  place.betweenTime + '小时'" 
+      btnText="立即支付"
     >
-    </price-footer>    
+    </price-footer> 
+    <transition 
+			name="router-slide"  
+			mode='out-in'>
+			<router-view class="full-screen"/>
+		</transition>    
   </div>
 </template>
 <script>
   import dayjs from 'dayjs'
-  import {mapState} from 'vuex'
+  import {mapState, mapMutations} from 'vuex'
   import papi from 'api/placeApi.js'
   import DxHeader from 'pages/common/HeaderPage.vue'
   import PriceFooter from 'pages/common/PriceFooter.vue'
@@ -125,27 +132,47 @@
       this.getPlaceDetl()
     },
     methods: {
+			...mapMutations([
+        'SET_OPENDATE_ID'
+			]),
       getPlaceDetl() {
-				papi.getFieldDetl({id: this.id, openDate: this.selectedDate}).then(r => {
-					this.place = r.data
+        let param = {id: this.id, openDate: this.selectedDate}
+        if (this.openDateId) {
+          param.openDateId = this.openDateId
+        }
+				papi.getFieldDetl(param).then(r => {
+          this.place = r.data
+          // 处理数据
+          this.place.startTime = this.place.openDateDTO.openTime.split('-')[0]
+          this.place.endTime = this.place.openDateDTO.openTime.split('-')[1]
+          this.place.betweenTime = this.dataBetween(this.place.startTime, this.place.endTime)
+          if (!this.openDateId) {
+            this.SET_OPENDATE_ID(this.place.openDateDTO.oId)
+          }
 				})
       },
       dataBetween(startTime, endTime) {
         const st = dayjs('2001-01-01 ' + startTime)
         const et = dayjs('2001-01-01 ' + endTime)
         return et.diff(st, 'hours')
+      },
+      createOrder() {
+        console.info('create order')
       }
     },
 		computed: {
 			...mapState({
-        selectedDate: state => state.selectPlaceDate
+        selectedDate: state => state.selectPlaceDate,
+        openDateId: state => state.openDateId
       })
     },
     data() {
       return {
         id: this.$route.params.id,
-        oid: this.$route.params.oid,
-        place: {}
+        place: {
+          siteLabel: '',
+          openDateDTO: {}
+        }
       }
     }
   }
@@ -163,7 +190,7 @@
     &-pic{
       width: 2.33rem;
       height: 1.9rem;
-      background: $--place-room-pic;
+      // background: $--place-room-pic;
       background-size: 100% 100%;
       border-radius: 0.1rem;
     }
@@ -210,6 +237,7 @@
   }
   &-comment-amount{
     font-size: $--common-button-text-font-size;
+    margin-right: 0.05rem;
   }
 }
 </style>

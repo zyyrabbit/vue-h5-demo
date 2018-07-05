@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="place-footer-btn">
-      <dx-button :disabled="btnDisabled" size="full" type="pinking" @dx-button-click="goTo()">
+      <dx-button :disabled="btnDisabled" size="full" type="pinking" @dx-button-click="handleClick()">
         {{btnText}}
       </dx-button>
     </div>
@@ -21,6 +21,7 @@
 <script>
 	export default {
     props: {
+      // to是简单跳转
       to: String,
       btnText: String,
       btnDisabled: Boolean,
@@ -29,10 +30,11 @@
       priceInfo: String
     },
     methods: {
-      goTo() {
-        console.info(this.to)
+      handleClick(e) {
         if (this.to) {
           this.$router.push(this.to)
+        } else {
+          this.$emit('price-footer-click', e)
         }
       }
     }
