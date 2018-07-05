@@ -14,8 +14,8 @@
           v-model="tabValue" 
           :tabs="tabs"
         ></dx-tabs>
-        <ul class="teacher-course-place__detail">   
-          <li v-for="place in placeList" :key="place.id" v-if="(tabValue===1 && place.pId!==null) || (tabValue===0 && place.pId===null)">
+        <ul class="teacher-course-place__detail" v-if="tabValue===0">   
+          <li v-for="place in placeNotUseList" :key="place.id">
             <p>{{place.fieldName}}</p>
             <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
             <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
@@ -25,6 +25,13 @@
             </div>
           </li>
         </ul>
+        <ul class="teacher-course-place__detail" v-if="tabValue===1">   
+          <li v-for="place in placeUsedList" :key="place.id">
+            <p>{{place.fieldName}}</p>
+            <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+            <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+          </li>
+        </ul>        
     </div>
 </template>
 <script>
@@ -40,7 +47,8 @@
     mixins: [mixin],
     data() {
       return {
-        placeList: [],
+        placeUsedList: [],
+        placeNotUseList: [],
         tabValue: 0,
         tabs: [
           {
@@ -55,17 +63,22 @@
       }
     },
     computed: {
-        isHasBtns() {
-            return !!this.tabs[this.tabValue].btns.length
-        }
     },
     mounted() {
-      this.getMyPlace()
+      this.getNotUsePlace()
+      this.getUsedPlace()
     },
     methods: {
-      getMyPlace() {
+      // 未使用
+      getNotUsePlace() {
         papi.getUserField().then(r => {
-					this.placeList = r.data
+					this.placeNotUseList = r.data
+				})
+      },
+      // 已使用
+      getUsedPlace() {
+        papi.getUserOpenField().then(r => {
+					this.placeUsedList = r.data
 				})
       }
     }

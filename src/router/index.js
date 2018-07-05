@@ -173,25 +173,25 @@ const routes = [
 			component: TeacherCoursePage,
 			children: [
 				{ path: 'students/:id', component: MySutdentPage, hidden: true },
-				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true },
-				{ path: 'place', component: TeacherPlacePage, hidden: true },
-				{ path: 'all', component: TeacherAllCoursePage, hidden: true }
+				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true }
 			]
 		},
-        {
-            path: '/teacher/punch',
-            component: TeacherPunchPage,
-            children: [
-                { path: 'billing', component: TeacherBillingDetailsPage, hidden: true }
-            ]
-        },
-        {
-            path: '/teacher/withDrawal',
-            component: TeacherMoneyWidthdrawalPage,
-            children: [
-                { path: 'success', component: TeacherWidthdrawalSubmitSuccessPage, hidden: true }
-            ]
-        },
+		{ path: '/teacher/course/place', component: TeacherPlacePage, hidden: true },
+		{ path: '/teacher/course/all', component: TeacherAllCoursePage, hidden: true },
+		{
+				path: '/teacher/punch',
+				component: TeacherPunchPage,
+				children: [
+						{ path: 'billing', component: TeacherBillingDetailsPage, hidden: true }
+				]
+		},
+		{
+				path: '/teacher/withDrawal',
+				component: TeacherMoneyWidthdrawalPage,
+				children: [
+						{ path: 'success', component: TeacherWidthdrawalSubmitSuccessPage, hidden: true }
+				]
+		},
 		{
 			path: '/teacher/judgeStu/:id',
 			component: JudgeStudentPage,

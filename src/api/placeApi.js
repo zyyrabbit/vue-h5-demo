@@ -21,5 +21,8 @@ export default {
   },
   getUserField(param = {}) {
     return http.get('/user/userFieldInfo', { params: param })
+  },
+  getUserOpenField(param = {}) {
+    return http.get('/user/userOpenFieldInfo', { params: param })
   }
 }
