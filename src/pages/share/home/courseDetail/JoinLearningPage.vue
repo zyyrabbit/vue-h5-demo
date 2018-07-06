@@ -128,7 +128,8 @@
 		computed: {
 			...mapState({
 				selectPeriodId: state => state.selectPeriodId,
-				userName: state => state.userInfo.name
+				userName: state => state.userInfo.name,
+				phoneNumber: state => state.userInfo.phoneNumber
 			}),
 			selectedPeriod: {
         get: function() {
@@ -136,6 +137,13 @@
         },
         set: function(val) {
         }
+			},
+			phone: {
+				get: function() {
+					return this.phoneNumber
+				},
+				set: function() {
+				}
 			},
 			period() {
 				if (this.periodList && this.periodList.length > 0) {
@@ -171,7 +179,7 @@
 					orderType: 'CLASS',
 					// 支付方式
 					payType: 'ALIPAY',
-					phone: this.phone || null,
+					phone: this.phone,
 					giftId: '',
           classId: this.period.id
         }
@@ -194,8 +202,8 @@
 				// selectedPeriod: 0,
 				course: {
 					user: {}
-				},
-				phone: null
+				}
+				// phone: this.phoneNumber
 			}
 		}
 	}
@@ -269,7 +277,8 @@
 			border: none;
 			display: inline-block;
 			width: 3.56rem;
-			color: #D3D3D3;
+			color: #57B8D7;
+			text-align: right;
 			font-size: 0.36rem;
 			// 设置暂未符样式
 			@include placeholder {

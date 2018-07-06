@@ -123,7 +123,7 @@
   import dayjs from 'dayjs'
   import {mapState, mapMutations} from 'vuex'
   import papi from 'api/placeApi.js'
-  import oapi from 'api/orderApi.js'
+  // import oapi from 'api/orderApi.js'
   import DxHeader from 'pages/common/HeaderPage.vue'
   import PriceFooter from 'pages/common/PriceFooter.vue'
   export default {
@@ -172,18 +172,19 @@
           phone: null,
           reserveDate: this.selectedDate,
           fieldId: this.id,
-          openDateId: this.openDateId
+          openDate: this.place.openDateDTO.openTime
         }
-        oapi.createOrder(param).then(r => {
-					const orderNumber = r.data
-					if (orderNumber) {
-						oapi.fakeOrderSuccess({orderNumber: orderNumber}).then(r => {
-							alert('预订成功!')
-              // this.$router.push('/place/success')
-              this.$router.push('/profile')
-						})
-					}
-        })
+        console.info(param)
+        // oapi.createOrder(param).then(r => {
+				// 	const orderNumber = r.data
+				// 	if (orderNumber) {
+				// 		oapi.fakeOrderSuccess({orderNumber: orderNumber}).then(r => {
+				// 			alert('预订成功!')
+        //       // this.$router.push('/place/success')
+        //       this.$router.push('/profile')
+				// 		})
+				// 	}
+        // })
       }
     },
 		computed: {

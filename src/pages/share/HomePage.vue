@@ -45,7 +45,7 @@
 								</div>
 								<div class="index-home-wiki__desc clearfix">
 									<div class="index-home-wiki__desc--detail block--float-left">{{course.courseRecommend}}</div>
-									<div class="index-home-wiki__desc--price block--float-right">￥{{course.coursePrice}}</div>
+									<div class="index-home-wiki__desc--price block--float-right">￥{{course.coursePrice || '-'}}</div>
 								</div>
 							</div>						
    					</li>
