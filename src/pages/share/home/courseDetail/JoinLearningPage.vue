@@ -71,6 +71,7 @@
        	<dx-item class="home-course-join__item">
        		<div slot="left">联系电话</div>
 					<input 
+						v-model="phone"
 						slot="right"
 						class="home-course-join--telephone"
 						placeholder="请输入联系人手机号码" 
@@ -167,12 +168,21 @@
         console.info(this.period)
         let param = {
 					// 订单类型
-					orderType: '3',
+					orderType: 'CLASS',
 					// 支付方式
-					modePayment: '2',
-          arbitrarilyId: this.period.id
+					payType: 'ALIPAY',
+					phone: this.phone || null,
+					giftId: '',
+          classId: this.period.id
         }
-        oapi.createPlaceOrder(param).then(r => {
+        oapi.createOrder(param).then(r => {
+					const orderNumber = r.data
+					if (orderNumber) {
+						oapi.fakeOrderSuccess({orderNumber: orderNumber}).then(r => {
+							alert('预订成功!')
+							this.$router.push('/course')
+						})
+					}
         })
 			}
 		},
@@ -184,7 +194,8 @@
 				// selectedPeriod: 0,
 				course: {
 					user: {}
-				}
+				},
+				phone: null
 			}
 		}
 	}

@@ -1,7 +1,10 @@
 import http from './index'
 
 export default {
-  createPlaceOrder(param = {}) {
-    return http.post('/orderPay/pay', param)
+  createOrder(param = {}) {
+    return http.post('/order/create', param)
+  },
+  fakeOrderSuccess(param = {}) {
+    return http.get('/order/success', { params: param })
   }
 }

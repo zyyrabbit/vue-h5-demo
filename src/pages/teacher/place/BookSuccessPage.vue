@@ -1,5 +1,9 @@
 <template>
   <div class="place-book">
+    <header class="index-header clearfix">
+      <div class="index-header__close block--float-left" @click="goNext('/profile')"></div>
+      <div style="flex-grow: 1;"></div>
+    </header>
     <p class="headline-upper-text">恭喜您预定成功!</p>
     <div class="place-book-list">
       <dx-cell-item>
@@ -26,10 +30,13 @@
   </div>
 </template>
 <script>
+	import mixin from 'utils/mixin.js'
+  import DxHeader from 'pages/common/HeaderPage.vue'
   import ButtonFooter from 'pages/common/ButtonFooter.vue'
   export default {
+    mixins: [mixin],
 		components: {
-			ButtonFooter
+			ButtonFooter, DxHeader
 		},
     mounted() {
     },
@@ -52,5 +59,19 @@
     margin-top: 0.15rem;
     font-size: 0.34rem;
   }
+}
+/* 头部导航栏 */
+.index-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.27rem;
+  position: relative;
+  justify-content: space-between;	
+  &__close {
+    width: 0.33rem;
+    height: 0.33rem;
+    background: $--nav-close-icon;    
+    background-size: 100% 100%;
+  }	
 }
 </style>

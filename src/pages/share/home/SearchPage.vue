@@ -17,10 +17,7 @@
     			:key="course.id"
     			class="home-search__content-item"
     		>
-    			<dx-item 
-    				alignItem="top"
-    				to="/courseDetail"
-    			>
+    			<dx-item alignItem="top" :to="'/courseDetail/' + course.id">
     				<div slot="left" class="home-search__content-item--desc">
 		    			<p>{{course.courseName}}</p>
 		    			<p>
@@ -40,7 +37,7 @@
 				<li 
 					v-for="course in searchList"
 					:key="course.id"
-					@click="goNext('/courseDetail')"
+					@click="goNext('/courseDetail/' + course.id)"
 					class="index-home-course__slide--item"
 				>
 					<div class="index-home-course__slide--bg" 

@@ -166,10 +166,23 @@
       createOrder() {
         console.info('create order')
         let param = {
-          orderType: '1',
-          arbitrarilyId: this.openDateId
+          orderType: 'FIELD',
+          payType: 'ALIPAY',
+          giftId: null,
+          phone: null,
+          reserveDate: this.selectedDate,
+          fieldId: this.id,
+          openDateId: this.openDateId
         }
-        oapi.createPlaceOrder(param).then(r => {
+        oapi.createOrder(param).then(r => {
+					const orderNumber = r.data
+					if (orderNumber) {
+						oapi.fakeOrderSuccess({orderNumber: orderNumber}).then(r => {
+							alert('预订成功!')
+              // this.$router.push('/place/success')
+              this.$router.push('/profile')
+						})
+					}
         })
       }
     },
