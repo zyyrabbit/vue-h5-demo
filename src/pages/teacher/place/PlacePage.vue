@@ -47,7 +47,7 @@
             <div class="index-place--row-time flex-center"
               v-if="item.openDateList && item.openDateList.length !== 0">
               <p class="index-place--row-time-label"
-                v-for="time in item.openDateList"
+                v-for="time in item.openDateList" v-if="!time.reserveId"
                 @click="goBookDetl(item.id, time.oId)">{{time.openTime}}</p>
             </div>            
           </li>                   

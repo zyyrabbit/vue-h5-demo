@@ -123,7 +123,7 @@
   import dayjs from 'dayjs'
   import {mapState, mapMutations} from 'vuex'
   import papi from 'api/placeApi.js'
-  // import oapi from 'api/orderApi.js'
+  import oapi from 'api/orderApi.js'
   import DxHeader from 'pages/common/HeaderPage.vue'
   import PriceFooter from 'pages/common/PriceFooter.vue'
   export default {
@@ -169,29 +169,37 @@
           orderType: 'FIELD',
           payType: 'ALIPAY',
           giftId: null,
-          phone: null,
+          phone: this.phone || '',
           reserveDate: this.selectedDate,
           fieldId: this.id,
           openDate: this.place.openDateDTO.openTime
         }
         console.info(param)
-        // oapi.createOrder(param).then(r => {
-				// 	const orderNumber = r.data
-				// 	if (orderNumber) {
-				// 		oapi.fakeOrderSuccess({orderNumber: orderNumber}).then(r => {
-				// 			alert('预订成功!')
-        //       // this.$router.push('/place/success')
-        //       this.$router.push('/profile')
-				// 		})
-				// 	}
-        // })
+        oapi.createOrder(param).then(r => {
+					const orderNumber = r.data
+					if (orderNumber) {
+						oapi.fakeOrderSuccess({orderNumber: orderNumber}).then(r => {
+							alert('预订成功!')
+              // this.$router.push('/place/success')
+              this.$router.push('/profile')
+						})
+					}
+        })
       }
     },
 		computed: {
 			...mapState({
         selectedDate: state => state.selectPlaceDate,
-        openDateId: state => state.openDateId
-      })
+        openDateId: state => state.openDateId,
+        phoneNumber: state => state.userInfo.phoneNumber
+      }),
+			phone: {
+				get: function() {
+					return this.phoneNumber
+				},
+				set: function() {
+				}
+			},      
     },
     data() {
       return {

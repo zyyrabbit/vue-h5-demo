@@ -179,7 +179,7 @@
 					orderType: 'CLASS',
 					// 支付方式
 					payType: 'ALIPAY',
-					phone: this.phone,
+					phone: this.phone || '',
 					giftId: '',
           classId: this.period.id
         }
