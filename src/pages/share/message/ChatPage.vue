@@ -102,12 +102,18 @@
 			getOldMessageList() {
 				uapi.getChatMessages({sendId: this.sendId}).then(r => {
 					this.messages = r.data.list
+					this.$nextTick(() => {
+						this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight
+					})
 				})
 			},
 			getLastestMessage() {
 				uapi.getlatestChatMessages({sendId: this.sendId, number: this.lastId}).then(r => {
-					if (r.data.list && r.data.list.length > 0) {
-						this.messages = this.messages.concat()
+					if (r.data && r.data.length > 0) {
+						this.messages = this.messages.concat(r.data)
+						this.$nextTick(() => {
+							this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight
+						})
 					}
 				})
 			},
@@ -117,7 +123,6 @@
 					msgContent: this.content
 				}
 				uapi.sendChatMessge(param).then(r => {
-					this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight
 					this.content = ''
 				}).catch({})
 			}

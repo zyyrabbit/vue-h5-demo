@@ -14,23 +14,27 @@
           v-model="tabValue" 
           :tabs="tabs"
         ></dx-tabs>
-        <ul class="teacher-course-place__detail" v-if="tabValue===0">   
-          <li v-for="place in placeNotUseList" :key="place.id">
-            <p>{{place.fieldName}}</p>
-            <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-            <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-            <div class="button-list">
-              <dx-button type='gray' @dx-button-click="goNext('/teacher/judgeStu/')">退订</dx-button>
-              <dx-button type='pinking' @dx-button-click="goNext('/teacher/course/changePla/')">开课</dx-button>
-            </div>
-          </li>
+        <ul class="teacher-course-place__detail" v-if="tabValue===0"> 
+          <dx-cell-item v-for="place in placeNotUseList" :key="place.id">
+            <li slot="left">
+                <p>{{place.fieldName}}</p>
+                <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+                <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+                <div class="button-list">
+                  <dx-button type='gray' @dx-button-click="goNext('/teacher/judgeStu/')">退订</dx-button>
+                  <dx-button type='pinking' @dx-button-click="goNext('/teacher/course/changePla/')">开课</dx-button>
+                </div>
+            </li>
+          </dx-cell-item>
         </ul>
-        <ul class="teacher-course-place__detail" v-if="tabValue===1">   
-          <li v-for="place in placeUsedList" :key="place.id">
-            <p>{{place.fieldName}}</p>
-            <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-            <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-          </li>
+        <ul class="teacher-course-place__detail" v-if="tabValue===1"> 
+          <dx-cell-item v-for="place in placeUsedList" :key="place.id">  
+            <li slot="left">
+              <p>{{place.fieldName}}</p>
+              <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+              <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+            </li>
+          </dx-cell-item>
         </ul>        
     </div>
 </template>
@@ -97,7 +101,7 @@
     }
     /* 具体内容 */
     @include e(detail) {
-        margin-top: 0.54rem;
+        // margin-top: 0.54rem;
         >li>p {
             margin-bottom: 0.21rem;
         }
