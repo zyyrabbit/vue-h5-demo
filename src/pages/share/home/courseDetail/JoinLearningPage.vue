@@ -165,7 +165,10 @@
 			createOrder() {
         console.info(this.period)
         let param = {
-          orderType: '3',
+					// 订单类型
+					orderType: '3',
+					// 支付方式
+					modePayment: '2',
           arbitrarilyId: this.period.id
         }
         oapi.createPlaceOrder(param).then(r => {

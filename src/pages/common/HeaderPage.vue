@@ -15,6 +15,7 @@
 		>
 			<slot name="title"></slot>
 		</div>
+		<div style="flex-grow:1;"></div>
 		<div 
 			v-if="$slots.next"
 			class="block--float-right"
@@ -38,8 +39,11 @@
 <style lang="scss" scoped>
 	/* 头部导航栏 */
 	@include b(index-header) {
-		padding: 0.27rem 0;
+		display: flex;
+		align-items: center;
+		padding-bottom: 0.27rem;
 		position: relative;
+		justify-content: space-between;
 		@include e(go-back) {
 			width: 0.2rem;
 			height: 0.36rem;
@@ -53,9 +57,9 @@
 			background-size: 100% 100%;
 		}
 		@include e(title) {
-			line-height: 1;
+			// line-height: 1;
 			position: absolute;
-			top: 0.29rem;
+			// top: 0.29rem;
 			left: 50%;
 			transform: translateX(-50%);
 		}		

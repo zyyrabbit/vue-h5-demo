@@ -17,8 +17,8 @@
         <p class="teacher-all-course__detail--course-name">{{course.courseName}}</p>
         <div class="button-list">
           <dx-button type='gray' @dx-button-click="">删除课程</dx-button>
-          <dx-button type='primary' @dx-button-click="">修改课程</dx-button>
-          <dx-button type='pinking' @dx-button-click="">开课</dx-button>
+          <dx-button type='primary' @dx-button-click="goNext('/teacher/course/all/operate/' + course.id)">修改课程</dx-button>
+          <dx-button type='pinking' @dx-button-click="goNext('/teacher/course/all/open/' + course.id)">开课</dx-button>
         </div>
       </li>
     </ul>

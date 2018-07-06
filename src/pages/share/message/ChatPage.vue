@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-message" v-footer>
+  <div class="chat-message" v-footer ref="chat">
 		<dx-header><template slot="title">{{sender.name}}</template></dx-header>
 		<ul>
 			<li 
@@ -11,7 +11,7 @@
 					{{message.generateDate | formatInChat}}
 				</div>
 				<div 
-					v-if="message.sendId === userInfo.id"
+					v-if="message.sendId !== userInfo.id"
 					class="chat-message__detail--ta clearfix">
 					<div class="chat-message__detail--icon block--float-left"
 						:style="{backgroundImage: 'url(' + sender.persionalImage + ')'}"></div>
@@ -77,9 +77,14 @@
 				})
 			},
 			sendMsg() {
-				uapi.sendChatMessge().then(r => {
+				let param = {
+					receiverId: this.sendId,
+					msgContent: this.content
+				}
+				uapi.sendChatMessge(param).then(r => {
+					this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight
 					this.content = ''
-				})
+				}).catch({})
 			}
 		}
 	}
@@ -161,6 +166,8 @@
 			left: 0;
 			bottom: 0;
 			padding: 0.4rem 0.4rem;
+			background: #fff;
+			box-shadow:0 -0.02rem 0.06rem 0.06rem rgba(0,0,0,0.06);
 			textarea{
 				border: none;
 				background: #F0F0F0;

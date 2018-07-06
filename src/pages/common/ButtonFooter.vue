@@ -1,7 +1,7 @@
 <template>
   <div class="button-footer">
     <div class="button-footer-btn">
-      <dx-button size="full" type="primary" @dx-button-click="handleClick()">
+      <dx-button :disabled="btnDisabled" size="full" type="primary" @dx-button-click="handleClick()">
         {{btnText}}
       </dx-button>
     </div>
@@ -15,7 +15,8 @@
       btnText: String,
       price: String,
       priceSmall: String,
-      priceInfo: String
+      priceInfo: String,
+      btnDisabled: Boolean
     },
     methods: {
       handleClick(e) {

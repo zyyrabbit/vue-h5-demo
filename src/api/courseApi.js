@@ -21,5 +21,12 @@ export default {
   },
   submitJudge(param = {}) {
     return http.post('/evaluation/insertEvaluationInfo', param)
+  },
+  // 课程相关
+  saveCourse(param = {}) {
+    return http.post('/course/updateCourse', param)
+  },
+  getCourseCategory(param = {}) {
+    return http.get('/category/queryAllCategory', { params: param })
   }
 }
