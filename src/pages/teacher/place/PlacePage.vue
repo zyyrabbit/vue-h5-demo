@@ -63,6 +63,7 @@
   </div>
 </template>
 <script>
+  import Bus from 'utils/bus.js'
   import {mapState, mapMutations} from 'vuex'
   import papi from 'api/placeApi.js'
   import mixin from 'utils/mixin.js'
@@ -72,6 +73,13 @@
     mixins: [mixin],
 		components: {
 			DxFooter
+    },
+    created() {
+      this.contributeDates()
+      Bus.$on('region.select', () => {
+        this.getRegionInfo()
+        this.getFieldList()
+      })
     },
 		computed: {
 			...mapState({
@@ -143,9 +151,6 @@
           this.tabs.push(obj)
         }
       }
-    },
-    created() {
-      this.contributeDates()
     },
     data() {
       return {

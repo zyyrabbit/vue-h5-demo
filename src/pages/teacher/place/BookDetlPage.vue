@@ -46,7 +46,7 @@
           <p>预订日期</p>
         </template>
         <template slot="right">
-          <p>{{place.openDateDTO.openDate | formatInPeriod}}</p>
+          <p>{{selectedDate | formatInPeriod}}</p>
         </template>
       </dx-cell-item>
       <!-- <dx-cell-item can-access>
@@ -119,6 +119,7 @@
   </div>
 </template>
 <script>
+  import Bus from 'utils/bus.js'
   import dayjs from 'dayjs'
   import {mapState, mapMutations} from 'vuex'
   import papi from 'api/placeApi.js'
@@ -128,7 +129,12 @@
   export default {
 		components: {
 			PriceFooter, DxHeader
-		},
+    },
+    created() {
+      Bus.$on('opendate.select', () => {
+        this.getPlaceDetl()
+      })
+    },
     mounted() {
       this.getPlaceDetl()
     },

@@ -18,6 +18,7 @@
   </div>
 </template>
 <script>
+  import Bus from 'utils/bus.js'
   import pApi from 'api/placeApi.js'
   import {mapState, mapMutations} from 'vuex'
   export default {
@@ -45,6 +46,7 @@
         if (this.id) {
           this.SET_SELECTREGION(this.id)
         }
+        Bus.$emit('region.select', this)
         this.$router.push('/place')
       },
       getRegionList() {

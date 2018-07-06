@@ -5,7 +5,7 @@
   >
     <div class="place-detail--header-bg"
       :style="{backgroundImage: 'url(' + place.imagesPath + ')'}">
-      <dx-header></dx-header>
+      <dx-header is-white></dx-header>
     </div>
     <div class="place-detail--cont">
       <p class="headline-upper-text">{{place.fieldName}}</p>
@@ -122,8 +122,11 @@
     // background: $--place-room-pic;
     background-size: 100% 100%;    
     header{
-      padding-left: 0.4rem;
-      padding-right: 0.4rem;
+      padding: {
+        top: 0.27rem;
+        left: 0.4rem;
+        right: 0.4rem;
+      }
     }
   }
   &--cont{

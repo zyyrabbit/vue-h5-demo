@@ -32,9 +32,9 @@ export const profile = {
 		{
 			path: '/teacher/course',
 			icon: 'openclass',
-			leftText: '我的开课',
-			rightText: '正在开课',
-			color: '#FF9CC8'
+			leftText: '我的开课'
+			// rightText: '正在开课',
+			// color: '#FF9CC8'
 		},
 		{
 			path: '/teacher/place',

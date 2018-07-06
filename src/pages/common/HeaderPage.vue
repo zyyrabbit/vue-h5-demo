@@ -3,6 +3,7 @@
 	<header class="index-header clearfix">
 		<div v-if="!isClose"
 			class="index-header__go-back block--float-left"
+			:class="{'index-header__go-back-white' : isWhite}"
 			@click="goBack()"
 		></div>
 		<div v-if="isClose"
@@ -27,7 +28,10 @@
 <script>
 	export default {
 		props: {
-			isClose: Boolean
+			// 关闭图标
+			isClose: Boolean,
+			// 白色图标
+			isWhite: Boolean
 		},
 		methods: {
 			goBack() {
@@ -50,6 +54,10 @@
 			background: $--nav-back-icon;
 			background-size: 100% 100%;
 		}
+		@include e(go-back-white) {
+			background: $--nav-close-icon-white;
+			background-size: 100% 100%;
+		}		
 		@include e(close) {
 			width: 0.33rem;
 			height: 0.33rem;

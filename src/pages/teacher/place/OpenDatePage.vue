@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+  import Bus from 'utils/bus.js'
   import {mapState, mapMutations} from 'vuex'
   import papi from 'api/placeApi.js'
   import mixin from 'utils/mixin.js'
@@ -109,6 +110,8 @@
       },
       selectOpenDate() {
         this.SET_OPENDATE_ID(this.select)
+        Bus.$emit('opendate.select', this)
+        this.$router.go(-1)
       }
     },
     created() {

@@ -11,7 +11,7 @@
               v-if="placeNotUseList"
               v-model="reserveId"
               :options="placeNotUseList"
-              value-key="id"
+              value-key="reserveId"
               label-key="fieldName"
               placeholder="请选择场地">
             </dx-select>
@@ -53,7 +53,7 @@
         <template slot="left">
           <p class="place-relate-title">课程价格</p>
           <dx-input
-            v-model="price"
+            v-model="periodMoney"
             :inputStyle = "inputStyle"
             placeholder="请输入课程价格(每学员)">
           </dx-input>
@@ -62,7 +62,7 @@
     </div>
     <button-footer 
       :btn-disabled="!placeNotUseList"
-      to="/place"
+      @button-footer-click="submitRelate()"
       :btnText="(!placeNotUseList) ? '暂无场地可关联课程,请先预订场地' : '确定'">
     </button-footer>    
   </div>
@@ -84,6 +84,21 @@
         papi.getUserField().then(r => {
           this.placeNotUseList = r.data
 				})
+      },
+      submitRelate() {
+        if (!this.courseId || !this.periodMoney || !this.reserveId) {
+          alert('请完整填写')
+          return
+        }
+        let param = {
+          courseId: this.courseId,
+          periodMoney: this.periodMoney,
+          reserveId: this.reserveId
+        }
+        papi.submitRelate(param).then(r => {
+          alert('关联成功')
+          this.$router.go(-1)
+				})
       }
     },
     computed: {
@@ -91,7 +106,7 @@
         let _p = {}
         if (this.placeNotUseList && this.placeNotUseList.length !== 0) {
           this.placeNotUseList.forEach(p => {
-            if (p.id === this.reserveId) {
+            if (p.reserveId === this.reserveId) {
               _p = p
             }
           })
@@ -101,7 +116,8 @@
     },
     data() {
       return {
-        price: '',
+        courseId: this.$route.params.id,
+        periodMoney: '',
         reserveId: '',
         placeNotUseList: [],
         inputStyle: {

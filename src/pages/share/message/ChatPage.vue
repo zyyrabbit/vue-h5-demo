@@ -50,19 +50,47 @@
 		computed: {
 			...mapGetters([
 				'userInfo'
-			])
+			]),
+			firstId() {
+				if (this.messages && this.messages.length > 0) {
+					return this.messages[0].id
+				} else {
+					return ''
+				}
+			},
+			lastId() {
+				if (this.messages && this.messages.length > 0) {
+					let len = this.messages.length
+					return this.messages[len - 1].id
+				} else {
+					return ''
+				}
+			}
 		},
 		data() {
 			return {
 				sendId: this.$route.params.id,
 				sender: {},
 				messages: [],
-				content: ''
+				content: '',
+				timer: null
 			}
 		},
 		mounted() {
 			this.getSenderInfo()
-			this.getMessageList()
+			this.getOldMessageList()
+			this.timer = setInterval(() => {
+				console.info(this.timer)
+				// 已有最后id 就拉最新的
+				if (this.lastId) {
+					this.getLastestMessage()
+				} else {
+					this.getOldMessageList()
+				}
+			}, 1000)
+		},
+		beforeDestroy() {
+			clearInterval(this.timer)
 		},
 		methods: {
 			getSenderInfo() {
@@ -71,9 +99,16 @@
 				})
 				// this.$router.go(-1)
 			},
-			getMessageList() {
+			getOldMessageList() {
 				uapi.getChatMessages({sendId: this.sendId}).then(r => {
 					this.messages = r.data.list
+				})
+			},
+			getLastestMessage() {
+				uapi.getlatestChatMessages({sendId: this.sendId, number: this.lastId}).then(r => {
+					if (r.data.list && r.data.list.length > 0) {
+						this.messages = this.messages.concat()
+					}
 				})
 			},
 			sendMsg() {
@@ -132,6 +167,7 @@
 			@include m(me) {
 				>div:nth-child(1) {
 					// background-color: #666;
+					background-size: 100% 100%;
 				}
 				>div:nth-child(2) {
 					background-color: #57B8D7;

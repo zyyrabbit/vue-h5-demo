@@ -65,7 +65,7 @@
        			slot="right"
        			class="home-course-join--color-blue home-course-join--student text-right"
        		>
-       			<p>Yummy</p>
+       			<p>{{userName}}</p>
 			</div>
        	</dx-item>
        	<dx-item class="home-course-join__item">
@@ -91,9 +91,9 @@
 				<price-footer
 					@price-footer-click="createOrder()"
 					:btn-disabled="!period.periodDate"
-					:price="'￥' + course.coursePrice * courseHour(period.periodStartTime, period.periodEndTime)" 
-					:priceInfo="'￥' + course.coursePrice + ' x ' + courseHour(period.periodStartTime, period.periodEndTime)" 
-					btnText="立即支付"
+					:price="'￥' + (period.periodMoney * courseHour(period.periodStartTime, period.periodEndTime) || 0)" 
+					:priceInfo="'￥' + (period.periodMoney || 0) + ' x ' + courseHour(period.periodStartTime, period.periodEndTime)" 
+					:btnText="!period.periodDate ? '暂无课时' : '立即支付'"
 				>
 				</price-footer>
     	<transition
@@ -126,7 +126,8 @@
 		},
 		computed: {
 			...mapState({
-        selectPeriodId: state => state.selectPeriodId
+				selectPeriodId: state => state.selectPeriodId,
+				userName: state => state.userInfo.name
 			}),
 			selectedPeriod: {
         get: function() {

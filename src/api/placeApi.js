@@ -24,5 +24,8 @@ export default {
   },
   getUserOpenField(param = {}) {
     return http.get('/user/userOpenFieldInfo', { params: param })
+  },
+  submitRelate(param = {}) {
+    return http.post('/field/relationFieldInfo', param)
   }
 }

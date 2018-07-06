@@ -128,7 +128,6 @@ export default {
       this.$refs.selectImage.click()
     },
     uploadImage() {
-      console.info('sb')
       let file = this.$refs.selectImage.files[0]
       let formdata = new FormData()
       formdata.append('file', file)

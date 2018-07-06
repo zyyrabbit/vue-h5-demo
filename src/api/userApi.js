@@ -16,6 +16,9 @@ export default {
   getPersonalInfo(param = {}) {
     return http.get('/user/getUserInfoByName', { params: param })
   },
+  updateUserInfo(param = {}) {
+    return http.put('/user/updateUserInfo', param)
+  },
   getUserInfo(param = {}) {
     return http.get('/user/getUserInfo', { params: param })
   },
@@ -24,6 +27,9 @@ export default {
   },
   getChatMessages(param = {}) {
     return http.get('/msg/record', { params: param })
+  },
+  getlatestChatMessages(param = {}) {
+    return http.get('/msg/recordNew', { params: param })
   },
   sendChatMessge(param = {}) {
     return http.post('/msg/send', param)

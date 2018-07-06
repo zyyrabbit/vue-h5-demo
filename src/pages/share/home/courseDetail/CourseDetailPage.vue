@@ -6,7 +6,7 @@
     	<div class="home-course-detail--banner" 
 				:style="{backgroundImage: 'url(' + course.courseImage + ')'}"></div>
     	<div class="home-course-detail__header">
-	       	<dx-header>
+	       	<dx-header is-white>
 	       		<span slot="next">
 	       			<span></span>
 	       			<span></span>
@@ -54,20 +54,24 @@
 					class="home-course-detail__parent-judge--more"
 					@click="goNext('/courseDetail/' + courseId + '/judge')">查看全部评价</div>
       	</div>
-			<price-footer 
+				<!-- <price-footer 
 					:to="'/join/' + courseId" 
 					:price="'￥' + course.coursePrice" 
 					priceSmall="/小时" 
 					:priceInfo="'评分' + course.courseGrade.toFixed(1)" 
-					btnText="加入学习"
-				>
+					btnText="加入学习">
+				</price-footer> -->
+				<price-footer 
+					:to="'/join/' + courseId" 
+					:price="'评分' + course.courseGrade.toFixed(1)" 
+					:priceInfo="'参加人数:' + course.enteredCount" 
+					btnText="加入学习">
 				</price-footer>
     	<transition
-			name="router-slide"  
-			mode='out-in'
-		>
-			<router-view class="full-screen"/>
-		</transition>
+				name="router-slide"  
+				mode='out-in'>
+				<router-view class="full-screen"/>
+			</transition>
    	</div>
 </template>
 <script>
