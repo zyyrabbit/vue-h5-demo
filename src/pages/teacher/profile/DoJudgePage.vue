@@ -8,9 +8,6 @@
          :rateClass="iconClass"
          :selectRateClass="selectIconClass"
        ></dx-rate>
-	  <!--  <p class="profile-account-advise--content-test">
-	   	我们一直致力于改进一起趣学的用户体验,所以很希望知道哪些是我们现在做的令您满意的,而哪些是做的还不够好的,我们希望听到您的建议。
-	  </p> -->
 	   <div class="teacher-do-judge--textarea">
 	   		<textarea 
 	   			name="teacher-do-judge-texarea"

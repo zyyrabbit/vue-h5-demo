@@ -13,7 +13,7 @@
               </span>
 	    				<span class="course-tab-list__item-detail--sign-up-number" 
                 :class="{'sign-up-number-teacher': isTeacher}"
-                @click="isTeacher && goNext('/teacher/course/students/' + course.periodId)">
+                @click="isTeacher && goNext('/teacher/course/students/' + course.periodId + '/' + state)">
                 {{course.count || 0}}人报名
               </span>
 	    			</div>

@@ -100,7 +100,7 @@ const routes = [
 		{
 			path: '/contDetail',
 			component: ContractCourseDetailPage,
-			chidren: [
+			children: [
 				{ path: 'contPeriod', component: ContractLessonPeriodPage, hidden: true },
 				{ path: 'contJoin', component: ContractJoinLearningPage, hidden: true }
 			]
@@ -185,14 +185,20 @@ const routes = [
 			path: '/teacher/course',
 			component: TeacherCoursePage,
 			children: [
-				{ path: 'students/:id', component: MySutdentPage, hidden: true },
+				{ path: 'students/:id/:state',
+					component: MySutdentPage,
+					hidden: true,
+					children: [
+						{ path: '/teacher/course/dojudgeStu/:id', component: DoJudgePage, hidden: true }
+					]
+				},
 				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true }
 			]
 		},
 		{
 			path: '/teacher/place',
 			component: TeacherPlacePage,
-			chidren: [
+			children: [
 				{ path: 'relate/:id', component: RelateCoursePage, hidden: true }
 			]
 		},

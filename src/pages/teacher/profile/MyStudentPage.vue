@@ -10,29 +10,30 @@
    	    		:key="index"
    	    		class="teacher-my-student__item"
    	    	>
-				<div class="teacher-my-student__item--left">
-					<p>{{item.studentName}}</p>
-					<p>{{item.telephone}}</p>
-				</div>
-				<dx-button 
-					type="primary"
-					class="teacher-my-student__item--right"
-					@dx-button-click="goPath(item)"
-				>
-					<span v-if="item.cancel">同意取消</span>
-					<span v-else>已付款</span>
-				</dx-button>
+						<div class="teacher-my-student__item--left">
+							<p>{{item.userName}}</p>
+							<p>{{item.applyPhone}}</p>
+						</div>
+						<dx-button 
+							type="primary"
+							class="teacher-my-student__item--right">
+							<span v-if="item.userState === '3'">同意取消</span>
+							<span v-if="item.userState === '0' && state === '0'">已付款</span>
+							<span 
+								v-if="item.userState === '0' && state === '2'"
+								@click="goPath(item)">去打分</span>
+						</dx-button>
    	    	</li>
    	    </ul>
    	    <transition 
          name="router-slide"  
-         mode='out-in'
-      	>
+         mode='out-in'>
          <router-view class="full-screen"/>
       </transition>
     </div>
 </template>
 <script>
+	import papi from 'api/periodApi.js'
 	import mixin from 'utils/mixin.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	export default {
@@ -42,40 +43,26 @@
 		},
 		data() {
 			return {
-				items: [
-					{
-						studentName: '陈小春',
-						telephone: 13878786565,
-						cancel: true,
-						id: 0
-					},
-					{
-						studentName: '刘艳梅',
-						telephone: 13878786565,
-						cancel: true,
-						id: 1
-					},
-					{
-						studentName: '刘天明',
-						telephone: 13878786565,
-						cancel: false,
-						id: 2
-					},
-					{
-						studentName: '张家豪',
-						telephone: 13878786565,
-						cancel: false,
-						id: 3
-					}
-				]
+				periodId: this.$route.params.id,
+				state: this.$route.params.state,
+				items: []
 			}
 		},
+		mounted() {
+			this.getPeriodUsers()
+		},
 		methods: {
+			getPeriodUsers() {
+				papi.getPeriodUsers({periodId: this.periodId}).then(r => {
+					console.info(r)
+					this.items = r.data
+				})
+			},
 			goPath(item) {
 				if (item.friend) {
-					this.goNext('/tacher/')
+					this.goNext('')
 				} else {
-					this.goNext('/teacher/judgeStu/DojudgeStu')
+					this.goNext('/teacher/course/dojudgeStu/' + item.userId)
 				}
 			}
 		}
