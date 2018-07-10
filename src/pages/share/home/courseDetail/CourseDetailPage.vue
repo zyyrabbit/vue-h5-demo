@@ -65,7 +65,8 @@
 					:to="'/join/' + courseId" 
 					:price="'评分' + course.courseGrade.toFixed(1)" 
 					:priceInfo="'参加人数:' + course.enteredCount" 
-					btnText="加入学习">
+					:btn-disabled="role === '0'"
+					:btnText="role === '0' ? '老师无法报名' : '加入学习'">
 				</price-footer>
     	<transition
 				name="router-slide"  
@@ -75,6 +76,7 @@
    	</div>
 </template>
 <script>
+	import {mapState} from 'vuex'
 	import capi from 'api/courseApi.js'
 	import mixin from 'utils/mixin.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
@@ -91,6 +93,11 @@
 				courseId: this.$route.params.id,
 				evaluation: []
 			}
+		},
+		computed: {
+			...mapState({
+				role: state => state.userInfo.role
+			})
 		},
 		mounted() {
 			this.getCourseDetl()

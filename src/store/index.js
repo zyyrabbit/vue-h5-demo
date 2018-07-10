@@ -12,6 +12,7 @@ const debug = process.env.NODE_ENV !== 'production'
 const state = {
 	latitude: '',
 	homePage: {}, // 首页列表
+	homeComing: {}, // 首页即将上课
 	login: false,
 	userInfo: null, // 用户信息
 	selectingRegion: 2, // 选择中地区

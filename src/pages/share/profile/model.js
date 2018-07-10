@@ -1,7 +1,7 @@
 export const profile = {
 	parent: [
 		{
-			path: '/sign',
+			path: '/course/1',
 			icon: 'course',
 			leftText: '上课记录'
 		},

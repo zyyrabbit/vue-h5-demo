@@ -2,6 +2,7 @@ import {
   GET_USERINFO,
   RECORD_USERINFO,
   SET_HOMEPAGE,
+  SET_HOMECOMING,
   SET_PLACELIST,
   SET_REGIONLIST,
   SELECTING_REGION,
@@ -19,6 +20,9 @@ import { setStore } from 'utils/utils'
 export default {
   [SET_HOMEPAGE](state, data) {
     state.homePage = data
+  },
+  [SET_HOMECOMING](state, data) {
+    state.homeComing = data
   },
   [SET_PLACELIST](state, data) {
     state.placeList = data

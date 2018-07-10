@@ -118,15 +118,15 @@
 				</div>
    		</div>
    		<!-- 即将上课 -->
-   		<div class="index-home-course-going paddingspace" v-if="role==='1'">
+   		<div class="index-home-course-going paddingspace" v-if="role==='1' && Object.keys(homeComing).length > 0">
    			<div class="index-home--title">即将上课</div>
    			<div class="index-home-course-going__slide">
 		   		<dx-ul>
 	   				<li class="index-home-course-going__slide-item">
 	   					<div class="index-home-course-going__slide-item--pic"></div>
 	   					<div class="index-home-course-going__slide-item--desc">
-	   						<p>小学6年纪升中特训班一...</p>
-	   						<p>下一堂：4月5日 09:00~10:00</p>
+	   						<p>{{homeComing.courseName}}</p>
+	   						<p>下一堂：{{homeComing.periodDate | formatInPeriod}} {{homeComing.beginTime}}~{{homeComing.overTime}}</p>
 	   						<p>一起趣学提醒您：记得准时参加哦~</p>
 	   					</div>
 	   				</li>
@@ -174,6 +174,7 @@
 	import {mapState, mapMutations} from 'vuex'
 	// import uapi from 'api/userApi.js'
 	import capi from 'api/courseApi.js'
+  import papi from 'api/periodApi.js'
 	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {
@@ -194,23 +195,34 @@
 				newCourse: state => state.homePage.B,
 				recommendCourse: state => state.homePage.C,
 				starTeacher: state => state.homePage.D,
-				starStudent: state => state.homePage.E
+				starStudent: state => state.homePage.E,
+				homeComing: state => state.homeComing
 			})
 		},
 		mounted() {
 			this.getHomePageData()
+			this.getPeriodList()
 		},
 		methods: {
 			...mapMutations([
 				'RECORD_USERINFO',
-				'SET_HOMEPAGE'
+				'SET_HOMEPAGE',
+				'SET_HOMECOMING'
 			]),
 			getHomePageData() {
 				capi.fetchHomepage().then(r => {
-					console.info(r)
 					this.SET_HOMEPAGE(r.data)
 				})
-			}
+			},
+      getPeriodList() {
+        papi.getPeriodList({state: 0}).then(r => {
+					if (r.data && r.data.length > 0) {
+						this.SET_HOMECOMING(r.data[0])
+					} else {
+						this.SET_HOMECOMING({})
+					}
+				})
+      }
 		}
 	}
 </script>
@@ -472,6 +484,9 @@
 					>p {
 						&:nth-child(1) {
 							font-size: 0.36rem;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
 						}
 						&:nth-child(2) {
 							color: #57B8D7;

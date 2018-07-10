@@ -14,17 +14,18 @@
 	   			@blur="onBlur()"
 	   		></textarea>
 	   </div>
-	   <button-footer to="" btnText="提交评价"></button-footer>
+	   <button-footer @button-footer-click="submitAdvise()" btnText="提交评价"></button-footer>
    </div>
 </template>
 <script>
-		import DxHeader from '../../common/HeaderPage.vue'
-		import ButtonFooter from 'pages/common/ButtonFooter.vue'
-    export default {
-        components: {
-           DxHeader, ButtonFooter
-        },
-        data() {
+	import uapi from 'api/userApi.js'
+	import DxHeader from '../../common/HeaderPage.vue'
+	import ButtonFooter from 'pages/common/ButtonFooter.vue'
+	export default {
+		components: {
+				DxHeader, ButtonFooter
+		},
+		data() {
 			return {
 				adviseContent: '从这里开始输入您的建议(300字以内)'
 			}
@@ -37,9 +38,19 @@
 				if (this.adviseContent === '') {
 					this.adviseContent = '从这里开始输入您的建议(300字以内)'
 				}
+			},
+			submitAdvise() {
+				if (!this.adviseContent || !this.adviseContent.trim()) {
+					alert('请输入意见')
+					return
+				}
+        uapi.submitAdvise({opinion: this.adviseContent}).then(r => {
+					alert('提交成功!')
+					this.$router.go(-1)
+				})
 			}
 		}
-   }
+	}
 </script>
 <style scoped lang="scss">
    @include b(profile-account-advise) {

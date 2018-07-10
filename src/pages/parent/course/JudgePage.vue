@@ -51,7 +51,7 @@
          </div>
       </div>
       <div class="index-judging__submit-btn">
-        <dx-button size="max" type="primary" @dx-button-click="submitEvalution()">提交评价</dx-button>
+        <dx-button :disabled="onlyDisplay" size="max" type="primary" @dx-button-click="submitEvalution()">提交评价</dx-button>
       </div>
    </div>
 </template>
@@ -70,10 +70,10 @@
     },
     data() {
       return {
-        labels: ['老师好', '知识实用', '教学效果好', '能及时纠正', '场地环境好', '很好'],
-        // periodId: this.$route.param.id,
+        periodId: this.$route.params.id,
+        onlyDisplay: false,
         str: [],
-        periodGrade: 2,
+        periodGrade: 0,
         placeGrade: 0,
         iconClass: 'index-judging__content--rate-icon',
         selectIconClass: 'index-judging__content--rate-icon-select',
@@ -91,8 +91,28 @@
 			]),
       getDicts() {
 				capi.getJudgeDict().then(r => {
-					this.SET_JUDGEDICTS(r.data)
+          this.SET_JUDGEDICTS(r.data)
+          this.getUserEvalution()
 				})
+      },
+      getUserEvalution() {
+        capi.getUserEvaluation({id: this.periodId}).then(r => {
+          if (r.data.period) {
+            this.onlyDisplay = true
+            const period = r.data.period
+            period.dictionary.forEach(d => {
+              this.str.push(d.id)
+            })
+            this.periodContent = period.evaluationConent
+            this.periodGrade = period.evaluationGrade / 2
+          }
+          if (r.data.field) {
+            const field = r.data.field
+            this.placeContent = field.evaluationConent
+            this.placeGrade = field.evaluationGrade / 2
+          }
+          console.info(this.str)
+        })
       },
       submitEvalution() {
         let param = {
@@ -105,7 +125,7 @@
         }
 				capi.submitJudge(param).then(r => {
           alert('提交成功!')
-          this.$route.go(-1)
+          this.$router.go(-1)
 				})
       }
     }

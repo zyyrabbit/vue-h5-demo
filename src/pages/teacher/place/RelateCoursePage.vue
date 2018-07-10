@@ -1,5 +1,6 @@
 <template>
   <div class="place-relate">
+    <dx-header></dx-header>
     <p class="headline-upper-text">关联您的课程</p>
     <div class="place-relate-list">
       <dx-cell-item>
@@ -32,10 +33,11 @@
   </div>
 </template>
 <script>
+  import DxHeader from 'pages/common/HeaderPage.vue'
   import ButtonFooter from 'pages/common/ButtonFooter.vue'
   export default {
 		components: {
-			ButtonFooter
+			ButtonFooter, DxHeader
 		},
     mounted() {
     },
@@ -45,6 +47,8 @@
     },
     data() {
       return {
+        // 场地预订id
+        reserveId: this.$route.params.reserveId
       }
     }
   }

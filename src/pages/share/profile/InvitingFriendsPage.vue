@@ -39,7 +39,8 @@
          @include m(pic) {
             width: 4.33rem;
             height: 4.33rem;
-            background-color: blue;
+            background: url("@~assets/images/index/profile/qrcode.png") center center no-repeat;
+            background-size: 100% 100%;
             margin: 0.27rem 0;
          }
          &>p {

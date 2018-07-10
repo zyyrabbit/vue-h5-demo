@@ -46,7 +46,7 @@
         if (this.id) {
           this.SET_SELECTREGION(this.id)
         }
-        Bus.$emit('region.select', this)
+        Bus.$emit('region.select.sf', this)
         this.$router.push('/place')
       },
       getRegionList() {

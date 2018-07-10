@@ -37,8 +37,8 @@
             <!-- 家长 已上课 -->
             <div class="button-list" v-if="state === 2 && !isTeacher" >
               <dx-button type='primary'>再次学习</dx-button>
-              <dx-button type='primary'>评价课程</dx-button>
-              <dx-button type='primary'>确认上课</dx-button>
+              <dx-button type='primary' @dx-button-click="goNext('/course/judge/' + course.periodId)">评价课程</dx-button>
+              <dx-button :disabled="course.userState === '1'" type='primary'>{{course.userState === '0' ? '确认上课' : '已确认上课'}}</dx-button>
             </div>
             <!-- 家长 正在上课 -->
             <div class="button-list"  v-if="state === 1 && !isTeacher">
@@ -46,15 +46,21 @@
             </div>
             <!-- 家长 待上课 -->
             <div class="button-list" v-if="state === 0 && !isTeacher">
-              <dx-button type='gray'>取消课程</dx-button>
+              <dx-button type='gray' :disabled="course.userState === '3'" >{{course.userState === '0' ? '取消课程' : '正申请取消'}}</dx-button>
               <dx-button type='pinking'>联系老师</dx-button>
             </div>
             <!-- 老师 待开课 -->
-            <div class="button-list" v-if="state === 0 && isTeacher">
+            <div class="button-list" v-if="state === 0 && course.userState !== '2' && isTeacher">
               <dx-button type='gray'>取消课程</dx-button>
               <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">更换场地</dx-button>
               <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">修改价格</dx-button>
             </div>
+            <div class="course-tab-list__item-operate-wating" v-if="state === 0 && course.userState === '2' && !isTeacher">
+              <span>退款成功</span>
+              <dx-button type="primary"  @dx-button-click="goNext('course/bill')">
+                查看退款
+              </dx-button>
+            </div>      
             <!-- 老师 课程结束 -->
             <div class="button-list" v-if="state === 2 && isTeacher">
               <dx-button type='primary' @dx-button-click="goNext('/teacher/judgeStu/' + course.periodId)">评价学员</dx-button>
@@ -248,10 +254,21 @@
             }
          }
          @include e(item-operate-wating) {
-            >button {
-               width: 2.7rem;
-            }
-         }
+          display: flex;
+          align-items: center;
+          padding: 0.44rem 0 0.5rem;
+          span{
+            font-size: 0.3rem;
+            color: #484848;
+            flex-grow: 1;
+          }
+          >button {
+            height: 0.58rem;
+            font-size: 0.3rem;              
+            width: 2.7rem;
+            border-radius: 0.29rem;
+          }
+        }
 		}
 	}
 

@@ -42,5 +42,8 @@ export default {
   },
   submitSign(param = {}) {
     return http.get('/sign/sign', { params: param })
+  },
+  submitAdvise(param = {}) {
+    return http.post('/opinion/save', param)
   }
 }

@@ -43,11 +43,11 @@ const BillingDetailPage = () => import('pages/parent/course/BillingDetailPage.vu
 const JudgePage = () => import('pages/parent/course/JudgePage.vue')
 const EvalPage = () => import('pages/parent/course/evaluatePage.vue')
 // 个人账户
-const InvitingFriendsPage = () => import('pages/parent/profile/InvitingFriendsPage.vue')
+const InvitingFriendsPage = () => import('pages/share/profile/InvitingFriendsPage.vue')
 const IntegralMallPage = () => import('pages/share/profile/integral/IntegralMallPage.vue')
 const ExchangeRecordPage = () => import('pages/share/profile/integral/ExchangeRecordPage.vue')
 const DiscountDetailPage = () => import('pages/share/profile/integral/DiscountDetailPage.vue')
-const AdvisePage = () => import('pages/parent/profile/AdvisePage.vue')
+const AdvisePage = () => import('pages/share/profile/AdvisePage.vue')
 
 /* 老师页面组 */
 // 场地页面
@@ -117,7 +117,17 @@ const routes = [
 			children: [
 				// path加'/'为相对根路径--课程页面
 				{ path: 'bill', component: BillingDetailPage, hidden: true },
-				{ path: 'judge', component: JudgePage },
+				{ path: 'judge/:id', component: JudgePage },
+				{ path: 'evaluate', component: EvalPage }
+			]
+		},
+		{
+			path: '/course/:profile',
+			component: CoursePage,
+			children: [
+				// path加'/'为相对根路径--课程页面
+				{ path: 'bill', component: BillingDetailPage, hidden: true },
+				{ path: 'judge/:id', component: JudgePage },
 				{ path: 'evaluate', component: EvalPage }
 			]
 		},
@@ -153,11 +163,11 @@ const routes = [
 		},
 		{ path: '/chat/:id', component: ChatPage, hidden: true },
 		{ path: '/msgquery', component: SearchTeacherPage, hidden: true },
+		{ path: '/region', component: SelectRegionPage, hidden: true },
 		{
 			path: '/place',
 			component: PlacePage,
 			children: [
-				{ path: 'select', component: SelectRegionPage, hidden: true },
 				{ path: 'detail/:id', component: PlaceDetlPage, hidden: true },
 				{ path: 'judge/:id', component: PlaceJudgePage, hidden: true },
 				{ path: 'book/:id',
@@ -184,7 +194,8 @@ const routes = [
 			component: TeacherPlacePage,
 			chidren: [
 				{ path: 'relate/:id', component: RelateCoursePage, hidden: true }
-			]},
+			]
+		},
 		{
 				path: '/teacher/punch',
 				component: TeacherPunchPage,

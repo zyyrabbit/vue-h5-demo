@@ -1,23 +1,13 @@
 <template>
    <div class="index-course" v-footer>
-	    <div class="index-course--title">
-	    	我的课程
-	    </div>
+     <dx-header v-if="fromProfile"></dx-header>
+      <div class="index-course--title">
+        我的课程
+      </div>
       <dx-tabs v-model="tabValue" :tabs="tabss" @input="tabClick()"></dx-tabs>
       <course-tab :courses="courseList" :state="this.tabValue"></course-tab>
-            <!-- <div  
-               v-show="selectTabIndex === 0 && !isValid"
-               class="index-course-list__item-operate index-course-list__item-operate-wating">
-               <span>退款成功</span>
-               <dx-button  
-                  type="primary" 
-                  @dx-button-click="goNext('course/bill')"
-               >
-                  查看退款
-               </dx-button>
-            </div> -->
-       <dx-footer :selectTab="1"></dx-footer>
-       <transition 
+      <dx-footer v-if="!fromProfile" :selectTab="1"></dx-footer>
+      <transition 
         name="router-slide"  
         mode='out-in'>
         <router-view class="full-screen"/>
@@ -25,7 +15,8 @@
    </div>
 </template>
 <script>
-	import papi from 'api/periodApi.js'
+  import papi from 'api/periodApi.js'
+  import DxHeader from 'pages/common/HeaderPage.vue'
   import DxFooter from 'pages/common/FooterPage.vue'
   import CourseTab from 'pages/common/CourseTab.vue'
   import mixin from 'utils/mixin.js'
@@ -33,7 +24,8 @@
     mixins: [mixin],
     components: {
       CourseTab,
-      DxFooter
+      DxFooter,
+      DxHeader
     },
     mounted() {
       this.getPeriodList()
@@ -62,7 +54,9 @@
         }, {
           label: '已上课',
           value: 2
-        }]
+        }],
+        // 是否从'我的'进入
+        fromProfile: this.$route.params.profile
       }
     }
   }

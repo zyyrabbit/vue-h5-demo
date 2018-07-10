@@ -3,10 +3,10 @@
     <div>
       <div class="index-place--title">
         <p>{{regionInfo.fieldRegion}}</p>
-        <div class="index-place--title-icon" @click="goNext('/place/select')"></div>
+        <div class="index-place--title-icon" @click="goNext('/region')"></div>
       </div>
       <div class="index-place--title-desc">
-        <span>人气10288</span><span>·累计开课278</span>
+        <span>人气{{regionInfo.enterCount}}</span><span>·累计开课{{regionInfo.count}}</span>
         <!-- <span>·距离你3.5km</span> -->
       </div>
     </div>
