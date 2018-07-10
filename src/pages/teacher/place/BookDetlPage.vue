@@ -199,7 +199,7 @@
 				},
 				set: function() {
 				}
-			},      
+			}
     },
     data() {
       return {
