@@ -12,7 +12,7 @@
 					<dx-form-item prop="oldPassword">
 						<dx-input 
 							inputClass="dx-input-with-title"
-							v-model="model.password"
+							v-model="model.userPwd"
 							placeholder="无密码时可不填" 
 							originType="password"
 						>
@@ -24,7 +24,7 @@
 					<dx-form-item prop="newPassword">
 						<dx-input 
 							inputClass="dx-input-with-title"
-							v-model="model.password"
+							v-model="model.newUserPwd"
 							placeholder="请输入6-20位数字或字" 
 							originType="password"
 						>
@@ -36,9 +36,9 @@
 					<dx-form-item prop="password">
 						<dx-input 
 							inputClass="dx-input-with-title"
-							v-model="model.password"
+							v-model="model.newUserPwd2"
 							placeholder="请再次输入你的新密码" 
-							originType="comfirePassword"
+							originType="password"
 						>
 							确认密码
 						</dx-input>
@@ -47,32 +47,54 @@
 			</dx-form>
 		</div>
 		<div class="profile-pwd-mod__submit-btn">
-         	<dx-button size="max" type="primary">提交</dx-button>
-      	</div>
+			<dx-button @dx-button-click="updatePwd()" size="max" type="primary">提交</dx-button>
+		</div>
 	</div>
 </template>
 <script>
- import DxHeader from 'pages/common/HeaderPage.vue'
+import md5 from 'js-md5'
+import uapi from 'api/userApi.js'
+import DxHeader from 'pages/common/HeaderPage.vue'
 export default{
 	components: {
-         DxHeader
-      },
+		DxHeader
+	},
 	data() {
 		return {
 			errorMsg: '',
 			model: {
-				userName: '',
-				password: ''
+				userPwd: '',
+				newUserPwd: '',
+				newUserPwd2: ''
 			},
 			rules: {
 				// 公共验证规则
 				baseRule: [
 					{name: 'required', message: '* 请输入账户名和密码！'}
-				],
-				userName: [],
-				password: []
+				]
 			},
 			isLogining: false
+		}
+	},
+	methods: {
+		updatePwd() {
+			console.info()
+			if (!this.model.userPwd || !this.model.newUserPwd || !this.model.newUserPwd2) {
+				alert('请完整填写')
+				return
+			}
+			if (this.model.newUserPwd !== this.model.newUserPwd2) {
+				alert('两次密码输入不一致')
+				return
+			}
+			let param = {
+				userPwd: md5(this.model.userPwd),
+				newUserPwd: md5(this.model.newUserPwd)
+			}
+			uapi.updatePassword(param).then(r => {
+				alert('修改密码成功!')
+				this.$router.go(-1)
+			})
 		}
 	}
 }

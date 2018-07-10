@@ -14,7 +14,7 @@
 					>
 						<dx-input 
 							inputClass="dx-input-with-title"
-							v-model="model.userName"
+							v-model="model.phoneNumber"
 							placeholder="请输入手机号码"
 						>
 							手机号
@@ -25,14 +25,14 @@
 					<dx-form-item prop="password">
 						<dx-input 
 							inputClass="dx-input-with-title"
-							v-model="model.password"
+							v-model="model.verificationCode"
 							:inputStyle = "verificationCodeStyle" 
 							placeholder="请输入验证码" 
 							input-class="register-form__item--input"
 						>
 							验证码
 							<span slot="leftText">
-								<dx-vc></dx-vc>
+								<dx-vc v-model="model.phoneNumber"></dx-vc>
 							</span>
 						</dx-input>
 						
@@ -42,7 +42,7 @@
 					<dx-form-item prop="password">
 						<dx-input 
 							inputClass="dx-input-with-title"
-							v-model="model.password" 
+							v-model="model.userPwd" 
 							placeholder="请输入6-20位数字和字母" 
 							originType="password"
 						>
@@ -62,7 +62,8 @@
 	</div>
 </template>
 <script>
-		// import AuthApi from 'api/authApi.js'
+import uapi from 'api/userApi.js'
+import md5 from 'js-md5'
 import DxHeader from 'pages/common/HeaderPage.vue'
 import { mapMutations } from 'vuex'
 import * as Types from 'store/mutation-types.js'
@@ -76,9 +77,9 @@ export default{
 		return {
 			errorMsg: '',
 			model: {
-				userName: '',
-				password: '',
-				role: '0'
+				phoneNumber: '',
+				userPwd: '',
+				verificationCode: ''
 			},
 			rules: {
 				// 公共验证规则
@@ -106,10 +107,14 @@ export default{
 				this.errorMsg = ''
 				if (valid) {
 					let params = {}
-					params.custName = this.model.userName
-					params.custPassword = this.model.password
-					params.isRememberMe = this.model.isRememberMe
+					params.phoneNumber = this.model.phoneNumber
+					params.userPwd = md5(this.model.userPwd)
+					params.verificationCode = this.model.verificationCode
 					try {
+						uapi.forgetPassword(params).then(r => {
+							alert('修改密码成功!')
+							this.$router.push('/login')
+						})
 					} catch (e) {
 						this.errorMsg = e.message
 					}

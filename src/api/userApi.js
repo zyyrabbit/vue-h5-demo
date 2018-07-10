@@ -7,6 +7,12 @@ export default {
   register(param = {}) {
     return http.post(`user/register`, param)
   },
+  forgetPassword(param = {}) {
+    return http.post(`/user/retrievePassword`, param)
+  },
+  updatePassword(param = {}) {
+    return http.put(`/user/updateUserPassWord`, param)
+  },
   logout() {
     return http.get(``)
   },

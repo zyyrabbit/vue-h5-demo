@@ -12,7 +12,7 @@
          <span 
             slot="right" 
             class="profile-account--telephone-number"
-         >13978784676</span>
+         >{{userInfo.phoneNumber}}</span>
       </dx-item>
       <dx-item  
          class="profile-account--item"
@@ -27,12 +27,18 @@
    </div>
 </template>
 <script>
-   import DxHeader from 'pages/common/HeaderPage.vue'
-   export default {
-      components: {
-         DxHeader
-      }
-   }
+	import { mapGetters } from 'vuex'
+  import DxHeader from 'pages/common/HeaderPage.vue'
+  export default {
+    components: {
+        DxHeader
+    },
+		computed: {
+			...mapGetters([
+				'userInfo'
+			])
+		}
+  }
 </script>
 <style scoped lang="scss">
    @include b(profile-account) {

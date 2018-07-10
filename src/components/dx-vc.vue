@@ -22,6 +22,10 @@ export default {
 	},
 	methods: {
 		sendVc() {
+			if (!this.value) {
+				alert('请先输入手机号')
+				return
+			}
 			if (!this.sendingVc) {
 				uapi.sendVc({phoneNumber: this.value}).then(r => {
 					this.sendingVc = true
