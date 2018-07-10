@@ -11,7 +11,11 @@
                 <span></span>
                 <span>{{course.periodDate | formatInPeriod}} {{course.week}}</span>
               </span>
-	    				<span class="course-tab-list__item-detail--sign-up-number" @click="isTeacher && goNext('/teacher/course/students/' + course.periodId)">{{course.count || 0}}人报名</span>
+	    				<span class="course-tab-list__item-detail--sign-up-number" 
+                :class="{'sign-up-number-teacher': isTeacher}"
+                @click="isTeacher && goNext('/teacher/course/students/' + course.periodId)">
+                {{course.count || 0}}人报名
+              </span>
 	    			</div>
 	    			<div class="course-tab-list__item-detail--content">
 	    				<p class="course-tab-list__item-detail--title">{{course.courseName}}</p>
@@ -149,7 +153,25 @@
 				color: #484848;
             border-bottom: 1px solid #E6E6E6;
             @include m(head) {
-               @include  space-between;
+              @include  space-between;
+              .sign-up-number-teacher{
+                position: relative;
+              }
+              .sign-up-number-teacher::after {
+                content: " ";
+                display: inline-block;
+                height: 0.1rem;
+                width: 0.1rem;
+                border-width: 0.04rem 0.04rem 0 0;
+                border-color: #C8C8CD;
+                border-style: solid;
+                -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+                transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+                position: absolute;
+                top: 50%;
+                margin-top: -0.06rem;
+                right: -0.1rem;
+              }
             }
             @include m(date) {
                display: flex;

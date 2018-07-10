@@ -118,6 +118,10 @@
 				})
 			},
 			sendMsg() {
+				if (!this.content || !this.content.trim()) {
+					alert('不能发送空消息')
+					return
+				}
 				let param = {
 					receiverId: this.sendId,
 					msgContent: this.content

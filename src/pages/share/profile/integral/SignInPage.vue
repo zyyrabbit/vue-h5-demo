@@ -89,7 +89,7 @@
 				uapi.getSignHistory().then(r => {
 					if (r.data) {
 						this.score = r.data.grossScore
-						this.number = 10 * r.data.signCount > 25 ? 25 : 10 * r.data.signCount
+						this.number = 10 * r.data.signCount + 15 > 25 ? 25 : 10 * r.data.signCount + 15
 						let h = r.data.historyList
 						this.sign = {}
 						h.forEach(i => {

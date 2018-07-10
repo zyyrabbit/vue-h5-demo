@@ -11,6 +11,7 @@
 				<div class="profile-phone-mod-form__item" >
 					<dx-form-item prop="telephoneNum">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password"
 							placeholder="请输入手机号" 
 						>
@@ -21,16 +22,15 @@
 				<div class="profile-phone-mod-form__item" >
 					<dx-form-item prop="password">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password"
 							:inputStyle = "verificationCodeStyle" 
 							placeholder="请输入验证码" 
 							input-class="profile-phone-mod-form__item--input"
 						>
 							验证码
-							<span slot="leftText" class="profile-phone-mod-form__item--verification-code">
-								<span class="profile-phone-mod-form__item--verification-code-text">
-									获取验证码
-								</span>
+							<span slot="leftText">
+								<dx-vc v-model="model.phoneNumber"></dx-vc>
 							</span>
 						</dx-input>
 						

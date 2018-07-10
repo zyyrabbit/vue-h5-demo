@@ -1,44 +1,50 @@
 <template>
     <div class="teacher-course-place">
-        <dx-header>
-            <span 
-              slot="next" 
-              class="teacher-course-place--book"
-              @click="goNext('/place')"
-            >预定</span>
-        </dx-header>
-        <div class="teacher-course-place--title">
-            我的场地
-        </div>
-        <dx-tabs 
-          v-model="tabValue" 
-          :tabs="tabs"
-        ></dx-tabs>
-        <ul class="teacher-course-place__detail" v-if="tabValue===0"> 
-          <dx-cell-item v-for="place in placeNotUseList" :key="place.id">
-            <li slot="left">
-                <p>{{place.fieldName}}</p>
-                <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-                <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-                <div class="button-list">
-                  <dx-button type='gray' @dx-button-click="goNext('/teacher/judgeStu/')">退订</dx-button>
-                  <dx-button type='pinking' @dx-button-click="goNext('/teacher/course/changePla/')">开课</dx-button>
-                </div>
-            </li>
-          </dx-cell-item>
-        </ul>
-        <ul class="teacher-course-place__detail" v-if="tabValue===1"> 
-          <dx-cell-item v-for="place in placeUsedList" :key="place.id">  
-            <li slot="left">
+      <dx-header>
+          <span 
+            slot="next" 
+            class="teacher-course-place--book"
+            @click="goNext('/place')"
+          >预定</span>
+      </dx-header>
+      <div class="teacher-course-place--title">
+          我的场地
+      </div>
+      <dx-tabs 
+        v-model="tabValue" 
+        :tabs="tabs"
+      ></dx-tabs>
+      <ul class="teacher-course-place__detail" v-if="tabValue===0"> 
+        <dx-cell-item v-for="place in placeNotUseList" :key="place.reserveId">
+          <li slot="left">
               <p>{{place.fieldName}}</p>
               <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-              <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-            </li>
-          </dx-cell-item>
-        </ul>        
+              <!-- <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p> -->
+              <div class="button-list">
+                <dx-button :disabled="!isBeforeNow(place.reserveDate)" type='gray' @dx-button-click="">退订</dx-button>
+                <dx-button :disabled="!isBeforeNow(place.reserveDate)" type='pinking' @dx-button-click="goNext('/teacher/place/relate/' + place.reserveId)">开课</dx-button>
+              </div>
+          </li>
+        </dx-cell-item>
+      </ul>
+      <ul class="teacher-course-place__detail" v-if="tabValue===1"> 
+        <dx-cell-item v-for="place in placeUsedList" :key="place.reserveId">  
+          <li slot="left">
+            <p>{{place.fieldName}}</p>
+            <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+            <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+          </li>
+        </dx-cell-item>
+      </ul>      
+      <transition 
+        name="router-slide"  
+        mode='out-in'>
+        <router-view class="full-screen"/>
+      </transition>           
     </div>
 </template>
 <script>
+  import dayjs from 'dayjs'
 	import papi from 'api/placeApi.js'
   import mixin from 'utils/mixin.js'
   import DxHeader from 'pages/common/HeaderPage.vue'
@@ -84,6 +90,9 @@
         papi.getUserOpenField().then(r => {
 					this.placeUsedList = r.data
 				})
+      },
+      isBeforeNow(time) {
+        return dayjs().isBefore(dayjs(time))
       }
     }
   }

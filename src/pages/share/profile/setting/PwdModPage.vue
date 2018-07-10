@@ -11,6 +11,7 @@
 				<div class="profile-pwd-mod-form__item-password" >
 					<dx-form-item prop="oldPassword">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password"
 							placeholder="无密码时可不填" 
 							originType="password"
@@ -22,6 +23,7 @@
 				<div class="profile-pwd-mod-form__item-password" >
 					<dx-form-item prop="newPassword">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password"
 							placeholder="请输入6-20位数字或字" 
 							originType="password"
@@ -33,6 +35,7 @@
 				<div class="profile-pwd-mod-form__item-password" >
 					<dx-form-item prop="password">
 						<dx-input 
+							inputClass="dx-input-with-title"
 							v-model="model.password"
 							placeholder="请再次输入你的新密码" 
 							originType="comfirePassword"

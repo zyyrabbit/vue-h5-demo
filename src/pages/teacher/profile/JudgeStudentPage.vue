@@ -10,19 +10,20 @@
    	    		:key="index"
    	    		class="teacher-judge-student__item"
    	    	>
-				<div class="teacher-judge-student__item--left">
-					<p>{{item.studentName}}</p>
-					<p v-if="item.friend">已是好友,点击聊天</p>
-					<p v-else>点击添加好友</p>
-				</div>
-				<dx-button 
-					type="primary"
-					class="teacher-judge-student__item--right"
-					@dx-button-click="goPath(item)"
-				>
-					<span v-if="item.friend">查看打分</span>
-					<span v-else>去打分</span>
-				</dx-button>
+						<div class="teacher-judge-student__item--left">
+							<p>{{item.studentName}}</p>
+							<p @click="goNext(pid + '/chat/11')">点击聊天</p>
+							<!-- <p v-else>点击添加好友</p> -->
+						</div>
+						<dx-button 
+							type="primary"
+							size="small"
+							class="teacher-judge-student__item--right"
+							@dx-button-click="goNext(item)"
+						>
+							<span v-if="item.friend">查看打分</span>
+							<span v-else>去打分</span>
+						</dx-button>
    	    	</li>
    	    </ul>
    	    <transition 
@@ -34,6 +35,7 @@
     </div>
 </template>
 <script>
+  import papi from 'api/periodApi.js'
 	import mixin from 'utils/mixin.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
 	export default {
@@ -41,8 +43,19 @@
 		components: {
 			DxHeader
 		},
+		mounted() {
+			this.getPeriodUsers()
+		},
+		methods: {
+			getPeriodUsers() {
+				papi.getPeriodUsers({periodId: this.pid}).then(r => {
+					console.info(r)
+				})
+			}
+		},
 		data() {
 			return {
+				pid: this.$route.params.id,
 				items: [
 					{
 						studentName: '陈小春',
@@ -66,15 +79,6 @@
 					}
 				]
 			}
-		},
-		methods: {
-			goPath(item) {
-				if (item.friend) {
-					this.goNext('/tacher/')
-				} else {
-					this.goNext('/teacher/judgeStu/DojudgeStu')
-				}
-			}
 		}
 	}
 </script>
@@ -89,7 +93,7 @@
 		@include e(item) {
 			display: flex;
 			align-items: center;
-			margin-top: 0.23rem;
+			// margin-top: 0.23rem;
 			padding: 0.54rem 0;
 			&:not(:last-child) {
 				border-bottom: 0.02rem solid #EBEBEB;
@@ -103,9 +107,9 @@
 				}
 			}
 			@include m(right) {
-				height: 0.9rem;
-				width: 2.14rem;
-				border-radius: 0.4rem;
+				// height: 0.9rem;
+				// width: 2.14rem;
+				// border-radius: 0.4rem;
 				font-size: 0.3rem;
 			}
 		}

@@ -144,7 +144,7 @@ export default {
     },
     submitCourse() {
       let valid = true
-      Object.key(this.course).forEach(key => {
+      Object.keys(this.course).forEach(key => {
         if (!this.course[key]) {
           valid = false
         }
@@ -154,6 +154,7 @@ export default {
       } else {
         capi.saveCourse(this.course).then(r => {
           alert('操作成功!')
+          // FIXME 上一页数据刷新 个人数据刷新
           this.$router.go(-1)
         })
       }

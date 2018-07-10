@@ -25,7 +25,7 @@
 							{{teacher.persionalIntroduction}}
 						</div>
 					</div>
-					<div class="search-teacher--contact" @click="goNext('/message/chat' + teacher.id)">打招呼</div>
+					<div class="search-teacher--contact" @click="goNext('/chat/' + teacher.id)">打招呼</div>
 				</div>
 			</li>
 		</dx-ul>
@@ -35,7 +35,9 @@
 	import _ from 'lodash'
   import uapi from 'api/userApi.js'
 	import DxHeader from 'pages/common/HeaderPage.vue'
+	import mixin from 'utils/mixin.js'
 	export default {
+		mixins: [mixin],
 		components: {
 			DxHeader
 		},

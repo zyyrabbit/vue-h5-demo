@@ -6,5 +6,8 @@ export default {
   },
   getPeriodList(param = {}) {
     return http.get('/period/queryLesson', { params: param })
+  },
+  getPeriodUsers(param = {}) {
+    return http.get('/course/queryCourseNumber', { params: param })
   }
 }

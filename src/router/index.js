@@ -151,6 +151,7 @@ const routes = [
 				{ path: 'chat/:id', component: ChatPage, hidden: true }
 			]
 		},
+		{ path: '/chat/:id', component: ChatPage, hidden: true },
 		{ path: '/msgquery', component: SearchTeacherPage, hidden: true },
 		{
 			path: '/place',
@@ -178,7 +179,12 @@ const routes = [
 				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true }
 			]
 		},
-		{ path: '/teacher/place', component: TeacherPlacePage, hidden: true },
+		{
+			path: '/teacher/place',
+			component: TeacherPlacePage,
+			chidren: [
+				{ path: 'relate/:id', component: RelateCoursePage, hidden: true }
+			]},
 		{
 				path: '/teacher/punch',
 				component: TeacherPunchPage,
@@ -213,7 +219,8 @@ const routes = [
 			path: '/teacher/judgeStu/:id',
 			component: JudgeStudentPage,
 			children: [
-				{ path: 'DojudgeStu', component: DoJudgePage, hidden: true }
+				{ path: 'DojudgeStu', component: DoJudgePage, hidden: true },
+				{ path: 'chat/:id', component: ChatPage, hidden: true }
 			]
 		}
 	]

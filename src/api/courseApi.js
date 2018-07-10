@@ -24,7 +24,7 @@ export default {
   },
   // 课程相关
   saveCourse(param = {}) {
-    return http.post('/course/updateCourse', param)
+    return http.post('/course/inseruUpdateCourse', param)
   },
   getCourseCategory(param = {}) {
     return http.get('/category/queryAllCategory', { params: param })
