@@ -22,12 +22,12 @@ export default {
     name: 'DxCheckbox',
     componentName: 'DxCheckbox',
     props: {
-			onlyDisplay: Boolean,
-			label: String,
-			value: Number,
+		onlyDisplay: Boolean,
+		label: String,
+		value: Number,
       name: {
-				type: String,
-				default: 'dx-checkbox'
+		type: String,
+		default: 'dx-checkbox'
       }
     },
     data() {
@@ -48,18 +48,18 @@ export default {
 		}
     },
     methods: {
-			select() {
-				if (!this.onlyDisplay) {
-					let model = this.parent.model
-					this.checked = !this.checked
-					if (this.checked) {
-						model.push(this.value)
-					} else {
-						let index = model.indexOf(this.value)
-						model.splice(index, 1)
-					}
+		select() {
+			if (!this.onlyDisplay) {
+				let model = this.parent.model
+				this.checked = !this.checked
+				if (this.checked) {
+					model.push(this.value)
+				} else {
+					let index = model.indexOf(this.value)
+					model.splice(index, 1)
 				}
 			}
+		}
     },
     mounted() {
 		Bus.$emit('dx-checkbox-add', this)

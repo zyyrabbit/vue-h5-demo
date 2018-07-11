@@ -133,7 +133,7 @@
     created() {
       Bus.$on('opendate.select', () => {
         this.getPlaceDetl()
-      })
+      }, this)
     },
     mounted() {
       this.getPlaceDetl()

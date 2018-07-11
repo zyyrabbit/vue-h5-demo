@@ -79,7 +79,7 @@
       Bus.$on('region.select', () => {
         this.getRegionInfo()
         this.getFieldList()
-      })
+      }, this)
     },
 		computed: {
 			...mapState({
