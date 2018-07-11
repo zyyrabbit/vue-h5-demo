@@ -9,7 +9,7 @@ export default {
 				// el.parentNode.removeChild(el)
 				el.style.display = 'none'
 		}
-		Bus.$on('auth-state', () => {
+		Bus.$once('auth-state', () => {
 			if (getters.authorization.indexOf(binding.value) === -1) {
 				// el.parentNode.removeChild(el)
 				el.style.display = 'none'

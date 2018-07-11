@@ -10,10 +10,9 @@
   },
   "config": {
     "ghooks": {
-      "commit-msg": "validate-commit-msg",
-      …
+      "commit-msg": "validate-commit-msg"
     }
-  }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

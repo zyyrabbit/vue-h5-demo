@@ -37,12 +37,12 @@ export default {
             if (checkbox) {
                 this.checkboxs.push(checkbox)
             }
-        })
+        }, this)
         Bus.$on('dx-checkbox-remove', (checkbox) => {
             if (checkbox) {
                 this.checkboxs.splice(this.checkboxs.indexOf(checkbox), 1)
             }
-        })
+        }, this)
     },
     mounted() {
         if (this.checkboxs.length === 0 || this.model.length === 0) {
