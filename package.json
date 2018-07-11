@@ -8,6 +8,12 @@
     "start": "set NODE_ENV=dev&& webpack-dev-server --inline --config ./build/webpack.dev.config.js --host 0.0.0.0",
     "build": "set NODE_ENV=production&& gulp build"
   },
+  "config": {
+    "ghooks": {
+      "commit-msg": "validate-commit-msg",
+      …
+    }
+  }
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -48,6 +54,7 @@
     "style-loader": "^0.18.2",
     "stylelint": "^8.4.0",
     "url-loader": "^0.5.9",
+    "validate-commit-msg": "^2.14.0",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^12.2.2",
