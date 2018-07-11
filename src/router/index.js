@@ -189,7 +189,7 @@ const routes = [
 					component: MySutdentPage,
 					hidden: true,
 					children: [
-						{ path: '/teacher/course/dojudgeStu/:id', component: DoJudgePage, hidden: true }
+						{ path: '/teacher/course/dojudgeStu/:uid/:pid', component: DoJudgePage, hidden: true }
 					]
 				},
 				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true }

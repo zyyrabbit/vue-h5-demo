@@ -19,7 +19,7 @@
 	    			</div>
 	    			<div class="course-tab-list__item-detail--content">
 	    				<p class="course-tab-list__item-detail--title">{{course.courseName}}</p>
-	    				<p class="course-tab-list__item-detail--classroom">{{course.fileldRegion}}</p>
+	    				<p class="course-tab-list__item-detail--classroom">{{course.fieldName}}</p>
 	    				<p class="course-tab-list__item-detail--open-time">开放时间: {{course.periodDate | formatDate}} {{course.beginTime}}-{{course.overTime}}</p>
 	    				<p class="course-tab-list__item-detail--place">详细地址: {{course.fieldAddress}}</p>
 	    			</div>

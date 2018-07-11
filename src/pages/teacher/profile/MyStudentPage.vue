@@ -62,7 +62,7 @@
 				if (item.friend) {
 					this.goNext('')
 				} else {
-					this.goNext('/teacher/course/dojudgeStu/' + item.userId)
+					this.goNext('/teacher/course/dojudgeStu/' + item.userId + '/' + this.periodId)
 				}
 			}
 		}
