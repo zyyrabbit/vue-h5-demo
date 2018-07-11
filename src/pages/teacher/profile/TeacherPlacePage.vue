@@ -21,8 +21,8 @@
               <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
               <!-- <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p> -->
               <div class="button-list">
-                <dx-button :disabled="!isBeforeNow(place.reserveDate)" type='gray' @dx-button-click="">退订</dx-button>
-                <dx-button :disabled="!isBeforeNow(place.reserveDate)" type='pinking' @dx-button-click="goNext('/teacher/place/relate/' + place.reserveId)">开课</dx-button>
+                <dx-button type='gray' @dx-button-click="">退订</dx-button>
+                <dx-button type='pinking' @dx-button-click="goRelate(place)">开课</dx-button>
               </div>
           </li>
         </dx-cell-item>
@@ -93,6 +93,9 @@
       },
       isBeforeNow(time) {
         return dayjs().isBefore(dayjs(time))
+      },
+      goRelate(item) {
+        this.$router.push({name: 'relate', params: item})
       }
     }
   }

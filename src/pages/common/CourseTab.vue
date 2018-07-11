@@ -20,7 +20,7 @@
 	    			<div class="course-tab-list__item-detail--content">
 	    				<p class="course-tab-list__item-detail--title">{{course.courseName}}</p>
 	    				<p class="course-tab-list__item-detail--classroom">{{course.fileldRegion}}</p>
-	    				<p class="course-tab-list__item-detail--open-time">开放时间: 2018年4月26日 07:00~20:00</p>
+	    				<p class="course-tab-list__item-detail--open-time">开放时间: {{course.periodDate | formatDate}} {{course.beginTime}}-{{course.overTime}}</p>
 	    				<p class="course-tab-list__item-detail--place">详细地址: {{course.fieldAddress}}</p>
 	    			</div>
 	    			<div class="course-tab-list__item-detail--time">
@@ -63,7 +63,7 @@
             </div>      
             <!-- 老师 课程结束 -->
             <div class="button-list" v-if="state === 2 && isTeacher">
-              <dx-button type='primary' @dx-button-click="goNext('/teacher/judgeStu/' + course.periodId)">评价学员</dx-button>
+              <dx-button type='primary' @dx-button-click="goNext('/teacher/course/students/' + course.periodId + '/' + state)">评价学员</dx-button>
               <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">查看评价</dx-button>
             </div>
             <!-- <button-list :btns="tabs[selectTabIndex].btns"></button-list> -->

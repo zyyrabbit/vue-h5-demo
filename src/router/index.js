@@ -199,7 +199,8 @@ const routes = [
 			path: '/teacher/place',
 			component: TeacherPlacePage,
 			children: [
-				{ path: 'relate/:id', component: RelateCoursePage, hidden: true }
+				{ path: 'relate/:id', component: RelateCoursePage, hidden: true },
+				{ path: 'relate', name: 'relate', component: RelateCoursePage, hidden: true }
 			]
 		},
 		{
