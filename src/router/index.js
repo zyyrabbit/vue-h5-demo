@@ -221,9 +221,9 @@ const routes = [
             path: '/teacher/course/all',
             component: TeacherAllCoursePage,
             children: [
-							{ path: 'operate/:id', component: TeacherCourseOperatePage, hidden: true },
-							{ path: 'operate', component: TeacherCourseOperatePage, hidden: true },
-							{ path: 'open/:id', component: TeacherCourseOpenPage, hidden: true }
+				{ path: 'operate/:id', component: TeacherCourseOperatePage, hidden: true },
+				{ path: 'operate', component: TeacherCourseOperatePage, hidden: true },
+				{ path: 'open/:id', component: TeacherCourseOpenPage, hidden: true }
             ]
         },
         {
@@ -242,6 +242,7 @@ const routes = [
 			]
 		}
 	]
+	debugger
 const router = new VueRouter({
 	/* scrollBehavior(to, from, savedPosition) {
 		return { x: 0, y: 0 }

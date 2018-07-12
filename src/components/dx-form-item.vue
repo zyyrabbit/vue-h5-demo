@@ -13,9 +13,9 @@
 	</div>
 </template>
 <script>
-   import Validate from '../utils/stragetegies.js'
+   import Validate from 'utils/stragetegies.js'
    // 用于与组件dx-form-item通信
-   import Bus from '../utils/bus.js'
+   import Bus from 'utils/bus.js'
    const noop = () => {}
 
 	export default{
