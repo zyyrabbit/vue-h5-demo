@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const vueLoaderConfig = require('./vue-loader.conf');
 const HappyPack = require('happypack');
-// 构造出共享进程池，进程池中包含5个子进程
+// 构造出共享进程池，进程池中包含10个子进程
 const happyThreadPool = HappyPack.ThreadPool({ size: 10 });
 //解决path.join解决路径替换问题
 const pathConvert = (_path,_name) => {
@@ -53,7 +53,7 @@ module.exports = {
                 'assets': pathConvert(config.APP_PATH, './src/assets')
             },
         // 使用绝对路径指明第三方模块存放的位置，以减少搜索步骤
-        modules: ['node_modules']
+        modules: [resolve('node_modules')]
     },
     module: {
         rules: [
@@ -63,7 +63,7 @@ module.exports = {
                 enforce: 'pre',
                 include: [resolve('src')],
                 options: {
-                formatter: require('eslint-friendly-formatter')
+                    formatter: require('eslint-friendly-formatter')
                 }
             },            
             {
