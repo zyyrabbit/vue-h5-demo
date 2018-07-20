@@ -2,8 +2,8 @@ const warn = console.warn
 // 日期组件
 export default class DateStore {
 	constructor(options) {
-		this._numbers = options.size || 42
-		this._currentMonth = options.currentMonth || false
+		this.numbers = options.size || 42
+		this.currentMonth = options.currentMonth || false
 		let _date = new Date()
 		this.nowDate = {
 			year: _date.getFullYear(), // 年份
@@ -29,27 +29,26 @@ export default class DateStore {
         let currentMaxDays = new Date(year, month + 1, 0).getDate() // 当月的最后一天
         let preMaxDays = new Date(year, month, 0).getDate() // 上个月最后一天
          // 判断是否只当月
-         if (!this._isOnlyCurrentMonth()) {
-			while (start-- > 0) {
-				this.store.unshift(preMaxDays--)
-			}
-         }
+        if (this.currentMonth) {
+			preMaxDays = undefined
+        }
+         // 判断是否只当月
+		while (start-- > 0) {
+			this.store.unshift(preMaxDays && preMaxDays--)
+		}
         // 当月的日期
         for (let i = 1; i <= currentMaxDays; i++) {
             this.store.push(i)
         }
         // 判断是否只当月
-        if (!this._isOnlyCurrentMonth()) {
+        if (!this.currentMonth) {
 			// 下个月的日期
 			let len = this.store.length
 			let i = 1
-			while (len++ < this._numbers) {
+			while (len++ < this.numbers) {
 				this.store.push(i++)
 			}
         }
-	}
-	_isOnlyCurrentMonth() {
-		return this._currentMonth
 	}
 	_checkYear(year) {
 		if (typeof year !== 'number' || (year < 1970 || year > 2300)) {

@@ -158,7 +158,7 @@
 						width: 0.34rem;
 						height: 0.3rem;
 						background: $--me-score-icon;
-            background-size: 100% 100%;
+            			background-size: 100% 100%;
 					}
 					// 用户头像
 					@include m(pic) {
@@ -171,10 +171,8 @@
   		@include e(calendar) {
 				margin: {
 					top: 0.5rem;
-					bottom: 0.5rem;
 				}
 				@include m(item) {
-					padding-bottom: 0.32rem;
 					width: 0.57rem;
 					margin: 0 auto;
 					>p:nth-child(1) {
