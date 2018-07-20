@@ -170,9 +170,10 @@
 				}
   		@include e(calendar) {
 				margin: {
-					top: 0.5rem;
+					top: 0.3rem;
 				}
 				@include m(item) {
+					padding-bottom: 0.22rem;
 					width: 0.57rem;
 					margin: 0 auto;
 					>p:nth-child(1) {
