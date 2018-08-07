@@ -28,10 +28,10 @@
    						class="index-home-course__slide--item"
 							@click="goNext('/courseDetail/' + course.id)"
    					>
-							<div class="index-home-course__slide--bg" 
-								:style="{backgroundImage: 'url(' + course.courseImage + ')'}">
+   							<div 
+   								class="index-home-course__slide--bg"
+   								v-lazy:backgroundImage="course.courseImage">
 							</div>
-							<!-- 百科 -->
 							<div class="index-home-wiki">
 								<div class="index-home-wiki__title clearfix">
 									<div class="index-home-wiki__title--left block--float-left text-ellipsis">{{course.courseName}}</div>
@@ -58,7 +58,7 @@
    				<li 
    					v-for="course in newCourse"
    					class="index-home-course-new__slide-item"
-						:style="{backgroundImage: 'url(' + course.courseImage + ')'}"
+					:style="{backgroundImage: 'url(' + course.courseImage + ')'}"
    				>
    				</li>
 	   		</dx-ul>
@@ -149,13 +149,14 @@
    						class="index-home-course-recommend__slide--item"
    						@click="goNext('/courseDetail/' + course.id)"
    					>
-   						<div class="index-home-course-recommend__slide--item-pic"
-							 :style="{backgroundImage: 'url(' + course.courseImage + ')'}"></div>
+   						<div 
+   							class="index-home-course-recommend__slide--item-pic"
+							v-lazy:backgroundImage="course.courseImage"></div>
    						<div class="index-home-course-recommend__slide--item-desc">
    							<p>{{course.courseRecommend}}</p>
    							<div class="index-home-course-recommend__slide--item-message clearfix">
    								<div class="index-home-course-recommend__slide--item-message-left">
-   									<span :style="{backgroundImage: 'url(' + course.user.persionalImage + ')'}"></span>
+   									<span v-lazy:backgroundImage="course.user.persionalImage"></span>
    									<span>{{course.user.name}}</span>
    								</div>
    								<span>
@@ -174,7 +175,7 @@
 	import {mapState, mapMutations} from 'vuex'
 	// import uapi from 'api/userApi.js'
 	import capi from 'api/courseApi.js'
-  import papi from 'api/periodApi.js'
+    import papi from 'api/periodApi.js'
 	import DxFooter from 'pages/common/FooterPage.vue'
 	import mixin from 'utils/mixin.js'
 	export default {

@@ -74,7 +74,7 @@ const TeacherBillingDetailsPage = () => import('pages/teacher/profile/BillingDet
 const TeacherMoneyWidthdrawalPage = () => import('pages/teacher/profile/MoneyWithdrawalPage.vue')
 const TeacherWidthdrawalSubmitSuccessPage = () => import('pages/teacher/profile/WidthdrawalSubmitSuccessPage.vue')
 const routes = [
-		{ path: '/', component: HomePage, hidden: true },
+		{ path: '', component: HomePage, hidden: true },
 		{ path: '/login', name: 'login', component: Login, hidden: true },
 		{ path: '/reg', name: 'reg', component: Register, hidden: true },
 		{ path: '/getpwd', name: 'getpwd', component: GetPassword, hidden: true },
