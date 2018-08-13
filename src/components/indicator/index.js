@@ -3,6 +3,11 @@ import DxIndicator from './dx-indicator.vue'
 import { merge } from 'utils/utils.js'
 const DxIndicatorConstructor = Vue.extend(DxIndicator)
 let instance
+const defaultOptions = {
+	visible: false,
+	spinner: false,
+	text: ''
+}
 const initInstance = () => {
 	let mountEl = document.createElement('div')
 	instance = new DxIndicatorConstructor({
@@ -14,7 +19,8 @@ class Indicator {
 		if (!instance) {
 			initInstance()
 		}
-		merge(instance, options)
+		let mergeOptions = merge({}, defaultOptions, options)
+		merge(instance, mergeOptions)
 		document.body.appendChild(instance.$el)
 		Vue.nextTick(() => {
 			instance.visible = true

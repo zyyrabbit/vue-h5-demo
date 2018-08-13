@@ -5,7 +5,8 @@
       <p class="headline-desc-text">目前只开放以下城市</p>
     </div>
     <div class="place-select--btn-group">
-      <dx-button size="small" 
+      <dx-button size="small"
+        class="place-select--btn" 
         v-for="item in regionList"
         :type="item.rId === selecting ? 'primary' : 'gray'"
         @dx-button-click="handleClick(item)"
@@ -76,6 +77,9 @@
     button + button {
       margin-left: 0.2rem;
     }
+  }
+  &--btn {
+    margin-top: 0.2rem;
   }
   &--btn-ok{
     margin-top: 0.4rem;

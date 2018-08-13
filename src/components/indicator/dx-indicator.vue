@@ -15,7 +15,7 @@
 	          	r="20" 
 	          	fill="none"/>
 	        </svg>
-	        <i 
+	        <i
 	        	v-else 
 	        	class="dx-indicator--i" 
 	        	:class="spinner">
@@ -100,16 +100,16 @@ export default {
 
 @keyframes loading-dash {
   0% {
-    stroke-dasharray: 1, 200;
+    stroke-dasharray: 1, 200; 
     stroke-dashoffset: 0;
   }
   50% {
     stroke-dasharray: 90, 150;
-    stroke-dashoffset: -40px;
+    stroke-dashoffset: -0.8rem;
   }
   100% {
     stroke-dasharray: 90, 150;
-    stroke-dashoffset: -120px;
+    stroke-dashoffset: -2.4rem;
   }
 }
 
