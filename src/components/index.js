@@ -17,6 +17,7 @@ import DxComment from './dx-comment.vue'
 import DxTag from './dx-tag.vue'
 import DxVc from './dx-vc.vue'
 import DxSelect from './dx-select.vue'
+import DxIndicator from './indicator'
 const components = [
 	DxFormItem,
 	DxForm,
@@ -45,6 +46,7 @@ const install = function(Vue) {
 	components.map(component => {
 		Vue.component(component.name, component)
 	})
+	Vue.DxIndicator = DxIndicator
 	install.installed = true
 }
 export default install

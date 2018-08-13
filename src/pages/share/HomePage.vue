@@ -211,8 +211,12 @@
 				'SET_HOMECOMING'
 			]),
 			getHomePageData() {
+				this.$indicator.open({
+					text: '加载中...'
+				})
 				capi.fetchHomepage().then(r => {
 					this.SET_HOMEPAGE(r.data)
+					this.$indicator.close()
 				})
 			},
       getPeriodList() {
