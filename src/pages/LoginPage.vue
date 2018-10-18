@@ -64,8 +64,8 @@ export default{
 			errorMsg: '',
 			model: {
 				// teacher parent
-				userName: 'sign_test',
-				password: '123'
+				userName: '',
+				password: ''
 			},
 			rules: {
 				// 公共验证规则

@@ -2,11 +2,11 @@
 <template>
    <div class="profile-account-sign">
 	    <dx-header>
-	   		<span 
+	   		<!-- <span 
 	   			slot="next"
 	   			class="profile-account-sign--integral-mall"
 	   			@click="goNext('/integralMall')"
-	   		>积分商城</span>
+	   		>积分商城</span> -->
 	    </dx-header>
 	    <div class="profile-account-sign__introduce">
 	   		<dx-item>

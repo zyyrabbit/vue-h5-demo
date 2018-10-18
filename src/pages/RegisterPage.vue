@@ -54,7 +54,7 @@
 					<dx-form-item>
 						<dx-radio 
 							v-model="model.role"
-							label="0"
+							label="1"
 							class="register-form__item--radio block--float-left"
 						>
 							<span 
@@ -65,7 +65,7 @@
 						</dx-radio>
 						<dx-radio 
 							v-model="model.role"
-							label="1"
+							label="0"
 							class="register-form__item--radio block--float-right">
 							<span 
 								slot="radio-icon" 
@@ -103,7 +103,7 @@ export default{
 			model: {
 				phoneNumber: '',
 				userPwd: '',
-				role: '0',
+				role: '1',
 				verificationCode: ''
 			},
 			rules: {
@@ -125,6 +125,10 @@ export default{
 			'RECORD_USERINFO'
 		]),
 		submit(formName) {
+			if (this.model.role === '0') {
+				alert('老师请联系管理员申请注册')
+				return
+			}
 			this.isRegistering = true
 			this.$refs[formName].validate(async valid => {
 				this.errorMsg = ''
@@ -137,7 +141,10 @@ export default{
 					try {
 						uapi.register(params).then(r => {
 							alert('注册成功!')
-							uapi.login(params).then(r => {
+							uapi.login({
+								userName: this.model.phoneNumber,
+								userPwd: md5(this.model.userPwd)
+							}).then(r => {
 								console.info(r)
 								// role: 0老师 1家长
 								uapi.getPersonalInfo().then(r => {

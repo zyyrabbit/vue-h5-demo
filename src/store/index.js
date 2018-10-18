@@ -15,8 +15,8 @@ const state = {
 	homeComing: {}, // 首页即将上课
 	login: false,
 	userInfo: null, // 用户信息
-	selectingRegion: 2, // 选择中地区
-	selectRegion: 2, // 选中地区 因为其他模块需要请求 必须有初始变量
+	selectingRegion: 22, // FIXME:选择中地区
+	selectRegion: 22, // FIXME:选中地区 因为其他模块需要请求 必须有初始变量
 	regionList: [], // 场地地区信息,
 	selectPlaceDate: dayjs().format('YYYY-MM-DD'), // 场地选择日期 默认今天
 	placeList: [], // 场地列表信息

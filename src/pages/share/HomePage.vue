@@ -19,7 +19,7 @@
    		>
    			<div class="index-home-course__desc clearfix paddingspace">
    				<span class="index-home--title block--float-left">精选课程</span>
-   				<span class="index-home-course__desc--all block--float-right">查看全部</span>
+   				<!-- <span class="index-home-course__desc--all block--float-right">查看全部</span> -->
    			</div>
    			<div class="index-home-course__slide">
    				<ul class="index-home-course__slide--list">
@@ -139,7 +139,7 @@
    				<span class="index-home--title block--float-left">课程推荐</span>
    				<span 
    					class="index-home-course__desc--all block--float-right"
-   					@click="goNext('/courseDetail/' + course.id)"
+   					@click="goNext('/search')"
    				>查看全部</span>
    			</div>
    			<div class="index-home-course-recommend__slide">

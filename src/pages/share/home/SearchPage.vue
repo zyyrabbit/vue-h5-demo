@@ -49,9 +49,9 @@
 							<div class="index-home-wiki__title--left block--float-left text-ellipsis">{{course.courseName}}</div>
 							<div class="index-home-wiki__title--right block--float-right">
 								<dx-ul class="index-home-wiki__title--right-text">
-									<li class="color-blue">鲁彬</li>
+									<li class="color-blue">{{course.user.name}}</li>
 									<li class="color-pink">3-12</li>
-									<li class="color-orange">自然科学</li>
+									<li class="color-orange">{{course.category.categoryName}}</li>
 								</dx-ul>
 							</div>
 						</div>
