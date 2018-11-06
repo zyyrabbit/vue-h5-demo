@@ -15,7 +15,8 @@
               label-key="fieldName"
               placeholder="请选择场地">
             </dx-select>
-            <p v-if="!placeNotUseList">无可使用场地</p>
+            <p v-else-if="!placeNotUseList">无可使用场地</p>
+            <p v-else>-</p>
           </div>
         </template>
       </dx-cell-item>
@@ -24,8 +25,8 @@
           <p class="place-relate-title">场地地址</p>
           <div class="place-relate-detl">
             <p v-if="placeNotUseList && reserveId">{{place.fieldAddress}}</p>
+            <p v-else-if="!placeNotUseList">无可使用场地</p>
             <p v-else>-</p>
-            <p v-if="!placeNotUseList">无可使用场地</p>
           </div>
         </template>
       </dx-cell-item>
@@ -34,21 +35,11 @@
           <p class="place-relate-title">场地时间</p>
           <div class="place-relate-detl">
             <p v-if="placeNotUseList && reserveId">{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+            <p v-else-if="!placeNotUseList">无可使用场地</p>
             <p v-else>-</p>
-            <p v-if="!placeNotUseList">无可使用场地</p>
           </div>
         </template>
-      </dx-cell-item>      
-      <dx-cell-item>
-        <template slot="left">
-          <p class="place-relate-title">开课时间</p>
-          <div class="place-relate-detl">
-            <p v-if="placeNotUseList && reserveId">{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-            <p v-else>-</p>
-            <p v-if="!placeNotUseList">无可使用场地</p>
-          </div>
-        </template>
-      </dx-cell-item>
+      </dx-cell-item>   
       <dx-cell-item>
         <template slot="left">
           <p class="place-relate-title">课程价格</p>
@@ -57,6 +48,16 @@
             :inputStyle = "inputStyle"
             placeholder="请输入课程价格(每学员)">
           </dx-input>
+        </template>
+      </dx-cell-item>         
+      <dx-cell-item>
+        <template slot="left">
+          <p class="place-relate-title">开课时间</p>
+          <div class="place-relate-detl">
+            <p v-if="placeNotUseList && reserveId">{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
+            <p v-else-if="!placeNotUseList">无可使用场地</p>
+            <p v-else>-</p>
+          </div>
         </template>
       </dx-cell-item>
     </div>
@@ -83,10 +84,21 @@
       getNotUsePlace() {
         papi.getUserField().then(r => {
           this.placeNotUseList = r.data
+          if (!r.data || r.data.length === 0) {
+            this.placeNotUseList = null
+          }
 				})
       },
       submitRelate() {
-        if (!this.courseId || !this.periodMoney || !this.reserveId) {
+        if (!this.reserveId) {
+          alert('请选择预订好的场地进行关联')
+          return
+        }
+        if (!this.periodMoney) {
+          alert('请填写价格信息')
+          return
+        }
+        if (!this.courseId || !this.periodMoney) {
           alert('请完整填写')
           return
         }

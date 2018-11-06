@@ -67,6 +67,7 @@
     </div>
 </template>
 <script>
+import {mapMutations} from 'vuex'
 import axios from 'axios'
 import capi from 'api/courseApi.js'
 import DxHeader from 'pages/common/HeaderPage.vue'
@@ -121,6 +122,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'SET_COURSELIST'
+    ]),
     change() {
       console.log(this.course.type)
     },
@@ -128,6 +132,9 @@ export default {
       this.$refs.selectImage.click()
     },
     uploadImage() {
+      this.$indicator.open({
+        text: '上传中...'
+      })
       let file = this.$refs.selectImage.files[0]
       let formdata = new FormData()
       formdata.append('file', file)
@@ -138,7 +145,9 @@ export default {
         headers: {'Content-Type': 'multipart/form-data'}
       }).then((r) => {
         this.course.courseImage = r.data.data
+        this.$indicator.close()
       }).catch(() => {
+        this.$indicator.close()
         alert('上传失败')
       })
     },
@@ -154,8 +163,12 @@ export default {
       } else {
         capi.saveCourse(this.course).then(r => {
           alert('操作成功!')
-          // FIXME 上一页数据刷新 个人数据刷新
-          this.$router.go(-1)
+          capi.getCourseByUser().then(r => {
+            console.info(r)
+            this.SET_COURSELIST(r.data)
+            // FIXME 个人数据刷新
+            this.$router.go(-1)
+          })
         })
       }
     }

@@ -31,5 +31,8 @@ export default {
   },
   getCourseCategory(param = {}) {
     return http.get('/category/queryAllCategory', { params: param })
+  },
+  deleteCourse(param = {}) {
+    return http.delete('/course/deleteCourse', { params: param })
   }
 }

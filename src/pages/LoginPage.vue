@@ -78,6 +78,10 @@ export default{
 			isLogining: false
 		}
 	},
+	mounted() {
+		this.model.userName = localStorage.getItem('userName')
+		this.model.password = localStorage.getItem('userPwd')
+	},
 	methods: {
 		...mapMutations([
 			'RECORD_USERINFO'
@@ -92,6 +96,9 @@ export default{
 					params.userPwd = md5(this.model.password)
 					// 登陆
 					uapi.login(params).then(r => {
+						this.isLogining = false
+						localStorage.setItem('userName', this.model.userName)
+						localStorage.setItem('userPwd', this.model.password)
 						console.info(r)
 						// role: 0老师 1家长
 						uapi.getPersonalInfo().then(r => {
@@ -99,6 +106,8 @@ export default{
 							this.RECORD_USERINFO(user)
 							this.$router.push('/home')
 						})
+					}).catch(() => {
+						this.isLogining = false
 					})
 					/* try {
 					} catch (e) {
