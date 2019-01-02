@@ -14,9 +14,7 @@
 				</dx-input>
 		 	</div>
    		<!-- 课程 -->
-   		<div 
-   			class="index-home-course"
-   		>
+   		<div class="index-home-course">
    			<div class="index-home-course__desc clearfix paddingspace">
    				<span class="index-home--title block--float-left">精选课程</span>
    				<!-- <span class="index-home-course__desc--all block--float-right">查看全部</span> -->
@@ -53,6 +51,7 @@
    			</div>
    		</div>
    		<!-- 本周新课 -->
+			<!--
    		<div class="index-home-course-new paddingspace">
 	   		<dx-ul>
    				<li 
@@ -62,6 +61,45 @@
    				>
    				</li>
 	   		</dx-ul>
+   		</div>
+			 -->
+			 <div class="index-home-course" style="margin-top:1rem;">
+   			<div class="index-home-course__desc clearfix paddingspace">
+   				<span class="index-home--title block--float-left">本周新课</span>
+   				<!-- <span class="index-home-course__desc--all block--float-right">查看全部</span> -->
+   			</div>
+   			<div class="index-home-course__slide">
+   				<ul class="index-home-course__slide--list">
+   					<li 
+   						v-for="course in newCourse"
+   						class="index-home-course__slide--item"
+							@click="goNext('/courseDetail/' + course.id)"
+   					>
+   							<div 
+   								class="index-home-course__slide--bg"
+   								v-lazy:backgroundImage="course.courseImage">
+							</div>
+							<div class="index-home-wiki">
+								<div class="index-home-wiki__title clearfix">
+									<div class="index-home-wiki__title--left block--float-left text-ellipsis">{{course.courseName}}</div>
+									<div class="index-home-wiki__title--right block--float-right">
+										<dx-ul class="index-home-wiki__title--right-text">
+											<li class="color-blue">{{course.user.name}}</li>
+											<li class="color-pink">3-12</li>
+											<li class="color-orange">{{course.category.categoryName}}</li>
+										</dx-ul>
+									</div>
+								</div>
+								<!--
+								<div class="index-home-wiki__desc clearfix">
+									<div class="index-home-wiki__desc--detail block--float-left">{{course.courseRecommend}}</div>
+									<div class="index-home-wiki__desc--price block--float-right">￥{{course.coursePrice || '-'}}</div>
+								</div>
+								-->
+							</div>						
+   					</li>
+   				</ul>
+   			</div>
    		</div>
    		<!-- 明星榜单 -->
    		<div class="index-home-star-list">
@@ -312,9 +350,11 @@
 				}
 				@include m(bg) {
 					width: 100%;
-					height: 3.7rem;
+					// height: 3.7rem;
+					height: 6.8rem;
 					// background: url('../../assets/images/index/home/wiki.png');
-					background-size: 100% 100%;
+					background-size: 100% auto;
+					background-repeat: no-repeat;
 				}
 			}
 		}
