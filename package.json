@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set NODE_ENV=dev&& webpack-dev-server --inline --config ./build/webpack.dev.config.js",
+    "dev": "npm start",
     "build": "set NODE_ENV=production&& gulp build"
   },
   "config": {

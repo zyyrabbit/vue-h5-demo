@@ -100,7 +100,7 @@
         this.tabs = []
         for (var i = 0; i < 7; i++) {
           let obj = {
-            label: dayjs().add(i, 'day').format('MM-DD'),
+            label: dayjs().add(i, 'day').format('MM-DD ddd'),
             value: dayjs().add(i, 'day').format('YYYY-MM-DD')
           }
           i === 0 ? obj.label = '今天' : obj.label = obj.label
