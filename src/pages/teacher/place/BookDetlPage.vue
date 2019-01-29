@@ -4,7 +4,7 @@
     class="place-book"
   >
     <dx-header></dx-header>
-    <p class="headline-upper-text">预订场所</p>
+    <p class="headline-upper-text">预订场地</p>
     <div class="place-book-info">
       <div class="place-book-info-pic"
         :style="{backgroundImage: 'url(' + place.imagesPath + ')'}"
@@ -38,7 +38,7 @@
           <p>场地单价</p>
         </template>
         <template slot="right">
-          <p>￥{{place.fieldAmount}}/小时</p>
+          <p>￥{{place.fieldAmount}}/半小时</p>
         </template>
       </dx-cell-item>
       <dx-cell-item can-access :to="'/place/book/' + place.id + '/opendate'">
@@ -99,15 +99,15 @@
       </dx-cell-item>
       <dx-cell-item can-access>
         <template slot="left">
-          <p>注意：不足一小时,按一小时算,三天前可取消</p>
+          <p>注意：三天前可取消场地</p>
         </template>
       </dx-cell-item>
     </div>
     <price-footer 
       @price-footer-click="createOrder()"
-      :price="'￥' + (place.fieldAmount * place.betweenTime || 0)" 
-      priceSmall="/小时" 
-      :priceInfo="'￥' + place.fieldAmount + ' x ' +  place.betweenTime + '小时'" 
+      :price="'￥' + (place.fieldAmount * place.betweenTime * 2 || 0)" 
+      priceSmall=""
+      :priceInfo="'￥' + place.fieldAmount + ' x ' +  place.betweenTime * 2 + '半小时'" 
       btnText="立即支付"
     >
     </price-footer> 

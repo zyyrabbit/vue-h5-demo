@@ -36,7 +36,7 @@
           <div class="course-tab-list__item-operate">   
             <!-- 家长 已上课 -->
             <div class="button-list" v-if="state === 2 && !isTeacher" >
-              <dx-button type='primary'>再次学习</dx-button>
+              <dx-button type='gray' @dx-button-click="plsWait">课后复习</dx-button>
               <dx-button type='primary' @dx-button-click="goNext('/course/judge/' + course.periodId)">评价课程</dx-button>
               <dx-button :disabled="course.userState === '1'" type='primary'>{{course.userState === '0' ? '确认上课' : '已确认上课'}}</dx-button>
             </div>
@@ -46,12 +46,12 @@
             </div>
             <!-- 家长 待上课 -->
             <div class="button-list" v-if="state === 0 && !isTeacher">
-              <dx-button type='gray' :disabled="course.userState === '3'" >{{course.userState === '0' ? '取消课程' : '正申请取消'}}</dx-button>
-              <dx-button type='pinking'>联系老师</dx-button>
+              <dx-button type='gray' @dx-button-click="plsWait" :disabled="course.userState === '3'" >{{course.userState === '0' ? '取消课程' : '正申请取消'}}</dx-button>
+              <dx-button type='pinking' @dx-button-click="goNext('/course/chat/' + course.userId)">联系老师</dx-button>
             </div>
             <!-- 老师 待开课 -->
             <div class="button-list" v-if="state === 0 && course.userState !== '2' && isTeacher">
-              <dx-button type='gray'>取消课程</dx-button>
+              <dx-button type='gray' @dx-button-click="plsWait">取消课程</dx-button>
               <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">更换场地</dx-button>
               <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">修改价格</dx-button>
             </div>
@@ -64,7 +64,7 @@
             <!-- 老师 课程结束 -->
             <div class="button-list" v-if="state === 2 && isTeacher">
               <dx-button type='primary' @dx-button-click="goNext('/teacher/course/students/' + course.periodId + '/' + state)">评价学员</dx-button>
-              <dx-button type='primary' @dx-button-click="goNext('/teacher/course/changePla/' + course.periodId)">查看评价</dx-button>
+              <dx-button type='primary' @dx-button-click="plsWait">查看评价</dx-button>
             </div>
             <!-- <button-list :btns="tabs[selectTabIndex].btns"></button-list> -->
           </div>
@@ -110,7 +110,7 @@
       dayjs(startTime, endTime) {
         const st = dayjs('2001-01-01 ' + startTime)
         const et = dayjs('2001-01-01 ' + endTime)
-        return et.diff(st, 'hours')
+        return et.diff(st, 'hours', true)
       },
       selectTab(index) {
         this.selectTabIndex = index
@@ -230,7 +230,8 @@
                         width: 0.34rem;
                         background: #7E7E7E;
                         left: -0.4rem;
-                        top: 42%;
+                        // top: 42%;
+                        top: 0.16rem;
                     }
                     &::after{
                         content: "";
@@ -238,7 +239,8 @@
                         height: 0.02rem;
                         width: 0.34rem;
                         background: #7E7E7E;
-                        top: 42%;
+                        // top: 42%;
+                        top: 0.16rem;
                         right: -0.4rem;
                     }
 				}            

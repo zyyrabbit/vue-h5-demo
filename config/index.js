@@ -12,7 +12,7 @@ module.exports = {
     IMAGE_PATH: './images',
     OUTPUT_PATH: path.join(BASE_PATH, 'output'), // 必须绝对路径
     SRC_PATH: './src/main.js',
-    PUBLIC_PATH: '/business/', // 服务器存放根目录
+    PUBLIC_PATH: '/', // 服务器存放根目录
     PORT: 9000,
     //请求资源地址
     REQUEST_ADDR:'/mobile-edurental-mgr/',

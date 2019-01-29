@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
+const prod = require("../config/prod.env");
 const webpackConfig = require("./webpack.config.js");
 const webpackMerge = require("webpack-merge");
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
@@ -7,7 +8,12 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = webpackMerge(webpackConfig, {
+    output: {
+        // 使用prod里面的变量 可根据实际情况配置
+        publicPath: prod.PUBLIC_PATH
+    },
     // 在生产环境下把 devtool 设置成 hidden-source-map，
+    
     // 意思是生成最详细的 Source Map，但不会把 Source Map 暴露出去。由于在生产环境下会做代码压缩，一个 JavaScript 文件只有一行，所以需要列信息
     devtool: 'hidden-source-map',
     plugins: [
@@ -61,7 +67,6 @@ module.exports = webpackMerge(webpackConfig, {
             'process.env': {
                 NODE_ENV: '"production"'
             }
-        }),
-        new BundleAnalyzerPlugin()
+        })
     ]
 });

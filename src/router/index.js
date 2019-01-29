@@ -110,7 +110,14 @@ const routes = [
 		// 首页搜索结果页
 		// { path: '/searchResult', component: SearchResultPage, hidden: true },
 		// 首页教师详情
-		{ path: '/teacherDetail/:id', component: TeacherDetailPage, hidden: true },
+		{ path: '/teacherDetail/:id',
+			component: TeacherDetailPage,
+			hidden: true,
+			children: [
+				// path加'/'为相对根路径
+				{ path: 'chat/:id', component: ChatPage, hidden: true }
+			]
+		},
 		{
 			path: '/course',
 			component: CoursePage,
@@ -118,7 +125,8 @@ const routes = [
 				// path加'/'为相对根路径--课程页面
 				{ path: 'bill', component: BillingDetailPage, hidden: true },
 				{ path: 'judge/:id', component: JudgePage },
-				{ path: 'evaluate', component: EvalPage }
+				{ path: 'evaluate', component: EvalPage },
+				{ path: 'chat/:id', component: ChatPage, hidden: true }
 			]
 		},
 		{

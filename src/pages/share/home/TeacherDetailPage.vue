@@ -35,14 +35,14 @@
 								<span>{{teacher.name}}</span>
 							</div>
 							<span>
-								<span>{{course.enteredCount}}</span> 人参加过
+								<span>{{course.enteredCount || 0}}</span> 人参加过
 							</span>
 						</div>
 					</div>
 				</li>
 			</dx-ul>
 		</div>
-		<button-footer btnText="联系老师"></button-footer>
+		<button-footer btnText="联系老师" @button-footer-click="goNext('/chat/' + teacher.id)"></button-footer>
    	</div>
 </template>
 <script>

@@ -161,7 +161,7 @@
    			<div class="index-home-course-going__slide">
 		   		<dx-ul>
 	   				<li class="index-home-course-going__slide-item">
-	   					<div class="index-home-course-going__slide-item--pic"></div>
+	   					<div class="index-home-course-going__slide-item--pic" :style="{backgroundImage: 'url(' + (homeComing.courseImage || '/assets/images/coming.png') + ')'}"></div>
 	   					<div class="index-home-course-going__slide-item--desc">
 	   						<p>{{homeComing.courseName}}</p>
 	   						<p>下一堂：{{homeComing.periodDate | formatInPeriod}} {{homeComing.beginTime}}~{{homeComing.overTime}}</p>
@@ -194,11 +194,12 @@
    							<p>{{course.courseRecommend}}</p>
    							<div class="index-home-course-recommend__slide--item-message clearfix">
    								<div class="index-home-course-recommend__slide--item-message-left">
-   									<span v-lazy:backgroundImage="course.user.persionalImage"></span>
+   									<span 
+										 :style="{backgroundImage: 'url(' + course.user.persionalImage + ')'}" ></span>
    									<span>{{course.user.name}}</span>
    								</div>
    								<span>
-   									<span>{{course.enteredCount}}</span> 人参加过
+   									<span>{{course.enteredCount || 0}}</span> 人参加过
    								</span>
    							</div>
    						</div>

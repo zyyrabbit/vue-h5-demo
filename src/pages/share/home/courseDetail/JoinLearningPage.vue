@@ -49,11 +49,11 @@
 						>{{period.periodAddress || '-'}}</p>
 					</dx-item>
 					<dx-item class="home-course-join__item">
-						<div slot="left">课程单价</div>
+						<div slot="left">课程价格</div>
 						<div 
 							slot="right"
 							class="text-right"
-						>￥{{period.periodMoney || '-'}}/小时</div>
+						>￥{{period.periodMoney || '-'}}</div>
 					</dx-item>
 				</div>
        	<dx-item 
@@ -92,8 +92,8 @@
 				<price-footer
 					@price-footer-click="createOrder()"
 					:btn-disabled="!period.periodDate"
-					:price="'￥' + (period.periodMoney * courseHour(period.periodStartTime, period.periodEndTime) || 0)" 
-					:priceInfo="'￥' + (period.periodMoney || 0) + ' x ' + courseHour(period.periodStartTime, period.periodEndTime)" 
+					:price="'￥' + (period.periodMoney || 0)" 
+					:priceInfo="'课时总价￥' + (period.periodMoney || 0)" 
 					:btnText="!period.periodDate ? '暂无课时' : '立即支付'"
 				>
 				</price-footer>
