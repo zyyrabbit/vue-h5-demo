@@ -13,7 +13,9 @@ import {
   SET_JUDGEDICTS,
   SET_OPENDATE_ID,
   SET_MESSAGELIST,
-  SET_SELECT_PERIOD_ID
+  SET_SELECT_PERIOD_ID,
+  SET_OPENDATE_IDS,
+  SET_OPENDATE_LIST
 } from './mutation-types.js'
 import { setStore } from 'utils/utils'
 
@@ -33,6 +35,12 @@ export default {
   },
   [SET_OPENDATE_ID](state, data) {
     state.openDateId = data
+  },
+  [SET_OPENDATE_IDS](state, data) {
+    state.openDateIds = data
+  },
+  [SET_OPENDATE_LIST](state, data) {
+    state.openDateList = data
   },
   [SET_REGIONINFO](state, data) {
     state.regionInfo = data

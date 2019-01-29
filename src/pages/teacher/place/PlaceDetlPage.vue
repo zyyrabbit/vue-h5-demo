@@ -71,7 +71,7 @@
       :btn-disabled="!place.openDateDTO"
       :to="'/place/book/' + place.id" 
       :price="'￥' + place.fieldAmount" 
-      priceSmall="/小时" 
+      priceSmall="/半小时" 
       :priceInfo="'评分' + (place.evaluationAvgGrade || 0)" 
       :btnText="place.openDateDTO ? '确定' : '全天已满'"
       >

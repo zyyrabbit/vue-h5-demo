@@ -43,12 +43,21 @@
       </dx-cell-item>
       <dx-cell-item can-access :to="'/place/book/' + place.id + '/opendate'">
         <template slot="left">
+          <p>预订时间</p>
+        </template>
+        <template slot="right">
+          <p v-if="!openDateDisplayList || openDateDisplayList.length === 0">请选择</p>
+          <p style="font-size:0.32rem;" v-for="item in openDateDisplayList">{{item}}</p>
+        </template>
+      </dx-cell-item>
+      <!-- <dx-cell-item can-access :to="'/place/book/' + place.id + '/opendate'">
+        <template slot="left">
           <p>预订日期</p>
         </template>
         <template slot="right">
           <p>{{selectedDate | formatInPeriod}}</p>
         </template>
-      </dx-cell-item>
+      </dx-cell-item> -->
       <!-- <dx-cell-item can-access>
         <template slot="left">
           <p>重复预订</p>
@@ -57,7 +66,7 @@
           <p>不重复</p>
         </template>
       </dx-cell-item> -->
-      <dx-cell-item can-access>
+      <!-- <dx-cell-item can-access>
         <template slot="left">
           <p>开始时间</p>
         </template>
@@ -72,13 +81,13 @@
         <template slot="right">
           <p>{{place.endTime}}</p>
         </template>
-      </dx-cell-item>
+      </dx-cell-item> -->
       <dx-cell-item>
         <template slot="left">
           <p>时长合计</p>
         </template>
         <template slot="right">
-          <p>{{place.betweenTime}}小时</p>
+          <p>{{openDateBetween || 0}}小时</p>
         </template>
       </dx-cell-item>
       <dx-cell-item>
@@ -105,9 +114,9 @@
     </div>
     <price-footer 
       @price-footer-click="createOrder()"
-      :price="'￥' + (place.fieldAmount * place.betweenTime * 2 || 0)" 
+      :price="'￥' + (place.fieldAmount * (openDateBetween || 0) * 2)" 
       priceSmall=""
-      :priceInfo="'￥' + place.fieldAmount + ' x ' +  place.betweenTime * 2 + '半小时'" 
+      :priceInfo="'￥' + place.fieldAmount + ' x ' +  (openDateBetween || 0) * 2 + ' x 半小时'" 
       btnText="立即支付"
     >
     </price-footer> 
@@ -136,11 +145,15 @@
       }, this)
     },
     mounted() {
+      this.SET_OPENDATE_IDS([])
+      this.SET_OPENDATE_LIST([])
       this.getPlaceDetl()
     },
     methods: {
 			...mapMutations([
-        'SET_OPENDATE_ID'
+        'SET_OPENDATE_ID',
+        'SET_OPENDATE_IDS',
+        'SET_OPENDATE_LIST'
 			]),
       getPlaceDetl() {
         let param = {id: this.id, openDate: this.selectedDate}
@@ -150,12 +163,12 @@
 				papi.getFieldDetl(param).then(r => {
           this.place = r.data
           // 处理数据
-          this.place.startTime = this.place.openDateDTO.openTime.split('-')[0]
-          this.place.endTime = this.place.openDateDTO.openTime.split('-')[1]
-          this.place.betweenTime = this.dataBetween(this.place.startTime, this.place.endTime)
-          if (!this.openDateId) {
-            this.SET_OPENDATE_ID(this.place.openDateDTO.oId)
-          }
+          // this.place.startTime = this.place.openDateDTO.openTime.split('-')[0]
+          // this.place.endTime = this.place.openDateDTO.openTime.split('-')[1]
+          // this.place.betweenTime = this.dataBetween(this.place.startTime, this.place.endTime)
+          // if (!this.openDateId) {
+          //   this.SET_OPENDATE_ID(this.place.openDateDTO.oId)
+          // }
 				})
       },
       dataBetween(startTime, endTime) {
@@ -164,18 +177,23 @@
         return et.diff(st, 'hours')
       },
       createOrder() {
+        if (!this.openDateBetween) {
+          alert('请先选择需要预订的时间')
+          return
+        }
         console.info('create order')
         let param = {
-          orderType: 'FIELD',
+          // orderType: 'FIELD',
           payType: 'ALIPAY',
           giftId: null,
           phone: this.phone || '',
-          reserveDate: this.selectedDate,
+          // reserveDate: this.selectedDate,
           fieldId: this.id,
-          openDate: this.place.openDateDTO.openTime
+          fieldDateList: this.openDateDisplayList
+          // openDate: this.place.openDateDTO.openTime
         }
         console.info(param)
-        oapi.createOrder(param).then(r => {
+        oapi.createFieldOrder(param).then(r => {
 					const orderNumber = r.data
 					if (orderNumber) {
 						oapi.fakeOrderSuccess({orderNumber: orderNumber}).then(r => {
@@ -191,8 +209,18 @@
 			...mapState({
         selectedDate: state => state.selectPlaceDate,
         openDateId: state => state.openDateId,
-        phoneNumber: state => state.userInfo.phoneNumber
+        phoneNumber: state => state.userInfo.phoneNumber,
+        openDateDisplayList: state => state.openDateList
       }),
+      openDateBetween: function() {
+        let that = this
+        let count = 0
+        this.openDateDisplayList.forEach(i => {
+          let time = i.split('/')[1]
+          count += that.dataBetween(time.split('-')[0], time.split('-')[1])
+        })
+        return count
+      },
 			phone: {
 				get: function() {
 					return this.phoneNumber

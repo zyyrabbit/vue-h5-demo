@@ -21,6 +21,8 @@ const state = {
 	selectPlaceDate: dayjs().format('YYYY-MM-DD'), // 场地选择日期 默认今天
 	placeList: [], // 场地列表信息
 	openDateId: '', // 选择场地时间段
+	openDateIds: [], // 多选场地时间段
+	openDateList: [], // 多选场地时间段显示
 	regionInfo: {},
 	selectPeriodId: '',
 	courseList: [], // 教师 - 我的课程

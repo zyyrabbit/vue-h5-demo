@@ -12,6 +12,7 @@ import DxCalender from './calendar/dx-calendar.vue'
 import DxTabs from './dx-tabs.vue'
 import DxCellItem from './dx-cell-item.vue'
 import DxRadio from './dx-radio.vue'
+import DxRadioGroup from './dx-radio-group.vue'
 import DxStar from './dx-star.vue'
 import DxComment from './dx-comment.vue'
 import DxTag from './dx-tag.vue'
@@ -37,7 +38,8 @@ const components = [
 	DxComment,
 	DxTag,
 	DxVc,
-    DxSelect
+	DxSelect,
+	DxRadioGroup
 ]
 
 const install = function(Vue) {

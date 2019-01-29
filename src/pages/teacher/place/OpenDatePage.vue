@@ -14,10 +14,12 @@
             <div class="opendate-place__content-item--desc">
               <p>{{item.openTime}}</p>
             </div>
-            <dx-radio 
-              v-model="select"
+            <dx-radio-group 
+              :checked="isChecked(item.oId)"
               :label="item.oId"
+              :extra="formatDateTime(item)"
               :disabled="item.reserveId !== null"
+              @radio-input="handleSelect"
               no-label
               class="opendate-place__content-item--radio"
             >
@@ -25,16 +27,16 @@
                 slot="radio-icon" 
                 class="opendate-place__content-item--radio-icon"
               ></span>
-            </dx-radio>
+            </dx-radio-group>
           </li>
           <li v-if="!openDateList || openDateList.length === 0" 
           class="opendate-place__content-item">
-            <p>本日无场地开放</p>
+            <p>本日期无开放时间</p>
           </li>
         </ul>
       </div>
     </div>
-    <button-footer @button-footer-click="selectOpenDate()" btnText="下一步"></button-footer> 
+    <button-footer @button-footer-click="selectOpenDate()" btnText="选好了"></button-footer> 
   </div>
 </template>
 <script>
@@ -65,10 +67,14 @@
       },
       select: {
         get: function() {
-          return this.openDateId
+          // return this.openDateId
+          return this.openDateIds.indexOf(1) > -1
         },
         set: function(val) {
-          this.SET_OPENDATE_ID(val)
+          // console.info(val)
+          // this.openDateIds.push(val)
+          // this.SET_OPENDATE_IDS(this.openDateIds)
+          // this.SET_OPENDATE_ID(val)
         }
       }
     },
@@ -78,7 +84,9 @@
     methods: {
 			...mapMutations([
         'SET_SELECT_PLACE_DATE',
-        'SET_OPENDATE_ID'
+        'SET_OPENDATE_ID',
+        'SET_OPENDATE_IDS',
+        'SET_OPENDATE_LIST'
 			]),
       getFieldList() {
         let date = null
@@ -94,6 +102,20 @@
       },
       tabClick() {
         this.getFieldList()
+      },
+      isChecked: function(val) {
+        return this.openDateIds.indexOf(val) > -1
+      },
+      handleSelect(obj) {
+        if (obj.selected) {
+          this.openDateIds.push(obj.value)
+          this.openDateDisplayList.push(obj.extra)
+        } else {
+          this.openDateIds.splice(this.openDateIds.findIndex(item => item === obj.value), 1)
+          this.openDateDisplayList.splice(this.openDateDisplayList.findIndex(item => item === obj.extra), 1)
+        }
+        this.SET_OPENDATE_IDS(this.openDateIds)
+        this.SET_OPENDATE_LIST(this.openDateDisplayList)
       },
       contributeDates() {
         // 今天开始往后七天
@@ -112,6 +134,9 @@
         this.SET_OPENDATE_ID(this.select)
         Bus.$emit('opendate.select', this)
         this.$router.go(-1)
+      },
+      formatDateTime(item) {
+        return `${this.selectedDate || dayjs().format('YYYY-MM-DD')}/${item.openTime}`
       }
     },
     created() {
@@ -123,7 +148,9 @@
         tabs: [],
         // select: this.openDateId,
         disabled: 3,
-        openDateList: []
+        openDateList: [],
+        openDateIds: this.$store.state.openDateIds,
+        openDateDisplayList: this.$store.state.openDateList
       }
     }
   }
