@@ -36,7 +36,7 @@
           <div class="course-tab-list__item-operate">   
             <!-- 家长 已上课 -->
             <div class="button-list" v-if="state === 2 && !isTeacher" >
-              <dx-button type='gray' @dx-button-click="plsWait">课后复习</dx-button>
+              <dx-button type='primary' @dx-button-click="goNext('/course/homework/' + course.periodId)">课后复习</dx-button>
               <dx-button type='primary' @dx-button-click="goNext('/course/judge/' + course.periodId)">评价课程</dx-button>
               <dx-button :disabled="course.userState === '1'" type='primary'>{{course.userState === '0' ? '确认上课' : '已确认上课'}}</dx-button>
             </div>
@@ -63,8 +63,10 @@
             </div>      
             <!-- 老师 课程结束 -->
             <div class="button-list" v-if="state === 2 && isTeacher">
+              <dx-button type='primary' @dx-button-click="goNext('/teacher/course/homework/' + course.periodId)">布置作业</dx-button>
+              <dx-button type='primary' @dx-button-click="goNext('/teacher/course/viewhomework/' + course.periodId)">作业情况</dx-button>
               <dx-button type='primary' @dx-button-click="goNext('/teacher/course/students/' + course.periodId + '/' + state)">评价学员</dx-button>
-              <dx-button type='primary' @dx-button-click="plsWait">查看评价</dx-button>
+              <!-- <dx-button type='primary' @dx-button-click="plsWait">查看评价</dx-button> -->
             </div>
             <!-- <button-list :btns="tabs[selectTabIndex].btns"></button-list> -->
           </div>

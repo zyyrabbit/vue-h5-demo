@@ -34,7 +34,7 @@
                   <div>
                     <div class="index-place--row-price">
                       <span>￥{{item.fieldAmount}}</span>
-                      <span class="index-place--row-unit">/小时</span>
+                      <span class="index-place--row-unit">/半小时</span>
                     </div>
                   </div>
                 </div>

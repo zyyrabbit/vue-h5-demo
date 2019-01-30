@@ -34,6 +34,7 @@ const PwdModPage = () => import('pages/share/profile/setting/PwdModPage.vue')
 const TelephoneModPage = () => import('pages/share/profile/setting/TelephoneModPage.vue')
 const EditPage = () => import('pages/share/profile/EditPage.vue')
 const SignInPage = () => import('pages/share/profile/integral/SignInPage.vue')
+const HomeworkPage = () => import('pages/share/profile//HomeworkPage.vue')
 
 /* 家长页面组 */
 // 家长tabs主页面
@@ -65,6 +66,7 @@ const JudgeStudentPage = () => import('pages/teacher/profile/JudgeStudentPage.vu
 const DoJudgePage = () => import('pages/teacher/profile/DoJudgePage.vue')
 const MySutdentPage = () => import('pages/teacher/profile/MystudentPage.vue')
 const ChangePlacePage = () => import('pages/teacher/profile/ChangePlacePage.vue')
+const ViewHomeworkPage = () => import('pages/teacher/profile/ViewHomeworkPage.vue')
 const TeacherPlacePage = () => import('pages/teacher/profile/TeacherPlacePage.vue')
 const TeacherAllCoursePage = () => import('pages/teacher/profile/TeacherAllCoursePage.vue')
 const TeacherCourseOperatePage = () => import('pages/teacher/profile/CourseOperatePage.vue')
@@ -126,7 +128,8 @@ const routes = [
 				{ path: 'bill', component: BillingDetailPage, hidden: true },
 				{ path: 'judge/:id', component: JudgePage },
 				{ path: 'evaluate', component: EvalPage },
-				{ path: 'chat/:id', component: ChatPage, hidden: true }
+				{ path: 'chat/:id', component: ChatPage, hidden: true },
+				{ path: 'homework/:id', component: HomeworkPage, hidden: true }
 			]
 		},
 		{
@@ -200,6 +203,8 @@ const routes = [
 						{ path: '/teacher/course/dojudgeStu/:uid/:pid', component: DoJudgePage, hidden: true }
 					]
 				},
+				{ path: 'homework/:id', component: HomeworkPage, hidden: true, meta: 'teacher' },
+				{ path: 'viewhomework/:id', component: ViewHomeworkPage, hidden: true },
 				{ path: 'changePla/:id', component: ChangePlacePage, hidden: true }
 			]
 		},
