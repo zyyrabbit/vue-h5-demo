@@ -27,5 +27,17 @@ export default {
   },
   submitRelate(param = {}) {
     return http.post('/field/relationFieldInfo', param)
+  },
+  getFieldByOrder(param = {}) {
+    return http.get('/order/fieldByOrder', { params: param })
+  },
+  getReservedField(param = {}) {
+    return http.get('/field/getReservedField', param)
+  },
+  getReservedFieldTime(id) {
+    return http.get(`/field/getReservedFieldTime/${id}`)
+  },
+  savePeriod(param = {}) {
+    return http.post('/period/save', param)
   }
 }

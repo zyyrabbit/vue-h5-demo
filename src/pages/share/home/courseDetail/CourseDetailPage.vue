@@ -28,6 +28,7 @@
 	   			<div 
 	   				slot="right"
 	   				class="home-course-detail__teacher--icon"
+						:style="{backgroundImage: 'url(' + course.user.persionalImage + ')'}"
 	   			></div>
 	   		</dx-item>
 	   	</div>  

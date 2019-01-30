@@ -114,7 +114,8 @@
 								class="index-home-star-teacher"
 								@click="goNext('/teacherDetail/' + teacher.id)"
 							>
-								<div class="index-home-star-teacher--icon"></div>
+								<div class="index-home-star-teacher--icon" 
+									:style="{backgroundImage: 'url(' + teacher.persionalImage + ')'}"></div>
 								<div class="index-home-star-teacher__detail">
 									<div>
 										<span class="index-home-star-teacher__detail--name">{{teacher.name}}</span>
@@ -139,7 +140,8 @@
 								class="index-home-star-teacher"
 								@click="goNext('/')"
 							>
-								<div class="index-home-star-teacher--icon"></div>
+								<div class="index-home-star-teacher--icon"
+									:style="{backgroundImage: 'url(' + student.persionalImage + ')'}"></div>
 								<div class="index-home-star-teacher__detail widthauto">
 									<div>
 										<span class="index-home-star-teacher__detail--name">{{student.name}}</span>

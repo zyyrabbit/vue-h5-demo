@@ -10,32 +10,28 @@
       <div class="teacher-course-place--title">
           我的场地
       </div>
-      <dx-tabs 
-        v-model="tabValue" 
-        :tabs="tabs"
-      ></dx-tabs>
-      <ul class="teacher-course-place__detail" v-if="tabValue===0"> 
-        <dx-cell-item v-for="place in placeNotUseList" :key="place.reserveId">
+      <ul class="teacher-course-place__detail"> 
+        <dx-cell-item v-for="place in placeList" :key="place.id">
           <li slot="left">
               <p>{{place.fieldName}}</p>
-              <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-              <!-- <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p> -->
-              <div class="button-list">
-                <dx-button type='gray' @dx-button-click="">退订</dx-button>
-                <dx-button type='pinking' @dx-button-click="goRelate(place)">开课</dx-button>
+              <div class="small-text" v-for="(item, index) in place.fieldList" :key="index">
+                <p>场地时间:{{item.reserveDate | formatDate}} {{item.reserveTime}}</p>
+                <p class="blue" v-if="!item.periodDate && !isBeforeNow(item.reserveDate)">未使用</p>
+                <p class="red" v-if="!item.periodDate && isBeforeNow(item.reserveDate)">已过期</p>
+                <p v-if="item.periodDate">已使用</p>
               </div>
+              <!-- <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p> -->
+              <div v-if="!cantRefund(place.fieldList)" class="button-list">
+                <dx-button type='gray' @dx-button-click="refund(place.orderNumber)">退订</dx-button>
+                <!-- <dx-button type='pinking' @dx-button-click="goNext('/teacher/course/all')">开课</dx-button> -->
+              </div>
+              <div v-if="cantRefund(place.fieldList)" style="padding-bottom: 0.56rem"></div>
           </li>
         </dx-cell-item>
+        <dx-cell-item v-if="!placeList || placeList.length === 0">
+          <p slot="left">暂无预订的场地信息</p>
+        </dx-cell-item>       
       </ul>
-      <ul class="teacher-course-place__detail" v-if="tabValue===1"> 
-        <dx-cell-item v-for="place in placeUsedList" :key="place.reserveId">  
-          <li slot="left">
-            <p>{{place.fieldName}}</p>
-            <p>场地时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-            <p>开课时间:{{place.reserveDate | formatDate}} {{place.reserveTime}}</p>
-          </li>
-        </dx-cell-item>
-      </ul>      
       <transition 
         name="router-slide"  
         mode='out-in'>
@@ -45,7 +41,8 @@
 </template>
 <script>
   import dayjs from 'dayjs'
-	import papi from 'api/placeApi.js'
+  import papi from 'api/placeApi.js'
+  import oapi from 'api/orderApi.js'
   import mixin from 'utils/mixin.js'
   import DxHeader from 'pages/common/HeaderPage.vue'
   import ButtonList from 'pages/common/ButtonList.vue'
@@ -57,45 +54,37 @@
     mixins: [mixin],
     data() {
       return {
-        placeUsedList: [],
-        placeNotUseList: [],
-        tabValue: 0,
-        tabs: [
-          {
-            label: '未使用',
-            value: 0
-          },
-          {
-            label: '已使用',
-            value: 1
-          }
-        ]
+        placeList: []
       }
     },
     computed: {
     },
     mounted() {
-      this.getNotUsePlace()
-      this.getUsedPlace()
+      this.getPlace()
     },
     methods: {
       // 未使用
-      getNotUsePlace() {
-        papi.getUserField().then(r => {
-					this.placeNotUseList = r.data
-				})
-      },
-      // 已使用
-      getUsedPlace() {
-        papi.getUserOpenField().then(r => {
-					this.placeUsedList = r.data
+      getPlace() {
+        papi.getFieldByOrder().then(r => {
+					this.placeList = r.data
 				})
       },
       isBeforeNow(time) {
-        return dayjs().isBefore(dayjs(time))
+        return dayjs(time).isBefore(dayjs())
       },
-      goRelate(item) {
-        this.$router.push({name: 'relate', params: item})
+      cantRefund(item) {
+        let that = this
+        return item.some(i => {
+          return i.periodDate !== null || that.isBeforeNow(i.reserveDate)
+        })
+      },
+      refund(orderId) {
+        oapi.refundOrder(orderId).then(r => {
+          alert('退订成功!')
+          this.getPlace()
+				}).catch(() => {
+          alert('场地退订失败,请稍候再试!')
+        })
       }
     }
   }
@@ -106,20 +95,35 @@
     color: #484848;
     font-size: 0.36rem;
     @include m(book) {
-        color: #57B8D7;
+      color: #57B8D7;
     }
     @include m(title) {
-        font-size: 0.6rem;
+      font-size: 0.6rem;
     }
     /* 具体内容 */
     @include e(detail) {
-        // margin-top: 0.54rem;
-        >li>p {
-            margin-bottom: 0.21rem;
+      // margin-top: 0.54rem;
+      >li>p {
+        margin-bottom: 0.21rem;
+      }
+      @include m(btns) {
+        height: 0.92rem;
+      }
+      .dx-cell-item{
+        padding-bottom: 0;
+      }
+      .small-text{
+        font-size: 0.28rem;
+        padding-top: 0.02rem;
+        display: flex;
+        justify-content: space-between;
+        .blue{
+          color: #57B8D7;
         }
-        @include m(btns) {
-            height: 0.92rem;
+        .red{
+          color: red;
         }
+      }
     }
   }
 </style>

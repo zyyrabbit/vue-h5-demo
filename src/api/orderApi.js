@@ -9,5 +9,8 @@ export default {
   },
   fakeOrderSuccess(param = {}) {
     return http.get('/order/success', { params: param })
+  },
+  refundOrder(orderId) {
+    return http.get(`/order/refund/${orderId}`)
   }
 }

@@ -171,10 +171,10 @@
           // }
 				})
       },
-      dataBetween(startTime, endTime) {
+      dateBetween(startTime, endTime) {
         const st = dayjs('2001-01-01 ' + startTime)
         const et = dayjs('2001-01-01 ' + endTime)
-        return et.diff(st, 'hours')
+        return et.diff(st, 'hours', true)
       },
       createOrder() {
         if (!this.openDateBetween) {
@@ -217,7 +217,7 @@
         let count = 0
         this.openDateDisplayList.forEach(i => {
           let time = i.split('/')[1]
-          count += that.dataBetween(time.split('-')[0], time.split('-')[1])
+          count += that.dateBetween(time.split('-')[0], time.split('-')[1])
         })
         return count
       },
